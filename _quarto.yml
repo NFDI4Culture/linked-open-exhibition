@@ -1,7 +1,7 @@
 project:
   type: website
   title: "Verknüpfte Offene Ausstellung"
-  output-dir: _output
+  output-dir: docs
 
 format:
   revealjs:

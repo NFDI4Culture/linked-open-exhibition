@@ -1,0 +1,53 @@
+flowchart LR
+    IPCC[IPCC Website]
+    SCRAPE[Scraped repository HTML]
+    SCRAPEASSETS[Scraped assets]
+    CLEANSCRAPE[Cleaned repository HTML]
+    CLEANWIKI[Cleaned repository Wikitext]
+    MAIN[Main version HTML + RDFa + Pandoc]
+    MW[MediaWiki]
+    WB[Wikibase]
+    BB[Data model: Minimum chapter information]
+    ASSETUID[UID for assets]
+
+    CROSSREF[Crossref doi data]
+    AUTHORS[Authors data]
+    IPCCGLOSS[IPCC glossary]
+
+    DICTIONARY[#sc Dictionary]
+
+    IPCCRICH[IPCC enrichment]
+    OTHERRICH[Other enrichment]
+
+    QUERY[Query / API / Data access]
+
+    API[API/Query]
+
+ IPCC -->|scrape| SCRAPE
+ IPCC -->|scrape| SCRAPEASSETS
+
+ SCRAPE -->|clean| CLEANSCRAPE
+CLEANSCRAPE -->|clean & convert| CLEANWIKI
+
+CLEANWIKI -->|import text| MW
+MW -->|store| MAIN
+CLEANWIKI -->|generate| BB
+BB -->|import data record| WB
+
+ASSETUID -->|generate| SCRAPEASSETS
+SCRAPEASSETS -->|import assets| MW
+
+    CROSSREF -->|add| IPCCRICH
+    AUTHORS -->|add| IPCCRICH
+    IPCCGLOSS -->|add| IPCCRICH
+
+    DICTIONARY -->|add| OTHERRICH
+
+    OTHERRICH --> API
+    IPCCRICH --> API
+
+    MW <--> API
+    API <-->  WB
+    API --> QUERY
+
+    WB -->|has urls, provides information, enrichment| MW

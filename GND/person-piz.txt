@@ -1,0 +1,34 @@
+000 00000nz  a2200000n  4500
+001 118540472                  008 860701|n|anznnbabn           |n    |a
+024 7 |_$a118540472$2gnd        040   |_$aDE-101               075   |_$apiz$2gndweb           100 1 |_$aGoethe, Johann Wolfgang von$d1749-1832 375   |_$am$2iso5218            400 1 |_$aGoethe, J. W. v.      548   |_$a1749-1832$4datl$2gnd  550   |_$aSchriftsteller$4beru$2gnd ```
+
+---
+
+### Field Breakdown
+If you are manually preparing data to be converted into a GND record, focus on these core elements:
+
+| MARC Field | Description | Example |
+| :--- | :--- | :--- |
+| **100** | **Preferred Name** | Surname, Forename (Entry point) |
+| **400** | **Variant Name** | Pseudonyms or spelling variations |
+| **548** | **Dates** | Birth and/or Death dates ($4datl) |
+| **550** | **Profession** | Terms from the GND subject headings (e.g., "Maler") |
+| **375** | **Gender** | Often required for disambiguation |
+| **075** | **Entity Type** | `piz` (individual) or `pzn` (name only) |
+
+### Why GND is different from LIDO
+* **Linked Data:** Every profession or place in a GND record should ideally point to *another* GND ID. For example, the profession "Painter" would point to `gnd/4037215-7`.
+* **Flat Structure:** Unlike LIDO’s deeply nested XML, MARC21 is a flat, field-based tagging system.
+
+
+
+### How to use this with LIDO
+If you are building the LIDO records we discussed earlier, you would place the GND ID in the `actor` block like this:
+
+```xml
+<lido:actor lido:type="person">
+  <lido:actorID lido:type="http://terminology.lido-schema.org/lido00099">https://d-nb.info/gnd/118540472</lido:actorID>
+  <lido:nameActorSet>
+    <lido:appellationValue>Johann Wolfgang von Goethe</lido:appellationValue>
+  </lido:nameActorSet>
+</lido:actor>

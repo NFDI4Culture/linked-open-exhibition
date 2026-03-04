@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lido:lido xmlns:lido="http://www.lido-schema.org" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="http://www.lido-schema.org http://www.lido-schema.org/schema/v1.1/lido-v1.1.xsd">
+  
+  <lido:lidoRecID lido:type="local">CAT-2026-001</lido:lidoRecID>
+  
+  <lido:descriptiveMetadata xml:lang="en">
+    <lido:objectClassificationWrap>
+      <lido:objectWorkTypeWrap>
+        <lido:objectWorkType>
+          <lido:conceptID lido:type="http://terminology.lido-schema.org/lido00099">http://vocab.getty.edu/aat/300026096</lido:conceptID>
+          <lido:term>Exhibition Catalogue</lido:term>
+        </lido:objectWorkType>
+      </lido:objectWorkTypeWrap>
+    </lido:objectClassificationWrap>
+    
+    <lido:objectIdentificationWrap>
+      <lido:titleWrap>
+        <lido:titleSet>
+          <lido:appellationValue>Impressionism: The Full Collection</lido:appellationValue>
+        </lido:titleSet>
+      </lido:titleWrap>
+      <lido:repositoryWrap>
+        <lido:repositorySet lido:type="current">
+          <lido:repositoryName>
+            <lido:legalBodyName>
+              <lido:appellationValue>Museum Library</lido:appellationValue>
+            </lido:legalBodyName>
+          </lido:repositoryName>
+          <lido:workID lido:type="ISBN">978-3-16-148410-0</lido:workID>
+        </lido:repositorySet>
+      </lido:repositoryWrap>
+    </lido:objectIdentificationWrap>
+
+    <lido:eventWrap>
+      <lido:eventSet>
+        <lido:event>
+          <lido:eventType>
+            <lido:term>Publication</lido:term>
+          </lido:eventType>
+          <lido:eventActor>
+            <lido:actorInRole>
+              <lido:actor lido:type="corporateBody">
+                <lido:nameActorSet>
+                  <lido:appellationValue>Art History Press</lido:appellationValue>
+                </lido:nameActorSet>
+              </lido:actor>
+              <lido:roleActor><lido:term>Publisher</lido:term></lido:roleActor>
+            </lido:actorInRole>
+          </lido:eventActor>
+          <lido:eventDate>
+            <lido:displayDate>2026</lido:displayDate>
+            <lido:date><lido:earliestDate>2026</lido:earliestDate></lido:date>
+          </lido:eventDate>
+        </lido:event>
+      </lido:eventSet>
+    </lido:eventWrap>
+
+    <lido:objectRelationWrap>
+      <lido:relatedEventSet>
+        <lido:relatedEvent>
+          <lido:displayEvent xml:lang="en">Published on the occasion of the exhibition 'Impressionism in the 20th Century'</lido:displayEvent>
+          <lido:event>
+            <lido:eventType>
+              <lido:term>Exhibition</lido:term>
+            </lido:eventType>
+            <lido:eventName>
+              <lido:appellationValue>Impressionism in the 20th Century</lido:appellationValue>
+            </lido:eventName>
+          </lido:event>
+        </lido:relatedEvent>
+      </lido:relatedEventSet>
+    </lido:objectRelationWrap>
+  </lido:descriptiveMetadata>
+
+  <lido:administrativeMetadata xml:lang="en">
+    <lido:recordWrap>
+      <lido:recordID lido:type="local">REC-CAT-2026</lido:recordID>
+      <lido:recordType><lido:term>item</lido:term></lido:recordType>
+      <lido:recordSource><lido:legalBodyName><lido:appellationValue>Museum Library</lido:appellationValue></lido:legalBodyName></lido:recordSource>
+    </lido:recordWrap>
+  </lido:administrativeMetadata>
+</lido:lido>

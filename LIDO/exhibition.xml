@@ -1,0 +1,39 @@
+<lido:eventSet>
+  <lido:event>
+    <lido:eventType>
+      <lido:conceptID lido:type="http://terminology.lido-schema.org/lido00099">http://terminology.lido-schema.org/lido00045</lido:conceptID>
+      <lido:term xml:lang="en">Exhibition</lido:term>
+      <lido:term xml:lang="de">Ausstellung</lido:term>
+    </lido:eventType>
+    
+    <lido:eventName>
+      <lido:appellationValue xml:lang="en">The Great Modernist Retrospective</lido:appellationValue>
+    </lido:eventName>
+    
+    <lido:eventDate>
+      <lido:displayDate>May 1, 2024 - August 30, 2024</lido:displayDate>
+      <lido:date>
+        <lido:earliestDate>2024-05-01</lido:earliestDate>
+        <lido:latestDate>2024-08-30</lido:latestDate>
+      </lido:date>
+    </lido:eventDate>
+    
+    <lido:eventPlace>
+      <lido:displayPlace xml:lang="en">National Gallery, London</lido:displayPlace>
+      <lido:place>
+        <lido:namePlaceSet>
+          <lido:appellationValue>National Gallery</lido:appellationValue>
+        </lido:namePlaceSet>
+        <lido:partOfPlace>
+          <lido:namePlaceSet>
+            <lido:appellationValue>London</lido:appellationValue>
+          </lido:namePlaceSet>
+        </lido:partOfPlace>
+      </lido:place>
+    </lido:eventPlace>
+    
+    <lido:eventDescriptionSet>
+      <lido:descriptiveNoteValue xml:lang="en">Featured as the primary centerpiece of the East Wing display.</lido:descriptiveNoteValue>
+    </lido:eventDescriptionSet>
+  </lido:event>
+</lido:eventSet>

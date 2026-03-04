@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html#überblick",
+    "href": "index.html#überblick",
+    "title": "Verknüpfte Offene Ausstellung",
+    "section": "Überblick",
+    "text": "Überblick\nEin Prototyp für die Erstellung von Linked Data Ausstellungsdatensätzen mit offnen Standards und Verlinkung zu externen Datenquellen."
+  },
+  {
+    "objectID": "index.html#datenquellen",
+    "href": "index.html#datenquellen",
+    "title": "Verknüpfte Offene Ausstellung",
+    "section": "Datenquellen",
+    "text": "Datenquellen\n\nLIDO - Lightweight Information Describing Objects\nGND - Gemeinsame Normdatei (German Authority File)\nLOD-API - Linked Open Data APIs"
+  },
+  {
+    "objectID": "index.html#struktur",
+    "href": "index.html#struktur",
+    "title": "Verknüpfte Offene Ausstellung",
+    "section": "Struktur",
+    "text": "Struktur\nGND/          - Gemeinsame Normdatei Daten\nLIDO/         - LIDO Format Datensätze\nLOD-API/      - LOD API Dokumentation"
+  },
+  {
+    "objectID": "index.html#workflow",
+    "href": "index.html#workflow",
+    "title": "Verknüpfte Offene Ausstellung",
+    "section": "Workflow",
+    "text": "Workflow\n\n\n\nDatenfluss"
+  },
+  {
+    "objectID": "index.html#sparql-abfragen",
+    "href": "index.html#sparql-abfragen",
+    "title": "Verknüpfte Offene Ausstellung",
+    "section": "SPARQL Abfragen",
+    "text": "SPARQL Abfragen\nInteraktive Abfragen gegen Wikidata für Ausstellungsdaten:"
+  },
+  {
+    "objectID": "index.html#kontakt",
+    "href": "index.html#kontakt",
+    "title": "Verknüpfte Offene Ausstellung",
+    "section": "Kontakt",
+    "text": "Kontakt\nSiehe NFDI4Culture auf GitHub"
+  }
+]

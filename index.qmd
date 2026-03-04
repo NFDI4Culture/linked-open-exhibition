@@ -1,0 +1,40 @@
+---
+title: "Verknüpfte Offene Ausstellung"
+subtitle: "Prototyp zur Erstellung verknüpfter offener Ausstellungsdatensätze"
+author: "NFDI4Culture"
+date: today
+---
+
+## Überblick
+
+Ein Prototyp für die Erstellung von Linked Data Ausstellungsdatensätzen mit offnen Standards und Verlinkung zu externen Datenquellen.
+
+## Datenquellen
+
+- **LIDO** - Lightweight Information Describing Objects
+- **GND** - Gemeinsame Normdatei (German Authority File)
+- **LOD-API** - Linked Open Data APIs
+
+## Struktur
+
+```
+GND/          - Gemeinsame Normdatei Daten
+LIDO/         - LIDO Format Datensätze
+LOD-API/      - LOD API Dokumentation
+```
+
+## Workflow
+
+![Datenfluss](flow.html)
+
+## SPARQL Abfragen
+
+Interaktive Abfragen gegen Wikidata für Ausstellungsdaten:
+
+```{=html}
+<iframe style="width: 100%; height: 600px; border: none;" src="https://query.wikidata.org/embed.html#%23title%3A%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%20%23%20Instance%20of%20or%20subclass%20of%20exhibition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%20%20%20%20%20%20%20%20%20%20%23%20Location%3A%20Sprengel%20Museum%0A%20%20%0A%20%20%23%20Look%20for%20inception%20OR%20start%20time%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%20%23%20Only%20show%20results%20that%20have%20a%20date%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+```
+
+## Kontakt
+
+Siehe [NFDI4Culture auf GitHub](https://github.com/NFDI4Culture/linked-open-exhibition)

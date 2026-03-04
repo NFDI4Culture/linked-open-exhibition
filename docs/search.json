@@ -1,44 +1,51 @@
 [
   {
-    "objectID": "index.html#überblick",
-    "href": "index.html#überblick",
-    "title": "Verknüpfte Offene Ausstellung",
-    "section": "Überblick",
-    "text": "Überblick\nEin Prototyp für die Erstellung von Linked Data Ausstellungsdatensätzen mit offnen Standards und Verlinkung zu externen Datenquellen."
+    "objectID": "index.html#bim-126-02-data-science",
+    "href": "index.html#bim-126-02-data-science",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "BIM-126-02 Data Science",
+    "text": "BIM-126-02 Data Science\nDer achtteilige Kurs bietet eine Einführung in Linked Open Data (LOD) im Kontext von:\n\nOpen Galleries Libraries Archives and Museums (GLAM) und\nder Nutzung von Plattformen der Wikimedia Foundation.\n\nAlle Informationen finden Sie hier auf Wikiversity: BIM-126-02-Data-Science"
   },
   {
-    "objectID": "index.html#datenquellen",
-    "href": "index.html#datenquellen",
-    "title": "Verknüpfte Offene Ausstellung",
-    "section": "Datenquellen",
-    "text": "Datenquellen\n\nLIDO - Lightweight Information Describing Objects\nGND - Gemeinsame Normdatei (German Authority File)\nLOD-API - Linked Open Data APIs"
+    "objectID": "index.html#sitzung-1-ausstellung-zeitleiste",
+    "href": "index.html#sitzung-1-ausstellung-zeitleiste",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Sitzung 1: Ausstellung-Zeitleiste",
+    "text": "Sitzung 1: Ausstellung-Zeitleiste\n\nWikidata-Einträge für Kunstausstellungen erstellen\nGrundlegende Konzepte von Linked Open Data (LOD) verstehen\n\n\n\n\nInteraktive Abfragen gegen Wikidata für Ausstellungsdaten:"
   },
   {
-    "objectID": "index.html#struktur",
-    "href": "index.html#struktur",
-    "title": "Verknüpfte Offene Ausstellung",
-    "section": "Struktur",
-    "text": "Struktur\nGND/          - Gemeinsame Normdatei Daten\nLIDO/         - LIDO Format Datensätze\nLOD-API/      - LOD API Dokumentation"
+    "objectID": "index.html#sitzung-1-die-übung",
+    "href": "index.html#sitzung-1-die-übung",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Sitzung 1: Die Übung",
+    "text": "Sitzung 1: Die Übung\n\nErfassen Sie minimale Informationen zu einer Ausstellung in Wikidata als Linked Open Data: Titel, Museum, Datum usw.\nZeigen Sie den Ausstellungseintrag in Wikidata an Ergebnisse des Abfragedienstes anzeigen Link (Zeitleiste und Grafik https://w.wiki/J8NJ | https://w.wiki/J8aS)\nÜberprüfen Sie die Ausstellungseinträge.\nBehandeln Sie Themen, die durch die Erstellung eines LOD-Eintrags aufgeworfen werden: Wikidata-Grundlagen, bewährte Verfahren für Wikidata, Konsultation von Schemata, Bedeutung der Überprüfungen, Vergleich der verfügbaren Daten – vorher und nachher."
   },
   {
-    "objectID": "index.html#workflow",
-    "href": "index.html#workflow",
-    "title": "Verknüpfte Offene Ausstellung",
-    "section": "Workflow",
-    "text": "Workflow\n\n\n\nDatenfluss"
+    "objectID": "index.html#sitzungsplan",
+    "href": "index.html#sitzungsplan",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Sitzungsplan",
+    "text": "Sitzungsplan\n11:00-11:15 Einführungen  11:15-12:15 Wikidata-Einträge  12:15-12:30 Pause  12:30-13:30 Wikidata-Einträge und Überprüfung  13:30-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung"
   },
   {
-    "objectID": "index.html#sparql-abfragen",
-    "href": "index.html#sparql-abfragen",
-    "title": "Verknüpfte Offene Ausstellung",
-    "section": "SPARQL Abfragen",
-    "text": "SPARQL Abfragen\nInteraktive Abfragen gegen Wikidata für Ausstellungsdaten:"
+    "objectID": "index.html#usecase",
+    "href": "index.html#usecase",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Usecase",
+    "text": "Usecase\nDie Frage, die in diesem Kurs untersucht wird, lautet: Wie kann LOD zum Vorteil von Museumsausstellungen genutzt werden? Als Beispiele dienen die Steigerung der Besucherzahlen von Ausstellungen und die Schaffung einer größeren Tiefe des Engagements.\nSprengel Museum Hannover: https://www.sprengel-museum.de/\n\n\n\n\n\n\n\nLOE\n\n\n\na\n\nExhibition\n\n\n\nb\n\nItems\n\n\n\nc\n\nArtist\n\n\n\nd\n\nExhibition \nCatalogue"
   },
   {
-    "objectID": "index.html#kontakt",
-    "href": "index.html#kontakt",
-    "title": "Verknüpfte Offene Ausstellung",
-    "section": "Kontakt",
-    "text": "Kontakt\nSiehe NFDI4Culture auf GitHub"
+    "objectID": "index.html#hausaufgaben",
+    "href": "index.html#hausaufgaben",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Hausaufgaben",
+    "text": "Hausaufgaben\n\nErstellen Sie ein GitHub-Konto – fügen Sie es zur Aufgaben-Tabelle hinzu\nWeitere Informationen zu Ihrer zugewiesenen Ausstellung finden – Links zur Tabelle hinzufügen"
+  },
+  {
+    "objectID": "index.html#danke",
+    "href": "index.html#danke",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Danke",
+    "text": "Danke\nSiehe Linked Open Data für Kunstausstellungen\nSimon Worthington - simon.worthington@tib.eu\n\n\n\nCC BY-SA 4.0"
   }
 ]

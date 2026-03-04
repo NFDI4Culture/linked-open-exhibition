@@ -1,0 +1,7 @@
+/* light grey background for slides */
+.reveal {
+  background-color: #f7f7f7;
+}
+.reveal .slides {
+  background-color: #f7f7f7;
+}

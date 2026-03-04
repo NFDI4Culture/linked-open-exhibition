@@ -10,9 +10,9 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.54">
 
-  <meta name="author" content="NFDI4Culture">
+  <meta name="author" content="BIM-126-02 Data Science:   Simon Worthington; Prof.&nbsp;Ina Blümel">
   <meta name="dcterms.date" content="2026-03-04">
-  <title>Verknüpfte Offene Ausstellung</title>
+  <title>Verknüpfte Offene Ausstellung – Linked Open Data für Kunstausstellungen</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,6 +32,7 @@
     }
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -327,58 +328,113 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Verknüpfte Offene Ausstellung</h1>
-  <p class="subtitle">Prototyp zur Erstellung verknüpfter offener Ausstellungsdatensätze</p>
+  <h1 class="title">Linked Open Data für Kunstausstellungen</h1>
+  <p class="subtitle">Prototyping mit Wikidata</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-NFDI4Culture 
+BIM-126-02 Data Science: <br> Simon Worthington; Prof.&nbsp;Ina Blümel 
 </div>
 </div>
 </div>
 
   <p class="date">2026-03-04</p>
 </section>
-<section id="überblick" class="slide level2">
-<h2>Überblick</h2>
-<p>Ein Prototyp für die Erstellung von Linked Data Ausstellungsdatensätzen mit offnen Standards und Verlinkung zu externen Datenquellen.</p>
-</section>
-<section id="datenquellen" class="slide level2">
-<h2>Datenquellen</h2>
+<section id="bim-126-02-data-science" class="slide level2">
+<h2>BIM-126-02 Data Science</h2>
+<p>Der <strong>achtteilige</strong> Kurs bietet eine Einführung in Linked Open Data (LOD) im Kontext von:</p>
 <ul>
-<li><strong>LIDO</strong> - Lightweight Information Describing Objects</li>
-<li><strong>GND</strong> - Gemeinsame Normdatei (German Authority File)</li>
-<li><strong>LOD-API</strong> - Linked Open Data APIs</li>
+<li>Open Galleries Libraries Archives and Museums (GLAM) und</li>
+<li>der Nutzung von Plattformen der Wikimedia Foundation.</li>
+</ul>
+<p>Alle Informationen finden Sie hier auf Wikiversity: <a href="https://de.wikipedia.org/wiki/BIM-126-02-Data-Science">BIM-126-02-Data-Science</a></p>
+</section>
+<section id="sitzung-1-ausstellung-zeitleiste" class="slide level2 smaller">
+<h2>Sitzung 1: Ausstellung-Zeitleiste</h2>
+<ul>
+<li>Wikidata-Einträge für Kunstausstellungen erstellen</li>
+<li>Grundlegende Konzepte von Linked Open Data (LOD) verstehen</li>
+</ul>
+<iframe style="width: 100%; height: 600px; border: none;" src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%20%23%20Instance%20of%20or%20subclass%20of%20exhibition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%20%20%20%20%20%20%20%20%20%20%23%20Location%3A%20Sprengel%20Museum%0A%20%20%0A%20%20%23%20Check%20for%20either%20inception%20or%20start%20time%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20%0A%20%20%23%20Fetch%20the%20image%20if%20it%20exists%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%20%23%20Ensures%20a%20date%20exists%20for%20the%20timeline%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+
+<aside><div>
+<p>Interaktive Abfragen gegen Wikidata für Ausstellungsdaten:</p>
+</div></aside></section>
+<section id="sitzung-1-die-übung" class="slide level2 smaller">
+<h2>Sitzung 1: Die Übung</h2>
+<ul>
+<li>Erfassen Sie minimale Informationen zu einer Ausstellung in Wikidata als Linked Open Data: Titel, Museum, Datum usw.</li>
+<li>Zeigen Sie den Ausstellungseintrag in Wikidata an Ergebnisse des Abfragedienstes anzeigen Link (Zeitleiste und Grafik <a href="https://w.wiki/J8NJ">https://w.wiki/J8NJ</a> | <a href="https://w.wiki/J8aS">https://w.wiki/J8aS</a>)</li>
+<li>Überprüfen Sie die Ausstellungseinträge.</li>
+<li>Behandeln Sie Themen, die durch die Erstellung eines LOD-Eintrags aufgeworfen werden: Wikidata-Grundlagen, bewährte Verfahren für Wikidata, Konsultation von Schemata, Bedeutung der Überprüfungen, Vergleich der verfügbaren Daten – vorher und nachher.</li>
 </ul>
 </section>
-<section id="struktur" class="slide level2">
-<h2>Struktur</h2>
-<pre><code>GND/          - Gemeinsame Normdatei Daten
-LIDO/         - LIDO Format Datensätze
-LOD-API/      - LOD API Dokumentation</code></pre>
+<section id="sitzungsplan" class="slide level2">
+<h2>Sitzungsplan</h2>
+<p>11:00-11:15 Einführungen <br> 11:15-12:15 Wikidata-Einträge <br> 12:15-12:30 Pause <br> 12:30-13:30 Wikidata-Einträge und Überprüfung <br> 13:30-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung</p>
 </section>
-<section id="workflow" class="slide level2">
-<h2>Workflow</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><embed data-src="flow.html"></p>
-<figcaption>Datenfluss</figcaption>
-</figure>
+<section id="usecase" class="slide level2 smaller">
+<h2>Usecase</h2>
+<p>Die Frage, die in diesem Kurs untersucht wird, lautet: Wie kann LOD zum Vorteil von Museumsausstellungen genutzt werden? Als Beispiele dienen die Steigerung der Besucherzahlen von Ausstellungen und die Schaffung einer größeren Tiefe des Engagements.</p>
+<p>Sprengel Museum Hannover: <a href="https://www.sprengel-museum.de/">https://www.sprengel-museum.de/</a></p>
+<div class="cell" data-file="data.dot" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 522.00 123.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 119)">
+<title>LOE</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-119 518,-119 518,4 -4,4"></polygon>
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="#a9ddd6" stroke="black" cx="57.5" cy="-57.5" rx="57.5" ry="57.5"></ellipse>
+<text text-anchor="middle" x="57.5" y="-52.1" font-family="Arial" font-size="18.00">Exhibition</text>
+</g>
+<!-- b -->
+<g id="node2" class="node">
+<title>b</title>
+<ellipse fill="#a9ddd6" stroke="black" cx="190.5" cy="-57.5" rx="57.5" ry="57.5"></ellipse>
+<text text-anchor="middle" x="190.5" y="-52.1" font-family="Arial" font-size="18.00">Items</text>
+</g>
+<!-- c -->
+<g id="node3" class="node">
+<title>c</title>
+<ellipse fill="#a9ddd6" stroke="black" cx="323.5" cy="-57.5" rx="57.5" ry="57.5"></ellipse>
+<text text-anchor="middle" x="323.5" y="-52.1" font-family="Arial" font-size="18.00">Artist</text>
+</g>
+<!-- d -->
+<g id="node4" class="node">
+<title>d</title>
+<ellipse fill="#a9ddd6" stroke="black" cx="456.5" cy="-57.5" rx="57.5" ry="57.5"></ellipse>
+<text text-anchor="middle" x="456.5" y="-62.9" font-family="Arial" font-size="18.00">Exhibition </text>
+<text text-anchor="middle" x="456.5" y="-41.3" font-family="Arial" font-size="18.00">Catalogue</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
 </div>
 </section>
-<section id="sparql-abfragen" class="slide level2">
-<h2>SPARQL Abfragen</h2>
-<p>Interaktive Abfragen gegen Wikidata für Ausstellungsdaten:</p>
-<iframe style="width: 100%; height: 600px; border: none;" src="https://query.wikidata.org/embed.html#%23title%3A%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%20%23%20Instance%20of%20or%20subclass%20of%20exhibition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%20%20%20%20%20%20%20%20%20%20%23%20Location%3A%20Sprengel%20Museum%0A%20%20%0A%20%20%23%20Look%20for%20inception%20OR%20start%20time%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%20%23%20Only%20show%20results%20that%20have%20a%20date%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+<section id="hausaufgaben" class="slide level2">
+<h2>Hausaufgaben</h2>
+<ul>
+<li>Erstellen Sie ein GitHub-Konto – fügen Sie es zur Aufgaben-Tabelle hinzu</li>
+<li>Weitere Informationen zu Ihrer zugewiesenen Ausstellung finden – Links zur Tabelle hinzufügen</li>
+</ul>
 </section>
-<section id="kontakt" class="slide level2">
-<h2>Kontakt</h2>
-<p>Siehe <a href="https://github.com/NFDI4Culture/linked-open-exhibition">NFDI4Culture auf GitHub</a></p>
+<section id="danke" class="slide level2">
+<h2>Danke</h2>
+<p>Siehe <a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Data für Kunstausstellungen</a></p>
+<p>Simon Worthington - <a href="mailto:simon.worthington@tib.eu">simon.worthington@tib.eu</a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-
+<p>CC BY-SA 4.0</p>
 </div>
 </div>
 </section>

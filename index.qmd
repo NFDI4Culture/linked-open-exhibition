@@ -1,40 +1,63 @@
 ---
-title: "Verknüpfte Offene Ausstellung"
-subtitle: "Prototyp zur Erstellung verknüpfter offener Ausstellungsdatensätze"
-author: "NFDI4Culture"
+title: "Linked Open Data für Kunstausstellungen"
+subtitle: "Prototyping mit Wikidata"
+author: "BIM-126-02 Data Science: <br /> Simon Worthington; Prof. Ina Blümel"
 date: today
 ---
 
-## Überblick
+## BIM-126-02 Data Science
 
-Ein Prototyp für die Erstellung von Linked Data Ausstellungsdatensätzen mit offnen Standards und Verlinkung zu externen Datenquellen.
+Der __achtteilige__ Kurs bietet eine Einführung in Linked Open Data (LOD) im Kontext von:
 
-## Datenquellen
+- Open Galleries Libraries Archives and Museums (GLAM) und
+- der Nutzung von Plattformen der Wikimedia Foundation.
 
-- **LIDO** - Lightweight Information Describing Objects
-- **GND** - Gemeinsame Normdatei (German Authority File)
-- **LOD-API** - Linked Open Data APIs
+Alle Informationen finden Sie hier auf Wikiversity: [BIM-126-02-Data-Science](https://de.wikipedia.org/wiki/BIM-126-02-Data-Science)
 
-## Struktur
+## Sitzung 1: Ausstellung-Zeitleiste {.smaller}
 
-```
-GND/          - Gemeinsame Normdatei Daten
-LIDO/         - LIDO Format Datensätze
-LOD-API/      - LOD API Dokumentation
-```
-
-## Workflow
-
-![Datenfluss](flow.html)
-
-## SPARQL Abfragen
-
-Interaktive Abfragen gegen Wikidata für Ausstellungsdaten:
+- Wikidata-Einträge für Kunstausstellungen erstellen
+- Grundlegende Konzepte von Linked Open Data (LOD) verstehen
 
 ```{=html}
-<iframe style="width: 100%; height: 600px; border: none;" src="https://query.wikidata.org/embed.html#%23title%3A%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%20%23%20Instance%20of%20or%20subclass%20of%20exhibition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%20%20%20%20%20%20%20%20%20%20%23%20Location%3A%20Sprengel%20Museum%0A%20%20%0A%20%20%23%20Look%20for%20inception%20OR%20start%20time%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%20%23%20Only%20show%20results%20that%20have%20a%20date%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+<iframe style="width: 100%; height: 600px; border: none;"  src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%20%23%20Instance%20of%20or%20subclass%20of%20exhibition%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%20%20%20%20%20%20%20%20%20%20%23%20Location%3A%20Sprengel%20Museum%0A%20%20%0A%20%20%23%20Check%20for%20either%20inception%20or%20start%20time%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20%0A%20%20%23%20Fetch%20the%20image%20if%20it%20exists%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%20%23%20Ensures%20a%20date%20exists%20for%20the%20timeline%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups" ></iframe>
+```
+::: aside
+Interaktive Abfragen gegen Wikidata für Ausstellungsdaten:
+:::
+
+## Sitzung 1: Die Übung {.smaller}
+
+- Erfassen Sie minimale Informationen zu einer Ausstellung in Wikidata als Linked Open Data: Titel, Museum, Datum usw. 
+- Zeigen Sie den Ausstellungseintrag in Wikidata an Ergebnisse des Abfragedienstes anzeigen Link (Zeitleiste und Grafik [https://w.wiki/J8NJ](https://w.wiki/J8NJ) | [https://w.wiki/J8aS](https://w.wiki/J8aS))
+- Überprüfen Sie die Ausstellungseinträge.
+- Behandeln Sie Themen, die durch die Erstellung eines LOD-Eintrags aufgeworfen werden: Wikidata-Grundlagen, bewährte Verfahren für Wikidata, Konsultation von Schemata, Bedeutung der Überprüfungen, Vergleich der verfügbaren Daten – vorher und nachher.
+
+## Sitzungsplan 
+
+11:00-11:15 Einführungen <br />
+11:15-12:15 Wikidata-Einträge <br /> 
+12:15-12:30 Pause <br />
+12:30-13:30 Wikidata-Einträge und Überprüfung <br />
+13:30-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung
+
+## Usecase {.smaller}
+
+Die Frage, die in diesem Kurs untersucht wird, lautet: Wie kann LOD zum Vorteil von Museumsausstellungen genutzt werden? Als Beispiele dienen die Steigerung der Besucherzahlen von Ausstellungen und die Schaffung einer größeren Tiefe des Engagements.
+
+Sprengel Museum Hannover: [https://www.sprengel-museum.de/](https://www.sprengel-museum.de/)
+
+```{dot}
+//| file: data.dot
 ```
 
-## Kontakt
+## Hausaufgaben 
 
-Siehe [NFDI4Culture auf GitHub](https://github.com/NFDI4Culture/linked-open-exhibition)
+- Erstellen Sie ein GitHub-Konto – fügen Sie es zur Aufgaben-Tabelle hinzu 
+- Weitere Informationen zu Ihrer zugewiesenen Ausstellung finden – Links zur Tabelle hinzufügen 
+
+## Danke 
+
+Siehe [Linked Open Data für Kunstausstellungen](https://github.com/NFDI4Culture/linked-open-exhibition)
+
+Simon Worthington - [simon.worthington@tib.eu](mailto:simon.worthington@tib.eu)

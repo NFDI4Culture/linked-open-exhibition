@@ -10,3 +10,5 @@ format:
     transition: slide
     background-transition: fade
     incremental: false
+    footer: "CC BY-SA 4.0"    
+    css: styles.css

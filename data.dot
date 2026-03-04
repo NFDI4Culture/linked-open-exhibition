@@ -1,0 +1,9 @@
+digraph LOE {
+  rankdir="TB"
+  {node [fillcolor="#A9DDD6" margin=0 fontcolor=black fixedsize=true fontsize=18 width=1.6 shape=circle style=filled fontname="Arial"]
+    a [label="Exhibition"]
+    b [label="Items"]
+    c [label="Artist"]
+    d [label="Exhibition \nCatalogue"] 
+  }
+}

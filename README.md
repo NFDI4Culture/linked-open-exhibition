@@ -2,6 +2,10 @@
 
 Prototyp zur Erstellung verknüpfter offener Ausstellungsdatensätze
 
+Mit Linked Open Data mehr Besucher für Kunstausstellungen gewinnen und ein tieferes Engagement ermöglichen: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) | [Lernübungen](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) | [Ergebnisse](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html)
+
+__Helping art exhibition attract more visitors and enable deeper engagement using Linked Open Data: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) | [Learning Exercises](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) | [Results](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html)__
+
 Demonstration von Linked Open Data‑Standards für Ausstellungsobjekte.
 
 Ein Prototypprojekt, das mit den Studierenden des Bachelor of Arts Informationsmanagement der Hochschule Hannover im Seminar „BIM-126-02 Data Science (2026)" erstellt wurde. Frühe Arbeit fand sich im Repository https://github.com/NFDI4Culture/open-museum.

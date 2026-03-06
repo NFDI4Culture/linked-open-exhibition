@@ -7793,8 +7793,66 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
+<style>
+  .notebook-toolbar {
+    max-width: 960px;
+    margin: 16px auto 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f5f7fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+  }
+
+  .notebook-toolbar button {
+    border: 1px solid #c7ced6;
+    background: #ffffff;
+    color: #24292f;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .notebook-toolbar button:hover {
+    background: #f3f4f6;
+  }
+
+  .notebook-toolbar a {
+    color: #0969da;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .notebook-toolbar a:hover {
+    text-decoration: underline;
+  }
+
+  body.hide-code .jp-Cell-inputWrapper {
+    display: none;
+  }
+</style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<div class="notebook-toolbar">
+<button id="toggle-code" type="button">Hide code</button>
+<a href="docs/notebook.ipynb" target="_blank" rel="noopener noreferrer">Open notebook file (.ipynb)</a>
+</div>
+<script>
+  (function () {
+    const button = document.getElementById('toggle-code');
+    if (!button) return;
+
+    button.addEventListener('click', function () {
+      document.body.classList.toggle('hide-code');
+      button.textContent = document.body.classList.contains('hide-code') ? 'Show code' : 'Hide code';
+    });
+  })();
+</script>
 <main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ce0ccde1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">

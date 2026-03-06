@@ -38,15 +38,16 @@ Für die Ausstellungstimeline stehen mehrere HTML-Seiten zur Verfügung:
 
 - https://nfdi4culture.github.io/linked-open-exhibition/timeline.html – umfangreichere, interaktive Timeline-Ansicht
 - https://nfdi4culture.github.io/linked-open-exhibition/timeline-simple.html – reduzierte, einfache Timeline-Ansicht
-- https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `docs/notebook.ipynb`
-- https://nfdi4culture.github.io/linked-open-exhibition/docs/notebook.html – Hosting-fertige Version für statische Auslieferung (z. B. GitHub Pages)
+- https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `notebook.ipynb`
+- https://github.com/NFDI4Culture/linked-open-exhibition/blob/main/docs/notebook.ipynb – Notebook-Quelle (`notebook.ipynb`)
 
 ### Notebook als HTML exportieren
 
-Mit der lokalen virtuellen Umgebung kann das Notebook direkt nach `docs/` exportiert werden:
+Mit der lokalen virtuellen Umgebung kann das Notebook als HTML exportiert werden:
 
 ```bash
-C:/git/linked-open-exhibition/.venv/Scripts/python.exe -m nbconvert --to html docs/notebook.ipynb --output notebook.html --output-dir docs
+cd docs
+C:/git/linked-open-exhibition/.venv/Scripts/python.exe -m nbconvert --to html notebook.ipynb --output notebook.html
 ```
 
 ## 📄 Lizenz

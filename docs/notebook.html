@@ -7800,7 +7800,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -7834,15 +7834,80 @@ a.anchor-link {
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">get_results</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="n">bindings</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"results"</span><span class="p">][</span><span class="s2">"bindings"</span><span class="p">]</span>
-
 <span class="n">count_with_date</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">bindings</span> <span class="k">if</span> <span class="s2">"date"</span> <span class="ow">in</span> <span class="n">result</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="n">HTML</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">&lt;style&gt;</span>
+<span class="s2">  .notebook-toolbar </span><span class="se">{{</span>
+<span class="s2">    margin: 10px 0 14px;</span>
+<span class="s2">    padding: 10px 12px;</span>
+<span class="s2">    display: flex;</span>
+<span class="s2">    align-items: center;</span>
+<span class="s2">    gap: 12px;</span>
+<span class="s2">    background: #f5f7fa;</span>
+<span class="s2">    border: 1px solid #d0d7de;</span>
+<span class="s2">    border-radius: 8px;</span>
+<span class="s2">    font-family: Arial, sans-serif;</span>
+<span class="s2">    font-size: 14px;</span>
+<span class="s2">  </span><span class="se">}}</span>
+
+<span class="s2">  .notebook-toolbar button </span><span class="se">{{</span>
+<span class="s2">    border: 1px solid #c7ced6;</span>
+<span class="s2">    background: #ffffff;</span>
+<span class="s2">    color: #24292f;</span>
+<span class="s2">    border-radius: 6px;</span>
+<span class="s2">    padding: 6px 10px;</span>
+<span class="s2">    cursor: pointer;</span>
+<span class="s2">    font-size: 13px;</span>
+<span class="s2">  </span><span class="se">}}</span>
+
+<span class="s2">  .notebook-toolbar button:hover </span><span class="se">{{</span>
+<span class="s2">    background: #f3f4f6;</span>
+<span class="s2">  </span><span class="se">}}</span>
+
+<span class="s2">  .notebook-toolbar a </span><span class="se">{{</span>
+<span class="s2">    color: #0969da;</span>
+<span class="s2">    text-decoration: none;</span>
+<span class="s2">    font-weight: 500;</span>
+<span class="s2">  </span><span class="se">}}</span>
+
+<span class="s2">  .notebook-toolbar a:hover </span><span class="se">{{</span>
+<span class="s2">    text-decoration: underline;</span>
+<span class="s2">  </span><span class="se">}}</span>
+
+<span class="s2">  body.hide-code .jp-Cell-inputWrapper </span><span class="se">{{</span>
+<span class="s2">    display: none;</span>
+<span class="s2">  </span><span class="se">}}</span>
+<span class="s2">&lt;/style&gt;</span>
+
+<span class="s2">&lt;div class='notebook-toolbar'&gt;</span>
+<span class="s2">  &lt;button id='toggle-code' type='button'&gt;Show code&lt;/button&gt;</span>
+<span class="s2">  &lt;a href='notebook.ipynb' target='_blank' rel='noopener noreferrer'&gt;Open notebook file (.ipynb)&lt;/a&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+
 <span class="s2">&lt;div style='font-family: Arial, sans-serif; margin: 10px 0 14px;'&gt;</span>
 <span class="s2">  &lt;div style='font-size: 16px; font-weight: 600; color: #1f2937;'&gt;Sprengel Museum Timeline&lt;/div&gt;</span>
 <span class="s2">  &lt;div style='font-size: 13px; color: #6b7280;'&gt;Exhibitions with date: </span><span class="si">{</span><span class="n">count_with_date</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
 <span class="s2">&lt;/div&gt;</span>
-<span class="s2">"""</span><span class="p">))</span>
+
+<span class="s2">&lt;script&gt;</span>
+<span class="s2">  (function () </span><span class="se">{{</span>
+<span class="s2">    const button = document.getElementById('toggle-code');</span>
+<span class="s2">    if (!button) return;</span>
+
+<span class="s2">    document.body.classList.add('hide-code');</span>
+
+<span class="s2">    button.addEventListener('click', function () </span><span class="se">{{</span>
+<span class="s2">      document.body.classList.toggle('hide-code');</span>
+<span class="s2">      button.textContent = document.body.classList.contains('hide-code') ? 'Show code' : 'Hide code';</span>
+<span class="s2">    </span><span class="se">}}</span><span class="s2">);</span>
+<span class="s2">  </span><span class="se">}}</span><span class="s2">)();</span>
+<span class="s2">&lt;/script&gt;</span>
+<span class="s2">"""</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">embed_url</span> <span class="o">=</span> <span class="s2">"https://query.wikidata.org/embed.html#"</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">embed_url</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
@@ -7858,10 +7923,69 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<style>
+  .notebook-toolbar {
+    margin: 10px 0 14px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f5f7fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+
+  .notebook-toolbar button {
+    border: 1px solid #c7ced6;
+    background: #ffffff;
+    color: #24292f;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .notebook-toolbar button:hover {
+    background: #f3f4f6;
+  }
+
+  .notebook-toolbar a {
+    color: #0969da;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .notebook-toolbar a:hover {
+    text-decoration: underline;
+  }
+
+  body.hide-code .jp-Cell-inputWrapper {
+    display: none;
+  }
+</style>
+<div class="notebook-toolbar">
+<button id="toggle-code" type="button">Show code</button>
+<a href="notebook.ipynb" rel="noopener noreferrer" target="_blank">Open notebook file (.ipynb)</a>
+</div>
 <div style="font-family: Arial, sans-serif; margin: 10px 0 14px;">
 <div style="font-size: 16px; font-weight: 600; color: #1f2937;">Sprengel Museum Timeline</div>
 <div style="font-size: 13px; color: #6b7280;">Exhibitions with date: 19</div>
 </div>
+<script>
+  (function () {
+    const button = document.getElementById('toggle-code');
+    if (!button) return;
+
+    document.body.classList.add('hide-code');
+
+    button.addEventListener('click', function () {
+      document.body.classList.toggle('hide-code');
+      button.textContent = document.body.classList.contains('hide-code') ? 'Show code' : 'Hide code';
+    });
+  })();
+</script>
 </div>
 </div>
 <div class="jp-OutputArea-child">

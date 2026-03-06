@@ -2,9 +2,9 @@
 
 Prototyp zur Erstellung verknüpfter offener Ausstellungsdatensätze
 
-Mit Linked Open Data mehr Besucher für Kunstausstellungen gewinnen und ein tieferes Engagement ermöglichen: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) | [Lernübungen](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) | [Ergebnisse](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html)
+Mit Linked Open Data mehr Besucher für Kunstausstellungen gewinnen und ein tieferes Engagement ermöglichen: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) \| [Lernübungen](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) \| [Ergebnisse](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html)
 
-__Helping art exhibition attract more visitors and enable deeper engagement using Linked Open Data: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) | [Learning Exercises](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) | [Results](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html)__
+**Helping art exhibition attract more visitors and enable deeper engagement using Linked Open Data: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) \| [Learning Exercises](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) \| [Results](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html)**
 
 Demonstration von Linked Open Data‑Standards für Ausstellungsobjekte.
 
@@ -12,14 +12,13 @@ Ein Prototypprojekt, das mit den Studierenden des Bachelor of Arts Informationsm
 
 Weitere Hintergrundinformationen und Kursmaterialien finden sich auf der Wikiversity-Seite: https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition
 
-
 ## 🎬 Quarto Webseite
 
 Das Projekt wird als Quarto Website präsentiert. Die Website wird aus den Markdown- und Notebook-Dateien generiert.
 
 ### Webseite rendern
 
-```bash
+``` bash
 quarto render
 ```
 
@@ -27,29 +26,29 @@ Die Website wird unter `_output/index.html` generiert.
 
 ### Webseite in Live-Vorschau anschauen
 
-```bash
+``` bash
 quarto preview
 ```
 
 ## 📋 Anforderungen
 
-- [Quarto](https://quarto.org/) ≥ 1.3
-- Python (für Jupyter Notebook)
+-   [Quarto](https://quarto.org/) ≥ 1.3
+-   Python (für Jupyter Notebook)
 
 ## 📈 Timeline-Seiten
 
 Für die Ausstellungstimeline stehen mehrere HTML-Seiten zur Verfügung:
 
-- https://nfdi4culture.github.io/linked-open-exhibition/timeline.html – umfangreichere, interaktive Timeline-Ansicht
-- https://nfdi4culture.github.io/linked-open-exhibition/timeline-simple.html – reduzierte, einfache Timeline-Ansicht
-- https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `notebook.ipynb`
-- https://github.com/NFDI4Culture/linked-open-exhibition/blob/main/docs/notebook.ipynb – Notebook-Quelle (`notebook.ipynb`)
+-   https://nfdi4culture.github.io/linked-open-exhibition/timeline.html – umfangreichere, interaktive Timeline-Ansicht
+-   https://nfdi4culture.github.io/linked-open-exhibition/timeline-simple.html – reduzierte, einfache Timeline-Ansicht
+-   https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `notebook.ipynb`
+-   https://github.com/NFDI4Culture/linked-open-exhibition/blob/main/docs/notebook.ipynb – Notebook-Quelle (`notebook.ipynb`)
 
 ### Notebook als HTML exportieren
 
 Mit der lokalen virtuellen Umgebung kann das Notebook als HTML exportiert werden:
 
-```bash
+``` bash
 cd docs
 C:/git/linked-open-exhibition/.venv/Scripts/python.exe -m nbconvert --to html notebook.ipynb --output notebook.html
 ```
@@ -62,24 +61,17 @@ Siehe [LICENSE](LICENSE) Datei
 
 Die Präsentation verwendet angepasste Styles:
 
-- hellgrauer Hintergrund über `styles.css`
-- Fußzeile auf allen Folien mit `CC BY-SA 4.0` (konfiguriert in `_quarto.yml`)
+-   hellgrauer Hintergrund über `styles.css`
+-   Fußzeile auf allen Folien mit `CC BY-SA 4.0` (konfiguriert in `_quarto.yml`)
 
 ## 📝 Projektzusammenfassung
 
-Das Repository begleitet einen achtteiligen Kurs „Linked Open Exhibition“,
-bei dem die Studierenden an der Hochschule Hannover in das Thema Linked Open
-Data (LOD) eingeführt werden. Schwerpunkte sind:
+Das Repository begleitet einen achtteiligen Kurs „Linked Open Exhibition“, bei dem die Studierenden an der Hochschule Hannover in das Thema Linked Open Data (LOD) eingeführt werden. Schwerpunkte sind:
 
-1. Einsatz von LOD im GLAM‑Bereich (Galleries, Libraries, Archives, Museums)
-2. Nutzung von Wikimedia-Plattformen wie Wikidata, Wikibase, MediaWiki und
-   Wikimedia Commons
+1.  Einsatz von LOD im GLAM‑Bereich (Galleries, Libraries, Archives, Museums)
+2.  Nutzung von Wikimedia-Plattformen wie Wikidata, Wikibase, MediaWiki und Wikimedia Commons
 
-Ziel ist es, Museumsausstellungen als **Linked Open Exhibitions** zu erfassen –
-als Ablaufplan, Objektkatalog und weitere relevante Metadaten. Dabei kommen
-Open-Source-Software, Open-Science-Praktiken und Rapid Prototyping zum Einsatz.
-Der Workflow nutzt KI‑Hilfsmittel (Copilot, Chat‑LLMs) zur Code‑ und
-Abfragegenerierung.
+Ziel ist es, Museumsausstellungen als **Linked Open Exhibitions** zu erfassen – als Ablaufplan, Objektkatalog und weitere relevante Metadaten. Dabei kommen Open-Source-Software, Open-Science-Praktiken und Rapid Prototyping zum Einsatz. Der Workflow nutzt KI‑Hilfsmittel (Copilot, Chat‑LLMs) zur Code‑ und Abfragegenerierung.
 
 ## 🤖 Entwicklung
 

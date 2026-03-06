@@ -36,10 +36,10 @@ quarto preview
 
 Für die Ausstellungstimeline stehen mehrere HTML-Seiten zur Verfügung:
 
-- `docs/timeline.html` – umfangreichere, interaktive Timeline-Ansicht
-- `docs/timeline-simple.html` – reduzierte, einfache Timeline-Ansicht
-- `notebook.html` – HTML-Export aus `docs/notebook.ipynb`
-- `docs/notebook.html` – Hosting-fertige Version für statische Auslieferung (z. B. GitHub Pages)
+- https://nfdi4culture.github.io/linked-open-exhibition/timeline.html – umfangreichere, interaktive Timeline-Ansicht
+- https://nfdi4culture.github.io/linked-open-exhibition/timeline-simple.html – reduzierte, einfache Timeline-Ansicht
+- https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `docs/notebook.ipynb`
+- https://nfdi4culture.github.io/linked-open-exhibition/docs/notebook.html – Hosting-fertige Version für statische Auslieferung (z. B. GitHub Pages)
 
 ### Notebook als HTML exportieren
 

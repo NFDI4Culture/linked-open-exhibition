@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprengel Museum Exhibitions Timeline</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid #0066cc;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #0052a3;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #timeline {
+            width: 100%;
+            height: 500px;
+            background: white;
+        }
+
+        .status {
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            background: #f9f9f9;
+            border-top: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+
+        .status.loading {
+            color: #0066cc;
+        }
+
+        .status.error {
+            color: #cc0000;
+            background: #fee;
+        }
+
+        .status.success {
+            color: #009900;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.4em;
+            }
+
+            #timeline {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sprengel Museum Exhibitions Timeline</h1>
+            <p>Visual timeline of exhibitions at the Sprengel Museum Hannover</p>
+        </div>
+
+        <div class="controls">
+            <button id="loadBtn">Load Timeline</button>
+            <button id="resetBtn">Reset View</button>
+        </div>
+
+        <div id="timeline"></div>
+
+        <div id="status" class="status">
+            Click "Load Timeline" to fetch exhibition data from Wikidata
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <script>
+        let timelineInstance = null;
+
+        const SPARQL_QUERY = `
+SELECT ?exhibition ?exhibitionLabel ?date WHERE {
+  ?exhibition wdt:P31/wdt:P279* wd:Q464980;
+              wdt:P276 wd:Q510144.
+  
+  OPTIONAL { ?exhibition wdt:P571 ?date. }
+  OPTIONAL { ?exhibition wdt:P580 ?date. }
+  
+  FILTER(BOUND(?date))
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+ORDER BY ?date`;
+
+        function setStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+
+        async function loadTimeline() {
+            setStatus('Loading exhibition data...', 'loading');
+            document.getElementById('loadBtn').disabled = true;
+
+            try {
+                const params = new URLSearchParams({
+                    'query': SPARQL_QUERY,
+                    'format': 'json'
+                });
+
+                const response = await fetch(`https://query.wikidata.org/sparql?${params}`, {
+                    headers: { 'User-Agent': 'linked-open-exhibition/1.0' }
+                });
+
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+                const bindings = data.results?.bindings || [];
+
+                if (bindings.length === 0) {
+                    setStatus('No exhibitions found', 'error');
+                    document.getElementById('loadBtn').disabled = false;
+                    return;
+                }
+
+                // Create timeline items
+                const items = bindings
+                    .filter(b => b.date)
+                    .map((b, i) => ({
+                        id: i,
+                        content: b.exhibitionLabel?.value || 'Exhibition',
+                        start: new Date(b.date.value)
+                    }));
+
+                if (items.length === 0) {
+                    setStatus('No exhibitions with valid dates found', 'error');
+                    document.getElementById('loadBtn').disabled = false;
+                    return;
+                }
+
+                // Render timeline
+                const container = document.getElementById('timeline');
+                const dataset = new vis.DataSet(items);
+                const options = {
+                    orientation: { axis: 'bottom' },
+                    responsive: true,
+                    stack: false,
+                    timeaxis: { scale: 'year', step: 1 }
+                };
+
+                if (timelineInstance) {
+                    timelineInstance.destroy();
+                }
+
+                timelineInstance = new vis.Timeline(container, dataset, options);
+                setStatus(`Showing ${items.length} exhibitions (${bindings.length} total from Wikidata)`, 'success');
+                document.getElementById('loadBtn').disabled = false;
+
+            } catch (error) {
+                console.error('Error:', error);
+                setStatus(`Error: ${error.message}`, 'error');
+                document.getElementById('loadBtn').disabled = false;
+            }
+        }
+
+        function resetView() {
+            if (timelineInstance) {
+                timelineInstance.fit();
+            }
+        }
+
+        document.getElementById('loadBtn').addEventListener('click', loadTimeline);
+        document.getElementById('resetBtn').addEventListener('click', resetView);
+    </script>
+</body>
+</html>

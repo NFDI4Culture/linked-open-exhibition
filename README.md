@@ -32,6 +32,23 @@ quarto preview
 - [Quarto](https://quarto.org/) ≥ 1.3
 - Python (für Jupyter Notebook)
 
+## 📈 Timeline-Seiten
+
+Für die Ausstellungstimeline stehen mehrere HTML-Seiten zur Verfügung:
+
+- `docs/timeline.html` – umfangreichere, interaktive Timeline-Ansicht
+- `docs/timeline-simple.html` – reduzierte, einfache Timeline-Ansicht
+- `notebook.html` – HTML-Export aus `docs/notebook.ipynb`
+- `docs/notebook.html` – Hosting-fertige Version für statische Auslieferung (z. B. GitHub Pages)
+
+### Notebook als HTML exportieren
+
+Mit der lokalen virtuellen Umgebung kann das Notebook direkt nach `docs/` exportiert werden:
+
+```bash
+C:/git/linked-open-exhibition/.venv/Scripts/python.exe -m nbconvert --to html docs/notebook.ipynb --output notebook.html --output-dir docs
+```
+
 ## 📄 Lizenz
 
 Siehe [LICENSE](LICENSE) Datei

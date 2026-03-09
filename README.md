@@ -44,6 +44,18 @@ Für die Ausstellungstimeline stehen mehrere HTML-Seiten zur Verfügung:
 -   https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `notebook.ipynb`
 -   https://github.com/NFDI4Culture/linked-open-exhibition/blob/main/docs/notebook.ipynb – Notebook-Quelle (`notebook.ipynb`)
 
+## 📊 Project Dashboard
+
+Ein eigenständiges Dashboard wird aus Wikidata-Netzwerkdaten erzeugt:
+
+-   Ausgabe: `docs/project-dashboard.html`
+
+Dashboard neu generieren:
+
+``` bash
+C:/git/linked-open-exhibition/.venv/Scripts/python.exe docs/network.py
+```
+
 ### Notebook als HTML exportieren
 
 Mit der lokalen virtuellen Umgebung kann das Notebook als HTML exportiert werden:

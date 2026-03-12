@@ -46,6 +46,41 @@
     "href": "index.html#danke",
     "title": "Linked Open Data für Kunstausstellungen",
     "section": "Danke",
+    "text": "Danke\nSiehe Linked Open Data für Kunstausstellungen\nSimon Worthington - simon.worthington@tib.eu"
+  },
+  {
+    "objectID": "index.html#sitzung-2-bottom-up-datenmodellierung",
+    "href": "index.html#sitzung-2-bottom-up-datenmodellierung",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Sitzung 2: Bottom-up-Datenmodellierung",
+    "text": "Sitzung 2: Bottom-up-Datenmodellierung\n\nWikidata-Einträge für Ausstellung, Künstler und Katalog\nKann AI Chat unser Datum lesen?"
+  },
+  {
+    "objectID": "index.html#sitzung-2-die-übungen",
+    "href": "index.html#sitzung-2-die-übungen",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Sitzung 2: Die Übungen",
+    "text": "Sitzung 2: Die Übungen\n\nAusstellungsaktualisierung\nKünstler\nAusstellungskatalog\nAI LLM SPARQL-Experimente"
+  },
+  {
+    "objectID": "index.html#sitzungsplan-1",
+    "href": "index.html#sitzungsplan-1",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Sitzungsplan",
+    "text": "Sitzungsplan\n11:00-11:15 Einführung und Datenmodellierung  11:15-11:45 Ausstellungsaktualisierung  11:45-12:15 Künstler  12:15-12:25 Pause  12:25-13:05 Ausstellungskatalog  13:05-13:50 AI LLM SPARQL-Experimente  13:50-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung"
+  },
+  {
+    "objectID": "index.html#hausaufgaben-1",
+    "href": "index.html#hausaufgaben-1",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Hausaufgaben",
+    "text": "Hausaufgaben\n\nErstellen Sie ein Datenmodell für ein Kunstwerk in einer Ausstellung.\nWas sind die Mindestangaben, die erforderlich sind, um ein Kunstwerk in einer Ausstellung zu präsentieren?\nLink"
+  },
+  {
+    "objectID": "index.html#danke-1",
+    "href": "index.html#danke-1",
+    "title": "Linked Open Data für Kunstausstellungen",
+    "section": "Danke",
     "text": "Danke\nSiehe Linked Open Data für Kunstausstellungen\nSimon Worthington - simon.worthington@tib.eu\n\n\n\nCC BY-SA 4.0"
   }
 ]

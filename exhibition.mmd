@@ -1,0 +1,19 @@
+graph TD
+    %% Central Entity
+    Item((wd:Q138547468))
+    
+    %% Properties/Predicates
+    Item -- "P31 (instance of)" --> P31_Val[wd:Q3305213 <br/>painting]
+    Item -- "P170 (creator)" --> P170_Val[wd:Q5582 < moved to > <br/>Vincent van Gogh]
+    Item -- "P571 (inception)" --> P571_Val["1889-01-01T00:00:00Z <br/>(Literal: Date)"]
+    Item -- "P186 (material used)" --> P186_Val[wd:Q203444 <br/>oil paint]
+    Item -- "P18 (image)" --> P18_Val["URL <br/>(Literal: Media)"]
+    Item -- "P2048 (height)" --> P2048_Val["73 centimetre <br/>(Quantity)"]
+
+    %% Styling
+    style Item fill:#f9f,stroke:#333,stroke-width:2px
+    style P31_Val fill:#e1f5fe,stroke:#01579b
+    style P170_Val fill:#e1f5fe,stroke:#01579b
+    style P571_Val fill:#fff9c4,stroke:#fbc02d
+    style P186_Val fill:#e1f5fe,stroke:#01579b
+    style P18_Val fill:#f1f8e9,stroke:#33691e

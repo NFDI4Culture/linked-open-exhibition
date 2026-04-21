@@ -13,12 +13,43 @@ This plan describes a fully-documented, student-reproducible Python pipeline for
 
 1. Retrieve exhibition catalogue records from the Deutsche Nationalbibliothek (DNB) SRU API
 2. Filter and parse records relating to Sprengel Museum exhibitions
-3. Design and upload a minimal data model to a local Wikibase instance
+3. Design and upload a minimal data model to an online Wikibase instance
 4. Upload exhibition metadata records to Wikibase via a bot interface
 5. Fetch and upload DNB cover images to the accompanying MediaWiki
-6. Publish a Quarto **website** to GitHub Pages with a chronological exhibition timeline and embedded data-analysis notebooks
+6. Publish a Quarto **website** to GitHub Pages: each page is a Jupyter Notebook that executes SPARQL queries against the Wikibase endpoint at runtime to retrieve and render exhibition data
 
 Each step is implemented as a standalone Jupyter Notebook with student-facing documentation, explanations of what the code does, licence information, and AI attribution.
+
+---
+
+## Preliminary Work
+
+This pipeline builds on preliminary work carried out in the course **BIM-126-02 Data Science** (SoSe 2026, Hochschule Hannover — Worthington/Blümel), documented on Wikiversity:
+
+> **https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition**
+
+The course is an 8-session introduction to Linked Open Data for GLAM using Wikimedia Foundation platforms (Wikidata, Wikibase, MediaWiki, Wikimedia Commons).
+
+### Completed sessions (as of April 2026)
+
+| Session | Activity | Status |
+|---|---|---|
+| 1 | Students created minimal exhibition entries in **Wikidata** (title, museum, dates, curator, artist, website) | ✅ Done |
+| 2 | Added artists, exhibition catalogues (from DNB/Sprengel shop), and performed AI LLM SPARQL experiments | ✅ Done |
+| 3 | Museum visit — Sprengel Museum Hannover (19 March 2026); explored use cases for prototype | ✅ Done |
+| 4–8 | Prototyping: Quarto website + Jupyter Notebooks + SPARQL queries; data model development | 🔄 In progress |
+
+### Key outputs from preliminary sessions
+
+- Wikidata items for Sprengel Museum exhibitions — see example: https://www.wikidata.org/wiki/Q138547468
+- Wikidata items for exhibition catalogues — see example: https://www.wikidata.org/wiki/Q138646145
+- Wikidata query examples: timeline (https://w.wiki/J8NJ), graphed (https://w.wiki/J8aS), map of artists (https://w.wiki/JPT3)
+- Minimal data model for exhibitions (properties: P31, P1476, P276, P580, P582, P1640, P710, P856)
+- Prototype Quarto repo for students: https://github.com/mrchristian/prototype
+
+### Relationship to this pipeline
+
+The present pipeline automates what students did manually in sessions 1–3 using the **DNB SRU API** as source instead of manual entry, targets the **project Wikibase instance** rather than public Wikidata, and produces a **Quarto website driven by Jupyter Notebooks with SPARQL queries** following the approach introduced in session 4.
 
 ---
 
@@ -96,10 +127,10 @@ SPARQLWrapper
 1. **Create `requirements.txt`** with the libraries listed above.
 2. **Create `.env.example`** with the following keys (no real values committed):
    ```
-   WB_URL=http://localhost:8080
+   WB_URL=https://wikibase.wbworkshop.tibwiki.io
    WB_USER=your-bot-username
    WB_PASSWORD=your-bot-password
-   MW_URL=http://localhost:8081
+   MW_URL=https://wikibase.wbworkshop.tibwiki.io
    MW_USER=your-mediawiki-username
    MW_PASSWORD=your-mediawiki-password
    ```
@@ -176,7 +207,7 @@ KOR="Sprengel Museum" and SWW="Ausstellungskatalog"
 
 ### Notebook 04 — `04_wikibase_data_model.ipynb`
 
-**Purpose:** Define and upload a minimal exhibition data model to the local Wikibase instance.
+**Purpose:** Define and upload a minimal exhibition data model to the online Wikibase instance.
 
 **Documentation covers:**
 - What Wikibase is and how it differs from Wikidata
@@ -209,7 +240,7 @@ KOR="Sprengel Museum" and SWW="Ausstellungskatalog"
 | image | Commons media | new | — |
 | exhibition catalogue | Item | P5 (has_part) | P46 |
 
-**Output:** `catalogues/wikibase_property_map.json` — maps property labels to local Wikibase P-IDs
+**Output:** `catalogues/wikibase_property_map.json` — maps property labels to Wikibase P-IDs on the online instance
 
 ---
 
@@ -252,14 +283,18 @@ Project homepage: introduction to the Sprengel Museum Hannover, the goal of the 
 
 ### `exhibitions.qmd`
 
-Chronological exhibition timeline page.
-- Queries the local Wikibase SPARQL endpoint for all Exhibition items
+Chronological exhibition timeline page, implemented as a **Jupyter Notebook** executed by Quarto at render time.
+- Executes a SPARQL query against the online Wikibase SPARQL endpoint (`https://wikibase.wbworkshop.tibwiki.io/query/sparql`) to retrieve all Exhibition items
 - Renders a sortable table of exhibitions with: title, date range, link to DNB record, cover thumbnail
-- **Note for GitHub Pages deployment:** SPARQL results are pre-rendered as static data at `quarto render` time. The local Wikibase is not publicly accessible, so results are baked into the HTML output.
+- SPARQL query and results displayed inline so students can follow the data flow
+- **Note on endpoint:** The current temporary instance is at `https://wikibase.wbworkshop.tibwiki.io`. This will be replaced with a permanent URL at a later date — update `WB_URL` in `.env` when migrating.
+- *Approach matches the prototype pattern from Session 4 of BIM-126-02: SPARQL query → Jupyter Notebook → Quarto HTML render (see: https://github.com/mrchristian/prototype)*
 
 ### `data-analysis.qmd`
 
-Embeds Notebooks 01–02 as Quarto executable documents, allowing students to follow the retrieval and filtering steps in the published website.
+Data analysis page implemented as a **Jupyter Notebook** executed by Quarto.
+- Executes SPARQL queries against the Wikibase endpoint to retrieve and analyse the full exhibition dataset
+- Embeds Notebooks 01–02 (DNB retrieval and filtering) as Quarto executable documents, allowing students to follow the full pipeline from DNB raw data → Wikibase → rendered publication
 
 ### `about.qmd`
 
@@ -306,7 +341,7 @@ Full credits and licence page, including:
 - [ ] `requirements.txt` installs cleanly in a fresh virtual environment
 - [ ] `01_dnb_search.ipynb` returns records containing "Sprengel Museum" titles from DNB
 - [ ] `sprengel_exhibitions.csv` contains valid parseable date values
-- [ ] `04_wikibase_data_model.ipynb` creates properties on localhost:8080 without duplicate errors
+- [ ] `04_wikibase_data_model.ipynb` creates properties on the online Wikibase instance without duplicate errors
 - [ ] `05_wikibase_upload.ipynb` creates Exhibition items visible in the Wikibase UI
 - [ ] `06_mediawiki_upload.ipynb` uploads images visible in MediaWiki
 - [ ] `exhibitions.qmd` renders a populated timeline in the Quarto output
@@ -320,7 +355,7 @@ Full credits and licence page, including:
 1. **Never commit your `.env` file.** It contains passwords. Use `.env.example` as a template.
 2. **Run notebooks in order** within each phase (01 → 02 → 03, then 04, then 05 → 06).
 3. **DNB rate limiting:** The SRU interface is free but should not be hammered. The notebooks include `time.sleep()` calls between paginated requests.
-4. **Wikibase must be running** on `localhost:8080` via Docker before running notebooks 04–06. See the Wikibase instructions for Docker setup.
+4. **Wikibase credentials** for the online instance at `https://wikibase.wbworkshop.tibwiki.io` are required before running notebooks 04–06. A more permanent Wikibase instance will be provided at a later date — update `WB_URL` in `.env` when this changes.
 5. **Cover images are not stored in git.** The `catalogues/images/` directory is gitignored. Re-run notebook 03 to recreate them locally.
 
 ---

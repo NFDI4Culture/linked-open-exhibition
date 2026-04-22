@@ -79,19 +79,25 @@ load_dotenv(Path(".env"))
 WB_URL = os.getenv("WB_URL", "https://wikibase.wbworkshop.tibwiki.io")
 SPARQL_URL = os.getenv("SPARQL_URL", "https://query.wbworkshop.tibwiki.io/sparql")
 
+# Use the confirmed-working count query (wdt: prefix not auto-resolved on local Wikibase)
 SPARQL = """
 SELECT (COUNT(?item) AS ?count) WHERE {
-  ?item wdt:P1 [] .
+  ?item ?p ?o .
 }
 """
 
-resp = requests.get(
-    SPARQL_URL,
-    params={"query": SPARQL, "format": "json"},
-    timeout=20,
-)
-count = resp.json()["results"]["bindings"][0]["count"]["value"]
-print(f"Items in Wikibase: {count}")
+try:
+    resp = requests.get(
+        SPARQL_URL,
+        params={"query": SPARQL, "format": "json"},
+        headers={"Accept": "application/sparql-results+json"},
+        timeout=20,
+    )
+    resp.raise_for_status()
+    count = resp.json()["results"]["bindings"][0]["count"]["value"]
+    print(f"Items in Wikibase: {count}")
+except Exception as e:
+    print(f"SPARQL query failed: {e}")
 ```
 
 ## Notebooks

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notebook 06 — MediaWiki Image Upload – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background-mwclient" id="toc-background-mwclient" class="nav-link active" data-scroll-target="#background-mwclient">Background: mwclient</a></li>
+  <li><a href="#cover-image-rights-reminder" id="toc-cover-image-rights-reminder" class="nav-link" data-scroll-target="#cover-image-rights-reminder">Cover image rights reminder</a></li>
+  <li><a href="#step-1-load-data" id="toc-step-1-load-data" class="nav-link" data-scroll-target="#step-1-load-data">Step 1 — Load data</a></li>
+  <li><a href="#step-2-upload-images-to-mediawiki" id="toc-step-2-upload-images-to-mediawiki" class="nav-link" data-scroll-target="#step-2-upload-images-to-mediawiki">Step 2 — Upload images to MediaWiki</a></li>
+  <li><a href="#step-3-link-images-to-wikibase-items" id="toc-step-3-link-images-to-wikibase-items" class="nav-link" data-scroll-target="#step-3-link-images-to-wikibase-items">Step 3 — Link images to Wikibase items</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 06 — MediaWiki Image Upload</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Project:</strong> Linked Open Exhibition — NFDI4Culture / Hochschule Hannover (BIM-126-02)<br>
+<strong>AI attribution:</strong> GitHub Copilot (Claude Sonnet 4.6)<br>
+<strong>Depends on:</strong> - <code>03_dnb_cover_images.ipynb</code> → <code>catalogues/images/*.jpg</code> - <code>05_wikibase_upload.ipynb</code> → items exist in Wikibase - <code>.env</code> file with <code>MW_URL</code>, <code>MW_USER</code>, <code>MW_PASSWORD</code></p>
+<p><strong>Purpose:</strong> Upload exhibition cover images to the MediaWiki instance and link each uploaded file back to its Wikibase item via the <code>image</code> property.</p>
+<hr>
+<section id="background-mwclient" class="level2">
+<h2 class="anchored" data-anchor-id="background-mwclient">Background: mwclient</h2>
+<p><code>mwclient</code> is a Python library for interacting with the MediaWiki API. It handles authentication, file uploads, and page edits.</p>
+<p><strong>File naming convention:</strong> <code>Sprengel_Exhibition_{IDN}.jpg</code><br>
+Each uploaded file gets a description page with source, date fetched, and rights notice.</p>
+</section>
+<section id="cover-image-rights-reminder" class="level2">
+<h2 class="anchored" data-anchor-id="cover-image-rights-reminder">Cover image rights reminder</h2>
+<blockquote class="blockquote">
+<p>Cover images are publisher-supplied and are <strong>not</strong> CC0. They are uploaded here solely for use within the project Wikibase/MediaWiki instance for educational purposes. Do not redistribute.</p>
+</blockquote>
+<div id="72d71d1d" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, json, time</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mwclient</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>load_dotenv(Path(<span class="st">"../../.env"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>MW_URL  <span class="op">=</span> os.getenv(<span class="st">"MW_URL"</span>,  <span class="st">"https://wikibase.wbworkshop.tibwiki.io"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>MW_USER <span class="op">=</span> os.getenv(<span class="st">"MW_USER"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>MW_PASS <span class="op">=</span> os.getenv(<span class="st">"MW_PASSWORD"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> MW_USER <span class="kw">or</span> <span class="kw">not</span> MW_PASS:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">EnvironmentError</span>(<span class="st">"Set MW_USER and MW_PASSWORD in your .env file."</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># mwclient expects host without scheme</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>host <span class="op">=</span> MW_URL.replace(<span class="st">"https://"</span>, <span class="st">""</span>).replace(<span class="st">"http://"</span>, <span class="st">""</span>).rstrip(<span class="st">"/"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>scheme <span class="op">=</span> <span class="st">"https"</span> <span class="cf">if</span> MW_URL.startswith(<span class="st">"https"</span>) <span class="cf">else</span> <span class="st">"http"</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>site <span class="op">=</span> mwclient.Site(host, scheme<span class="op">=</span>scheme, path<span class="op">=</span><span class="st">"/w/"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>site.login(MW_USER, MW_PASS)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Logged in to MediaWiki: </span><span class="sc">{</span>MW_URL<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-1-load-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-load-data">Step 1 — Load data</h2>
+<div id="3937bac9" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CSV_PATH  <span class="op">=</span> Path(<span class="st">"../sprengel_exhibitions.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>IMAGE_DIR <span class="op">=</span> Path(<span class="st">"../images"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(CSV_PATH)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Records: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>image_files <span class="op">=</span> {p.stem: p <span class="cf">for</span> p <span class="kw">in</span> IMAGE_DIR.glob(<span class="st">"*.jpg"</span>)}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Local images available: </span><span class="sc">{</span><span class="bu">len</span>(image_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-upload-images-to-mediawiki" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-upload-images-to-mediawiki">Step 2 — Upload images to MediaWiki</h2>
+<div id="0acf7cf1" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TODAY <span class="op">=</span> date.today().isoformat()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>uploaded <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>skipped  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    idn <span class="op">=</span> <span class="bu">str</span>(row.get(<span class="st">"idn"</span>, <span class="st">""</span>)).strip()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> idn <span class="kw">not</span> <span class="kw">in</span> image_files:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        skipped <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    img_path   <span class="op">=</span> image_files[idn]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    file_name  <span class="op">=</span> <span class="ss">f"Sprengel_Exhibition_</span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">.jpg"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    title_text <span class="op">=</span> <span class="bu">str</span>(row.get(<span class="st">"title"</span>, <span class="st">""</span>)).strip()[:<span class="dv">200</span>]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    year_text  <span class="op">=</span> <span class="bu">str</span>(row.get(<span class="st">"year"</span>, <span class="st">""</span>)).strip()</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    description <span class="op">=</span> (</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"== Summary ==</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Exhibition catalogue cover: </span><span class="sc">{</span>title_text<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>year_text<span class="sc">}</span><span class="ss">)</span><span class="ch">\n\n</span><span class="ss">"</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"* '''Source''': DNB catalogue enrichment API (https://portal.dnb.de)</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"* '''DNB IDN''': </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"* '''Date fetched''': </span><span class="sc">{</span>TODAY<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"* '''Rights''': Publisher-supplied cover image. Not CC0. "</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Uploaded for educational/non-commercial use within this project only. "</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Do not redistribute.</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(img_path, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            site.upload(</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                <span class="bu">file</span><span class="op">=</span>f,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                filename<span class="op">=</span>file_name,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                description<span class="op">=</span>description,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                ignore<span class="op">=</span><span class="va">True</span>,  <span class="co"># overwrite if already exists</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                comment<span class="op">=</span><span class="ss">f"Bot: upload cover image for DNB IDN </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Uploaded: </span><span class="sc">{</span>file_name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        uploaded <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  ERROR for </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Uploaded: </span><span class="sc">{</span>uploaded<span class="sc">}</span><span class="ss"> | Skipped (no image): </span><span class="sc">{</span>skipped<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3-link-images-to-wikibase-items" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-link-images-to-wikibase-items">Step 3 — Link images to Wikibase items</h2>
+<p>Add an <code>image</code> property statement to each Wikibase item pointing to the uploaded MediaWiki file.</p>
+<div id="2a1670c6" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests <span class="im">as</span> req</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>SPARQL_URL <span class="op">=</span> os.getenv(<span class="st">"SPARQL_URL"</span>, <span class="st">"https://query.wbworkshop.tibwiki.io/sparql"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>MAP_PATH  <span class="op">=</span> Path(<span class="st">"../wikibase_property_map.json"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>wbmap     <span class="op">=</span> json.loads(MAP_PATH.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>P_DNB_IDN <span class="op">=</span> wbmap[<span class="st">"properties"</span>][<span class="st">"DNB IDN"</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># wdt: is NOT auto-resolved on this local Wikibase instance — must declare prefix explicitly</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>WDT_PREFIX <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>MW_URL<span class="sc">.</span>rstrip(<span class="st">'/'</span>)<span class="sc">}</span><span class="ss">/prop/direct/"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_item_by_idn(idn):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return QID of an existing item with this DNB IDN via SPARQL, or None."""</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    sparql <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ss">        PREFIX wdt: &lt;</span><span class="sc">{</span>WDT_PREFIX<span class="sc">}</span><span class="ss">&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ss">        SELECT ?item WHERE </span><span class="ch">{{</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ss">          ?item wdt:</span><span class="sc">{</span>P_DNB_IDN<span class="sc">}</span><span class="ss"> "</span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">" .</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ss">        </span><span class="ch">}}</span><span class="ss"> LIMIT 1</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        resp <span class="op">=</span> req.get(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>            SPARQL_URL,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            params<span class="op">=</span>{<span class="st">"query"</span>: sparql, <span class="st">"format"</span>: <span class="st">"json"</span>},</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            headers<span class="op">=</span>{<span class="st">"Accept"</span>: <span class="st">"application/sparql-results+json"</span>},</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            timeout<span class="op">=</span><span class="dv">15</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        bindings <span class="op">=</span> resp.json()[<span class="st">"results"</span>][<span class="st">"bindings"</span>]</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> bindings:</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> bindings[<span class="dv">0</span>][<span class="st">"item"</span>][<span class="st">"value"</span>].split(<span class="st">"/"</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SPARQL endpoint: </span><span class="sc">{</span>SPARQL_URL<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"wdt: prefix: </span><span class="sc">{</span>WDT_PREFIX<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>SPARQL endpoint: https://query.wbworkshop.tibwiki.io/sparql
+wdt: prefix: https://wikibase.wbworkshop.tibwiki.io/prop/direct/</code></pre>
+</div>
+</div>
+<div id="88defad5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>linked <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    idn <span class="op">=</span> <span class="bu">str</span>(row.get(<span class="st">"idn"</span>, <span class="st">""</span>)).strip()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    file_name <span class="op">=</span> <span class="ss">f"Sprengel_Exhibition_</span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">.jpg"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> idn <span class="kw">not</span> <span class="kw">in</span> image_files:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    qid <span class="op">=</span> find_item_by_idn(idn)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> qid:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  No Wikibase item found for IDN </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"image"</span> <span class="kw">not</span> <span class="kw">in</span> wbmap[<span class="st">"properties"</span>]:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  No 'image' property in map — skipping </span><span class="sc">{</span>qid<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        linked <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    P_IMAGE <span class="op">=</span> wbmap[<span class="st">"properties"</span>][<span class="st">"image"</span>]</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        csrf <span class="op">=</span> site.get_token(<span class="st">"csrf"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        site.api(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">"wbcreateclaim"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            entity<span class="op">=</span>qid,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            snaktype<span class="op">=</span><span class="st">"value"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">property</span><span class="op">=</span>P_IMAGE,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>json.dumps(file_name),</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            token<span class="op">=</span>csrf,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>            summary<span class="op">=</span><span class="ss">f"Bot: link cover image for DNB IDN </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Linked image to </span><span class="sc">{</span>qid<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>file_name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        linked <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  ERROR for IDN </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Image links added: </span><span class="sc">{</span>linked<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Linked image to Q6: Sprengel_Exhibition_1375818457.jpg
+  Linked image to Q7: Sprengel_Exhibition_1375817957.jpg
+  Linked image to Q8: Sprengel_Exhibition_1347131019.jpg
+  Linked image to Q9: Sprengel_Exhibition_1357144318.jpg
+  Linked image to Q11: Sprengel_Exhibition_1375752529.jpg
+  No Wikibase item found for IDN 1375750437
+  Linked image to Q13: Sprengel_Exhibition_1362737259.jpg
+  Linked image to Q14: Sprengel_Exhibition_1366635671.jpg
+  Linked image to Q15: Sprengel_Exhibition_129318635X.jpg
+  Linked image to Q16: Sprengel_Exhibition_1325410217.jpg
+  Linked image to Q19: Sprengel_Exhibition_1326056700.jpg
+  Linked image to Q20: Sprengel_Exhibition_1318695635.jpg
+  Linked image to Q21: Sprengel_Exhibition_1315847256.jpg
+  Linked image to Q22: Sprengel_Exhibition_1288765711.jpg
+  Linked image to Q23: Sprengel_Exhibition_1310094683.jpg
+  Linked image to Q24: Sprengel_Exhibition_1277295123.jpg
+  Linked image to Q25: Sprengel_Exhibition_1287958486.jpg
+  Linked image to Q26: Sprengel_Exhibition_1299123732.jpg
+  Linked image to Q27: Sprengel_Exhibition_1292894105.jpg
+  Linked image to Q28: Sprengel_Exhibition_1318695732.jpg
+  Linked image to Q29: Sprengel_Exhibition_1293186678.jpg
+  Linked image to Q30: Sprengel_Exhibition_128063796X.jpg
+  Linked image to Q31: Sprengel_Exhibition_1287423973.jpg
+  Linked image to Q32: Sprengel_Exhibition_1254011242.jpg
+  Linked image to Q33: Sprengel_Exhibition_1249062152.jpg
+  Linked image to Q34: Sprengel_Exhibition_1269127276.jpg
+  Linked image to Q36: Sprengel_Exhibition_1245231324.jpg
+  Linked image to Q37: Sprengel_Exhibition_1246215810.jpg
+  Linked image to Q38: Sprengel_Exhibition_1187971537.jpg
+  No Wikibase item found for IDN 1233038621
+  No Wikibase item found for IDN 1233038753
+  No Wikibase item found for IDN 123303880X
+  No Wikibase item found for IDN 1233038915
+  No Wikibase item found for IDN 1233038966
+  No Wikibase item found for IDN 1233039059
+  No Wikibase item found for IDN 1233039148
+  No Wikibase item found for IDN 1233039229
+  No Wikibase item found for IDN 1233039261
+  No Wikibase item found for IDN 1244300748
+  Linked image to Q49: Sprengel_Exhibition_1236770714.jpg
+  Linked image to Q50: Sprengel_Exhibition_1234724227.jpg
+  Linked image to Q51: Sprengel_Exhibition_1253329427.jpg
+  Linked image to Q52: Sprengel_Exhibition_1230238085.jpg
+  Linked image to Q54: Sprengel_Exhibition_1245878093.jpg
+  Linked image to Q55: Sprengel_Exhibition_1237512115.jpg
+  Linked image to Q57: Sprengel_Exhibition_1186728531.jpg
+  Linked image to Q58: Sprengel_Exhibition_1216354952.jpg
+  Linked image to Q59: Sprengel_Exhibition_1234724731.jpg
+  Linked image to Q60: Sprengel_Exhibition_1217425500.jpg
+  Linked image to Q62: Sprengel_Exhibition_1199132977.jpg
+  Linked image to Q63: Sprengel_Exhibition_1199023485.jpg
+  Linked image to Q64: Sprengel_Exhibition_1182483232.jpg
+  Linked image to Q65: Sprengel_Exhibition_1195450265.jpg
+  Linked image to Q66: Sprengel_Exhibition_1189846268.jpg
+  Linked image to Q68: Sprengel_Exhibition_118206521X.jpg
+  Linked image to Q69: Sprengel_Exhibition_120102899X.jpg
+  Linked image to Q70: Sprengel_Exhibition_1172533806.jpg
+  Linked image to Q71: Sprengel_Exhibition_1187767387.jpg
+  Linked image to Q72: Sprengel_Exhibition_1187849278.jpg
+  Linked image to Q74: Sprengel_Exhibition_1166252477.jpg
+  Linked image to Q75: Sprengel_Exhibition_115991205X.jpg
+  Linked image to Q77: Sprengel_Exhibition_1151655449.jpg
+  Linked image to Q78: Sprengel_Exhibition_1152334859.jpg
+  Linked image to Q79: Sprengel_Exhibition_1100706836.jpg
+  Linked image to Q82: Sprengel_Exhibition_1138581755.jpg
+  Linked image to Q83: Sprengel_Exhibition_1119735556.jpg
+  Linked image to Q84: Sprengel_Exhibition_1131818555.jpg
+  Linked image to Q85: Sprengel_Exhibition_1133025897.jpg
+  Linked image to Q86: Sprengel_Exhibition_1135581436.jpg
+  Linked image to Q87: Sprengel_Exhibition_1139853325.jpg
+  Linked image to Q89: Sprengel_Exhibition_1150798483.jpg
+  Linked image to Q90: Sprengel_Exhibition_1115202537.jpg
+  Linked image to Q91: Sprengel_Exhibition_1114294756.jpg
+  Linked image to Q92: Sprengel_Exhibition_1079538844.jpg
+  No Wikibase item found for IDN 1126048356
+  No Wikibase item found for IDN 1079284028
+  Linked image to Q95: Sprengel_Exhibition_1116097915.jpg
+  No Wikibase item found for IDN 1116098571
+  Linked image to Q97: Sprengel_Exhibition_1070527726.jpg
+  Linked image to Q98: Sprengel_Exhibition_1077109377.jpg
+  Linked image to Q99: Sprengel_Exhibition_1064338895.jpg
+  Linked image to Q100: Sprengel_Exhibition_1066784736.jpg
+  Linked image to Q101: Sprengel_Exhibition_1077070586.jpg
+  Linked image to Q102: Sprengel_Exhibition_1072517760.jpg
+  Linked image to Q103: Sprengel_Exhibition_1076877788.jpg
+  Linked image to Q104: Sprengel_Exhibition_1043291598.jpg
+  Linked image to Q106: Sprengel_Exhibition_1052602061.jpg
+  Linked image to Q107: Sprengel_Exhibition_1051337542.jpg
+  Linked image to Q109: Sprengel_Exhibition_1031966706.jpg
+  Linked image to Q110: Sprengel_Exhibition_1031398457.jpg
+  Linked image to Q112: Sprengel_Exhibition_102951769X.jpg
+  Linked image to Q113: Sprengel_Exhibition_991780760.jpg
+  Linked image to Q115: Sprengel_Exhibition_1034837842.jpg
+  Linked image to Q116: Sprengel_Exhibition_1029836345.jpg
+  Linked image to Q117: Sprengel_Exhibition_1043216928.jpg
+  Linked image to Q119: Sprengel_Exhibition_101742022X.jpg
+  Linked image to Q120: Sprengel_Exhibition_1027197035.jpg
+  Linked image to Q121: Sprengel_Exhibition_1022285688.jpg
+  Linked image to Q122: Sprengel_Exhibition_102374242X.jpg
+  Linked image to Q123: Sprengel_Exhibition_1017295824.jpg
+  Linked image to Q124: Sprengel_Exhibition_1025766679.jpg
+  Linked image to Q125: Sprengel_Exhibition_1026665752.jpg
+  Linked image to Q126: Sprengel_Exhibition_1005908567.jpg
+  Linked image to Q127: Sprengel_Exhibition_1011122855.jpg
+  Linked image to Q129: Sprengel_Exhibition_1015463649.jpg
+  Linked image to Q133: Sprengel_Exhibition_1010802054.jpg
+  Linked image to Q136: Sprengel_Exhibition_1018094288.jpg
+  Linked image to Q137: Sprengel_Exhibition_1006182721.jpg
+  No Wikibase item found for IDN 1006328831
+  Linked image to Q139: Sprengel_Exhibition_1007976837.jpg
+  Linked image to Q140: Sprengel_Exhibition_999241737.jpg
+  Linked image to Q141: Sprengel_Exhibition_1006569634.jpg
+  Linked image to Q142: Sprengel_Exhibition_1001547179.jpg
+  Linked image to Q143: Sprengel_Exhibition_1002017270.jpg
+  Linked image to Q144: Sprengel_Exhibition_1003832091.jpg
+  Linked image to Q145: Sprengel_Exhibition_1000881008.jpg
+  Linked image to Q147: Sprengel_Exhibition_1009309714.jpg
+  Linked image to Q148: Sprengel_Exhibition_1007460121.jpg
+  Linked image to Q149: Sprengel_Exhibition_1007900911.jpg
+  Linked image to Q150: Sprengel_Exhibition_1003246532.jpg
+  Linked image to Q152: Sprengel_Exhibition_995768617.jpg
+  Linked image to Q153: Sprengel_Exhibition_994608845.jpg
+  Linked image to Q154: Sprengel_Exhibition_99354603X.jpg
+  No Wikibase item found for IDN 995156689
+  Linked image to Q157: Sprengel_Exhibition_996365885.jpg
+  Linked image to Q158: Sprengel_Exhibition_992806801.jpg
+  Linked image to Q160: Sprengel_Exhibition_990312402.jpg
+  No Wikibase item found for IDN 986312533
+  Linked image to Q164: Sprengel_Exhibition_983936013.jpg
+  Linked image to Q165: Sprengel_Exhibition_985275642.jpg
+  Linked image to Q166: Sprengel_Exhibition_986767662.jpg
+  Linked image to Q169: Sprengel_Exhibition_982530226.jpg
+  Linked image to Q174: Sprengel_Exhibition_982316534.jpg
+  Linked image to Q176: Sprengel_Exhibition_982933207.jpg
+  Linked image to Q185: Sprengel_Exhibition_981489028.jpg
+  Linked image to Q186: Sprengel_Exhibition_980504406.jpg
+  Linked image to Q191: Sprengel_Exhibition_974028223.jpg
+  Linked image to Q194: Sprengel_Exhibition_973400889.jpg
+  No Wikibase item found for IDN 974238015
+  Linked image to Q199: Sprengel_Exhibition_976851768.jpg
+  Linked image to Q201: Sprengel_Exhibition_976680696.jpg
+  No Wikibase item found for IDN 975575848
+  No Wikibase item found for IDN 975341480
+  Linked image to Q206: Sprengel_Exhibition_972527567.jpg
+  No Wikibase item found for IDN 968512062
+  Linked image to Q211: Sprengel_Exhibition_970415621.jpg
+  Linked image to Q213: Sprengel_Exhibition_972283315.jpg
+  Linked image to Q216: Sprengel_Exhibition_970734158.jpg
+  Linked image to Q217: Sprengel_Exhibition_969482752.jpg
+  Linked image to Q219: Sprengel_Exhibition_970416350.jpg
+  Linked image to Q221: Sprengel_Exhibition_967242622.jpg
+  Linked image to Q225: Sprengel_Exhibition_967412382.jpg
+  Linked image to Q226: Sprengel_Exhibition_965953904.jpg
+  No Wikibase item found for IDN 965948730
+  Linked image to Q228: Sprengel_Exhibition_968430112.jpg
+  No Wikibase item found for IDN 967881552
+  Linked image to Q231: Sprengel_Exhibition_965762998.jpg
+  No Wikibase item found for IDN 966113039
+  No Wikibase item found for IDN 967417767
+  Linked image to Q234: Sprengel_Exhibition_970142382.jpg
+  No Wikibase item found for IDN 970142412
+  Linked image to Q240: Sprengel_Exhibition_964493349.jpg
+  Linked image to Q243: Sprengel_Exhibition_963641107.jpg
+  Linked image to Q244: Sprengel_Exhibition_963640747.jpg
+  Linked image to Q251: Sprengel_Exhibition_964582856.jpg
+  Linked image to Q255: Sprengel_Exhibition_96604987X.jpg
+  Linked image to Q256: Sprengel_Exhibition_962863580.jpg
+  No Wikibase item found for IDN 962222011
+  Linked image to Q260: Sprengel_Exhibition_964405512.jpg
+  Linked image to Q268: Sprengel_Exhibition_958842663.jpg
+  Linked image to Q269: Sprengel_Exhibition_958856915.jpg
+  No Wikibase item found for IDN 960231978
+  Linked image to Q272: Sprengel_Exhibition_959708871.jpg
+  Linked image to Q276: Sprengel_Exhibition_957453655.jpg
+  Linked image to Q277: Sprengel_Exhibition_960126368.jpg
+  Linked image to Q290: Sprengel_Exhibition_957409494.jpg
+  Linked image to Q291: Sprengel_Exhibition_958332606.jpg
+  Linked image to Q292: Sprengel_Exhibition_955343984.jpg
+  No Wikibase item found for IDN 956271987
+  Linked image to Q307: Sprengel_Exhibition_954114663.jpg
+  No Wikibase item found for IDN 955931320
+  Linked image to Q312: Sprengel_Exhibition_954944658.jpg
+  Linked image to Q331: Sprengel_Exhibition_951035959.jpg
+  No Wikibase item found for IDN 951339184
+  Linked image to Q335: Sprengel_Exhibition_950703834.jpg
+  No Wikibase item found for IDN 955299764
+  No Wikibase item found for IDN 950703877
+  No Wikibase item found for IDN 955299845
+  Linked image to Q339: Sprengel_Exhibition_953502716.jpg
+  Linked image to Q346: Sprengel_Exhibition_948282746.jpg
+  Linked image to Q353: Sprengel_Exhibition_952195313.jpg
+  Linked image to Q358: Sprengel_Exhibition_946437971.jpg
+  Linked image to Q365: Sprengel_Exhibition_950124680.jpg
+  Linked image to Q366: Sprengel_Exhibition_947962069.jpg
+  Linked image to Q367: Sprengel_Exhibition_948692995.jpg
+  Linked image to Q371: Sprengel_Exhibition_947561676.jpg
+  Linked image to Q376: Sprengel_Exhibition_947130055.jpg
+  Linked image to Q384: Sprengel_Exhibition_946581576.jpg
+  Linked image to Q427: Sprengel_Exhibition_940536137.jpg
+  Linked image to Q429: Sprengel_Exhibition_921004311.jpg
+  Linked image to Q498: Sprengel_Exhibition_880469838.jpg
+  Linked image to Q568: Sprengel_Exhibition_95529097X.jpg
+  No Wikibase item found for IDN 950703486
+  No Wikibase item found for IDN 955299675
+  Linked image to Q578: Sprengel_Exhibition_970155913.jpg
+
+Image links added: 169</code></pre>
+</div>
+</div>
+<hr>
+<p><strong>Pipeline complete.</strong> The exhibitions are now in Wikibase with cover images in MediaWiki.<br>
+Run <code>quarto render</code> from the repository root to publish the website.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Generated with GitHub Copilot (Claude Sonnet 4.6)</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

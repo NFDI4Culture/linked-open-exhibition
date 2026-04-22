@@ -28,14 +28,19 @@ print(f"Querying: {SPARQL_ENDPOINT}")
 import requests
 import pandas as pd
 
-SPARQL = """
-SELECT ?item ?itemLabel ?idn ?year ?url WHERE {
-  ?item wdt:P1 wd:Q1 .
-  OPTIONAL { ?item wdt:P7 ?idn . }
-  OPTIONAL { ?item wdt:P10 ?year . }
-  OPTIONAL { ?item wdt:P856 ?url . }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,de". }
-}
+# wdt: and wd: are NOT auto-resolved on local Wikibase — must declare prefixes explicitly
+WDT = f"{WB_URL.rstrip('/')}/prop/direct/"
+WD  = f"{WB_URL.rstrip('/')}/entity/"
+
+SPARQL = f"""
+PREFIX wdt: <{WDT}>
+PREFIX wd:  <{WD}>
+SELECT ?item ?title ?idn ?year WHERE {{
+  ?item wdt:P1 wd:Q4 .
+  OPTIONAL {{ ?item wdt:P2 ?title . }}
+  OPTIONAL {{ ?item wdt:P7 ?idn . }}
+  OPTIONAL {{ ?item wdt:P3 ?year . }}
+}}
 ORDER BY DESC(?year)
 """
 
@@ -52,18 +57,17 @@ try:
     rows = []
     for b in bindings:
         qid   = b["item"]["value"].split("/")[-1]
-        label = b.get("itemLabel", {}).get("value", "—")
+        title = b.get("title", {}).get("value", "—")
         idn   = b.get("idn", {}).get("value", "")
         year  = b.get("year", {}).get("value", "")[:4] if b.get("year") else ""
-        url   = b.get("url", {}).get("value", "")
-        rows.append({"QID": qid, "Title": label, "Year": year, "DNB IDN": idn, "DNB Link": url})
+        rows.append({"QID": qid, "Title": title, "Year": year, "DNB IDN": idn})
 
     df = pd.DataFrame(rows)
     print(f"Records returned: {len(df)}")
 
 except Exception as e:
     print(f"SPARQL query failed: {e}")
-    df = pd.DataFrame(columns=["QID", "Title", "Year", "DNB IDN", "DNB Link"])
+    df = pd.DataFrame(columns=["QID", "Title", "Year", "DNB IDN"])
 ```
 
 ```{python}
@@ -74,10 +78,9 @@ if df.empty:
     print("No records found. Run the pipeline notebooks (01–05) first.")
 else:
     def make_link(row):
-        wb  = f'<a href="{WB_URL}/wiki/{row["QID"]}" target="_blank">{row["QID"]}</a>'
-        dnb = f'<a href="{row["DNB Link"]}" target="_blank">DNB</a>' if row["DNB Link"] else ""
+        wb = f'<a href="{WB_URL}/wiki/{row["QID"]}" target="_blank">{row["QID"]}</a>'
         return pd.Series({"Wikibase": wb, "Title": row["Title"], "Year": row["Year"],
-                          "DNB IDN": row["DNB IDN"], "DNB": dnb})
+                          "DNB IDN": row["DNB IDN"]})
 
     display_df = df.apply(make_link, axis=1)
     display(HTML(display_df.to_html(escape=False, index=False)))
@@ -85,7 +88,7 @@ else:
 
 ## SPARQL query used
 
-The query above retrieves all items from the Wikibase instance that are classified as `Exhibition Catalogue` (`instance of` = Q1 in the default data model — adjust Q/P IDs after running Notebook 04). Results are sorted by year descending.
+The query above retrieves all items classified as `Exhibition Catalogue` (`instance of` P1 = Q4) from the project Wikibase. Properties used: P2 (title), P3 (start date), P7 (DNB IDN). Results are sorted by year descending.
 
 You can run this query directly at the Wikibase SPARQL interface:
 [Open in Wikibase Query Service](`{python} f"{WB_URL}/query"`)

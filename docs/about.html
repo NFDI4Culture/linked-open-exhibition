@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="BIM-126-02 Data Science: Simon Worthington; Prof.&nbsp;Ina Blümel">
-<meta name="dcterms.date" content="2026-04-22">
 
-<title>Linked Open Exhibition</title>
+<title>About – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -103,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -126,44 +124,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#about-this-project" id="toc-about-this-project" class="nav-link active" data-scroll-target="#about-this-project">About this project</a></li>
-  <li><a href="#the-pipeline" id="toc-the-pipeline" class="nav-link" data-scroll-target="#the-pipeline">The pipeline</a></li>
-  <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">Explore</a></li>
-  <li><a href="#course-resources" id="toc-course-resources" class="nav-link" data-scroll-target="#course-resources">Course &amp; resources</a></li>
-  <li><a href="#wikidata-exhibition-timeline" id="toc-wikidata-exhibition-timeline" class="nav-link" data-scroll-target="#wikidata-exhibition-timeline">Wikidata exhibition timeline</a></li>
-  <li><a href="#sitzung-2-die-übungen" id="toc-sitzung-2-die-übungen" class="nav-link" data-scroll-target="#sitzung-2-die-übungen">Sitzung 2: Die Übungen</a></li>
-  <li><a href="#sitzungsplan" id="toc-sitzungsplan" class="nav-link" data-scroll-target="#sitzungsplan">Sitzungsplan</a></li>
-  <li><a href="#hausaufgaben" id="toc-hausaufgaben" class="nav-link" data-scroll-target="#hausaufgaben">Hausaufgaben</a></li>
-  <li><a href="#danke" id="toc-danke" class="nav-link" data-scroll-target="#danke">Danke</a></li>
+  <li><a href="#project" id="toc-project" class="nav-link active" data-scroll-target="#project">Project</a></li>
+  <li><a href="#licences" id="toc-licences" class="nav-link" data-scroll-target="#licences">Licences</a>
+  <ul class="collapse">
+  <li><a href="#project-content" id="toc-project-content" class="nav-link" data-scroll-target="#project-content">Project content</a></li>
+  <li><a href="#dnb-metadata" id="toc-dnb-metadata" class="nav-link" data-scroll-target="#dnb-metadata">DNB metadata</a></li>
+  <li><a href="#cover-images" id="toc-cover-images" class="nav-link" data-scroll-target="#cover-images">Cover images</a></li>
+  </ul></li>
+  <li><a href="#ai-attribution" id="toc-ai-attribution" class="nav-link" data-scroll-target="#ai-attribution">AI Attribution</a></li>
+  <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
+  <li><a href="#technical-stack" id="toc-technical-stack" class="nav-link" data-scroll-target="#technical-stack">Technical stack</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linked Open Exhibition</h1>
-<p class="subtitle lead">Sprengel Museum Hannover — Prototype</p>
+<h1 class="title">About</h1>
+<p class="subtitle lead">Licences, Credits, and AI Attribution</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>BIM-126-02 Data Science: Simon Worthington; Prof.&nbsp;Ina Blümel </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -173,14 +160,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="about-this-project" class="level2">
-<h2 class="anchored" data-anchor-id="about-this-project">About this project</h2>
-<p>This site presents a prototype pipeline for publishing art exhibition data as <strong>Linked Open Data (LOD)</strong>. It was created with students of the Bachelor of Arts Information Management at Hochschule Hannover in the course <em>BIM-126-02 Data Science (SoSe 2026)</em>.</p>
-<p><strong>Goal:</strong> Retrieve exhibition catalogue records from the Deutsche Nationalbibliothek (DNB), structure them using an open data model, upload them to a Wikibase knowledge base, and publish the results as a Quarto website — all reproducibly and with full documentation.</p>
+<section id="project" class="level2">
+<h2 class="anchored" data-anchor-id="project">Project</h2>
+<p><strong>Linked Open Exhibition</strong> is a prototype pipeline for publishing art exhibition data as Linked Open Data (LOD), developed with students of the Bachelor of Arts Information Management at Hochschule Hannover.</p>
+<ul>
+<li><strong>Course:</strong> BIM-126-02 Data Science, SoSe 2026</li>
+<li><strong>Leads:</strong> Simon Worthington (TIB — Leibniz Information Centre for Science and Technology); Prof.&nbsp;Ina Blümel (Hochschule Hannover)</li>
+<li><strong>Repository:</strong> <a href="https://github.com/NFDI4Culture/linked-open-exhibition" class="uri">https://github.com/NFDI4Culture/linked-open-exhibition</a></li>
+<li><strong>Wikiversity:</strong> <a href="https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition" class="uri">https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition</a></li>
+</ul>
+<hr>
 </section>
-<section id="the-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="the-pipeline">The pipeline</h2>
-<pre><code>DNB SRU API → MARC21-XML → CSV → Wikibase → SPARQL → Quarto website</code></pre>
+<section id="licences" class="level2">
+<h2 class="anchored" data-anchor-id="licences">Licences</h2>
+<section id="project-content" class="level3">
+<h3 class="anchored" data-anchor-id="project-content">Project content</h3>
+<p>All original content in this repository (code, documentation, notebooks, website) is released under:</p>
+<p><strong><a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 — Creative Commons Attribution-ShareAlike 4.0 International</a></strong></p>
+</section>
+<section id="dnb-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="dnb-metadata">DNB metadata</h3>
+<p>All bibliographic metadata retrieved from the Deutsche Nationalbibliothek (DNB) SRU interface is released under:</p>
+<p><strong><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal (Public Domain Dedication)</a></strong></p>
+<p>Source: <a href="https://www.dnb.de/EN/Professionell/Metadatendienste/metadatendienste_node.html">dnb.de — Metadatendienste</a><br>
+The SRU interface is freely accessible without registration.</p>
+</section>
+<section id="cover-images" class="level3">
+<h3 class="anchored" data-anchor-id="cover-images">Cover images</h3>
+<blockquote class="blockquote">
+<p>Cover images retrieved via the DNB catalogue enrichment API are supplied by publishers and are <strong>not</strong> covered by the CC0 licence. They are used within this project solely for educational, non-commercial identification purposes and are <strong>not redistributed</strong> in this repository. Always verify image rights before reuse.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="ai-attribution" class="level2">
+<h2 class="anchored" data-anchor-id="ai-attribution">AI Attribution</h2>
+<p>This project was developed with the assistance of <strong>GitHub Copilot</strong> using the <strong>Claude Sonnet 4.6</strong> model (April 2026).</p>
+<p>AI assistance was used for: - Code generation (Python notebooks, SPARQL queries) - Documentation drafting - Data model design and planning - Glossary creation</p>
+<p>All AI-generated outputs were reviewed and edited by the project team before use.</p>
+<hr>
+</section>
+<section id="credits" class="level2">
+<h2 class="anchored" data-anchor-id="credits">Credits</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -189,96 +210,76 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Step</th>
-<th>Notebook</th>
-<th>Output</th>
+<th>Role</th>
+<th>Name</th>
+<th>Affiliation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1. Retrieve DNB records</td>
-<td><code>01_dnb_search.ipynb</code></td>
-<td><code>sprengel_raw.xml</code></td>
+<td>Project lead</td>
+<td>Simon Worthington</td>
+<td>TIB — Leibniz Information Centre for Science and Technology</td>
 </tr>
 <tr class="even">
-<td>2. Filter &amp; extract fields</td>
-<td><code>02_dnb_filter_exhibitions.ipynb</code></td>
-<td><code>sprengel_exhibitions.csv</code></td>
+<td>Course supervisor</td>
+<td>Prof.&nbsp;Ina Blümel</td>
+<td>Hochschule Hannover</td>
 </tr>
 <tr class="odd">
-<td>3. Fetch cover images</td>
-<td><code>03_dnb_cover_images.ipynb</code></td>
-<td><code>images/*.jpg</code></td>
+<td>Data model reference</td>
+<td>Lozana Rossenova, Lucia Sohmen, Paul Duchesne</td>
+<td>NFDI4Culture / WB4R</td>
 </tr>
 <tr class="even">
-<td>4. Upload data model</td>
-<td><code>04_wikibase_data_model.ipynb</code></td>
-<td>Wikibase properties</td>
-</tr>
-<tr class="odd">
-<td>5. Upload exhibitions</td>
-<td><code>05_wikibase_upload.ipynb</code></td>
-<td>Wikibase items</td>
-</tr>
-<tr class="even">
-<td>6. Upload images</td>
-<td><code>06_mediawiki_upload.ipynb</code></td>
-<td>MediaWiki files</td>
+<td>Funder</td>
+<td>NFDI4Culture</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
-<section id="explore" class="level2">
-<h2 class="anchored" data-anchor-id="explore">Explore</h2>
-<ul>
-<li><a href="./exhibitions.html">Exhibitions →</a> — browse the Sprengel Museum exhibition timeline, powered by live SPARQL queries</li>
-<li><a href="./data-analysis.html">Data Analysis →</a> — explore the full pipeline and dataset</li>
-<li><a href="./about.html">About →</a> — licences, credits, and AI attribution</li>
-</ul>
-</section>
-<section id="course-resources" class="level2">
-<h2 class="anchored" data-anchor-id="course-resources">Course &amp; resources</h2>
-<ul>
-<li><strong>Wikiversity course page:</strong> <a href="https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition">BIM-126-02-Data-Science-Linked-Open-Exhibition</a></li>
-<li><strong>Wikibase instance:</strong> <a href="https://wikibase.wbworkshop.tibwiki.io/">wikibase.wbworkshop.tibwiki.io</a></li>
-<li><strong>Source repository:</strong> <a href="https://github.com/NFDI4Culture/linked-open-exhibition">NFDI4Culture/linked-open-exhibition</a></li>
-<li><strong>Sprengel Museum Hannover:</strong> <a href="https://www.sprengel-museum.de/">sprengel-museum.de</a></li>
-</ul>
-</section>
-<section id="wikidata-exhibition-timeline" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="wikidata-exhibition-timeline">Wikidata exhibition timeline</h2>
-<p>Live query against Wikidata for Sprengel Museum exhibitions entered by students in Sessions 1–3:</p>
-<iframe style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 4px;" src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups">
-</iframe>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-
-</div></div></section>
-<section id="sitzung-2-die-übungen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="sitzung-2-die-übungen">Sitzung 2: Die Übungen</h2>
-<ul>
-<li>Ausstellungsaktualisierung</li>
-<li>Künstler</li>
-<li>Ausstellungskatalog</li>
-<li>AI LLM SPARQL-Experimente</li>
-</ul>
-</section>
-<section id="sitzungsplan" class="level2">
-<h2 class="anchored" data-anchor-id="sitzungsplan">Sitzungsplan</h2>
-<p>11:00-11:15 Einführung und Datenmodellierung <br> 11:15-11:45 Ausstellungsaktualisierung <br> 11:45-12:15 Künstler <br> 12:15-12:25 Pause <br> 12:25-13:05 Ausstellungskatalog <br> 13:05-13:50 AI LLM SPARQL-Experimente <br> 13:50-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung</p>
-</section>
-<section id="hausaufgaben" class="level2">
-<h2 class="anchored" data-anchor-id="hausaufgaben">Hausaufgaben</h2>
-<ul>
-<li>Erstellen Sie ein Datenmodell für ein Kunstwerk in einer Ausstellung.</li>
-<li>Was sind die Mindestangaben, die erforderlich sind, um ein Kunstwerk in einer Ausstellung zu präsentieren?</li>
-<li><a href="https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition#Hausaufgaben%C3%BCbungen">Link</a></li>
-</ul>
-</section>
-<section id="danke" class="level2">
-<h2 class="anchored" data-anchor-id="danke">Danke</h2>
-<p>Siehe <a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Data für Kunstausstellungen</a></p>
-<p>Simon Worthington - <a href="mailto:simon.worthington@tib.eu">simon.worthington@tib.eu</a></p>
+<section id="technical-stack" class="level2">
+<h2 class="anchored" data-anchor-id="technical-stack">Technical stack</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://quarto.org/">Quarto</a></td>
+<td>Website rendering</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/LeMyst/WikibaseIntegrator">wikibaseintegrator</a></td>
+<td>Wikibase API client</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/mwclient/mwclient">mwclient</a></td>
+<td>MediaWiki API client</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/theskumar/python-dotenv">python-dotenv</a></td>
+<td>Credential management</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.dnb.de/EN/Professionell/Metadatendienste/Datenbezug/SRU/sru_node.html">DNB SRU API</a></td>
+<td>Bibliographic data source</td>
+</tr>
+<tr class="even">
+<td><a href="https://wikiba.se/">Wikibase</a></td>
+<td>Knowledge base platform</td>
+</tr>
+<tr class="odd">
+<td><a href="https://pages.github.com/">GitHub Pages</a></td>
+<td>Website hosting</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

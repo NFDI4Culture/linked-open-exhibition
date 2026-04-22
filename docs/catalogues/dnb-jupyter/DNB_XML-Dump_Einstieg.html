@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DNBLab Jupyter Notebook zur Datenextraktion aus XML-Datei – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#arbeitsumgebung-einrichten" id="toc-arbeitsumgebung-einrichten" class="nav-link active" data-scroll-target="#arbeitsumgebung-einrichten">Arbeitsumgebung einrichten </a><a class="anchor nav-link" id="Teil1" data-scroll-target="undefined"></a></li>
+  <li><a href="#laden-der-daten-aus-datei" id="toc-laden-der-daten-aus-datei" class="nav-link" data-scroll-target="#laden-der-daten-aus-datei">Laden der Daten aus Datei</a></li>
+  <li><a href="#parsen-und-anzeige-des-ersten-datensatzes" id="toc-parsen-und-anzeige-des-ersten-datensatzes" class="nav-link" data-scroll-target="#parsen-und-anzeige-des-ersten-datensatzes">Parsen und Anzeige des ersten Datensatzes</a></li>
+  <li><a href="#suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen" id="toc-suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen" class="nav-link" data-scroll-target="#suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen">Suche nach ausgewählten Informationen in den einzelnen Datensätzen</a></li>
+  <li><a href="#sammeln-der-extrahierten-informationen-aus-allen-datensätzen" id="toc-sammeln-der-extrahierten-informationen-aus-allen-datensätzen" class="nav-link" data-scroll-target="#sammeln-der-extrahierten-informationen-aus-allen-datensätzen">Sammeln der extrahierten Informationen aus allen Datensätzen</a></li>
+  <li><a href="#anzeige-der-daten-in-einer-tabelle-dataframe" id="toc-anzeige-der-daten-in-einer-tabelle-dataframe" class="nav-link" data-scroll-target="#anzeige-der-daten-in-einer-tabelle-dataframe">Anzeige der Daten in einer Tabelle/ Dataframe</a></li>
+  <li><a href="#export-der-daten-als-csv-datei" id="toc-export-der-daten-als-csv-datei" class="nav-link" data-scroll-target="#export-der-daten-als-csv-datei">Export der Daten als CSV-Datei</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DNBLab Jupyter Notebook zur Datenextraktion aus XML-Datei</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Dieses DNBLab-Tutorial beschreibt das beispielhafte Laden einer XML-Datei im MARC21-Format. In der Jupyter Notebook Umgebung kann der dokumentierte Code direkt ausgeführt und angepasst werden. Das Tutorial umfasst das Durchsuchen der Daten in MARC21-xml und Ausgabe ausgewählter Elemente als CSV-Datei.</p>
+<section id="arbeitsumgebung-einrichten" class="level2">
+<h2 class="anchored" data-anchor-id="arbeitsumgebung-einrichten">Arbeitsumgebung einrichten <a class="anchor" id="Teil1"></a></h2>
+<div id="5822ae30-ba11-46f3-a22f-c6d85d11ff9f" class="cell" data-trusted="true" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pdimport lxml.etree <span class="im">as</span> ETfrom bs4 <span class="im">import</span> BeautifulSoup <span class="im">as</span> soupimport unicodedata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="laden-der-daten-aus-datei" class="level2">
+<h2 class="anchored" data-anchor-id="laden-der-daten-aus-datei">Laden der Daten aus Datei</h2>
+<div id="23cbec67-9978-43b5-939c-649f536e08fd" class="cell" data-trusted="true" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># open from file: with open("d028.xml", "r", encoding="utf-8") as f2:    result = f2.readlines()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="parsen-und-anzeige-des-ersten-datensatzes" class="level2">
+<h2 class="anchored" data-anchor-id="parsen-und-anzeige-des-ersten-datensatzes">Parsen und Anzeige des ersten Datensatzes</h2>
+<div id="545e8c48-d8bf-4781-b1c3-bbee197cc626" class="cell" data-trusted="true" data-scrolled="true" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> <span class="st">""</span>.join(result)xml <span class="op">=</span> soup(content, <span class="st">"lxml"</span>)myquery <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})<span class="bu">print</span>(<span class="bu">len</span>(myquery))<span class="bu">print</span>(myquery[<span class="dv">0</span>].prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>196
+&lt;record type="Bibliographic" xmlns="http://www.loc.gov/MARC21/slim"&gt;
+ &lt;leader&gt;
+  00000nam a2200000 c 4500
+ &lt;/leader&gt;
+ &lt;controlfield tag="001"&gt;
+  1163616249
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="003"&gt;
+  DE-101
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="005"&gt;
+  20240212135623.0
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="007"&gt;
+  cr||||||||||||
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="008"&gt;
+  180731r20181964gw |||||o|||| 00||||ger
+ &lt;/controlfield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="015"&gt;
+  &lt;subfield code="a"&gt;
+   19,O01
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   dnb
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="7" ind2=" " tag="016"&gt;
+  &lt;subfield code="2"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   1163616249
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="7" ind2=" " tag="024"&gt;
+  &lt;subfield code="2"&gt;
+   urn
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   urn:nbn:de:101:1-2018090918265168878989
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="035"&gt;
+  &lt;subfield code="a"&gt;
+   (DE-599)DNB1163616249
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="035"&gt;
+  &lt;subfield code="a"&gt;
+   (OCoLC)1187509762
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="040"&gt;
+  &lt;subfield code="a"&gt;
+   1140
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   ger
+  &lt;/subfield&gt;
+  &lt;subfield code="c"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="d"&gt;
+   1215
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="041"&gt;
+  &lt;subfield code="a"&gt;
+   ger
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="044"&gt;
+  &lt;subfield code="c"&gt;
+   XA-DE
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="084"&gt;
+  &lt;subfield code="a"&gt;
+   46
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   700
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   730
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   740
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   750
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   760
+  &lt;/subfield&gt;
+  &lt;subfield code="q"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   sdnb
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="0" ind2="0" tag="245"&gt;
+  &lt;subfield code="a"&gt;
+   13 Konkrete
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   Vordemberge-Gildewart ... ; [Kunstverein Ulm im Rathaus, 26. Juli - 6. September 1964]
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="1" ind2="3" tag="246"&gt;
+  &lt;subfield code="a"&gt;
+   Dreizehn Konkrete
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2="1" tag="264"&gt;
+  &lt;subfield code="a"&gt;
+   Leipzig
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   Frankfurt am Main
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   Deutsche Nationalbibliothek
+  &lt;/subfield&gt;
+  &lt;subfield code="c"&gt;
+   2018
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="300"&gt;
+  &lt;subfield code="a"&gt;
+   1 Online-Ressource ([16] S.)
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   Ill.
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="336"&gt;
+  &lt;subfield code="a"&gt;
+   Text
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   txt
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   rdacontent
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="337"&gt;
+  &lt;subfield code="a"&gt;
+   Computermedien
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   c
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   rdamedia
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="338"&gt;
+  &lt;subfield code="a"&gt;
+   Online-Ressource
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   cr
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   rdacarrier
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="500"&gt;
+  &lt;subfield code="a"&gt;
+   Wahrnehmung der Rechte durch die VG WORT (§ 51 VGG)
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="0" ind2=" " tag="506"&gt;
+  &lt;subfield code="a"&gt;
+   Open Access
+  &lt;/subfield&gt;
+  &lt;subfield code="f"&gt;
+   Unrestricted online access
+  &lt;/subfield&gt;
+  &lt;subfield code="g"&gt;
+   20220111
+  &lt;/subfield&gt;
+  &lt;subfield code="q"&gt;
+   DNB
+  &lt;/subfield&gt;
+  &lt;subfield code="u"&gt;
+   http://purl.org/coar/access_right/c_abf2
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   star
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="540"&gt;
+  &lt;subfield code="a"&gt;
+   Urheberrechtsschutz, Wahrnehmung der Rechte durch die VG WORT (§ 51 VGG)
+  &lt;/subfield&gt;
+  &lt;subfield code="f"&gt;
+   InC 1.0
+  &lt;/subfield&gt;
+  &lt;subfield code="g"&gt;
+   20220111
+  &lt;/subfield&gt;
+  &lt;subfield code="q"&gt;
+   DNB
+  &lt;/subfield&gt;
+  &lt;subfield code="u"&gt;
+   http://rightsstatements.org/vocab/InC/1.0/
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="1" ind2=" " tag="583"&gt;
+  &lt;subfield code="a"&gt;
+   Archivierung/Langzeitarchivierung gewährleistet
+  &lt;/subfield&gt;
+  &lt;subfield code="5"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   pdager
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="1" ind2=" " tag="700"&gt;
+  &lt;subfield code="0"&gt;
+   (DE-588)118627864
+  &lt;/subfield&gt;
+  &lt;subfield code="0"&gt;
+   https://d-nb.info/gnd/118627864
+  &lt;/subfield&gt;
+  &lt;subfield code="0"&gt;
+   (DE-101)118627864
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   Vordemberge-Gildewart, Friedrich
+  &lt;/subfield&gt;
+  &lt;subfield code="d"&gt;
+   1899-1962
+  &lt;/subfield&gt;
+  &lt;subfield code="e"&gt;
+   Illustrator
+  &lt;/subfield&gt;
+  &lt;subfield code="4"&gt;
+   ill
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   gnd
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="0" ind2="8" tag="776"&gt;
+  &lt;subfield code="i"&gt;
+   Elektronische Reproduktion von
+  &lt;/subfield&gt;
+  &lt;subfield code="t"&gt;
+   Dreizehn Konkrete
+  &lt;/subfield&gt;
+  &lt;subfield code="d"&gt;
+   Ulm : Kunstverein, 1964
+  &lt;/subfield&gt;
+  &lt;subfield code="h"&gt;
+   [16] S., Ill.
+  &lt;/subfield&gt;
+  &lt;subfield code="w"&gt;
+   (DE-101)830311173
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="850"&gt;
+  &lt;subfield code="a"&gt;
+   DE-101a
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   DE-101b
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="4" ind2="0" tag="856"&gt;
+  &lt;subfield code="u"&gt;
+   https://nbn-resolving.org/urn:nbn:de:101:1-2018090918265168878989
+  &lt;/subfield&gt;
+  &lt;subfield code="x"&gt;
+   Resolving-System
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2="0" tag="856"&gt;
+  &lt;subfield code="u"&gt;
+   https://d-nb.info/1163616249/34
+  &lt;/subfield&gt;
+  &lt;subfield code="x"&gt;
+   Langzeitarchivierung Nationalbibliothek
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="r" ind2=" " tag="925"&gt;
+  &lt;subfield code="a"&gt;
+   ro
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="d" ind2=" " tag="925"&gt;
+  &lt;subfield code="a"&gt;
+   d028
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="927"&gt;
+  &lt;subfield code="a"&gt;
+   174292998
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+&lt;/record&gt;
+</code></pre>
+</div>
+</div>
+</section>
+<section id="suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen" class="level2">
+<h2 class="anchored" data-anchor-id="suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen">Suche nach ausgewählten Informationen in den einzelnen Datensätzen</h2>
+<div id="b2d2703e-ce32-4451-bc33-34d28dbacb3c" class="cell" data-trusted="true" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Funktion für Titeldaten in MARC21def parse_record_marc(item):    ns = {"marc":"http://www.loc.gov/MARC21/slim"}    xml = ET.fromstring(unicodedata.normalize("NFC", str(item)))        #idn    idn = xml.findall("marc:controlfield[@tag = '001']", namespaces=ns)    try:        idn = idn[0].text    except:        idn = 'N/A'                 #Titel     title = xml.findall("marc:datafield[@tag = '245']/marc:subfield[@code = 'a']", namespaces=ns)    title2 = xml.findall("marc:datafield[@tag = '245']/marc:subfield[@code = 'b']", namespaces=ns)        if title and not title2:        titletext = title[0].text    elif title and title2:             titletext = title[0].text + " " + title2[0].text   #Hier wird extra nur mit einem Leerzeichen getrennt statt eines Separators    else:        titletext = "N/A"            #date    date = xml.findall("marc:datafield[@tag = '264']/marc:subfield[@code = 'c']", namespaces=ns)    date2 = xml.findall("marc:controlfield[@tag = '008']", namespaces=ns)    if date:        date = date[0].text    elif date2:        date = date2[0].text        date = date[7:11]    else:            date = 'N/A'              #lang:    lang = xml.findall("marc:datafield[@tag = '041']/marc:subfield[@code = 'a']", namespaces=ns)    try:        lang = lang[0].text    except:        lang = 'N/A'            #URN:     urn = "N/A"    for urn in xml.findall("marc:datafield[@tag = '024']/marc:subfield[@code = 'a']", namespaces=ns):        if urn.text.startswith("urn:nbn"):            urn = urn.text        else:             urn = "N/A"            meta_dict = {"idn":idn, "title": titletext, "date":date, "lang":lang, "urn":urn}                    return meta_dict    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sammeln-der-extrahierten-informationen-aus-allen-datensätzen" class="level2">
+<h2 class="anchored" data-anchor-id="sammeln-der-extrahierten-informationen-aus-allen-datensätzen">Sammeln der extrahierten Informationen aus allen Datensätzen</h2>
+<div id="6597d705-6952-44d0-b0f4-d0c6b3599954" class="cell" data-trusted="true" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> [parse_record_marc(record) <span class="cf">for</span> record <span class="kw">in</span> myquery]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="anzeige-der-daten-in-einer-tabelle-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="anzeige-der-daten-in-einer-tabelle-dataframe">Anzeige der Daten in einer Tabelle/ Dataframe</h2>
+<div id="84639af9-da1e-4039-bec7-d7743682cf2e" class="cell" data-trusted="true" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(output)df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">idn</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">lang</th>
+<th data-quarto-table-cell-role="th">urn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1163616249</td>
+<td>13 Konkrete Vordemberge-Gildewart ... ; [Kunst...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090918265168878989</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1163613266</td>
+<td>200 Jahre Frommann-Verlag [1727-1927]</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090917393540952215</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1163614645</td>
+<td>60 Fotos</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018101418234208736122</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1163615773</td>
+<td>Abendgesang (Neila) Letzte Gedichte</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090918272331231107</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1163615218</td>
+<td>Abstraktion in der Malerei Kandinsky, Feininge...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090918270991257647</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">191</td>
+<td>1163612235</td>
+<td>Willy Baumeister [Ausstellung Willy Baumeister...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018102211013265416631</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">192</td>
+<td>1163615420</td>
+<td>Zeitberichte und Dokumente</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018101418250397989578</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">193</td>
+<td>1163614211</td>
+<td>Ziele des Schriftunterrichts Ein Beitr. zur mo...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090917544063233045</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">194</td>
+<td>1163614912</td>
+<td>Zum neuen Bauen Vorträge</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018092317065678945974</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">195</td>
+<td>1163615838</td>
+<td>Zum neuen Stil</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018091618182280146612</td>
+</tr>
+</tbody>
+</table>
+
+<p>196 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="export-der-daten-als-csv-datei" class="level2">
+<h2 class="anchored" data-anchor-id="export-der-daten-als-csv-datei">Export der Daten als CSV-Datei</h2>
+<div id="eebef657-a133-4dba-a580-5d8b6467c4ca" class="cell" data-trusted="true" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"Dump_Titel.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="172ffa43-f157-4a06-8af9-a0c0b73a12d0" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Generated with GitHub Copilot (Claude Sonnet 4.6)</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notebook 04 — Wikibase Data Model – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background-wikibase-vs-wikidata" id="toc-background-wikibase-vs-wikidata" class="nav-link active" data-scroll-target="#background-wikibase-vs-wikidata">Background: Wikibase vs Wikidata</a>
+  <ul class="collapse">
+  <li><a href="#data-model-alignment" id="toc-data-model-alignment" class="nav-link" data-scroll-target="#data-model-alignment">Data model alignment</a></li>
+  </ul></li>
+  <li><a href="#helper-find-or-create-a-property" id="toc-helper-find-or-create-a-property" class="nav-link" data-scroll-target="#helper-find-or-create-a-property">Helper — find or create a property</a></li>
+  <li><a href="#step-1-create-properties" id="toc-step-1-create-properties" class="nav-link" data-scroll-target="#step-1-create-properties">Step 1 — Create properties</a></li>
+  <li><a href="#step-2-create-item-classes" id="toc-step-2-create-item-classes" class="nav-link" data-scroll-target="#step-2-create-item-classes">Step 2 — Create item classes</a></li>
+  <li><a href="#step-3-save-the-propertyitem-map-to-json" id="toc-step-3-save-the-propertyitem-map-to-json" class="nav-link" data-scroll-target="#step-3-save-the-propertyitem-map-to-json">Step 3 — Save the property/item map to JSON</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 04 — Wikibase Data Model</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Project:</strong> Linked Open Exhibition — NFDI4Culture / Hochschule Hannover (BIM-126-02)<br>
+<strong>AI attribution:</strong> GitHub Copilot (Claude Sonnet 4.6)<br>
+<strong>Requires:</strong> <code>.env</code> file with <code>WB_URL</code>, <code>WB_USER</code>, <code>WB_PASSWORD</code></p>
+<p><strong>Purpose:</strong> Define and upload the minimal exhibition data model to the project Wikibase instance. Creates item classes (Q items) and properties (P items) needed by Notebook 05.</p>
+<hr>
+<section id="background-wikibase-vs-wikidata" class="level2">
+<h2 class="anchored" data-anchor-id="background-wikibase-vs-wikidata">Background: Wikibase vs Wikidata</h2>
+<p><strong>Wikidata</strong> is the public, community-maintained knowledge base hosted by the Wikimedia Foundation. <strong>Wikibase</strong> is the underlying open-source software — you can run your own Wikibase instance with your own data model and properties, independent of Wikidata.</p>
+<p>The project instance is at: <code>https://wikibase.wbworkshop.tibwiki.io/</code></p>
+<section id="data-model-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="data-model-alignment">Data model alignment</h3>
+<p>The model uses <strong>WB4R (Wikibase 4 Research)</strong> as a reference (see <code>WB4R/wikibase_generic_model.csv</code>) and maps to <strong>CIDOC-CRM</strong>.</p>
+<section id="item-classes-q-items" class="level4">
+<h4 class="anchored" data-anchor-id="item-classes-q-items">Item classes (Q items)</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Label</th>
+<th>Description</th>
+<th>WB4R class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exhibition</td>
+<td>A temporary display of artworks</td>
+<td>event</td>
+</tr>
+<tr class="even">
+<td>Exhibition Catalogue</td>
+<td>A publication accompanying an exhibition</td>
+<td>bibliographic_work</td>
+</tr>
+<tr class="odd">
+<td>Sprengel Museum Hannover</td>
+<td>The art museum in Hannover</td>
+<td>place</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties-p-items" class="level4">
+<h4 class="anchored" data-anchor-id="properties-p-items">Properties (P items)</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Label</th>
+<th>Data type</th>
+<th>WB4R ref</th>
+<th>CIDOC-CRM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>instance of</td>
+<td>Item</td>
+<td>P1</td>
+<td>E55 Type</td>
+</tr>
+<tr class="even">
+<td>title</td>
+<td>Monolingual text</td>
+<td>P4</td>
+<td>E35 Title</td>
+</tr>
+<tr class="odd">
+<td>start date</td>
+<td>Time</td>
+<td>P10</td>
+<td>P82a</td>
+</tr>
+<tr class="even">
+<td>end date</td>
+<td>Time</td>
+<td>P11</td>
+<td>P82b</td>
+</tr>
+<tr class="odd">
+<td>location</td>
+<td>Item</td>
+<td>P38</td>
+<td>P53</td>
+</tr>
+<tr class="even">
+<td>GND ID</td>
+<td>External identifier</td>
+<td>P102</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>DNB IDN</td>
+<td>External identifier</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>exhibition catalogue</td>
+<td>Item</td>
+<td>—</td>
+<td>P46</td>
+</tr>
+<tr class="odd">
+<td>image</td>
+<td>Local media</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note on <code>image</code> (P12):</strong> Uses the <code>localMedia</code> datatype — files are hosted on the project’s own MediaWiki instance, not Wikimedia Commons. If P12 was previously created with the wrong <code>commonsMedia</code> type, delete it in Wikibase and re-run this notebook to recreate it correctly.</p>
+</blockquote>
+<p><strong>Idempotency:</strong> Before creating any property or item, the notebook checks whether it already exists by searching for its label. If found, the existing ID is reused and nothing is overwritten.</p>
+<div id="cf136caa" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, json</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wikibaseintegrator <span class="im">import</span> WikibaseIntegrator, wbi_login</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wikibaseintegrator.wbi_config <span class="im">import</span> config <span class="im">as</span> wbi_config</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wikibaseintegrator.wbi_enums <span class="im">import</span> WikibaseDatatype</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>env_path <span class="op">=</span> Path(<span class="st">"../../.env"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>load_dotenv(dotenv_path<span class="op">=</span>env_path)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>WB_URL  <span class="op">=</span> os.getenv(<span class="st">"WB_URL"</span>, <span class="st">"https://wikibase.wbworkshop.tibwiki.io"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>WB_USER <span class="op">=</span> os.getenv(<span class="st">"WB_USER"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>WB_PASS <span class="op">=</span> os.getenv(<span class="st">"WB_PASSWORD"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> WB_USER <span class="kw">or</span> <span class="kw">not</span> WB_PASS:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">EnvironmentError</span>(<span class="st">"Set WB_USER and WB_PASSWORD in your .env file."</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>wbi_config[<span class="st">"MEDIAWIKI_API_URL"</span>]   <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>WB_URL<span class="sc">}</span><span class="ss">/w/api.php"</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>wbi_config[<span class="st">"SPARQL_ENDPOINT_URL"</span>] <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>WB_URL<span class="sc">}</span><span class="ss">/query/sparql"</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>wbi_config[<span class="st">"WIKIBASE_URL"</span>]        <span class="op">=</span> WB_URL</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>login_instance <span class="op">=</span> wbi_login.Login(user<span class="op">=</span>WB_USER, password<span class="op">=</span>WB_PASS)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>wbi <span class="op">=</span> WikibaseIntegrator(login<span class="op">=</span>login_instance)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Connected to: </span><span class="sc">{</span>WB_URL<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Connected to: https://wikibase.wbworkshop.tibwiki.io</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="helper-find-or-create-a-property" class="level2">
+<h2 class="anchored" data-anchor-id="helper-find-or-create-a-property">Helper — find or create a property</h2>
+<div id="3ebcfa20" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests <span class="im">as</span> req</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wikibaseintegrator.wbi_exceptions <span class="im">import</span> MWApiError</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _fetch_entity_labels(prefix, max_n<span class="op">=</span><span class="dv">20</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Fetch en labels for {prefix}1..{prefix}{max_n} via wbgetentities. Returns label→id dict."""</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    ids <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_n <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    resp <span class="op">=</span> req.get(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        wbi_config[<span class="st">"MEDIAWIKI_API_URL"</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        params<span class="op">=</span>{</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"action"</span>: <span class="st">"wbgetentities"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ids"</span>: <span class="st">"|"</span>.join(ids),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"props"</span>: <span class="st">"labels"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"languages"</span>: <span class="st">"en"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">=</span><span class="dv">15</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    label_to_id <span class="op">=</span> {}</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> eid, entity <span class="kw">in</span> resp.json().get(<span class="st">"entities"</span>, {}).items():</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">"missing"</span> <span class="kw">in</span> entity:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> entity.get(<span class="st">"labels"</span>, {}).get(<span class="st">"en"</span>, {}).get(<span class="st">"value"</span>, <span class="st">""</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> label:</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            label_to_id[label.lower()] <span class="op">=</span> eid</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> label_to_id</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Build lookup maps once (re-run this cell to refresh)</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>_prop_lookup <span class="op">=</span> _fetch_entity_labels(<span class="st">"P"</span>, max_n<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>_item_lookup <span class="op">=</span> _fetch_entity_labels(<span class="st">"Q"</span>, max_n<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Known properties: </span><span class="sc">{</span>_prop_lookup<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Known items:      </span><span class="sc">{</span>_item_lookup<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_or_create_property(label, description, datatype):</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return existing property PID or create a new one."""</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    existing <span class="op">=</span> _prop_lookup.get(label.lower())</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> existing:</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Property already exists: </span><span class="sc">{</span>existing<span class="sc">}</span><span class="ss"> — </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> existing</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    prop <span class="op">=</span> wbi.<span class="bu">property</span>.new(datatype<span class="op">=</span>datatype)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    prop.labels.<span class="bu">set</span>(language<span class="op">=</span><span class="st">"en"</span>, value<span class="op">=</span>label)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    prop.descriptions.<span class="bu">set</span>(language<span class="op">=</span><span class="st">"en"</span>, value<span class="op">=</span>description)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    prop.write(summary<span class="op">=</span><span class="st">"Bot: create exhibition data model property"</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    pid <span class="op">=</span> prop.<span class="bu">id</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    _prop_lookup[label.lower()] <span class="op">=</span> pid</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Created property: </span><span class="sc">{</span>pid<span class="sc">}</span><span class="ss"> — </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pid</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_or_create_item(label, description):</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return existing item QID or create a new one."""</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    existing <span class="op">=</span> _item_lookup.get(label.lower())</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> existing:</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Item already exists: </span><span class="sc">{</span>existing<span class="sc">}</span><span class="ss"> — </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> existing</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    item <span class="op">=</span> wbi.item.new()</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    item.labels.<span class="bu">set</span>(language<span class="op">=</span><span class="st">"en"</span>, value<span class="op">=</span>label)</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    item.descriptions.<span class="bu">set</span>(language<span class="op">=</span><span class="st">"en"</span>, value<span class="op">=</span>description)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    item.write(summary<span class="op">=</span><span class="st">"Bot: create exhibition data model item"</span>)</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    qid <span class="op">=</span> item.<span class="bu">id</span></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    _item_lookup[label.lower()] <span class="op">=</span> qid</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Created item: </span><span class="sc">{</span>qid<span class="sc">}</span><span class="ss"> — </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> qid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Known properties: {'instance of': 'P1', 'title': 'P2', 'start date': 'P3', 'end date': 'P4', 'location': 'P5', 'gnd id': 'P6', 'dnb idn': 'P7', 'exhibition catalogue': 'P8'}
+Known items:      {'sanboxitem': 'Q1', 'exhibition': 'Q3', 'exhibition catalogue': 'Q4', 'sprengel museum hannover': 'Q5', 'niki de saint phalle - die grotte': 'Q6', 'niki de saint phalle - the grotto': 'Q7', 'feministische avantgarde': 'Q8', 'grethe jürgens': 'Q9', 'lillien grupe - realität(en)?': 'Q10', 'love you for infinity': 'Q11', 'on lies, secrets and silence': 'Q13', 'peter heber - über das sterben': 'Q14', 'verfemt - gehandelt': 'Q15', 'bastian hoffmann - radical negation': 'Q16', 'how to be an artist like me': 'Q17', 'nahaufnahmen': 'Q18', 'peter tuma - aufkommende unruhe': 'Q19', 'porträt einer sammlung - sprengel museum hannover': 'Q20', 'subjective evidence': 'Q21', 'adrian sauer: truth table': 'Q22', 'christian retschlag': 'Q23', 'fotografien der fotografie': 'Q24', 'kunst und künstler*innen in hannover im nationalsozialismus': 'Q25'}</code></pre>
+</div>
+</div>
+</section>
+<section id="step-1-create-properties" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-create-properties">Step 1 — Create properties</h2>
+<div id="afe8aaa5" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>PROPERTIES <span class="op">=</span> [</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"instance of"</span>,         <span class="st">"the type or class this item is an instance of"</span>,           WikibaseDatatype.ITEM),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"title"</span>,               <span class="st">"the title of a work or event"</span>,                             WikibaseDatatype.MONOLINGUALTEXT),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"start date"</span>,          <span class="st">"date when the event or period began"</span>,                      WikibaseDatatype.TIME),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"end date"</span>,            <span class="st">"date when the event or period ended"</span>,                      WikibaseDatatype.TIME),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"location"</span>,            <span class="st">"place where an event was held"</span>,                            WikibaseDatatype.ITEM),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"GND ID"</span>,              <span class="st">"identifier in the GND (Gemeinsame Normdatei) authority file"</span>, WikibaseDatatype.EXTERNALID),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"DNB IDN"</span>,             <span class="st">"unique record identifier in the DNB catalogue"</span>,            WikibaseDatatype.EXTERNALID),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"exhibition catalogue"</span>,<span class="st">"publication accompanying an exhibition"</span>,                   WikibaseDatatype.ITEM),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"image"</span>,               <span class="st">"cover image file in the project MediaWiki instance"</span>,       WikibaseDatatype.LOCALMEDIA),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>prop_map <span class="op">=</span> {}</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Creating / verifying properties:"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, desc, dtype <span class="kw">in</span> PROPERTIES:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    pid <span class="op">=</span> get_or_create_property(label, desc, dtype)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    prop_map[label] <span class="op">=</span> pid</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Property map:"</span>, prop_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Creating / verifying properties:
+  Property already exists: P1 — instance of
+  Property already exists: P2 — title
+  Property already exists: P3 — start date
+  Property already exists: P4 — end date
+  Property already exists: P5 — location
+  Property already exists: P6 — GND ID
+  Property already exists: P7 — DNB IDN
+  Property already exists: P8 — exhibition catalogue
+  Created property: P13 — image
+
+Property map: {'instance of': 'P1', 'title': 'P2', 'start date': 'P3', 'end date': 'P4', 'location': 'P5', 'GND ID': 'P6', 'DNB IDN': 'P7', 'exhibition catalogue': 'P8', 'image': 'P13'}</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2-create-item-classes" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-create-item-classes">Step 2 — Create item classes</h2>
+<div id="a7094781" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ITEMS <span class="op">=</span> [</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Exhibition"</span>,                 <span class="st">"a temporary display of artworks or cultural objects"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Exhibition Catalogue"</span>,       <span class="st">"a publication accompanying an exhibition, documenting exhibited works"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Sprengel Museum Hannover"</span>,   <span class="st">"art museum in Hannover, Germany, specialising in modern and contemporary art"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>item_map <span class="op">=</span> {}</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Creating / verifying items:"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, desc <span class="kw">in</span> ITEMS:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    qid <span class="op">=</span> get_or_create_item(label, desc)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    item_map[label] <span class="op">=</span> qid</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Item map:"</span>, item_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Creating / verifying items:
+  Item already exists: Q3 — Exhibition
+  Item already exists: Q4 — Exhibition Catalogue
+  Item already exists: Q5 — Sprengel Museum Hannover
+
+Item map: {'Exhibition': 'Q3', 'Exhibition Catalogue': 'Q4', 'Sprengel Museum Hannover': 'Q5'}</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-save-the-propertyitem-map-to-json" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-save-the-propertyitem-map-to-json">Step 3 — Save the property/item map to JSON</h2>
+<p>Notebook 05 reads this file to look up the correct local P-IDs for each property.</p>
+<div id="c2c020d0" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>MAP_PATH <span class="op">=</span> Path(<span class="st">"../wikibase_property_map.json"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>combined_map <span class="op">=</span> {<span class="st">"properties"</span>: prop_map, <span class="st">"items"</span>: item_map}</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>MAP_PATH.write_text(json.dumps(combined_map, indent<span class="op">=</span><span class="dv">2</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>), encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Saved property/item map → </span><span class="sc">{</span>MAP_PATH<span class="sc">.</span>resolve()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(combined_map, indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saved property/item map → C:\git\linked-open-exhibition\catalogues\wikibase_property_map.json
+{
+  "properties": {
+    "instance of": "P1",
+    "title": "P2",
+    "start date": "P3",
+    "end date": "P4",
+    "location": "P5",
+    "GND ID": "P6",
+    "DNB IDN": "P7",
+    "exhibition catalogue": "P8",
+    "image": "P13"
+  },
+  "items": {
+    "Exhibition": "Q3",
+    "Exhibition Catalogue": "Q4",
+    "Sprengel Museum Hannover": "Q5"
+  }
+}</code></pre>
+</div>
+</div>
+<hr>
+<p><strong>Next step:</strong> Run <code>05_wikibase_upload.ipynb</code> to create one Wikibase item per exhibition from the CSV.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Generated with GitHub Copilot (Claude Sonnet 4.6)</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

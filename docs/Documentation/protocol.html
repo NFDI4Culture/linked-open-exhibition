@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="BIM-126-02 Data Science: Simon Worthington; Prof.&nbsp;Ina Blümel">
-<meta name="dcterms.date" content="2026-04-22">
 
-<title>Linked Open Exhibition</title>
+<title>protocol – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Linked Open Exhibition</span>
     </a>
   </div>
@@ -91,23 +89,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./exhibitions.html"> 
+    <a class="nav-link" href="../exhibitions.html"> 
 <span class="menu-text">Exhibitions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data-analysis.html"> 
+    <a class="nav-link" href="../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./PLAN.html"> 
+    <a class="nav-link" href="../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
 </ul>
@@ -126,61 +124,119 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#about-this-project" id="toc-about-this-project" class="nav-link active" data-scroll-target="#about-this-project">About this project</a></li>
-  <li><a href="#the-pipeline" id="toc-the-pipeline" class="nav-link" data-scroll-target="#the-pipeline">The pipeline</a></li>
-  <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">Explore</a></li>
-  <li><a href="#course-resources" id="toc-course-resources" class="nav-link" data-scroll-target="#course-resources">Course &amp; resources</a></li>
-  <li><a href="#wikidata-exhibition-timeline" id="toc-wikidata-exhibition-timeline" class="nav-link" data-scroll-target="#wikidata-exhibition-timeline">Wikidata exhibition timeline</a></li>
-  <li><a href="#sitzung-2-die-übungen" id="toc-sitzung-2-die-übungen" class="nav-link" data-scroll-target="#sitzung-2-die-übungen">Sitzung 2: Die Übungen</a></li>
-  <li><a href="#sitzungsplan" id="toc-sitzungsplan" class="nav-link" data-scroll-target="#sitzungsplan">Sitzungsplan</a></li>
-  <li><a href="#hausaufgaben" id="toc-hausaufgaben" class="nav-link" data-scroll-target="#hausaufgaben">Hausaufgaben</a></li>
-  <li><a href="#danke" id="toc-danke" class="nav-link" data-scroll-target="#danke">Danke</a></li>
+  <li><a href="#project-protocol-work-log" id="toc-project-protocol-work-log" class="nav-link active" data-scroll-target="#project-protocol-work-log">Project Protocol &amp; Work Log</a>
+  <ul class="collapse">
+  <li><a href="#purpose-of-this-document" id="toc-purpose-of-this-document" class="nav-link" data-scroll-target="#purpose-of-this-document">Purpose of this document</a></li>
+  <li><a href="#work-log" id="toc-work-log" class="nav-link" data-scroll-target="#work-log">Work Log</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2026-04-22</a></li>
+  </ul></li>
+  <li><a href="#decisions-log" id="toc-decisions-log" class="nav-link" data-scroll-target="#decisions-log">Decisions log</a></li>
+  <li><a href="#known-issues-next-steps" id="toc-known-issues-next-steps" class="nav-link" data-scroll-target="#known-issues-next-steps">Known issues &amp; next steps</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Linked Open Exhibition</h1>
-<p class="subtitle lead">Sprengel Museum Hannover — Prototype</p>
-</div>
+<main class="content" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>BIM-126-02 Data Science: Simon Worthington; Prof.&nbsp;Ina Blümel </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2026</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="about-this-project" class="level2">
-<h2 class="anchored" data-anchor-id="about-this-project">About this project</h2>
-<p>This site presents a prototype pipeline for publishing art exhibition data as <strong>Linked Open Data (LOD)</strong>. It was created with students of the Bachelor of Arts Information Management at Hochschule Hannover in the course <em>BIM-126-02 Data Science (SoSe 2026)</em>.</p>
-<p><strong>Goal:</strong> Retrieve exhibition catalogue records from the Deutsche Nationalbibliothek (DNB), structure them using an open data model, upload them to a Wikibase knowledge base, and publish the results as a Quarto website — all reproducibly and with full documentation.</p>
+<section id="project-protocol-work-log" class="level1">
+<h1>Project Protocol &amp; Work Log</h1>
+<p><strong>Project:</strong> Linked Open Exhibition<br>
+<strong>Repository:</strong> <a href="https://github.com/NFDI4Culture/linked-open-exhibition">NFDI4Culture/linked-open-exhibition</a><br>
+<strong>Course:</strong> BIM-126-02 Data Science, SoSe 2026 — Hochschule Hannover<br>
+<strong>Leads:</strong> Simon Worthington (TIB); Prof.&nbsp;Ina Blümel (Hochschule Hannover)<br>
+<strong>AI tooling:</strong> GitHub Copilot (Claude Sonnet 4.6)</p>
+<hr>
+<section id="purpose-of-this-document" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-of-this-document">Purpose of this document</h2>
+<p>This file records all significant work carried out on the repository — decisions made, files created or modified, and issues encountered. It is updated as work progresses and is intended to give any contributor a clear overview of the project’s history.</p>
+<hr>
 </section>
-<section id="the-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="the-pipeline">The pipeline</h2>
-<pre><code>DNB SRU API → MARC21-XML → CSV → Wikibase → SPARQL → Quarto website</code></pre>
+<section id="work-log" class="level2">
+<h2 class="anchored" data-anchor-id="work-log">Work Log</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">2026-04-22</h3>
+<section id="documentation-glossary" class="level4">
+<h4 class="anchored" data-anchor-id="documentation-glossary">Documentation — Glossary</h4>
+<ul>
+<li><p><strong>Created</strong> <code>Documentation/glossary.md</code> — a full glossary of terms and acronyms used across the project, covering:</p>
+<ul>
+<li>Protocols &amp; standards: SRU, CQL, MARC21, RDF, SPARQL, JSON-LD, OWL, XML, IRI/URI</li>
+<li>Data models &amp; ontologies: CIDOC-CRM, Linked Art, WB4R, LIDO, FOAF, GND</li>
+<li>Platforms &amp; tools: DNB, DNB Library Lab, Wikidata, Wikibase, MediaWiki, Wikimedia Commons, Wikiversity, GitHub Pages, Quarto, JupyterLite</li>
+<li>APIs &amp; libraries: DNB SRU API, Lobid-GND, SPARQLWrapper, wikibaseintegrator, mwclient, python-dotenv</li>
+<li>Project-specific terms: GLAM, NFDI4Culture, BIM-126-02, WB4R, Sprengel Museum, IDN, QID, CC0, CC BY-SA 4.0</li>
+</ul></li>
+<li><p><strong>Updated</strong> <code>Documentation/glossary.md</code> — expanded SRU entry with full DNB-specific details (endpoint URL, SRU 1.1, pagination behaviour, CC0 access terms).</p></li>
+<li><p><strong>Updated</strong> <code>Documentation/glossary.md</code> — expanded QID entry to explain why the <code>Q</code> prefix was used (arbitrary choice by Wikidata developers to distinguish items from properties <code>P</code> and lexemes <code>L</code>; no semantic meaning; stable and language-neutral).</p></li>
+</ul>
+<hr>
+</section>
+<section id="wikibase-bot-test-notebook" class="level4">
+<h4 class="anchored" data-anchor-id="wikibase-bot-test-notebook">Wikibase Bot Test Notebook</h4>
+<ul>
+<li><strong>Created</strong> <code>catalogues/dnb-jupyter/00_wikibase_bot_test.ipynb</code> — a standalone notebook for testing a Wikibase bot account against the project instance at <code>https://wikibase.wbworkshop.tibwiki.io/</code>. Includes:
+<ul>
+<li>Prerequisites: how to create a bot password at <code>Special:BotPasswords</code></li>
+<li>Cell 1: install <code>wikibaseintegrator</code> and <code>python-dotenv</code></li>
+<li>Cell 2: load credentials from <code>.env</code></li>
+<li>Cell 3: configure <code>wikibaseintegrator</code> endpoints and log in</li>
+<li>Cell 4: read test — fetch item <code>Q1</code></li>
+<li>Cell 5: write test — create a labelled temporary item</li>
+<li>Cell 6: clean-up — delete the test item via the MediaWiki Action API</li>
+<li>Troubleshooting table (common errors, causes, fixes)</li>
+</ul></li>
+<li><strong>Added</strong> Part 2 cell to <code>00_wikibase_bot_test.ipynb</code> — brief explanations of <code>.env</code> files and <code>.gitignore</code>, with links to GeeksforGeeks guides.</li>
+</ul>
+<hr>
+</section>
+<section id="credentials-version-control" class="level4">
+<h4 class="anchored" data-anchor-id="credentials-version-control">Credentials &amp; Version Control</h4>
+<ul>
+<li><p><strong>Created</strong> <code>.env.example</code> (repository root) — template for bot/MediaWiki credentials with all required keys (<code>WB_URL</code>, <code>WB_USER</code>, <code>WB_PASSWORD</code>, <code>MW_URL</code>, <code>MW_USER</code>, <code>MW_PASSWORD</code>) and inline comments explaining format.</p></li>
+<li><p><strong>Updated</strong> <code>.gitignore</code> — added <code>.env</code> to prevent credentials from being committed.</p></li>
+</ul>
+<hr>
+</section>
+<section id="plan.md-execution-full-pipeline" class="level4">
+<h4 class="anchored" data-anchor-id="plan.md-execution-full-pipeline">PLAN.md Execution — Full Pipeline</h4>
+<p>Executed all phases of <code>PLAN.md</code> (DNB → Wikibase → Quarto Website pipeline):</p>
+<p><strong>Phase 1 — Project Setup</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>requirements.txt</code></td>
+<td>Created with 8 Python dependencies: <code>requests</code>, <code>pandas</code>, <code>lxml</code>, <code>beautifulsoup4</code>, <code>wikibaseintegrator</code>, <code>mwclient</code>, <code>python-dotenv</code>, <code>SPARQLWrapper</code></td>
+</tr>
+<tr class="even">
+<td><code>_quarto.yml</code></td>
+<td>Converted output format from <code>revealjs</code> to <code>html</code>; added <code>website:</code> block with navbar (Home / Exhibitions / Data Analysis / About) and page footer</td>
+</tr>
+<tr class="odd">
+<td><code>index.qmd</code></td>
+<td>Replaced RevealJS slide content with a Quarto website homepage: project description, pipeline overview table, navigation links, live Wikidata SPARQL timeline iframe</td>
+</tr>
+<tr class="even">
+<td><code>.gitignore</code></td>
+<td>Extended with: <code>catalogues/images/</code>, <code>catalogues/sprengel_raw/</code>, generated CSVs, <code>wikibase_property_map.json</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase 2 — DNB Data Retrieval Notebooks</strong></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -189,98 +245,183 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Step</th>
 <th>Notebook</th>
+<th>Purpose</th>
 <th>Output</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1. Retrieve DNB records</td>
-<td><code>01_dnb_search.ipynb</code></td>
-<td><code>sprengel_raw.xml</code></td>
+<td><code>catalogues/dnb-jupyter/01_dnb_search.ipynb</code></td>
+<td>SRU query to DNB API; paginated retrieval; saves raw MARC21-XML</td>
+<td><code>catalogues/sprengel_raw/page_NNN.xml</code></td>
 </tr>
 <tr class="even">
-<td>2. Filter &amp; extract fields</td>
-<td><code>02_dnb_filter_exhibitions.ipynb</code></td>
-<td><code>sprengel_exhibitions.csv</code></td>
+<td><code>catalogues/dnb-jupyter/02_dnb_filter_exhibitions.ipynb</code></td>
+<td>Parse MARC21-XML; filter by <code>Ausstellungskatalog</code>; extract IDN, title, year, ISBN, URL, subjects; clean year field</td>
+<td><code>catalogues/sprengel_exhibitions.csv</code></td>
 </tr>
 <tr class="odd">
-<td>3. Fetch cover images</td>
-<td><code>03_dnb_cover_images.ipynb</code></td>
-<td><code>images/*.jpg</code></td>
-</tr>
-<tr class="even">
-<td>4. Upload data model</td>
-<td><code>04_wikibase_data_model.ipynb</code></td>
-<td>Wikibase properties</td>
-</tr>
-<tr class="odd">
-<td>5. Upload exhibitions</td>
-<td><code>05_wikibase_upload.ipynb</code></td>
-<td>Wikibase items</td>
-</tr>
-<tr class="even">
-<td>6. Upload images</td>
-<td><code>06_mediawiki_upload.ipynb</code></td>
-<td>MediaWiki files</td>
+<td><code>catalogues/dnb-jupyter/03_dnb_cover_images.ipynb</code></td>
+<td>Download cover images via DNB enrichment API; includes rights disclaimer</td>
+<td><code>catalogues/images/{IDN}.jpg</code> (gitignored)</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Phase 3 — Wikibase Data Model</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Notebook</th>
+<th>Purpose</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>catalogues/dnb-jupyter/04_wikibase_data_model.ipynb</code></td>
+<td>Define and upload minimal exhibition data model (properties + item classes) to Wikibase; idempotent (checks for existing entities before creating)</td>
+<td><code>catalogues/wikibase_property_map.json</code></td>
+</tr>
+</tbody>
+</table>
+<p>Data model created: - <strong>Properties:</strong> instance of, title, start date, end date, location, GND ID, DNB IDN, exhibition catalogue - <strong>Item classes:</strong> Exhibition, Exhibition Catalogue, Sprengel Museum Hannover</p>
+<p><strong>Phase 4 — Wikibase &amp; MediaWiki Upload</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Notebook</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>catalogues/dnb-jupyter/05_wikibase_upload.ipynb</code></td>
+<td>Create one Wikibase item per CSV row; idempotent via SPARQL DNB IDN lookup; adds statements for type, location, dates, DNB IDN</td>
+</tr>
+<tr class="even">
+<td><code>catalogues/dnb-jupyter/06_mediawiki_upload.ipynb</code></td>
+<td>Upload cover images to MediaWiki via <code>mwclient</code>; adds file description pages; links images back to Wikibase items</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase 5 — Quarto Website Pages</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>exhibitions.qmd</code></td>
+<td>Live SPARQL query against Wikibase; renders results as linked HTML table</td>
+</tr>
+<tr class="even">
+<td><code>data-analysis.qmd</code></td>
+<td>Pipeline walkthrough; year distribution chart; notebook index table</td>
+</tr>
+<tr class="odd">
+<td><code>about.qmd</code></td>
+<td>Licences (CC0 for DNB data, CC BY-SA 4.0 for project content); AI attribution; full credits; technical stack</td>
+</tr>
+</tbody>
+</table>
+<hr>
 </section>
-<section id="explore" class="level2">
-<h2 class="anchored" data-anchor-id="explore">Explore</h2>
+<section id="documentation-protocol" class="level4">
+<h4 class="anchored" data-anchor-id="documentation-protocol">Documentation — Protocol</h4>
 <ul>
-<li><a href="./exhibitions.html">Exhibitions →</a> — browse the Sprengel Museum exhibition timeline, powered by live SPARQL queries</li>
-<li><a href="./data-analysis.html">Data Analysis →</a> — explore the full pipeline and dataset</li>
-<li><a href="./about.html">About →</a> — licences, credits, and AI attribution</li>
+<li><strong>Created</strong> <code>Documentation/protocol.md</code> (this file) — project protocol and running work log.</li>
 </ul>
+<hr>
 </section>
-<section id="course-resources" class="level2">
-<h2 class="anchored" data-anchor-id="course-resources">Course &amp; resources</h2>
-<ul>
-<li><strong>Wikiversity course page:</strong> <a href="https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition">BIM-126-02-Data-Science-Linked-Open-Exhibition</a></li>
-<li><strong>Wikibase instance:</strong> <a href="https://wikibase.wbworkshop.tibwiki.io/">wikibase.wbworkshop.tibwiki.io</a></li>
-<li><strong>Source repository:</strong> <a href="https://github.com/NFDI4Culture/linked-open-exhibition">NFDI4Culture/linked-open-exhibition</a></li>
-<li><strong>Sprengel Museum Hannover:</strong> <a href="https://www.sprengel-museum.de/">sprengel-museum.de</a></li>
+</section>
+</section>
+<section id="decisions-log" class="level2">
+<h2 class="anchored" data-anchor-id="decisions-log">Decisions log</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Topic</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2026-04-22</td>
+<td>Quarto format</td>
+<td>Converted from RevealJS slides to full website (<code>html</code> format)</td>
+</tr>
+<tr class="even">
+<td>2026-04-22</td>
+<td>Credentials</td>
+<td><code>.env</code> via <code>python-dotenv</code>; <code>.env.example</code> committed; <code>.env</code> gitignored</td>
+</tr>
+<tr class="odd">
+<td>2026-04-22</td>
+<td>Cover images</td>
+<td>Fetched at runtime, not committed; gitignored <code>catalogues/images/</code></td>
+</tr>
+<tr class="even">
+<td>2026-04-22</td>
+<td>DNB data licence</td>
+<td>CC0 1.0 Universal — documented in <code>about.qmd</code></td>
+</tr>
+<tr class="odd">
+<td>2026-04-22</td>
+<td>AI attribution</td>
+<td>GitHub Copilot (Claude Sonnet 4.6) credited in all documentation and notebooks</td>
+</tr>
+<tr class="even">
+<td>2026-04-22</td>
+<td>Idempotency</td>
+<td>Notebooks 04 and 05 check for existing entities before creating, preventing duplicates</td>
+</tr>
+<tr class="odd">
+<td>2026-04-22</td>
+<td>Wikibase instance</td>
+<td>Temporary: <code>https://wikibase.wbworkshop.tibwiki.io/</code> — permanent URL TBD</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="known-issues-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="known-issues-next-steps">Known issues &amp; next steps</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Run notebooks 01–06 end-to-end in the <code>.venv</code> environment to verify the pipeline executes without errors</label></li>
+<li><label><input type="checkbox">Verify Wikibase property IDs after running Notebook 04 and confirm <code>wikibase_property_map.json</code> is correct</label></li>
+<li><label><input type="checkbox">Add an <code>image</code> property to the data model in Notebook 04 so Notebook 06 can link images</label></li>
+<li><label><input type="checkbox">Test <code>quarto render</code> locally and confirm GitHub Pages deployment from <code>docs/</code></label></li>
+<li><label><input type="checkbox">Replace temporary Wikibase instance URL with a permanent one when available — update <code>WB_URL</code> in <code>.env</code></label></li>
+<li><label><input type="checkbox">Add course session notes from Sessions 4–8 as they are completed</label></li>
 </ul>
-</section>
-<section id="wikidata-exhibition-timeline" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="wikidata-exhibition-timeline">Wikidata exhibition timeline</h2>
-<p>Live query against Wikidata for Sprengel Museum exhibitions entered by students in Sessions 1–3:</p>
-<iframe style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 4px;" src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups">
-</iframe>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-
-</div></div></section>
-<section id="sitzung-2-die-übungen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="sitzung-2-die-übungen">Sitzung 2: Die Übungen</h2>
-<ul>
-<li>Ausstellungsaktualisierung</li>
-<li>Künstler</li>
-<li>Ausstellungskatalog</li>
-<li>AI LLM SPARQL-Experimente</li>
-</ul>
-</section>
-<section id="sitzungsplan" class="level2">
-<h2 class="anchored" data-anchor-id="sitzungsplan">Sitzungsplan</h2>
-<p>11:00-11:15 Einführung und Datenmodellierung <br> 11:15-11:45 Ausstellungsaktualisierung <br> 11:45-12:15 Künstler <br> 12:15-12:25 Pause <br> 12:25-13:05 Ausstellungskatalog <br> 13:05-13:50 AI LLM SPARQL-Experimente <br> 13:50-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung</p>
-</section>
-<section id="hausaufgaben" class="level2">
-<h2 class="anchored" data-anchor-id="hausaufgaben">Hausaufgaben</h2>
-<ul>
-<li>Erstellen Sie ein Datenmodell für ein Kunstwerk in einer Ausstellung.</li>
-<li>Was sind die Mindestangaben, die erforderlich sind, um ein Kunstwerk in einer Ausstellung zu präsentieren?</li>
-<li><a href="https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition#Hausaufgaben%C3%BCbungen">Link</a></li>
-</ul>
-</section>
-<section id="danke" class="level2">
-<h2 class="anchored" data-anchor-id="danke">Danke</h2>
-<p>Siehe <a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Data für Kunstausstellungen</a></p>
-<p>Simon Worthington - <a href="mailto:simon.worthington@tib.eu">simon.worthington@tib.eu</a></p>
+<hr>
+<p><em>This protocol is maintained by the project team. Update this file after each significant work session.</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

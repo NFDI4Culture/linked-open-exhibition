@@ -15,6 +15,9 @@ website:
         text: Data Analysis
       - href: about.qmd
         text: About
+      - href: PLAN.qmd
+        text: Plan
+
   page-footer:
     left: "CC BY-SA 4.0 — Authors"
     right: "Generated with GitHub Copilot (Claude Sonnet 4.6)"

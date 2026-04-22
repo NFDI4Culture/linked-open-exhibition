@@ -1,0 +1,91 @@
+---
+title: "Exhibitions"
+subtitle: "Sprengel Museum Hannover — Exhibition Catalogue Records"
+execute:
+  echo: true
+jupyter: python3
+---
+
+This page queries the project Wikibase instance live to display all uploaded Sprengel Museum exhibition catalogue records.
+
+> **Note:** The Wikibase SPARQL endpoint must be reachable when this page is rendered. If the endpoint returns no results, the pipeline notebooks (01–05) may not have been run yet.
+
+```{python}
+#| label: load-config
+#| echo: false
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv(Path(".env"))
+WB_URL = os.getenv("WB_URL", "https://wikibase.wbworkshop.tibwiki.io")
+SPARQL_ENDPOINT = f"{WB_URL}/query/sparql"
+print(f"Querying: {SPARQL_ENDPOINT}")
+```
+
+```{python}
+#| label: sparql-query
+import requests
+import pandas as pd
+
+SPARQL = """
+SELECT ?item ?itemLabel ?idn ?year ?url WHERE {
+  ?item wdt:P1 wd:Q1 .
+  OPTIONAL { ?item wdt:P7 ?idn . }
+  OPTIONAL { ?item wdt:P10 ?year . }
+  OPTIONAL { ?item wdt:P856 ?url . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,de". }
+}
+ORDER BY DESC(?year)
+"""
+
+try:
+    resp = requests.get(
+        SPARQL_ENDPOINT,
+        params={"query": SPARQL, "format": "json"},
+        headers={"Accept": "application/sparql-results+json"},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    bindings = resp.json()["results"]["bindings"]
+
+    rows = []
+    for b in bindings:
+        qid   = b["item"]["value"].split("/")[-1]
+        label = b.get("itemLabel", {}).get("value", "—")
+        idn   = b.get("idn", {}).get("value", "")
+        year  = b.get("year", {}).get("value", "")[:4] if b.get("year") else ""
+        url   = b.get("url", {}).get("value", "")
+        rows.append({"QID": qid, "Title": label, "Year": year, "DNB IDN": idn, "DNB Link": url})
+
+    df = pd.DataFrame(rows)
+    print(f"Records returned: {len(df)}")
+
+except Exception as e:
+    print(f"SPARQL query failed: {e}")
+    df = pd.DataFrame(columns=["QID", "Title", "Year", "DNB IDN", "DNB Link"])
+```
+
+```{python}
+#| label: display-table
+from IPython.display import display, HTML
+
+if df.empty:
+    print("No records found. Run the pipeline notebooks (01–05) first.")
+else:
+    def make_link(row):
+        wb  = f'<a href="{WB_URL}/wiki/{row["QID"]}" target="_blank">{row["QID"]}</a>'
+        dnb = f'<a href="{row["DNB Link"]}" target="_blank">DNB</a>' if row["DNB Link"] else ""
+        return pd.Series({"Wikibase": wb, "Title": row["Title"], "Year": row["Year"],
+                          "DNB IDN": row["DNB IDN"], "DNB": dnb})
+
+    display_df = df.apply(make_link, axis=1)
+    display(HTML(display_df.to_html(escape=False, index=False)))
+```
+
+## SPARQL query used
+
+The query above retrieves all items from the Wikibase instance that are classified as `Exhibition Catalogue` (`instance of` = Q1 in the default data model — adjust Q/P IDs after running Notebook 04). Results are sorted by year descending.
+
+You can run this query directly at the Wikibase SPARQL interface:
+[Open in Wikibase Query Service](`{python} f"{WB_URL}/query"`)

@@ -22,4 +22,6 @@ https://wiki.dnb.de/spaces/LINKEDDATASERVICE/pages/449878933/DNB+SPARQL+Service+
 
  - Create and test Bot account associated to user account on https://wikibase.wbworkshop.tibwiki.io/
  - Used copilot to create Jupyter Notebook for testing Bot account catalogues\dnb-jupyter\00_wikibase_bot_test.ipynb
- - Confirmed Bot works
+ - Confirmed Bot works - JA!
+ - Execute PLAN-MD copilot Claude Sonnet 4.6 - Generates Notebooks, reconfig Quarto
+ - 

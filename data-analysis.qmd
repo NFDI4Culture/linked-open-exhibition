@@ -1,0 +1,108 @@
+---
+title: "Data Analysis"
+subtitle: "DNB Pipeline — From Raw Records to Wikibase"
+execute:
+  echo: true
+  eval: false
+jupyter: python3
+---
+
+This page documents and explains the full pipeline from DNB retrieval to Wikibase publication.  
+Set `eval: true` in the YAML header (and ensure the `.env` file and pipeline outputs are present) to run the code live during `quarto render`.
+
+## Pipeline overview
+
+```
+DNB SRU API
+    │  (MARC21-XML)
+    ▼
+01_dnb_search.ipynb         → sprengel_raw/page_*.xml
+    │
+    ▼
+02_dnb_filter_exhibitions.ipynb  → sprengel_exhibitions.csv
+    │
+    ├──▶ 03_dnb_cover_images.ipynb  → images/*.jpg
+    │
+    ▼
+04_wikibase_data_model.ipynb → wikibase_property_map.json
+    │
+    ▼
+05_wikibase_upload.ipynb    → Wikibase items
+    │
+    ▼
+06_mediawiki_upload.ipynb   → MediaWiki files
+```
+
+## Step 1 — Load the CSV
+
+After running Notebooks 01 and 02, the exhibition records are available as a CSV file.
+
+```{python}
+import pandas as pd
+from pathlib import Path
+
+csv_path = Path("catalogues/sprengel_exhibitions.csv")
+df = pd.read_csv(csv_path)
+print(f"Records: {len(df)}")
+df.head(10)
+```
+
+## Step 2 — Year distribution
+
+```{python}
+import matplotlib.pyplot as plt
+
+year_counts = df["year"].value_counts().sort_index()
+year_counts.plot(kind="bar", figsize=(14, 4), title="Exhibition catalogues per year")
+plt.xlabel("Year")
+plt.ylabel("Number of catalogues")
+plt.tight_layout()
+plt.show()
+```
+
+## Step 3 — Records with ISBN (cover image candidates)
+
+```{python}
+has_isbn = df["isbn"].notna() & (df["isbn"] != "")
+print(f"Records with ISBN: {has_isbn.sum()} / {len(df)}")
+```
+
+## Step 4 — SPARQL summary from Wikibase
+
+After running Notebooks 04 and 05, the data is in Wikibase. Query to count uploaded items:
+
+```{python}
+import os, requests
+from dotenv import load_dotenv
+
+load_dotenv(Path(".env"))
+WB_URL = os.getenv("WB_URL", "https://wikibase.wbworkshop.tibwiki.io")
+
+SPARQL = """
+SELECT (COUNT(?item) AS ?count) WHERE {
+  ?item wdt:P1 [] .
+}
+"""
+
+resp = requests.get(
+    f"{WB_URL}/query/sparql",
+    params={"query": SPARQL, "format": "json"},
+    timeout=20,
+)
+count = resp.json()["results"]["bindings"][0]["count"]["value"]
+print(f"Items in Wikibase: {count}")
+```
+
+## Notebooks
+
+The full documented notebooks are in `catalogues/dnb-jupyter/`:
+
+| Notebook | Purpose |
+|---|---|
+| [00_wikibase_bot_test.ipynb](catalogues/dnb-jupyter/00_wikibase_bot_test.ipynb) | Test bot account credentials |
+| [01_dnb_search.ipynb](catalogues/dnb-jupyter/01_dnb_search.ipynb) | Retrieve DNB records via SRU |
+| [02_dnb_filter_exhibitions.ipynb](catalogues/dnb-jupyter/02_dnb_filter_exhibitions.ipynb) | Parse MARC21-XML, filter, export CSV |
+| [03_dnb_cover_images.ipynb](catalogues/dnb-jupyter/03_dnb_cover_images.ipynb) | Retrieve cover images |
+| [04_wikibase_data_model.ipynb](catalogues/dnb-jupyter/04_wikibase_data_model.ipynb) | Upload data model to Wikibase |
+| [05_wikibase_upload.ipynb](catalogues/dnb-jupyter/05_wikibase_upload.ipynb) | Upload exhibition records |
+| [06_mediawiki_upload.ipynb](catalogues/dnb-jupyter/06_mediawiki_upload.ipynb) | Upload cover images to MediaWiki |

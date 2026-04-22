@@ -3,12 +3,24 @@ project:
   title: "Verknüpfte Offene Ausstellung"
   output-dir: docs
 
+website:
+  title: "Linked Open Exhibition"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: exhibitions.qmd
+        text: Exhibitions
+      - href: data-analysis.qmd
+        text: Data Analysis
+      - href: about.qmd
+        text: About
+  page-footer:
+    left: "CC BY-SA 4.0 — Authors"
+    right: "Generated with GitHub Copilot (Claude Sonnet 4.6)"
+
 format:
-  revealjs:
-    theme: default
-    slide-number: true
-    transition: slide
-    background-transition: fade
-    incremental: false
-    footer: "CC BY-SA 4.0"    
+  html:
+    theme: cosmo
     css: styles.css
+    toc: true

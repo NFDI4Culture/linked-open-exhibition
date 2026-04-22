@@ -77,6 +77,7 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(".env"))
 WB_URL = os.getenv("WB_URL", "https://wikibase.wbworkshop.tibwiki.io")
+SPARQL_URL = os.getenv("SPARQL_URL", "https://query.wbworkshop.tibwiki.io/sparql")
 
 SPARQL = """
 SELECT (COUNT(?item) AS ?count) WHERE {
@@ -85,7 +86,7 @@ SELECT (COUNT(?item) AS ?count) WHERE {
 """
 
 resp = requests.get(
-    f"{WB_URL}/query/sparql",
+    SPARQL_URL,
     params={"query": SPARQL, "format": "json"},
     timeout=20,
 )

@@ -19,7 +19,7 @@ from pathlib import Path
 
 load_dotenv(Path(".env"))
 WB_URL = os.getenv("WB_URL", "https://wikibase.wbworkshop.tibwiki.io")
-SPARQL_ENDPOINT = f"{WB_URL}/query/sparql"
+SPARQL_ENDPOINT = os.getenv("SPARQL_URL", "https://query.wbworkshop.tibwiki.io/sparql")
 print(f"Querying: {SPARQL_ENDPOINT}")
 ```
 

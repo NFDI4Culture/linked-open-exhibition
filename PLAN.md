@@ -284,10 +284,10 @@ Project homepage: introduction to the Sprengel Museum Hannover, the goal of the 
 ### `exhibitions.qmd`
 
 Chronological exhibition timeline page, implemented as a **Jupyter Notebook** executed by Quarto at render time.
-- Executes a SPARQL query against the online Wikibase SPARQL endpoint (`https://wikibase.wbworkshop.tibwiki.io/query/sparql`) to retrieve all Exhibition items
+- Executes a SPARQL query against the online Wikibase SPARQL endpoint (`https://query.wbworkshop.tibwiki.io/sparql`) to retrieve all Exhibition items
 - Renders a sortable table of exhibitions with: title, date range, link to DNB record, cover thumbnail
 - SPARQL query and results displayed inline so students can follow the data flow
-- **Note on endpoint:** The current temporary instance is at `https://wikibase.wbworkshop.tibwiki.io`. This will be replaced with a permanent URL at a later date — update `WB_URL` in `.env` when migrating.
+- **Note on endpoint:** The current temporary instance is at `https://wikibase.wbworkshop.tibwiki.io` (SPARQL: `https://query.wbworkshop.tibwiki.io/sparql`). These will be replaced with a permanent URL at a later date — update `WB_URL` and `SPARQL_URL` in `.env` when migrating.
 - *Approach matches the prototype pattern from Session 4 of BIM-126-02: SPARQL query → Jupyter Notebook → Quarto HTML render (see: https://github.com/mrchristian/prototype)*
 
 ### `data-analysis.qmd`

@@ -107,6 +107,7 @@ The full documented notebooks are in `catalogues/dnb-jupyter/`:
 | Notebook | Purpose |
 |---|---|
 | [00_wikibase_bot_test.ipynb](catalogues/dnb-jupyter/00_wikibase_bot_test.ipynb) | Test bot account credentials |
+| [00_sparql_health_check.ipynb](catalogues/dnb-jupyter/00_sparql_health_check.ipynb) | Test SPARQL health check |
 | [01_dnb_search.ipynb](catalogues/dnb-jupyter/01_dnb_search.ipynb) | Retrieve DNB records via SRU |
 | [02_dnb_filter_exhibitions.ipynb](catalogues/dnb-jupyter/02_dnb_filter_exhibitions.ipynb) | Parse MARC21-XML, filter, export CSV |
 | [03_dnb_cover_images.ipynb](catalogues/dnb-jupyter/03_dnb_cover_images.ipynb) | Retrieve cover images |

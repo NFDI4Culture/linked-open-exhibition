@@ -15,8 +15,13 @@ website:
         text: Data Analysis
       - href: about.qmd
         text: About
+      - href: Documentation/glossary.qmd
+        text: Glossary
       - href: PLAN.qmd
         text: Plan
+      - href: Documentation/protocol.qmd
+        text: Protocol
+
 
   page-footer:
     left: "CC BY-SA 4.0 — Authors"

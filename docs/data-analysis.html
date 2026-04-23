@@ -139,8 +139,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./PLAN.html"> 
 <span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -216,7 +224,7 @@ Set <code>eval: true</code> in the YAML header (and ensure the <code>.env</code>
 <section id="step-1-load-the-csv" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-load-the-csv">Step 1 — Load the CSV</h2>
 <p>After running Notebooks 01 and 02, the exhibition records are available as a CSV file.</p>
-<div id="227a5d15" class="cell" data-execution_count="1">
+<div id="2748cf94" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -228,7 +236,7 @@ Set <code>eval: true</code> in the YAML header (and ensure the <code>.env</code>
 </section>
 <section id="step-2-year-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-year-distribution">Step 2 — Year distribution</h2>
-<div id="7d2ea5a3" class="cell" data-execution_count="2">
+<div id="20b24604" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>year_counts <span class="op">=</span> df[<span class="st">"year"</span>].value_counts().sort_index()</span>
@@ -241,7 +249,7 @@ Set <code>eval: true</code> in the YAML header (and ensure the <code>.env</code>
 </section>
 <section id="step-3-records-with-isbn-cover-image-candidates" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-records-with-isbn-cover-image-candidates">Step 3 — Records with ISBN (cover image candidates)</h2>
-<div id="e0cacaec" class="cell" data-execution_count="3">
+<div id="5fcd7f64" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>has_isbn <span class="op">=</span> df[<span class="st">"isbn"</span>].notna() <span class="op">&amp;</span> (df[<span class="st">"isbn"</span>] <span class="op">!=</span> <span class="st">""</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Records with ISBN: </span><span class="sc">{</span>has_isbn<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> / </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -249,7 +257,7 @@ Set <code>eval: true</code> in the YAML header (and ensure the <code>.env</code>
 <section id="step-4-sparql-summary-from-wikibase" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-sparql-summary-from-wikibase">Step 4 — SPARQL summary from Wikibase</h2>
 <p>After running Notebooks 04 and 05, the data is in Wikibase. Query to count uploaded items:</p>
-<div id="4f2762ea" class="cell" data-execution_count="4">
+<div id="3ca6d875" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, requests</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -294,26 +302,30 @@ Set <code>eval: true</code> in the YAML header (and ensure the <code>.env</code>
 <td>Test bot account credentials</td>
 </tr>
 <tr class="even">
+<td><a href="./catalogues/dnb-jupyter/00_sparql_health_check.html">00_sparql_health_check.ipynb</a></td>
+<td>Test SPARQL health check</td>
+</tr>
+<tr class="odd">
 <td><a href="./catalogues/dnb-jupyter/01_dnb_search.html">01_dnb_search.ipynb</a></td>
 <td>Retrieve DNB records via SRU</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="./catalogues/dnb-jupyter/02_dnb_filter_exhibitions.html">02_dnb_filter_exhibitions.ipynb</a></td>
 <td>Parse MARC21-XML, filter, export CSV</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="./catalogues/dnb-jupyter/03_dnb_cover_images.html">03_dnb_cover_images.ipynb</a></td>
 <td>Retrieve cover images</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="./catalogues/dnb-jupyter/04_wikibase_data_model.html">04_wikibase_data_model.ipynb</a></td>
 <td>Upload data model to Wikibase</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="./catalogues/dnb-jupyter/05_wikibase_upload.html">05_wikibase_upload.ipynb</a></td>
 <td>Upload exhibition records</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="./catalogues/dnb-jupyter/06_mediawiki_upload.html">06_mediawiki_upload.ipynb</a></td>
 <td>Upload cover images to MediaWiki</td>
 </tr>

@@ -78,7 +78,7 @@ if df.empty:
     print("No records found. Run the pipeline notebooks (01–05) first.")
 else:
     def make_link(row):
-        wb = f'<a href="{WB_URL}/wiki/{row["QID"]}" target="_blank">{row["QID"]}</a>'
+        wb = f'<a href="{WB_URL}/wiki/Item:{row["QID"]}" target="_blank">{row["QID"]}</a>'
         return pd.Series({"Wikibase": wb, "Title": row["Title"], "Year": row["Year"],
                           "DNB IDN": row["DNB IDN"]})
 

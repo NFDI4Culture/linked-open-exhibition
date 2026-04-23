@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>linked-art-ontology – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#linked-art-ontology-things-classes-reference" id="toc-linked-art-ontology-things-classes-reference" class="nav-link active" data-scroll-target="#linked-art-ontology-things-classes-reference">Linked Art Ontology — Things (Classes) Reference</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#core-entity-classes" id="toc-core-entity-classes" class="nav-link" data-scroll-target="#core-entity-classes">1. Core Entity Classes</a></li>
+  <li><a href="#event-activity-classes" id="toc-event-activity-classes" class="nav-link" data-scroll-target="#event-activity-classes">2. Event / Activity Classes</a></li>
+  <li><a href="#supporting-embedded-classes" id="toc-supporting-embedded-classes" class="nav-link" data-scroll-target="#supporting-embedded-classes">3. Supporting / Embedded Classes</a></li>
+  <li><a href="#core-properties-json-ld" id="toc-core-properties-json-ld" class="nav-link" data-scroll-target="#core-properties-json-ld">4. Core Properties (JSON-LD)</a></li>
+  <li><a href="#model-sections-summary" id="toc-model-sections-summary" class="nav-link" data-scroll-target="#model-sections-summary">5. Model Sections Summary</a></li>
+  <li><a href="#api-endpoints" id="toc-api-endpoints" class="nav-link" data-scroll-target="#api-endpoints">6. API Endpoints</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="linked-art-ontology-things-classes-reference" class="level1">
+<h1>Linked Art Ontology — Things (Classes) Reference</h1>
+<blockquote class="blockquote">
+<p>Based on the <a href="https://linked.art/model/">Linked Art Data Model 1.0</a> — an application profile of <a href="https://www.cidoc-crm.org/">CIDOC-CRM 7.1.3</a> for describing cultural heritage resources.</p>
+</blockquote>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Linked Art defines a streamlined subset of CIDOC-CRM classes organised into <strong>core entities</strong> (the primary things you describe), <strong>event/activity classes</strong> (things that happen), and <strong>supporting classes</strong> (structures embedded within descriptions). The ontology is serialised as <a href="https://linked.art/api/1.0/json-ld/">JSON-LD 1.1</a>.</p>
+<hr>
+</section>
+<section id="core-entity-classes" class="level2">
+<h2 class="anchored" data-anchor-id="core-entity-classes">1. Core Entity Classes</h2>
+<p>These are the primary “things” that receive their own record in the Linked Art API.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>JSON-LD type</th>
+<th>CRM Class</th>
+<th>Category</th>
+<th>Description</th>
+<th>Model docs</th>
+<th>API endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>HumanMadeObject</code></td>
+<td>E22</td>
+<td>Physical Objects</td>
+<td>A physical thing made or modified by humans, e.g.&nbsp;a painting, sculpture, or manuscript</td>
+<td><a href="https://linked.art/model/object/">Objects</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/physical_object/">Physical Objects</a></td>
+</tr>
+<tr class="even">
+<td><code>DigitalObject</code></td>
+<td>— (LA extension)</td>
+<td>Digital</td>
+<td>A born-digital or digitised resource that exists only in computers, e.g.&nbsp;a web page or digital image</td>
+<td><a href="https://linked.art/model/digital/">Digital Content</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/digital_object/">Digital Objects</a></td>
+</tr>
+<tr class="odd">
+<td><code>Person</code></td>
+<td>E21</td>
+<td>Agents</td>
+<td>An individual human being, e.g.&nbsp;Rembrandt</td>
+<td><a href="https://linked.art/model/actor/">People and Organizations</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/person/">People</a></td>
+</tr>
+<tr class="even">
+<td><code>Group</code></td>
+<td>E74</td>
+<td>Agents</td>
+<td>A collective of people capable of acting together, e.g.&nbsp;a museum department, workshop, or married couple</td>
+<td><a href="https://linked.art/model/actor/">People and Organizations</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/group/">Groups</a></td>
+</tr>
+<tr class="odd">
+<td><code>Place</code></td>
+<td>E53</td>
+<td>Places</td>
+<td>A geographic location, typically with coordinates, e.g.&nbsp;Paris</td>
+<td><a href="https://linked.art/model/place/">Places</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/place/">Places</a></td>
+</tr>
+<tr class="even">
+<td><code>Type</code></td>
+<td>E55</td>
+<td>Concepts</td>
+<td>A category, concept, material, technique, or vocabulary term, e.g.&nbsp;“painting” or “oil on canvas”</td>
+<td><a href="https://linked.art/model/concept/">Concepts</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/concept/">Concepts</a></td>
+</tr>
+<tr class="odd">
+<td><code>Language</code></td>
+<td>E56</td>
+<td>Concepts</td>
+<td>A human language, e.g.&nbsp;English, Dutch</td>
+<td><a href="https://linked.art/model/concept/">Concepts</a></td>
+<td>(via Concepts)</td>
+</tr>
+<tr class="even">
+<td><code>Material</code></td>
+<td>E57</td>
+<td>Concepts</td>
+<td>A physical material or substance, e.g.&nbsp;oil paint, marble</td>
+<td><a href="https://linked.art/model/concept/">Concepts</a></td>
+<td>(via Concepts)</td>
+</tr>
+<tr class="odd">
+<td><code>MeasurementUnit</code></td>
+<td>E58</td>
+<td>Concepts</td>
+<td>A unit of measurement, e.g.&nbsp;centimetres, inches</td>
+<td><a href="https://linked.art/model/concept/">Concepts</a></td>
+<td>(via Concepts)</td>
+</tr>
+<tr class="even">
+<td><code>Currency</code></td>
+<td>E98</td>
+<td>Concepts</td>
+<td>A monetary currency, e.g.&nbsp;USD, EUR</td>
+<td><a href="https://linked.art/model/concept/">Concepts</a></td>
+<td>(via Concepts)</td>
+</tr>
+<tr class="odd">
+<td><code>VisualItem</code></td>
+<td>E36</td>
+<td>Works</td>
+<td>The conceptual visual/image content shown by an object, e.g.&nbsp;the image of the Mona Lisa</td>
+<td><a href="https://linked.art/model/digital/">Digital Content</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/visual_work/">Visual Works</a></td>
+</tr>
+<tr class="even">
+<td><code>LinguisticObject</code></td>
+<td>E33</td>
+<td>Works / Documents</td>
+<td>Textual content carried by a physical or digital object, e.g.&nbsp;the text of a book</td>
+<td><a href="https://linked.art/model/document/">Textual Documents</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/textual_work/">Textual Works</a></td>
+</tr>
+<tr class="odd">
+<td><code>PropositionalObject</code></td>
+<td>E89</td>
+<td>Works</td>
+<td>An entirely abstract work that is neither linguistic nor visual, e.g.&nbsp;the notion of an exhibition or performance</td>
+<td><a href="https://linked.art/model/exhibition/">Exhibitions</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/abstract_work/">Abstract Works</a></td>
+</tr>
+<tr class="even">
+<td><code>Set</code></td>
+<td>— (LA extension)</td>
+<td>Collections</td>
+<td>A set or collection of entities, e.g.&nbsp;a museum collection</td>
+<td><a href="https://linked.art/model/collection/">Collections</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/set/">Sets</a></td>
+</tr>
+<tr class="odd">
+<td><code>Activity</code></td>
+<td>E7</td>
+<td>Events</td>
+<td>An activity carried out by people or groups, e.g.&nbsp;an exhibition or provenance transfer</td>
+<td><a href="https://linked.art/model/provenance/">Provenance</a>, <a href="https://linked.art/model/exhibition/">Exhibitions</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/provenance_activity/">Provenance Activities</a></td>
+</tr>
+<tr class="even">
+<td><code>Period</code></td>
+<td>E4</td>
+<td>Events</td>
+<td>A historical period or era, e.g.&nbsp;the Renaissance</td>
+<td><a href="https://linked.art/model/event/">Events</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/event/">Events</a></td>
+</tr>
+<tr class="odd">
+<td><code>Event</code></td>
+<td>E5</td>
+<td>Events</td>
+<td>An event that may be depicted or referenced, e.g.&nbsp;a battle</td>
+<td><a href="https://linked.art/model/event/">Events</a></td>
+<td><a href="https://linked.art/api/1.0/endpoint/event/">Events</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="event-activity-classes" class="level2">
+<h2 class="anchored" data-anchor-id="event-activity-classes">2. Event / Activity Classes</h2>
+<p>Activities and events model the “what happened” — connecting objects, people, places and time.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>JSON-LD type</th>
+<th>CRM Class</th>
+<th>Category</th>
+<th>Description</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Production</code></td>
+<td>E12</td>
+<td>Creation</td>
+<td>The making of a physical object</td>
+<td>Object production</td>
+</tr>
+<tr class="even">
+<td><code>Creation</code></td>
+<td>E65</td>
+<td>Creation</td>
+<td>The creation of a conceptual work (text, image, concept, set)</td>
+<td>Works, sets, concepts</td>
+</tr>
+<tr class="odd">
+<td><code>Destruction</code></td>
+<td>E6</td>
+<td>End of existence</td>
+<td>The destruction of a physical object</td>
+<td>Object destruction</td>
+</tr>
+<tr class="even">
+<td><code>Erasure</code></td>
+<td>— (LA extension)</td>
+<td>End of existence</td>
+<td>The erasure/deletion of a digital object</td>
+<td>Digital object deletion</td>
+</tr>
+<tr class="odd">
+<td><code>Birth</code></td>
+<td>E67</td>
+<td>Life events</td>
+<td>The birth of a person</td>
+<td>Person birth</td>
+</tr>
+<tr class="even">
+<td><code>Death</code></td>
+<td>E69</td>
+<td>Life events</td>
+<td>The death of a person</td>
+<td>Person death</td>
+</tr>
+<tr class="odd">
+<td><code>Formation</code></td>
+<td>E66</td>
+<td>Group events</td>
+<td>The formation of a group or organization</td>
+<td>Group formation</td>
+</tr>
+<tr class="even">
+<td><code>Dissolution</code></td>
+<td>E68</td>
+<td>Group events</td>
+<td>The dissolution of a group or organization</td>
+<td>Group dissolution</td>
+</tr>
+<tr class="odd">
+<td><code>Acquisition</code></td>
+<td>E8</td>
+<td>Provenance</td>
+<td>The acquisition of ownership of an object</td>
+<td>Transfer of ownership</td>
+</tr>
+<tr class="even">
+<td><code>TransferOfCustody</code></td>
+<td>E10</td>
+<td>Provenance</td>
+<td>The transfer of physical custody of an object (without ownership change)</td>
+<td>Loans, exhibitions</td>
+</tr>
+<tr class="odd">
+<td><code>Move</code></td>
+<td>E9</td>
+<td>Provenance</td>
+<td>The physical movement of an object to a new location</td>
+<td>Location changes</td>
+</tr>
+<tr class="even">
+<td><code>Modification</code></td>
+<td>E11</td>
+<td>Conservation</td>
+<td>A significant change or modification to an object</td>
+<td>Conservation, restoration</td>
+</tr>
+<tr class="odd">
+<td><code>PartAddition</code></td>
+<td>E79</td>
+<td>Conservation</td>
+<td>Adding a part to an object</td>
+<td>Conservation</td>
+</tr>
+<tr class="even">
+<td><code>PartRemoval</code></td>
+<td>E80</td>
+<td>Conservation</td>
+<td>Removing a part from an object</td>
+<td>Conservation, sampling</td>
+</tr>
+<tr class="odd">
+<td><code>AttributeAssignment</code></td>
+<td>E13</td>
+<td>Assertion</td>
+<td>Recording a previously held belief or assertion</td>
+<td>Specific assertions</td>
+</tr>
+<tr class="even">
+<td><code>Joining</code></td>
+<td>E85</td>
+<td>Group membership</td>
+<td>A person joining a group</td>
+<td>Marriage, employment</td>
+</tr>
+<tr class="odd">
+<td><code>Leaving</code></td>
+<td>E86</td>
+<td>Group membership</td>
+<td>A person leaving a group</td>
+<td>Divorce, retirement</td>
+</tr>
+<tr class="even">
+<td><code>Encounter</code></td>
+<td>— (LA extension)</td>
+<td>Provenance</td>
+<td>An encounter with an object (e.g.&nbsp;archaeological find)</td>
+<td>Discovery of objects</td>
+</tr>
+<tr class="odd">
+<td><code>Payment</code></td>
+<td>— (LA extension)</td>
+<td>Provenance</td>
+<td>A payment of money</td>
+<td>Auction payments</td>
+</tr>
+<tr class="even">
+<td><code>Right</code></td>
+<td>E30</td>
+<td>Rights</td>
+<td>A right held over an object (appropriated in Linked Art)</td>
+<td>Copyright, ownership rights</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="supporting-embedded-classes" class="level2">
+<h2 class="anchored" data-anchor-id="supporting-embedded-classes">3. Supporting / Embedded Classes</h2>
+<p>These classes appear as embedded structures within core entity records.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>JSON-LD type</th>
+<th>CRM Class</th>
+<th>Category</th>
+<th>Description</th>
+<th>Key properties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Name</code></td>
+<td>E33_E41</td>
+<td>Identification</td>
+<td>A name or appellation for an entity</td>
+<td><code>content</code>, <code>language</code>, <code>classified_as</code></td>
+</tr>
+<tr class="even">
+<td><code>Identifier</code></td>
+<td>E42</td>
+<td>Identification</td>
+<td>A formal identifier such as an accession number</td>
+<td><code>content</code>, <code>classified_as</code></td>
+</tr>
+<tr class="odd">
+<td><code>TimeSpan</code></td>
+<td>E52</td>
+<td>Temporal</td>
+<td>A span of time with begin/end dates</td>
+<td><code>begin_of_the_begin</code>, <code>end_of_the_end</code>, <code>begin_of_the_end</code>, <code>end_of_the_begin</code></td>
+</tr>
+<tr class="even">
+<td><code>Dimension</code></td>
+<td>E54</td>
+<td>Measurement</td>
+<td>A measured dimension (height, width, weight, duration, etc.)</td>
+<td><code>value</code>, <code>unit</code>, <code>classified_as</code></td>
+</tr>
+<tr class="odd">
+<td><code>MonetaryAmount</code></td>
+<td>E97</td>
+<td>Measurement</td>
+<td>An amount of money</td>
+<td><code>value</code>, <code>currency</code></td>
+</tr>
+<tr class="even">
+<td><code>InformationObject</code></td>
+<td>E73</td>
+<td>Reference</td>
+<td>A reference to an external standard or document</td>
+<td><code>id</code>, <code>type</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="core-properties-json-ld" class="level2">
+<h2 class="anchored" data-anchor-id="core-properties-json-ld">4. Core Properties (JSON-LD)</h2>
+<p>These are the key properties used across all Linked Art entities.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>CRM Property</th>
+<th>Domain → Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>—</td>
+<td>all → URI</td>
+<td>The URI identifying the entity</td>
+</tr>
+<tr class="even">
+<td><code>type</code></td>
+<td><code>rdf:type</code></td>
+<td>all → Class</td>
+<td>The class of the entity</td>
+</tr>
+<tr class="odd">
+<td><code>_label</code></td>
+<td><code>rdfs:label</code></td>
+<td>all → string</td>
+<td>Human-readable label for developers</td>
+</tr>
+<tr class="even">
+<td><code>classified_as</code></td>
+<td>P2 has type</td>
+<td>all → Type</td>
+<td>Classification using controlled vocabulary (e.g.&nbsp;AAT)</td>
+</tr>
+<tr class="odd">
+<td><code>identified_by</code></td>
+<td>P1 is identified by</td>
+<td>all → Name / Identifier</td>
+<td>Names and identifiers</td>
+</tr>
+<tr class="even">
+<td><code>referred_to_by</code></td>
+<td>P67i is referred to by</td>
+<td>all → LinguisticObject</td>
+<td>Statements and descriptions</td>
+</tr>
+<tr class="odd">
+<td><code>equivalent</code></td>
+<td>— (LA)</td>
+<td>all → same class</td>
+<td>Links to equivalent resources in other datasets</td>
+</tr>
+<tr class="even">
+<td><code>representation</code></td>
+<td>— (LA)</td>
+<td>all → VisualItem</td>
+<td>Image representations</td>
+</tr>
+<tr class="odd">
+<td><code>member_of</code></td>
+<td>P107i is current or former member of</td>
+<td>Agent → Group, Entity → Set</td>
+<td>Membership in a group or set</td>
+</tr>
+<tr class="even">
+<td><code>part_of</code></td>
+<td>P46i forms part of</td>
+<td>Entity → Entity (same class)</td>
+<td>Part–whole relationship</td>
+</tr>
+<tr class="odd">
+<td><code>produced_by</code></td>
+<td>P108i was produced by</td>
+<td>HumanMadeObject → Production</td>
+<td>Production event</td>
+</tr>
+<tr class="even">
+<td><code>created_by</code></td>
+<td>P94i was created by</td>
+<td>Conceptual → Creation</td>
+<td>Creation event</td>
+</tr>
+<tr class="odd">
+<td><code>destroyed_by</code></td>
+<td>P13i was destroyed by</td>
+<td>HumanMadeObject → Destruction</td>
+<td>Destruction event</td>
+</tr>
+<tr class="even">
+<td><code>born</code></td>
+<td>P98i was born</td>
+<td>Person → Birth</td>
+<td>Birth event</td>
+</tr>
+<tr class="odd">
+<td><code>died</code></td>
+<td>P100i died in</td>
+<td>Person → Death</td>
+<td>Death event</td>
+</tr>
+<tr class="even">
+<td><code>formed_by</code></td>
+<td>P95i was formed by</td>
+<td>Group → Formation</td>
+<td>Formation event</td>
+</tr>
+<tr class="odd">
+<td><code>dissolved_by</code></td>
+<td>P99i was dissolved by</td>
+<td>Group → Dissolution</td>
+<td>Dissolution event</td>
+</tr>
+<tr class="even">
+<td><code>carried_out_by</code></td>
+<td>P14 carried out by</td>
+<td>Activity → Person / Group</td>
+<td>Who performed an activity</td>
+</tr>
+<tr class="odd">
+<td><code>took_place_at</code></td>
+<td>P7 took place at</td>
+<td>Event → Place</td>
+<td>Where something happened</td>
+</tr>
+<tr class="even">
+<td><code>timespan</code></td>
+<td>P4 has time-span</td>
+<td>Event → TimeSpan</td>
+<td>When something happened</td>
+</tr>
+<tr class="odd">
+<td><code>during</code></td>
+<td>— (LA)</td>
+<td>Event → Period</td>
+<td>Period during which an event occurred</td>
+</tr>
+<tr class="even">
+<td><code>used_specific_object</code></td>
+<td>P16 used specific object</td>
+<td>Activity → HumanMadeObject</td>
+<td>Object used in an activity</td>
+</tr>
+<tr class="odd">
+<td><code>technique</code></td>
+<td>P32 used general technique</td>
+<td>Activity → Type</td>
+<td>Technique or method used</td>
+</tr>
+<tr class="even">
+<td><code>carries</code></td>
+<td>P128 carries</td>
+<td>HumanMadeObject → LinguisticObject</td>
+<td>Textual content on an object</td>
+</tr>
+<tr class="odd">
+<td><code>shows</code></td>
+<td>P65 shows visual item</td>
+<td>HumanMadeObject → VisualItem</td>
+<td>Visual content on an object</td>
+</tr>
+<tr class="even">
+<td><code>about</code></td>
+<td>P129 is about</td>
+<td>Work → any entity</td>
+<td>Subject matter</td>
+</tr>
+<tr class="odd">
+<td><code>represents</code></td>
+<td>P138 represents</td>
+<td>VisualItem → any entity</td>
+<td>What is depicted</td>
+</tr>
+<tr class="even">
+<td><code>content</code></td>
+<td>P190 has symbolic content</td>
+<td>LinguisticObject / Name / Identifier → string</td>
+<td>The textual value</td>
+</tr>
+<tr class="odd">
+<td><code>language</code></td>
+<td>P72 has language</td>
+<td>LinguisticObject → Language</td>
+<td>Language of text</td>
+</tr>
+<tr class="even">
+<td><code>format</code></td>
+<td>dc:format</td>
+<td>LinguisticObject / DigitalObject → string</td>
+<td>Media type (e.g.&nbsp;“text/html”)</td>
+</tr>
+<tr class="odd">
+<td><code>value</code></td>
+<td>P90 has value</td>
+<td>Dimension → number</td>
+<td>Numeric measurement value</td>
+</tr>
+<tr class="even">
+<td><code>unit</code></td>
+<td>P91 has unit</td>
+<td>Dimension → MeasurementUnit</td>
+<td>Unit of measurement</td>
+</tr>
+<tr class="odd">
+<td><code>currency</code></td>
+<td>— (LA)</td>
+<td>MonetaryAmount → Currency</td>
+<td>Currency of a monetary amount</td>
+</tr>
+<tr class="even">
+<td><code>begin_of_the_begin</code></td>
+<td>P82a</td>
+<td>TimeSpan → xsd:dateTime</td>
+<td>Earliest possible start</td>
+</tr>
+<tr class="odd">
+<td><code>end_of_the_end</code></td>
+<td>P82b</td>
+<td>TimeSpan → xsd:dateTime</td>
+<td>Latest possible end</td>
+</tr>
+<tr class="even">
+<td><code>current_owner</code></td>
+<td>P52 has current owner</td>
+<td>HumanMadeObject → Person / Group</td>
+<td>Current owner</td>
+</tr>
+<tr class="odd">
+<td><code>current_location</code></td>
+<td>P55 has current location</td>
+<td>HumanMadeObject → Place</td>
+<td>Current location</td>
+</tr>
+<tr class="even">
+<td><code>made_of</code></td>
+<td>P45 consists of</td>
+<td>HumanMadeObject → Material</td>
+<td>Material composition</td>
+</tr>
+<tr class="odd">
+<td><code>dimension</code></td>
+<td>P43 has dimension</td>
+<td>HumanMadeObject → Dimension</td>
+<td>Measured dimensions</td>
+</tr>
+<tr class="even">
+<td><code>access_point</code></td>
+<td>— (LA)</td>
+<td>DigitalObject → DigitalObject</td>
+<td>Downloadable file URL</td>
+</tr>
+<tr class="odd">
+<td><code>digitally_carries</code></td>
+<td>— (LA)</td>
+<td>DigitalObject → LinguisticObject</td>
+<td>Text in a digital object</td>
+</tr>
+<tr class="even">
+<td><code>digitally_shows</code></td>
+<td>— (LA)</td>
+<td>DigitalObject → VisualItem</td>
+<td>Image in a digital object</td>
+</tr>
+<tr class="odd">
+<td><code>conforms_to</code></td>
+<td>P2 has type (refinement)</td>
+<td>DigitalObject → InformationObject</td>
+<td>Standard the digital object conforms to</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="model-sections-summary" class="level2">
+<h2 class="anchored" data-anchor-id="model-sections-summary">5. Model Sections Summary</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Description</th>
+<th>Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Objects</td>
+<td>Physical things: production, destruction, physical characteristics, aboutness, ownership, rights</td>
+<td><a href="https://linked.art/model/object/">Objects</a></td>
+</tr>
+<tr class="even">
+<td>Digital Content</td>
+<td>Digital representations of or about physical objects</td>
+<td><a href="https://linked.art/model/digital/">Digital</a></td>
+</tr>
+<tr class="odd">
+<td>Collections</td>
+<td>Sets and collections of objects and other entities</td>
+<td><a href="https://linked.art/model/collection/">Collections</a></td>
+</tr>
+<tr class="even">
+<td>Provenance</td>
+<td>Ownership history: acquisitions, loans, auctions, custody, encounters, movement, promises, rights transfer</td>
+<td><a href="https://linked.art/model/provenance/">Provenance</a></td>
+</tr>
+<tr class="odd">
+<td>Exhibitions</td>
+<td>Exhibition events and the objects exhibited</td>
+<td><a href="https://linked.art/model/exhibition/">Exhibitions</a></td>
+</tr>
+<tr class="even">
+<td>Conservation</td>
+<td>Modification, part addition/removal, and condition of objects</td>
+<td><a href="https://linked.art/model/conservation/">Conservation</a></td>
+</tr>
+<tr class="odd">
+<td>People and Organizations</td>
+<td>Persons and groups: birth/death, formation/dissolution, membership</td>
+<td><a href="https://linked.art/model/actor/">Actors</a></td>
+</tr>
+<tr class="even">
+<td>Places</td>
+<td>Geographic locations, coordinates, hierarchies</td>
+<td><a href="https://linked.art/model/place/">Places</a></td>
+</tr>
+<tr class="odd">
+<td>Concepts</td>
+<td>Types, vocabularies, materials, techniques, languages, units</td>
+<td><a href="https://linked.art/model/concept/">Concepts</a></td>
+</tr>
+<tr class="even">
+<td>Events</td>
+<td>Historical periods and events</td>
+<td><a href="https://linked.art/model/event/">Events</a></td>
+</tr>
+<tr class="odd">
+<td>Textual Documents</td>
+<td>Textual works and documents</td>
+<td><a href="https://linked.art/model/document/">Documents</a></td>
+</tr>
+<tr class="even">
+<td>Archival Hierarchies</td>
+<td>Archival arrangement and description</td>
+<td><a href="https://linked.art/model/archives/">Archives</a></td>
+</tr>
+<tr class="odd">
+<td>Specific Assertions</td>
+<td>Previously held beliefs and attribute assignments</td>
+<td><a href="https://linked.art/model/assertion/">Assertions</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="api-endpoints" class="level2">
+<h2 class="anchored" data-anchor-id="api-endpoints">6. API Endpoints</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Endpoint</th>
+<th>Entity Type</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Physical Objects</td>
+<td><code>HumanMadeObject</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/physical_object/">/api/1.0/endpoint/physical_object/</a></td>
+</tr>
+<tr class="even">
+<td>Digital Objects</td>
+<td><code>DigitalObject</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/digital_object/">/api/1.0/endpoint/digital_object/</a></td>
+</tr>
+<tr class="odd">
+<td>People</td>
+<td><code>Person</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/person/">/api/1.0/endpoint/person/</a></td>
+</tr>
+<tr class="even">
+<td>Groups</td>
+<td><code>Group</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/group/">/api/1.0/endpoint/group/</a></td>
+</tr>
+<tr class="odd">
+<td>Places</td>
+<td><code>Place</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/place/">/api/1.0/endpoint/place/</a></td>
+</tr>
+<tr class="even">
+<td>Concepts</td>
+<td><code>Type</code>, <code>Language</code>, <code>Material</code>, <code>MeasurementUnit</code>, <code>Currency</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/concept/">/api/1.0/endpoint/concept/</a></td>
+</tr>
+<tr class="odd">
+<td>Visual Works</td>
+<td><code>VisualItem</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/visual_work/">/api/1.0/endpoint/visual_work/</a></td>
+</tr>
+<tr class="even">
+<td>Textual Works</td>
+<td><code>LinguisticObject</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/textual_work/">/api/1.0/endpoint/textual_work/</a></td>
+</tr>
+<tr class="odd">
+<td>Abstract Works</td>
+<td><code>PropositionalObject</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/abstract_work/">/api/1.0/endpoint/abstract_work/</a></td>
+</tr>
+<tr class="even">
+<td>Sets</td>
+<td><code>Set</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/set/">/api/1.0/endpoint/set/</a></td>
+</tr>
+<tr class="odd">
+<td>Events</td>
+<td><code>Period</code>, <code>Event</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/event/">/api/1.0/endpoint/event/</a></td>
+</tr>
+<tr class="even">
+<td>Provenance Activities</td>
+<td><code>Activity</code></td>
+<td><a href="https://linked.art/api/1.0/endpoint/provenance_activity/">/api/1.0/endpoint/provenance_activity/</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Linked Art website: <a href="https://linked.art/" class="uri">https://linked.art/</a></li>
+<li>Data Model 1.0: <a href="https://linked.art/model/" class="uri">https://linked.art/model/</a></li>
+<li>API 1.0: <a href="https://linked.art/api/1.0/" class="uri">https://linked.art/api/1.0/</a></li>
+<li>Profile (CIDOC-CRM subset): <a href="https://linked.art/model/profile/" class="uri">https://linked.art/model/profile/</a></li>
+<li>Class Analysis: <a href="https://linked.art/model/profile/class_analysis/" class="uri">https://linked.art/model/profile/class_analysis/</a></li>
+<li>JSON-LD Context: <a href="https://linked.art/ns/v1/linked-art.json" class="uri">https://linked.art/ns/v1/linked-art.json</a></li>
+<li>Linked Art Ontology (additional terms): <a href="https://linked.art/ns/terms/" class="uri">https://linked.art/ns/terms/</a></li>
+<li>CIDOC-CRM: <a href="https://www.cidoc-crm.org/" class="uri">https://www.cidoc-crm.org/</a></li>
+<li>Getty AAT: <a href="http://vocab.getty.edu/aat/" class="uri">http://vocab.getty.edu/aat/</a></li>
+</ul>
+<hr>
+<p><em>Generated from the Linked Art 1.0 specification on 2026-04-15.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Generated with GitHub Copilot (Claude Sonnet 4.6)</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

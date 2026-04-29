@@ -1,6 +1,6 @@
 project:
   type: website
-  title: "Verknüpfte Offene Ausstellung"
+  title: "Linked Open Exhibition"
   output-dir: docs
 
 website:
@@ -17,10 +17,14 @@ website:
         text: About
       - href: PLAN.qmd
         text: Plan
+      - href: Documentation/glossary.qmd
+        text: Glossary
+      - href: Documentation/protocol.qmd
+        text: Protocol  
 
   page-footer:
     left: "CC BY-SA 4.0 — Authors"
-    right: "Generated with GitHub Copilot (Claude Sonnet 4.6)"
+    right: "Agentic coding assistant: Copilot (Claude Sonnet 4.6)"
 
 format:
   html:

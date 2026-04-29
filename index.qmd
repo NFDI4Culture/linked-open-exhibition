@@ -1,7 +1,7 @@
 ---
 title: "Linked Open Exhibition"
 subtitle: "Sprengel Museum Hannover — Prototype"
-author: "BIM-126-02 Data Science: Simon Worthington; Prof. Ina Blümel"
+author: "BIM-126-02 Data Science (SoSe 2026), Hochschule Hannover"
 date: today
 ---
 
@@ -25,6 +25,8 @@ DNB SRU API → MARC21-XML → CSV → Wikibase → SPARQL → Quarto website
 | 4. Upload data model | `04_wikibase_data_model.ipynb` | Wikibase properties |
 | 5. Upload exhibitions | `05_wikibase_upload.ipynb` | Wikibase items |
 | 6. Upload images | `06_mediawiki_upload.ipynb` | MediaWiki files |
+| 7. Test SPARQL | `00_sparql_health_check.ipynb` | SPARQL test|
+| 8. Test bot | `00_wikibase_bot_test.ipynb` | bot test |
 
 ## Explore
 
@@ -44,42 +46,9 @@ DNB SRU API → MARC21-XML → CSV → Wikibase → SPARQL → Quarto website
 Live query against Wikidata for Sprengel Museum exhibitions entered by students in Sessions 1–3:
 
 ```{=html}
-<iframe style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 4px;"
+<iframe style="width: 100%; height: 1000px; border: 1px solid #ddd; border-radius: 4px;"
   src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate"
   referrerpolicy="origin"
   sandbox="allow-scripts allow-same-origin allow-popups">
 </iframe>
 ```
-
-::: aside
- 
-:::
-
-## Sitzung 2: Die Übungen {.smaller}
-
-- Ausstellungsaktualisierung
-- Künstler
-- Ausstellungskatalog
-- AI LLM SPARQL-Experimente
-
-## Sitzungsplan 
-
-11:00-11:15 Einführung und Datenmodellierung <br />
-11:15-11:45 Ausstellungsaktualisierung <br /> 
-11:45-12:15 Künstler <br />
-12:15-12:25 Pause <br />
-12:25-13:05 Ausstellungskatalog <br />
-13:05-13:50 AI LLM SPARQL-Experimente <br />
-13:50-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung
-
-## Hausaufgaben
-
-- Erstellen Sie ein Datenmodell für ein Kunstwerk in einer Ausstellung.
-- Was sind die Mindestangaben, die erforderlich sind, um ein Kunstwerk in einer Ausstellung zu präsentieren?
-- [Link](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition#Hausaufgaben%C3%BCbungen)
-
-## Danke 
-
-Siehe [Linked Open Data für Kunstausstellungen](https://github.com/NFDI4Culture/linked-open-exhibition)
-
-Simon Worthington - [simon.worthington@tib.eu](mailto:simon.worthington@tib.eu)

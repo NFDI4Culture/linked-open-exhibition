@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="BIM-126-02 Data Science: Simon Worthington; Prof.&nbsp;Ina Blümel">
-<meta name="dcterms.date" content="2026-04-23">
+<meta name="author" content="BIM-126-02 Data Science (SoSe 2026), Hochschule Hannover">
+<meta name="dcterms.date" content="2026-04-29">
 
 <title>Linked Open Exhibition</title>
 <style>
@@ -110,6 +110,14 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -131,15 +139,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">Explore</a></li>
   <li><a href="#course-resources" id="toc-course-resources" class="nav-link" data-scroll-target="#course-resources">Course &amp; resources</a></li>
   <li><a href="#wikidata-exhibition-timeline" id="toc-wikidata-exhibition-timeline" class="nav-link" data-scroll-target="#wikidata-exhibition-timeline">Wikidata exhibition timeline</a></li>
-  <li><a href="#sitzung-2-die-übungen" id="toc-sitzung-2-die-übungen" class="nav-link" data-scroll-target="#sitzung-2-die-übungen">Sitzung 2: Die Übungen</a></li>
-  <li><a href="#sitzungsplan" id="toc-sitzungsplan" class="nav-link" data-scroll-target="#sitzungsplan">Sitzungsplan</a></li>
-  <li><a href="#hausaufgaben" id="toc-hausaufgaben" class="nav-link" data-scroll-target="#hausaufgaben">Hausaufgaben</a></li>
-  <li><a href="#danke" id="toc-danke" class="nav-link" data-scroll-target="#danke">Danke</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -154,14 +158,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>BIM-126-02 Data Science: Simon Worthington; Prof.&nbsp;Ina Blümel </p>
+             <p>BIM-126-02 Data Science (SoSe 2026), Hochschule Hannover </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 23, 2026</p>
+      <p class="date">April 29, 2026</p>
     </div>
   </div>
   
@@ -225,6 +229,16 @@ ul.task-list li input[type="checkbox"] {
 <td><code>06_mediawiki_upload.ipynb</code></td>
 <td>MediaWiki files</td>
 </tr>
+<tr class="odd">
+<td>7. Test SPARQL</td>
+<td><code>00_sparql_health_check.ipynb</code></td>
+<td>SPARQL test</td>
+</tr>
+<tr class="even">
+<td>8. Test bot</td>
+<td><code>00_wikibase_bot_test.ipynb</code></td>
+<td>bot test</td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -245,40 +259,11 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Sprengel Museum Hannover:</strong> <a href="https://www.sprengel-museum.de/">sprengel-museum.de</a></li>
 </ul>
 </section>
-<section id="wikidata-exhibition-timeline" class="level2 page-columns page-full">
+<section id="wikidata-exhibition-timeline" class="level2">
 <h2 class="anchored" data-anchor-id="wikidata-exhibition-timeline">Wikidata exhibition timeline</h2>
 <p>Live query against Wikidata for Sprengel Museum exhibitions entered by students in Sessions 1–3:</p>
-<iframe style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 4px;" src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups">
+<iframe style="width: 100%; height: 1000px; border: 1px solid #ddd; border-radius: 4px;" src="https://query.wikidata.org/embed.html#%23title%3A%20Visual%20Timeline%20of%20exhibitions%20at%20the%20Sprengel%20Museum%0A%23defaultView%3ATimeline%0ASELECT%20%3Fexhibition%20%3FexhibitionLabel%20%3Fdate%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fexhibition%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ464980%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP276%20wd%3AQ510144.%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP571%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP580%20%3Fdate.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fexhibition%20wdt%3AP18%20%3Fimage.%20%7D%0A%20%20FILTER%28BOUND%28%3Fdate%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cde%22.%20%7D%0A%7D%0AORDER%20BY%20%3Fdate" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups">
 </iframe>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-
-</div></div></section>
-<section id="sitzung-2-die-übungen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="sitzung-2-die-übungen">Sitzung 2: Die Übungen</h2>
-<ul>
-<li>Ausstellungsaktualisierung</li>
-<li>Künstler</li>
-<li>Ausstellungskatalog</li>
-<li>AI LLM SPARQL-Experimente</li>
-</ul>
-</section>
-<section id="sitzungsplan" class="level2">
-<h2 class="anchored" data-anchor-id="sitzungsplan">Sitzungsplan</h2>
-<p>11:00-11:15 Einführung und Datenmodellierung <br> 11:15-11:45 Ausstellungsaktualisierung <br> 11:45-12:15 Künstler <br> 12:15-12:25 Pause <br> 12:25-13:05 Ausstellungskatalog <br> 13:05-13:50 AI LLM SPARQL-Experimente <br> 13:50-14:15 Abschließende Diskussion, Fragen und Antworten, Planung für die nächste Sitzung</p>
-</section>
-<section id="hausaufgaben" class="level2">
-<h2 class="anchored" data-anchor-id="hausaufgaben">Hausaufgaben</h2>
-<ul>
-<li>Erstellen Sie ein Datenmodell für ein Kunstwerk in einer Ausstellung.</li>
-<li>Was sind die Mindestangaben, die erforderlich sind, um ein Kunstwerk in einer Ausstellung zu präsentieren?</li>
-<li><a href="https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition#Hausaufgaben%C3%BCbungen">Link</a></li>
-</ul>
-</section>
-<section id="danke" class="level2">
-<h2 class="anchored" data-anchor-id="danke">Danke</h2>
-<p>Siehe <a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Data für Kunstausstellungen</a></p>
-<p>Simon Worthington - <a href="mailto:simon.worthington@tib.eu">simon.worthington@tib.eu</a></p>
 
 
 </section>
@@ -714,7 +699,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Generated with GitHub Copilot (Claude Sonnet 4.6)</p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6)</p>
 </div>
   </div>
 </footer>

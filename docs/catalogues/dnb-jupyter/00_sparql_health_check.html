@@ -142,6 +142,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -189,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Project:</strong> Linked Open Exhibition — NFDI4Culture / Hochschule Hannover (BIM-126-02)<br>
 <strong>AI attribution:</strong> GitHub Copilot (Claude Sonnet 4.6)</p>
 <p><strong>Purpose:</strong> Verify that the SPARQL query service at <code>https://query.wbworkshop.tibwiki.io/</code> is reachable and returning results before running upload notebooks.</p>
-<div id="18cebd7b" class="cell" data-execution_count="3">
+<div id="18cebd7b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -205,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-1-ping-the-endpoint" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-ping-the-endpoint">Step 1 — Ping the endpoint</h2>
 <p>Send a minimal <code>ASK</code> query. Expects HTTP 200 and <code>{ "boolean": true }</code>.</p>
-<div id="81586cbf" class="cell" data-execution_count="4">
+<div id="81586cbf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    resp <span class="op">=</span> requests.get(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        SPARQL_URL,</span>
@@ -233,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2-count-items-in-wikibase" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-count-items-in-wikibase">Step 2 — Count items in Wikibase</h2>
 <p>Returns the total number of items (<code>wd:Q*</code>) currently in the triplestore.</p>
-<div id="20e37b6b" class="cell" data-execution_count="10">
+<div id="20e37b6b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>count_query <span class="op">=</span> <span class="st">'''</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT (COUNT(?item) AS ?count)</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE {</span></span>
@@ -254,14 +262,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'✗ Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Items in Wikibase: 13955</code></pre>
+<pre><code>Items in Wikibase: 14268</code></pre>
 </div>
 </div>
 </section>
 <section id="step-3-check-dnb-idn-property-exists" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-check-dnb-idn-property-exists">Step 3 — Check DNB IDN property exists</h2>
 <p>Looks up the DNB IDN property ID from <code>wikibase_property_map.json</code> and confirms at least one item uses it.</p>
-<div id="8d103ae9" class="cell" data-execution_count="12">
+<div id="8d103ae9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json, os</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>MAP_PATH <span class="op">=</span> Path(<span class="st">'../wikibase_property_map.json'</span>)</span>
@@ -743,7 +751,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Generated with GitHub Copilot (Claude Sonnet 4.6)</p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6)</p>
 </div>
   </div>
 </footer>

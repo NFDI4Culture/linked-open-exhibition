@@ -2,6 +2,7 @@ project:
   type: website
   title: "Linked Open Exhibition"
   output-dir: docs
+  pre-render: _pre_render.py
 
 website:
   title: "Linked Open Exhibition"
@@ -21,13 +22,20 @@ website:
         text: Glossary
       - href: Documentation/protocol.qmd
         text: Protocol  
+    right:
+      - icon: github
+        href: https://github.com/NFDI4Culture/linked-open-exhibition
+        aria-label: GitHub
 
   page-footer:
     left: "CC BY-SA 4.0 — Authors"
-    right: "Agentic coding assistant: Copilot (Claude Sonnet 4.6)"
+    right: "Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: [{{< var git >}}](https://github.com/NFDI4Culture/linked-open-exhibition/commit/{{< var git >}})"
+  repo-url: https://github.com/NFDI4Culture/linked-open-exhibition
+  repo-actions: [edit, issue]
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    date-format: "MMMM D, YYYY HH:mm"

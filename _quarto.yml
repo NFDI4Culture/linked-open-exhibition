@@ -20,6 +20,8 @@ website:
         text: Plan
       - href: Documentation/glossary.qmd
         text: Glossary
+      - href: Documentation/glossary-de.qmd
+        text: Glossar (DE)
       - href: Documentation/protocol.qmd
         text: Protocol  
     right:

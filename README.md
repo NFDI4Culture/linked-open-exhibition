@@ -1,91 +1,126 @@
-# Verknüpfte Offene Ausstellung
+﻿# Linked Open Exhibition
 
-Prototyp zur Erstellung verknüpfter offener Ausstellungsdatensätze
+> Helping art exhibitions attract more visitors and enable deeper engagement using Linked Open Data.
 
-Kunstausstellungen mit Linked Open Data zu mehr Besuchern verhelfen und ein tieferes Engagement ermöglichen: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) \| [Lernübungen](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) \| [Ergebnisse](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html) \| [Dashboard](https://nfdi4culture.github.io/linked-open-exhibition/project-dashboard.html)
+**[Website](https://nfdi4culture.github.io/linked-open-exhibition/) · [Learning Exercises](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) · [Exhibitions](https://nfdi4culture.github.io/linked-open-exhibition/exhibitions.html) · [Data Analysis](https://nfdi4culture.github.io/linked-open-exhibition/data-analysis.html)**
 
-*Helping art exhibitions attract more visitors and enable deeper engagement using Linked Open Data: [Slides](https://nfdi4culture.github.io/linked-open-exhibition/#/title-slide) \| [Learning Exercises](https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition) \| [Results](https://nfdi4culture.github.io/linked-open-exhibition/notebook.html) \| [Dashboard](https://nfdi4culture.github.io/linked-open-exhibition/project-dashboard.html)*
+A prototype pipeline for publishing art exhibition data as **Linked Open Data (LOD)**, developed with students of the Bachelor of Arts Information Management at Hochschule Hannover in the course *BIM-126-02 Data Science (SoSe 2026)*.
 
-Demonstration von Linked Open Data‑Standards für Ausstellungsobjekte.
+The pipeline retrieves exhibition catalogue records from the Deutsche Nationalbibliothek (DNB) SRU API, structures them using an open data model, uploads them to a Wikibase knowledge base, and publishes the results as a Quarto website driven by live SPARQL queries.
 
-Ein Prototypprojekt, das mit den Studierenden des Bachelor of Arts Informationsmanagement der Hochschule Hannover im Seminar „BIM-126-02 Data Science (2026)" erstellt wurde. Frühe Arbeit fand sich im Repository https://github.com/NFDI4Culture/open-museum.
+---
 
-Weitere Hintergrundinformationen und Kursmaterialien finden sich auf der Wikiversity-Seite: https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition
+## The pipeline
 
-## 🎬 Quarto Webseite
+```
+DNB SRU API → MARC21-XML → CSV → Wikibase → SPARQL → Quarto website
+```
 
-Das Projekt wird als Quarto Website präsentiert. Die Website wird aus den Markdown- und Notebook-Dateien generiert.
+| Step | Notebook | Output |
+|---|---|---|
+| 1. Retrieve DNB records | `catalogues/dnb-jupyter/01_dnb_search.ipynb` | `sprengel_raw/*.xml` |
+| 2. Filter & extract fields | `catalogues/dnb-jupyter/02_dnb_filter_exhibitions.ipynb` | `sprengel_exhibitions.csv` |
+| 3. Fetch cover images | `catalogues/dnb-jupyter/03_dnb_cover_images.ipynb` | `images/*.jpg` |
+| 4. Upload data model | `catalogues/dnb-jupyter/04_wikibase_data_model.ipynb` | Wikibase properties |
+| 5. Upload exhibitions | `catalogues/dnb-jupyter/05_wikibase_upload.ipynb` | Wikibase items |
+| 6. Upload images | `catalogues/dnb-jupyter/06_mediawiki_upload.ipynb` | MediaWiki files |
 
-### Webseite rendern
+Helper notebooks: `00_sparql_health_check.ipynb`, `00_wikibase_bot_test.ipynb`
 
-``` bash
+---
+
+## Getting started
+
+### Requirements
+
+- [Quarto](https://quarto.org/) >= 1.3
+- Python >= 3.10 (with virtual environment)
+
+### Install Python dependencies
+
+```bash
+python -m venv .venv
+.venv/Scripts/activate      # Windows
+pip install -r requirements.txt
+```
+
+### Configure credentials
+
+Copy `.env.example` to `.env` and fill in your Wikibase credentials:
+
+```bash
+cp .env.example .env
+```
+
+The `.env` file is gitignored and never committed.
+
+### Build the website
+
+```bash
 quarto render
 ```
 
-Die Website wird unter `_output/index.html` generiert.
+Output is written to `docs/` for GitHub Pages. Preview locally with:
 
-### Webseite in Live-Vorschau anschauen
-
-``` bash
+```bash
 quarto preview
 ```
 
-## 📋 Anforderungen
+---
 
--   [Quarto](https://quarto.org/) ≥ 1.3
--   Python (für Jupyter Notebook)
+## Repository structure
 
-## 📈 Timeline-Seiten
+| Path | Description |
+|---|---|
+| `catalogues/dnb-jupyter/` | Jupyter Notebooks: DNB retrieval to Wikibase upload pipeline |
+| `catalogues/sprengel_raw/` | Raw MARC21-XML pages from DNB SRU API |
+| `catalogues/sprengel_exhibitions.csv` | Filtered, structured exhibition records |
+| `catalogues/images/` | DNB cover images (gitignored; fetched at runtime) |
+| `WB4R/wikibase_generic_model.csv` | WB4R property/class alignment reference |
+| `Documentation/` | Glossary (EN + DE), protocol |
+| `Linkedart/` | Linked Art ontology reference files |
+| `LIDO/` | Example LIDO XML files |
+| `docs/` | Rendered Quarto website (GitHub Pages) |
+| `_quarto.yml` | Quarto project configuration |
+| `requirements.txt` | Python dependencies |
+| `.env.example` | Credentials template |
+| `CITATION.cff` | Citation metadata |
 
-Für die Ausstellungstimeline stehen mehrere HTML-Seiten zur Verfügung:
+---
 
--   https://nfdi4culture.github.io/linked-open-exhibition/timeline.html – umfangreichere, interaktive Timeline-Ansicht
--   https://nfdi4culture.github.io/linked-open-exhibition/timeline-simple.html – reduzierte, einfache Timeline-Ansicht
--   https://nfdi4culture.github.io/linked-open-exhibition/notebook.html – HTML-Export aus `notebook.ipynb`
--   https://github.com/NFDI4Culture/linked-open-exhibition/blob/main/docs/notebook.ipynb – Notebook-Quelle (`notebook.ipynb`)
+## Course context
 
-## 📊 Project Dashboard
+This repository accompanies an eight-session course introducing students to Linked Open Data for GLAM (Galleries, Libraries, Archives, Museums) using Wikimedia Foundation platforms.
 
-Ein eigenständiges Dashboard wird aus Wikidata-Netzwerkdaten erzeugt:
+| Session | Activity | Status |
+|---|---|---|
+| 1 | Manual entry of Sprengel Museum exhibitions in **Wikidata** | Done |
+| 2 | Added artists, catalogues; AI-assisted SPARQL experiments | Done |
+| 3 | Museum visit — Sprengel Museum Hannover (19 March 2026) | Done |
+| 4–8 | Quarto website + Jupyter pipeline + SPARQL queries + Wikibase upload | Done |
 
--   Ausgabe: `docs/project-dashboard.html`
--   Web: https://nfdi4culture.github.io/linked-open-exhibition/project-dashboard.html
+**Leads:** Simon Worthington (TIB — Leibniz Information Centre for Science and Technology) · Prof. Ina Blümel (Hochschule Hannover; TIB — Leibniz Information Centre for Science and Technology)
+**Wikiversity:** https://en.wikiversity.org/wiki/BIM-126-02-Data-Science-Linked-Open-Exhibition
 
-Dashboard neu generieren:
+---
 
-``` bash
-C:/git/linked-open-exhibition/.venv/Scripts/python.exe docs/network.py
-```
+## Licences
 
-### Notebook als HTML exportieren
+| Content | Licence |
+|---|---|
+| Project code, notebooks, documentation | [MIT](LICENSE) |
+| Original written content (slides, website text) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| DNB bibliographic metadata | [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) |
+| DNB cover images | Publisher-supplied; not redistributed — educational use only |
 
-Mit der lokalen virtuellen Umgebung kann das Notebook als HTML exportiert werden:
+---
 
-``` bash
-cd docs
-C:/git/linked-open-exhibition/.venv/Scripts/python.exe -m nbconvert --to html notebook.ipynb --output notebook.html
-```
+## Citation
 
-## 📄 Lizenz
+See [CITATION.cff](CITATION.cff) or use the **Cite this repository** button on GitHub.
 
-Siehe [LICENSE](LICENSE) Datei
+---
 
-## 🎨 Styling
+## AI attribution
 
-Die Präsentation verwendet angepasste Styles:
-
--   hellgrauer Hintergrund über `styles.css`
--   Fußzeile auf allen Folien mit `CC BY-SA 4.0` (konfiguriert in `_quarto.yml`)
-
-## 📝 Projektzusammenfassung
-
-Das Repository begleitet einen achtteiligen Kurs „Linked Open Exhibition“, bei dem die Studierenden an der Hochschule Hannover in das Thema Linked Open Data (LOD) eingeführt werden. Schwerpunkte sind:
-
-1.  Einsatz von LOD im GLAM‑Bereich (Galleries, Libraries, Archives, Museums)
-2.  Nutzung von Wikimedia-Plattformen wie Wikidata, Wikibase, MediaWiki und Wikimedia Commons
-
-Ziel ist es, Museumsausstellungen als **Linked Open Exhibitions** zu erfassen – als Ablaufplan, Objektkatalog und weitere relevante Metadaten. Dabei kommen Open-Source-Software, Open-Science-Praktiken und Rapid Prototyping zum Einsatz. Der Workflow nutzt KI‑Hilfsmittel (Copilot, Chat‑LLMs) zur Code‑ und Abfragegenerierung.
-
-## 🤖 Entwicklung
-
-Dieses Projekt wurde mit Unterstützung von GitHub Copilot entwickelt.
+Developed with assistance from **GitHub Copilot** (Claude Sonnet 4.6, April 2026). All AI-generated outputs were reviewed and edited by the project team.

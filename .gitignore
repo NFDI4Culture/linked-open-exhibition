@@ -1,6 +1,3 @@
 /.quarto/
 .env
-catalogues/images/
-catalogues/sprengel_raw/
-catalogues/sprengel_exhibitions.csv
-catalogues/wikibase_property_map.json
+

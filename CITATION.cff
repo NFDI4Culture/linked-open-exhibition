@@ -10,9 +10,16 @@ authors:
     email: simon.worthington@tib.eu
     affiliation: >-
       TIB — Leibniz Information Centre for Science and Technology
+    orcid: "https://orcid.org/0000-0002-3514-0458"
   - given-names: Ina
     family-names: Blümel
     affiliation: Hochschule Hannover; TIB — Leibniz Information Centre for Science and Technology
+contributors:
+  - given-names: GitHub
+    family-names: Copilot
+    type: software
+    email: copilot@github.com
+    comment: "AI-assisted data model documentation and code generation (powered by Claude Haiku 4.5)"
 identifiers:
   - type: url
     value: https://github.com/NFDI4Culture/linked-open-exhibition

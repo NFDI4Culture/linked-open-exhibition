@@ -32,6 +32,8 @@ website:
         text: Glossary
       - href: Documentation/glossary-de.qmd
         text: Glossar (DE)
+      - href: Documentation/orcid-guide.qmd
+        text: ORCID Guide
       - href: Documentation/protocol.qmd
         text: Protocol  
     right:

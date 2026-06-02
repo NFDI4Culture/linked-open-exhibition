@@ -1657,5 +1657,68 @@
     "title": "Linked Open Exhibition",
     "section": "",
     "text": "GABRIELA JOLOWICZ HOLZSCHNITTE - WOODCUTS\nhttps://convertcase.net/\nGabriela Jolowicz Holzschnitte - Woodcuts"
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html",
+    "href": "Documentation/orcid-guide.html",
+    "title": "ORCID Identifiers",
+    "section": "",
+    "text": "ORCID (Open Researcher and Contributor ID) is a free, unique, persistent digital identifier that distinguishes you from other researchers. It’s a 16-digit identifier in the format: XXXX-XXXX-XXXX-XXXX\nExample: 0000-0002-1234-5678\n\n\n\nDisambiguation: Ensures your work is attributed to you (especially important if you have a common name)\nPersistence: Your ORCID follows you throughout your career\nInteroperability: ORCID is recognized globally by publishers, funders, and institutions\nProfile Control: You control your ORCID profile and can add your publications, funding, affiliations, etc."
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#what-is-orcid",
+    "href": "Documentation/orcid-guide.html#what-is-orcid",
+    "title": "ORCID Identifiers",
+    "section": "",
+    "text": "ORCID (Open Researcher and Contributor ID) is a free, unique, persistent digital identifier that distinguishes you from other researchers. It’s a 16-digit identifier in the format: XXXX-XXXX-XXXX-XXXX\nExample: 0000-0002-1234-5678\n\n\n\nDisambiguation: Ensures your work is attributed to you (especially important if you have a common name)\nPersistence: Your ORCID follows you throughout your career\nInteroperability: ORCID is recognized globally by publishers, funders, and institutions\nProfile Control: You control your ORCID profile and can add your publications, funding, affiliations, etc."
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#how-to-get-an-orcid",
+    "href": "Documentation/orcid-guide.html#how-to-get-an-orcid",
+    "title": "ORCID Identifiers",
+    "section": "How to Get an ORCID",
+    "text": "How to Get an ORCID\n\nVisit: orcid.org\nClick: “Sign in” → “Register for an ORCID iD”\nProvide:\n\nGiven name and family name\nEmail address\nPassword\nAffiliation (optional but recommended)\n\nVerify: Confirm your email address\nComplete: Your 16-digit ORCID will be generated immediately\n\nRecommendation: Make your ORCID profile public so it’s discoverable!"
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#adding-orcid-to-quarto-projects",
+    "href": "Documentation/orcid-guide.html#adding-orcid-to-quarto-projects",
+    "title": "ORCID Identifiers",
+    "section": "Adding ORCID to Quarto Projects",
+    "text": "Adding ORCID to Quarto Projects\n\nMethod 1: Author Metadata in YAML Frontmatter\nIn your .qmd file, add ORCID to the author metadata:\n---\ntitle: \"My Publication\"\nauthor:\n  - name: Jane Researcher\n    orcid: 0000-0002-1234-5678\n    affiliation: \"University of Example\"\n---\n\n\nMethod 2: In _quarto.yml (Project Level)\nFor organization-wide ORCID references:\nproject:\n  type: website\n  title: \"My Project\"\n\nmetadata:\n  author:\n    - name: Jane Researcher\n      orcid: 0000-0002-1234-5678\n\n\nMethod 3: In a CFF File (Recommended)\nUse the Citation File Format to document all contributors with ORCID. See below for details."
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#citation-file-format-cff-with-orcid",
+    "href": "Documentation/orcid-guide.html#citation-file-format-cff-with-orcid",
+    "title": "ORCID Identifiers",
+    "section": "Citation File Format (CFF) with ORCID",
+    "text": "Citation File Format (CFF) with ORCID\nA CITATION.cff file (at repository root) standardizes how to cite your project and includes contributor metadata with ORCID.\n\nExample CITATION.cff:\ncff-version: 1.2.0\ntitle: \"Linked Open Exhibition\"\nabstract: \"A standardized data model framework for exhibitions aligned with CIDOC CRM\"\nauthors:\n  - family-names: \"Researcher\"\n    given-names: \"Jane\"\n    orcid: \"https://orcid.org/0000-0002-1234-5678\"\n    affiliation: \"NFDI4Culture\"\n    email: \"jane@example.edu\"\n  \n  - family-names: \"Colleague\"\n    given-names: \"John\"\n    orcid: \"https://orcid.org/0000-0003-9876-5432\"\n    affiliation: \"Museum Institute\"\n\ncontributors:\n  - family-names: \"Copilot\"\n    given-names: \"GitHub\"\n    type: \"software\"\n    email: \"ai@github.com\"\n\nversion: 1.0.0\ndate-released: 2026-06-02\nrepository-code: \"https://github.com/NFDI4Culture/linked-open-exhibition\"\nurl: \"https://nfdi4culture.github.io/linked-open-exhibition/\"\nkeywords:\n  - \"exhibitions\"\n  - \"linked-open-data\"\n  - \"cidoc-crm\"\n  - \"wikidata\"\nlicense: \"CC-BY-SA-4.0\"\nreferences:\n  - type: \"standard\"\n    title: \"CIDOC CRM\"\n    version: \"7.1.3\"\n    url: \"https://cidoc-crm.org/\"\n\n\nBenefits of CFF:\n✅ GitHub automatically displays citation instructions\n✅ Zenodo and other platforms recognize it for DOI generation\n✅ Structured format for all contributor metadata\n✅ ORCID links are clickable and verified\n✅ Version tracking for reproducibility"
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#github-integration",
+    "href": "Documentation/orcid-guide.html#github-integration",
+    "title": "ORCID Identifiers",
+    "section": "GitHub Integration",
+    "text": "GitHub Integration\n\nCreate CITATION.cff in your repository root\nCommit and push to GitHub\nView: GitHub will display “Cite this repository” in the sidebar\nCopy: Users can generate citations in BibTeX, APA, etc.\n\n\nLinking to Your ORCID Profile:\nUse the full ORCID URL in your CFF:\norcid: \"https://orcid.org/0000-0002-1234-5678\"\nThis ensures the link is persistent and clickable."
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#best-practices",
+    "href": "Documentation/orcid-guide.html#best-practices",
+    "title": "ORCID Identifiers",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nAlways use HTTPS URLs: https://orcid.org/XXXX-XXXX-XXXX-XXXX\nKeep your ORCID profile public for discoverability\nLink your ORCID to your institutional email for auto-discovery\nUpdate your ORCID profile with recent publications and contributions\nUse consistent author name formatting across all publications"
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#related-resources",
+    "href": "Documentation/orcid-guide.html#related-resources",
+    "title": "ORCID Identifiers",
+    "section": "Related Resources",
+    "text": "Related Resources\n\nORCID Help Center\nCitation File Format Specification\nCIDOC CRM - Cultural heritage standards\nLinked Open Exhibition Project"
+  },
+  {
+    "objectID": "Documentation/orcid-guide.html#contact",
+    "href": "Documentation/orcid-guide.html#contact",
+    "title": "ORCID Identifiers",
+    "section": "Contact",
+    "text": "Contact\nFor questions about ORCID implementation in this project, consult the project repository or the ORCID support site."
   }
 ]

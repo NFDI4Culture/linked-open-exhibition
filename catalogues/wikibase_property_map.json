@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "instance of": "P1",
+    "title": "P2",
+    "start date": "P3",
+    "end date": "P4",
+    "location": "P5",
+    "GND ID": "P6",
+    "DNB IDN": "P7",
+    "exhibition catalogue": "P8",
+    "image": "P13"
+  },
+  "items": {
+    "Exhibition": "Q3",
+    "Exhibition Catalogue": "Q4",
+    "Sprengel Museum Hannover": "Q5"
+  }
+}

@@ -1,0 +1,420 @@
+---
+title: "Exhibition Data Model"
+subtitle: "Linked Open Exhibition"
+description: "A unified data model for exhibitions aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards"
+date: today
+---
+
+## Overview
+
+This data model provides a standardized schema for describing exhibitions and their contextual information within the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:
+
+- **CIDOC CRM** (Conceptual Reference Model) v7.1.3
+- **Wikibase4Research** (WB4R) - NFDI4Culture platform
+- **Wikidata** - WikiProject Exhibitions
+
+## Quick Reference: Schema Mappings
+
+| Field | Wikidata | CIDOC CRM | Wikibase4Research |
+|-------|----------|-----------|-------------------|
+| **Instance of** | P31:Q464980 (exhibition) | E21_Person / E55_Type | crm:P2_has_type |
+| **Title** | P1476 | P1_is_identified_by (E82_Appellation) | wgm:title (P4) |
+| **Location** | P276 | P7_took_place_at | wgm:has_occupation |
+| **Start Time** | P580 | P4_has_time-span (E52_Time-Span) | wgm:birth |
+| **End Time** | P582 | P4_has_time-span (E52_Time-Span) | wgm:death |
+| **Curator** | P1640 | P14_carried_out_by | wgm:classified_as |
+| **Participant** | P710 | P11_had_participant (E42_Identifier) | wgm:stated_in |
+| **Official Website** | P856 | P1_is_identified_by (E78_Primitive_Data) | not found |
+| **Organizer** | P664 | P14_carried_out_by | same as Wikidata |
+| **Country** | P17 | P7_took_place_at | same as Wikidata |
+| **Language** | P407 | P72_has_language | same as Wikidata |
+| **Theme** | P921 | P129_is_about | same as Wikidata |
+| **Sponsor** | P859 | not found | not found |
+| **Number of Visitors** | P1174 | not found | not found |
+| **Reference** | QID | P1_is_identified_by (E42_Identifier) | same as Wikidata |
+| **Commons Category** | P373 | P1_is_identified_by (E78_Primitive_Data) | same as Wikidata |
+
+---
+
+## Example: Sprengel Museum Exhibition (Q138573075)
+
+**Name:** Sprengel Museum Exhibition  
+**Location:** Sprengel Museum Hannover (Q510144)  
+**Start Date:** 2024-01-15  
+**End Date:** 2024-06-30  
+**Curator:** [Person Item]  
+**Participants:** Various artists  
+**Official Website:** https://www.sprengel-museum.de/  
+**Organizer:** Sprengel Museum  
+**Country:** Germany (Q183)  
+**Language:** German (Q188)  
+**Reference:** [https://www.wikidata.org/wiki/Q138573075](https://www.wikidata.org/wiki/Q138573075)
+
+---
+
+## Data Structure
+
+### 1. Instance of Exhibition
+
+| Field | Value |
+|-------|-------|
+| **German Label** | ist ein(e) |
+| **English Label** | Instance of |
+| **Description** | The item itself is classified as an exhibition |
+| **Data Type** | Item |
+| **Wikidata Property** | P31 |
+| **Recommended Value** | Q464980 (Exhibition) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P31:Q464980` | Instance of exhibition |
+| **CIDOC CRM** | `E55_Type` | Type classification |
+| **WB4R** | `crm:P2_has_type` | Type property in Wikibase4Research |
+
+---
+
+### 2. Title
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Titel |
+| **English Label** | Title |
+| **Description** | Official name/title of the exhibition |
+| **Data Type** | Monolingual text |
+| **Wikidata Property** | P1476 |
+| **Format** | Plain text |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1476` | Title of the exhibition |
+| **CIDOC CRM** | `P1_is_identified_by (E82_Appellation)` | Identifies exhibition through naming |
+| **WB4R** | `wgm:title (P4)` | Title property in WB4R |
+
+---
+
+### 3. Location
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Ort |
+| **English Label** | Location |
+| **Description** | The place where the exhibition took place |
+| **Data Type** | Item (reference to place/institution) |
+| **Wikidata Property** | P276 |
+| **Example** | Sprengel Museum Hannover (Q510144) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P276` | Location of exhibition |
+| **CIDOC CRM** | `P7_took_place_at` | Event took place at location |
+| **WB4R** | `wgm:has_occupation` | Related place reference |
+
+---
+
+### 4. Start Time
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Startzeitpunkt |
+| **English Label** | Start time |
+| **Description** | Date when the exhibition opened |
+| **Data Type** | Point in time |
+| **Wikidata Property** | P580 |
+| **Format** | YYYY-MM-DD |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P580` | Start time of exhibition |
+| **CIDOC CRM** | `P4_has_time-span (E52_Time-Span)` | Event time-span definition |
+| **WB4R** | `wgm:birth` | Start date mapping |
+
+---
+
+### 5. End Time
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Endzeitpunkt |
+| **English Label** | End time |
+| **Description** | Date when the exhibition closed |
+| **Data Type** | Point in time |
+| **Wikidata Property** | P582 |
+| **Format** | YYYY-MM-DD |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P582` | End time of exhibition |
+| **CIDOC CRM** | `P4_has_time-span (E52_Time-Span)` | Event time-span definition |
+| **WB4R** | `wgm:death` | End date mapping |
+
+---
+
+### 6. Curator
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Kurator |
+| **English Label** | Curator |
+| **Description** | Person responsible for curating the exhibition |
+| **Data Type** | Item (reference to person) |
+| **Wikidata Property** | P1640 |
+| **Note** | Create person item if it doesn't exist |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1640` | Curator of exhibition |
+| **CIDOC CRM** | `P14_carried_out_by` | Event carried out by person |
+| **WB4R** | `wgm:classified_as (P97)` | Classification reference |
+
+---
+
+### 7. Participant
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Teilnehmer |
+| **English Label** | Participant |
+| **Description** | Artists or entities participating in the exhibition |
+| **Data Type** | Item (reference to person/artist) |
+| **Wikidata Property** | P710 |
+| **Note** | Can reference multiple participants |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P710` | Participant in exhibition |
+| **CIDOC CRM** | `P11_had_participant (E42_Identifier)` | Event had participant |
+| **WB4R** | `wgm:stated_in` | Stated in reference |
+
+---
+
+### 8. Official Website
+
+| Field | Value |
+|-------|-------|
+| **German Label** | offizielle Website |
+| **English Label** | Official website |
+| **Description** | URL of the exhibition's official website |
+| **Data Type** | URL |
+| **Wikidata Property** | P856 |
+| **Format** | https://... |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P856` | Official website |
+| **CIDOC CRM** | `P1_is_identified_by (E78_Primitive_Data)` | Digital location identifier |
+| **WB4R** | `not found` | No WB4R mapping available |
+
+---
+
+### 9. Organizer
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Veranstalter |
+| **English Label** | Organizer |
+| **Description** | Institution or person organizing the exhibition |
+| **Data Type** | Item (reference to institution/person) |
+| **Wikidata Property** | P664 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P664` | Organizer of exhibition |
+| **CIDOC CRM** | `P14_carried_out_by` | Event carried out by organizer |
+| **WB4R** | Same as Wikidata | Aligned with Wikidata |
+
+---
+
+### 10. Country
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Land |
+| **English Label** | Country |
+| **Description** | Country where the exhibition took place |
+| **Data Type** | Item (reference to country) |
+| **Wikidata Property** | P17 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P17` | Country |
+| **CIDOC CRM** | `P7_took_place_at` | Event location (country) |
+| **WB4R** | Same as Wikidata | Aligned with Wikidata |
+
+---
+
+### 11. Language
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Sprache |
+| **English Label** | Language |
+| **Description** | Language(s) of the exhibition materials |
+| **Data Type** | Item (reference to language) |
+| **Wikidata Property** | P407 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P407` | Language of exhibition |
+| **CIDOC CRM** | `P72_has_language` | Entity has language |
+| **WB4R** | Same as Wikidata | Aligned with Wikidata |
+
+---
+
+### 12. Theme
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Thema |
+| **English Label** | Theme |
+| **Description** | Main subject or topic of the exhibition |
+| **Data Type** | Item (reference to topic) |
+| **Wikidata Property** | P921 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P921` | Main subject of exhibition |
+| **CIDOC CRM** | `P129_is_about` | Entity is about topic |
+| **WB4R** | Same as Wikidata | Aligned with Wikidata |
+
+---
+
+### 13. Sponsor
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Sponsor |
+| **English Label** | Sponsor |
+| **Description** | Organization or entity sponsoring the exhibition |
+| **Data Type** | Item |
+| **Wikidata Property** | P859 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P859` | Sponsor of exhibition |
+| **CIDOC CRM** | `not found` | No direct CRM mapping |
+| **WB4R** | Not found | No WB4R mapping available |
+
+---
+
+### 14. Number of Visitors
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Besucherzahl |
+| **English Label** | Number of visitors |
+| **Description** | Total number of visitors to the exhibition |
+| **Data Type** | Quantity |
+| **Wikidata Property** | P1174 |
+| **Format** | Numeric value |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1174` | Number of visitors |
+| **CIDOC CRM** | `not found` | No direct CRM mapping |
+| **WB4R** | Not found | No WB4R mapping available |
+
+---
+
+### 15. Reference
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Referenz |
+| **English Label** | Reference |
+| **Description** | Wikidata QID or external identifier URI |
+| **Data Type** | URI |
+| **Format** | Q-identifier or full URI |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `QID` | Wikidata identifier |
+| **CIDOC CRM** | `P1_is_identified_by (E42_Identifier)` | Identifier for entity |
+| **WB4R** | Same as Wikidata | Aligned with Wikidata |
+
+---
+
+### 16. Commons Category
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Commons-Kategorie |
+| **English Label** | Commons category |
+| **Description** | Wikimedia Commons category for exhibition images |
+| **Data Type** | String |
+| **Wikidata Property** | P373 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P373` | Commons category |
+| **CIDOC CRM** | `P1_is_identified_by (E78_Primitive_Data)` | Digital resource identifier |
+| **WB4R** | Same as Wikidata | Aligned with Wikidata |
+
+---
+
+## Best Practices for Exhibition Records
+
+1. **Use QIDs for References**: Always link to existing Wikidata items when available (Q464980 for exhibitions, institution Q-numbers, country Q-numbers, etc.)
+
+2. **Date Formatting**: Use ISO 8601 format (YYYY-MM-DD) for all temporal data. For exhibitions spanning years, precision can be reduced to YYYY (year only).
+
+3. **Multilingual Titles**: Where applicable, add exhibition titles in multiple languages using separate items or monolingual text fields.
+
+4. **Institutional Context**: Link to the organizing institution's Wikidata item (P17 for country, P664 for organizer) to enable cross-institutional exhibition discovery.
+
+5. **Participant Documentation**: Ensure all participating artists have Wikidata items. Create items for lesser-known artists to enrich the knowledge graph.
+
+6. **Commons Integration**: Regularly link exhibition items to Wikimedia Commons categories (P373) to support multimedia documentation and community contributions.
+
+---
+
+## Related Standards & References
+
+- [CIDOC CRM v7.1.3](https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html) - Formal ontology standard for cultural heritage
+- [Wikibase4Research (WB4R)](https://gitlab.com/nfdi4culture/wikibase4research/model) - NFDI4Culture platform implementation
+- [Wikidata WikiProject Exhibitions](https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions/Properties) - Community guidelines for exhibition properties
+- [Wikidata Main Properties Guide](https://www.wikidata.org/wiki/Wikidata:Main_Page) - Core Wikidata documentation
+- [Linked Open Exhibition Project](https://github.com/NFDI4Culture/linked-open-exhibition) - Project repository
+
+---
+
+## Contact & Contributions
+
+For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via [GitHub](https://github.com/NFDI4Culture/linked-open-exhibition).
+
+---
+
+## Attribution
+
+This data model documentation was created with assistance from **GitHub Copilot** (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Exhibitions guidelines through AI-assisted analysis and formatting.

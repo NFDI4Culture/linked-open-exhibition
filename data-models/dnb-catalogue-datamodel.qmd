@@ -1,0 +1,274 @@
+---
+title: "DNB Exhibition Catalogue Data Model"
+subtitle: "Linked Open Exhibition"
+description: "A unified data model for exhibition catalogues aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards"
+date: today
+---
+
+## Overview
+
+This data model provides a standardized schema for describing exhibition catalogues and bibliographic information within the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:
+
+- **CIDOC CRM** (Conceptual Reference Model) v7.1.3
+- **Wikibase4Research** (WB4R) - NFDI4Culture platform
+- **Wikidata** - WikiProject Books
+
+## Quick Reference: Schema Mappings
+
+| Field | Wikidata | CIDOC CRM | Wikibase4Research |
+|-------|----------|-----------|-------------------|
+| **Instance of** | P31 (catalogue) | crm:P2_has_type | instance_of |
+| **Title** | P1476 | E35_Title | title |
+| **Author** | P50 | E39_Actor | author |
+| **Publisher** | P123 | E39_Actor | publisher |
+| **Publication Date** | P577 | E52_Time-Span | publication_date |
+| **ISBN-13** | P212 | E42_Identifier | not found |
+| **GND** | P227 | E42_Identifier | gnd |
+| **Described at URL** | P973 | E42_Identifier | reference_url |
+| **Image** | P18 | E36_Visual_Item | digital_object |
+
+---
+
+## Example: Winckelmann's History of Ancient Art (1764)
+
+**Title:** Geschichte der Kunst des Alterthums (History of Ancient Art)  
+**Author:** Johann Joachim Winckelmann (Q104039)  
+**Publisher:** C. A. Koch, Dresden  
+**Publication Date:** 1764  
+**ISBN-13:** Not applicable (18th century publication)  
+**GND:** 118634941  
+**Catalogue URL:** https://www.dnb.de/DE/Professionell/Metadatendienste/metadatendienste_node.html  
+**Catalogue Image:** [Winckelmann's portrait - Wikimedia Commons](https://commons.wikimedia.org/wiki/Johann_Joachim_Winckelmann)  
+**Reference:** [Wikibase Item Q5377317]
+
+---
+
+## Data Structure
+
+### 1. Instance of Catalogue
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Instanziierung (?) ist eine... |
+| **English Label** | Instance of |
+| **Description** | The item itself is classified as a catalogue |
+| **Data Type** | Item |
+| **Wikidata Property** | P31 |
+| **Recommended Value** | Q2352616 (Catalogue) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P31:Q2352616` | Instance of catalogue |
+| **CIDOC CRM** | `crm:P2_has_type` | Type classification |
+| **WB4R** | `instance_of` | Instance type in Wikibase4Research |
+
+---
+
+### 2. Title
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Titel |
+| **English Label** | Title |
+| **Description** | Official title of the catalogue |
+| **Data Type** | Monolingual text |
+| **Wikidata Property** | P1476 |
+| **Example** | "Vermeer and the Masters of Genre Painting" |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1476` | Title of the catalogue |
+| **CIDOC CRM** | `E35_Title` | Title entity defining the resource |
+| **WB4R** | `title` | Title property in WB4R |
+
+---
+
+### 3. Author
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Autor |
+| **English Label** | Author |
+| **Description** | Main curator or art historian responsible for the catalogue |
+| **Data Type** | Item (reference to person) |
+| **Wikidata Property** | P50 |
+| **Note** | Link to existing Wikidata person item |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P50` | Author of catalogue |
+| **CIDOC CRM** | `E39_Actor` | Person responsible for resource |
+| **WB4R** | `author` | Author property in WB4R |
+
+---
+
+### 4. Publisher
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Verleger |
+| **English Label** | Publisher |
+| **Description** | Museum, publishing house, or institution publishing the catalogue |
+| **Data Type** | Item (reference to organization) |
+| **Wikidata Property** | P123 |
+| **Examples** | Louvre Museum, Sprengel Museum Hannover, etc. |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P123` | Publisher of catalogue |
+| **CIDOC CRM** | `E39_Actor` | Organization responsible for publication |
+| **WB4R** | `publisher` | Publisher property in WB4R |
+
+---
+
+### 5. Publication Date
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Erscheinungsdatum |
+| **English Label** | Publication date |
+| **Description** | Year or date when the catalogue was published |
+| **Data Type** | Item (date/year) |
+| **Wikidata Property** | P577 |
+| **Format** | YYYY or YYYY-MM-DD |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P577` | Publication date |
+| **CIDOC CRM** | `E52_Time-Span` | Time span of publication |
+| **WB4R** | `publication_date` | Publication date in WB4R |
+
+---
+
+### 6. ISBN-13
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Internationale Standardbuchnummer/ ISB-Nummer |
+| **English Label** | ISBN-13 |
+| **Description** | 13-digit International Standard Book Number |
+| **Data Type** | External Identifier |
+| **Wikidata Property** | P212 |
+| **Format** | 13 digits (e.g., 978-2-7118-7123-4) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P212` | ISBN-13 identifier |
+| **CIDOC CRM** | `E42_Identifier` | Standard identifier |
+| **WB4R** | `not found` | No WB4R mapping available |
+
+---
+
+### 7. GND
+
+| Field | Value |
+|-------|-------|
+| **German Label** | GND-Kennung |
+| **English Label** | GND |
+| **Description** | German National Library (DNB) identifier |
+| **Data Type** | External Identifier |
+| **Wikidata Property** | P227 |
+| **Format** | Numeric or alphanumeric GND identifier |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P227` | GND identifier |
+| **CIDOC CRM** | `E42_Identifier` | Standard identifier |
+| **WB4R** | `gnd` | GND property in WB4R |
+
+---
+
+### 8. Described at URL
+
+| Field | Value |
+|-------|-------|
+| **German Label** | offizielle Webseite |
+| **English Label** | Described at URL |
+| **Description** | Link to the catalogue's page on the museum's website |
+| **Data Type** | URL |
+| **Wikidata Property** | P973 |
+| **Format** | https://... |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P973` | Described at URL |
+| **CIDOC CRM** | `E42_Identifier` | Digital location identifier |
+| **WB4R** | `reference_url` | Reference URL in WB4R |
+
+---
+
+### 9. Image
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Bild |
+| **English Label** | Image |
+| **Description** | Cover image or representative image of the catalogue |
+| **Data Type** | Commons media file |
+| **Wikidata Property** | P18 |
+| **Format** | Wikimedia Commons filename |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P18` | Image of catalogue |
+| **CIDOC CRM** | `E36_Visual_Item` | Visual representation |
+| **WB4R** | `digital_object` | Digital object in WB4R |
+
+---
+
+## Best Practices for Catalogue Records
+
+1. **Use Wikidata Items**: Always link to existing Wikidata items for authors (P50), publishers (P123), and organizations to enable cross-institutional discovery.
+
+2. **ISBN Validation**: Ensure ISBN-13 numbers are valid according to the standard checksum algorithm. Use the format with hyphens (978-X-XXXX-XXXX-X) for readability.
+
+3. **GND Integration**: Cross-reference GND identifiers from the German National Library to enhance discoverability within German cultural heritage networks.
+
+4. **Publication Dates**: Use ISO 8601 format (YYYY-MM-DD) where precise dates are available, or just YYYY for year-only precision.
+
+5. **Multilingual Titles**: Where catalogues are published in multiple languages, create additional title entries using monolingual text or language-qualified items.
+
+6. **Cover Images**: Upload catalogue cover images to Wikimedia Commons (P18) to provide visual context and enhance accessibility.
+
+7. **URL Persistence**: Prefer institutional persistent URLs (with DOI or similar) over temporary web links when available to ensure long-term reference stability.
+
+---
+
+## Related Standards & References
+
+- [CIDOC CRM v7.1.3](https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html) - Formal ontology standard for cultural heritage
+- [Wikibase4Research (WB4R)](https://gitlab.com/nfdi4culture/wikibase4research/model) - NFDI4Culture platform implementation
+- [Wikidata WikiProject Books](https://www.wikidata.org/wiki/Wikidata:WikiProject_Books) - Community guidelines for bibliographic properties
+- [German National Library (DNB)](https://www.dnb.de/) - Primary source for GND identifiers
+- [ISBN Standard](https://www.isbn-international.org/) - ISBN-13 validation and format standards
+- [Linked Open Exhibition Project](https://github.com/NFDI4Culture/linked-open-exhibition) - Project repository
+
+---
+
+## Contact & Contributions
+
+For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via [GitHub](https://github.com/NFDI4Culture/linked-open-exhibition).
+
+---
+
+## Attribution
+
+This data model documentation was created with assistance from **GitHub Copilot** (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Books guidelines through AI-assisted analysis and formatting.

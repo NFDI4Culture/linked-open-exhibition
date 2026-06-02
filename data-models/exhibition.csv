@@ -1,0 +1,27 @@
+Team 1: Sprengel Website Exhibitions,Sources:,https://www.sprengel-museum.de/,,,,,,,,,,
+Activity #1: Collecting data and bottom-up data modeling,,,,,,,,Activity #2: Top-down data modeling validation,,,,
+Exhibition,Example: https://www.wikidata.org/wiki/Q138573075 ,,,,,,,Schemas,,,,
+,,,,,Instructions for use,,,,,,,
+Concept,,,Data type,URI,Add,Note,,Name,Wikibase4Research  ,CIDOC CRM (Full),,Wikidata:WikiProject Exhibitions
+DE,EN,,,,,,,URL,https://gitlab.com/nfdi4culture/wikibase4research/auxiliary-service-repositories/wikibase-model/-/blob/main/README.md#event  ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html ,https://www.wikidata.org/wiki/Wikidata:Main_Page ,https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions/Properties 
+ist ein(e),instance of,P31,Item,https://www.wikidata.org/wiki/Property:P31,Q464980 (Ausstellung),Add item,,crm:P2_has_type,https://www.wikidata.org/wiki/Q464980,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,https://gitlab.com/nfdi4culture/wikibase4research/model/human
+Ausstellung,Exhibition,Q464980,list Item,https://www.wikidata.org/wiki/Q464980,,(Used above),,crm:P2_has_type,https://www.wikidata.org/wiki/Q464980,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#P1 ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,
+Titel,Title,P1476,Monolingual text ,https://www.wikidata.org/wiki/Property:P1476 ,Title,Plain text,,crm:P1_is_identified_by,https://www.wikidata.org/wiki/Property:P1476,Verknüpfung über P1,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,
+Ort,Location,P276,Item,https://www.wikidata.org/wiki/Property:P276,Sprengel Museum Hannover Q510144,Add item,,crm:P7_took_place_at,https://www.wikidata.org/wiki/Property:P276,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E55 ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,https://gitlab.com/nfdi4culture/wikibase4research/model/has_occupation
+Startzeitpunkt,Start time,P580,Point in time ,https://www.wikidata.org/wiki/Property:P580,Date,YYYY-MM-DD,,crm:P4_has_time-span,https://www.wikidata.org/wiki/Property:P580,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E67 ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,https://gitlab.com/nfdi4culture/wikibase4research/model/birth 
+Endzeitpunkt,End time,P582,Point in time ,https://www.wikidata.org/wiki/Property:P582,Date,YYYY-MM-DD,,crm:P4_has_time-span,https://www.wikidata.org/wiki/Property:P582,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E69 ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E21 ,https://gitlab.com/nfdi4culture/wikibase4research/model/death 
+Kurator,Curator,P1640,Item,https://www.wikidata.org/wiki/Property:P1640,Person,Add item (if don't exists will need to create/can omit at present),,"crm:P14_carried_out_by
+",https://www.wikidata.org/wiki/Property:P1640,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#P107 ,same as Wikidata.,https://gitlab.com/nfdi4culture/wikibase4research/model/nationality 
+Teilnehmer,Participant,P710,Item,https://www.wikidata.org/wiki/Property:P710,Person (the artist),Add item (if don't exists will need to create/can omit at present),,"crm:P11_had_participant
+",https://www.wikidata.org/wiki/Property:P710,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E42 ,same as Wikidata.,https://gitlab.com/nfdi4culture/wikibase4research/model/stated_in
+offizielle Website,Official website,P856,URL,https://www.wikidata.org/wiki/Property:P856,URL,URL,,not found,https://www.wikidata.org/wiki/Property:P856,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E78 ,same as Wikidata.,not found
+Veranstalter ,Organizer,P664,Item,https://www.wikidata.org/wiki/Property:P664,Item,Add item,,crm:P14_carried_out_by,https://www.wikidata.org/wiki/Property:P664,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#P14,same as Wikidata.,same as Wikidata.
+Land,Country,P17,Item,ttps://www.wikidata.org/wiki/Property:P17,Item,Add item,,crm:P7_took_place_at,https://www.wikidata.org/wiki/Property:P17,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#P7,same as Wikidata.,same as Wikidata.
+Sprache,Language,P407,Item,https://www.wikidata.org/wiki/Property:P407,Item,Add item,,crm:P72_has_language,https://www.wikidata.org/wiki/Property:P407,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#P72,same as Wikidata.,same as Wikidata.
+Thema,Theme,P921,Item,https://www.wikidata.org/wiki/Property:P921,Item,Add item,,crm:P129_is_about,https://www.wikidata.org/wiki/Property:P921,not found,same as Wikidata.,same as Wikidata.
+"Sponsor
+",Sponsor,P859,Item,https://www.wikidata.org/wiki/Property:P859,Item,Add item,,not found,https://www.wikidata.org/wiki/Property:P859,not found,same as Wikidata.,same as Wikidata.
+Besucherzahl,"Number of visitors
+",P1174,Quantity,https://www.wikidata.org/wiki/Property:P1174,Quantity,Numeric value,,not found,https://www.wikidata.org/wiki/Property:P1174,not found,same as Wikidata.,same as Wikidata.
+Referenz,Reference,QID,URI,https://www.wikidata.org/wiki/QID,URI,The URI itself,,crm:P1_is_identified_by,https://www.wikidata.org/wiki/QID,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E42,same as Wikidata.,same as Wikidata.
+Commons-Kategorie,Commons category,P373,String,https://www.wikidata.org/wiki/Property:P373,String,Commons category,,not found,https://www.wikidata.org/wiki/Property:P373,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html#E78,same as Wikidata.,same as Wikidata.

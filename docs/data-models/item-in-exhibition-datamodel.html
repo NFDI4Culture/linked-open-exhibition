@@ -1,0 +1,2549 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A unified data model for artworks and items in exhibitions aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards">
+
+<title>Item in Exhibition Data Model – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
+        <li>
+    <a class="dropdown-item" href="../data-models/artist-datamodel.html">
+ <span class="dropdown-text">Artist Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/exhibition-datamodel.html">
+ <span class="dropdown-text">Exhibition Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/dnb-catalogue-datamodel.html">
+ <span class="dropdown-text">DNB Catalogue Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/item-in-exhibition-datamodel.html">
+ <span class="dropdown-text">Item in Exhibition Data Model</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary-de.html"> 
+<span class="menu-text">Glossar (DE)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NFDI4Culture/linked-open-exhibition"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#quick-reference-schema-mappings" id="toc-quick-reference-schema-mappings" class="nav-link" data-scroll-target="#quick-reference-schema-mappings">Quick Reference: Schema Mappings</a></li>
+  <li><a href="#example-hercules-and-omphale-by-lucas-cranach-the-elder" id="toc-example-hercules-and-omphale-by-lucas-cranach-the-elder" class="nav-link" data-scroll-target="#example-hercules-and-omphale-by-lucas-cranach-the-elder">Example: Hercules and Omphale by Lucas Cranach the Elder</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data Structure</a>
+  <ul class="collapse">
+  <li><a href="#instance-of-item" id="toc-instance-of-item" class="nav-link" data-scroll-target="#instance-of-item">1. Instance of Item</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">2. Title</a></li>
+  <li><a href="#creator" id="toc-creator" class="nav-link" data-scroll-target="#creator">3. Creator</a></li>
+  <li><a href="#inception-date" id="toc-inception-date" class="nav-link" data-scroll-target="#inception-date">4. Inception Date</a></li>
+  <li><a href="#current-location" id="toc-current-location" class="nav-link" data-scroll-target="#current-location">5. Current Location</a></li>
+  <li><a href="#collection" id="toc-collection" class="nav-link" data-scroll-target="#collection">6. Collection</a></li>
+  <li><a href="#main-subject" id="toc-main-subject" class="nav-link" data-scroll-target="#main-subject">7. Main Subject</a></li>
+  <li><a href="#materials" id="toc-materials" class="nav-link" data-scroll-target="#materials">8. Materials</a></li>
+  <li><a href="#inventory-number" id="toc-inventory-number" class="nav-link" data-scroll-target="#inventory-number">9. Inventory Number</a></li>
+  <li><a href="#catalog-code" id="toc-catalog-code" class="nav-link" data-scroll-target="#catalog-code">10. Catalog Code</a></li>
+  <li><a href="#width" id="toc-width" class="nav-link" data-scroll-target="#width">11. Width</a></li>
+  <li><a href="#height" id="toc-height" class="nav-link" data-scroll-target="#height">12. Height</a></li>
+  <li><a href="#depth" id="toc-depth" class="nav-link" data-scroll-target="#depth">13. Depth</a></li>
+  <li><a href="#part-of-series" id="toc-part-of-series" class="nav-link" data-scroll-target="#part-of-series">14. Part of Series</a></li>
+  <li><a href="#depicts" id="toc-depicts" class="nav-link" data-scroll-target="#depicts">15. Depicts</a></li>
+  <li><a href="#image" id="toc-image" class="nav-link" data-scroll-target="#image">16. Image</a></li>
+  <li><a href="#described-at-url" id="toc-described-at-url" class="nav-link" data-scroll-target="#described-at-url">17. Described at URL</a></li>
+  <li><a href="#exhibited-at-exhibition-history" id="toc-exhibited-at-exhibition-history" class="nav-link" data-scroll-target="#exhibited-at-exhibition-history">18. Exhibited at (Exhibition History)</a></li>
+  <li><a href="#acquisition-event" id="toc-acquisition-event" class="nav-link" data-scroll-target="#acquisition-event">19. Acquisition Event</a></li>
+  <li><a href="#provenance" id="toc-provenance" class="nav-link" data-scroll-target="#provenance">20. Provenance</a></li>
+  <li><a href="#previous-owner" id="toc-previous-owner" class="nav-link" data-scroll-target="#previous-owner">21. Previous Owner</a></li>
+  <li><a href="#condition-state" id="toc-condition-state" class="nav-link" data-scroll-target="#condition-state">22. Condition State</a></li>
+  <li><a href="#date-entered-collection" id="toc-date-entered-collection" class="nav-link" data-scroll-target="#date-entered-collection">23. Date Entered Collection</a></li>
+  </ul></li>
+  <li><a href="#best-practices-for-item-records" id="toc-best-practices-for-item-records" class="nav-link" data-scroll-target="#best-practices-for-item-records">Best Practices for Item Records</a></li>
+  <li><a href="#related-standards-references" id="toc-related-standards-references" class="nav-link" data-scroll-target="#related-standards-references">Related Standards &amp; References</a></li>
+  <li><a href="#contact-contributions" id="toc-contact-contributions" class="nav-link" data-scroll-target="#contact-contributions">Contact &amp; Contributions</a></li>
+  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/item-in-exhibition-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Item in Exhibition Data Model</h1>
+<p class="subtitle lead">Linked Open Exhibition</p>
+</div>
+
+<div>
+  <div class="description">
+    A unified data model for artworks and items in exhibitions aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This data model provides a standardized schema for describing artworks, objects, and items within exhibition contexts in the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:</p>
+<ul>
+<li><strong>CIDOC CRM</strong> (Conceptual Reference Model) v7.1.3</li>
+<li><strong>Wikibase4Research</strong> (WB4R) - NFDI4Culture platform</li>
+<li><strong>Wikidata</strong> - WikiProject Exhibitions</li>
+</ul>
+</section>
+<section id="quick-reference-schema-mappings" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-schema-mappings">Quick Reference: Schema Mappings</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 23%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Wikibase4Research</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Instance of</strong></td>
+<td>P31:Q3305213 (artwork)</td>
+<td>E22_Man-Made_Object</td>
+<td>instance_of</td>
+</tr>
+<tr class="even">
+<td><strong>Title</strong></td>
+<td>P1476</td>
+<td>P102_has_title (E35_Title)</td>
+<td>title</td>
+</tr>
+<tr class="odd">
+<td><strong>Creator</strong></td>
+<td>P170</td>
+<td>P14_carried_out_by (E39_Actor)</td>
+<td>author</td>
+</tr>
+<tr class="even">
+<td><strong>Inception</strong></td>
+<td>P571</td>
+<td>P108_has_produced (E65_Creation)</td>
+<td>creation_date</td>
+</tr>
+<tr class="odd">
+<td><strong>Location</strong></td>
+<td>P276/P1753</td>
+<td>P87_is_identified_by (E53_Place)</td>
+<td>location</td>
+</tr>
+<tr class="even">
+<td><strong>Collection</strong></td>
+<td>P195</td>
+<td>P46_is_composed_of (E18_Physical_Thing)</td>
+<td>collection</td>
+</tr>
+<tr class="odd">
+<td><strong>Main Subject</strong></td>
+<td>P921</td>
+<td>P129_is_about (E1_CRM_Entity)</td>
+<td>main_subject</td>
+</tr>
+<tr class="even">
+<td><strong>Materials</strong></td>
+<td>P186</td>
+<td>P45_consists_of (E57_Material)</td>
+<td>material</td>
+</tr>
+<tr class="odd">
+<td><strong>Inventory Number</strong></td>
+<td>P217</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>inventory_number</td>
+</tr>
+<tr class="even">
+<td><strong>Catalog Code</strong></td>
+<td>P528</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>catalog_code</td>
+</tr>
+<tr class="odd">
+<td><strong>Width</strong></td>
+<td>P2049</td>
+<td>P43_has_dimension (E54_Dimension)</td>
+<td>width</td>
+</tr>
+<tr class="even">
+<td><strong>Height</strong></td>
+<td>P2048</td>
+<td>P43_has_dimension (E54_Dimension)</td>
+<td>height</td>
+</tr>
+<tr class="odd">
+<td><strong>Depth</strong></td>
+<td>P2610</td>
+<td>P43_has_dimension (E54_Dimension)</td>
+<td>depth</td>
+</tr>
+<tr class="even">
+<td><strong>Part of Series</strong></td>
+<td>P179</td>
+<td>P108_has_produced (E65_Creation)</td>
+<td>part_of_series</td>
+</tr>
+<tr class="odd">
+<td><strong>Depicts</strong></td>
+<td>P180</td>
+<td>P129_is_about</td>
+<td>depicts</td>
+</tr>
+<tr class="even">
+<td><strong>Image</strong></td>
+<td>P18</td>
+<td>E36_Visual_Item</td>
+<td>image</td>
+</tr>
+<tr class="odd">
+<td><strong>Described at</strong></td>
+<td>P973</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>described_at</td>
+</tr>
+<tr class="even">
+<td><strong>Exhibited at</strong></td>
+<td>P1431</td>
+<td>E7_Activity (exhibition event)</td>
+<td>exhibition_history</td>
+</tr>
+<tr class="odd">
+<td><strong>Acquisition</strong></td>
+<td>P1830</td>
+<td>E8_Acquisition</td>
+<td>acquisition_event</td>
+</tr>
+<tr class="even">
+<td><strong>Provenance</strong></td>
+<td>P2670</td>
+<td>P46_is_composed_of + provenance chain</td>
+<td>provenance</td>
+</tr>
+<tr class="odd">
+<td><strong>Previous Owner</strong></td>
+<td>P127</td>
+<td>P24_transferred_title_of (E8_Acquisition)</td>
+<td>previous_owner</td>
+</tr>
+<tr class="even">
+<td><strong>Condition</strong></td>
+<td>—</td>
+<td>E3_Condition_State</td>
+<td>condition</td>
+</tr>
+<tr class="odd">
+<td><strong>Date Entered Collection</strong></td>
+<td>—</td>
+<td>E8_Acquisition + P4_has_time_span</td>
+<td>date_acquired</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="example-hercules-and-omphale-by-lucas-cranach-the-elder" class="level2">
+<h2 class="anchored" data-anchor-id="example-hercules-and-omphale-by-lucas-cranach-the-elder">Example: Hercules and Omphale by Lucas Cranach the Elder</h2>
+<p><strong>Title:</strong> Hercules and Omphale<br>
+<strong>Creator:</strong> Lucas Cranach the Elder (Q191748)<br>
+<strong>Instance of:</strong> Painting (Q3305213)<br>
+<strong>Inception:</strong> 16th century<br>
+<strong>Current Location:</strong> Kunsthistorisches Museum, Vienna (Q160112)<br>
+<strong>Collection:</strong> Kunsthistorisches Museum<br>
+<strong>Main Subject:</strong> Hercules and Omphale (Q117010959) / Greek mythology<br>
+<strong>Material:</strong> Oil on wood panel<br>
+<strong>Width:</strong> 210 cm<br>
+<strong>Height:</strong> 160 cm<br>
+<strong>Inventory Number:</strong> [Museum catalog number]<br>
+<strong>Image:</strong> [Wikimedia Commons: Hercules and Omphale by Lucas Cranach]<br>
+<strong>Described at:</strong> https://commons.wikimedia.org/wiki/Category:Paintings_of_Hercules_and_Omphale_by_Lucas_Cranach_(I)</p>
+<hr>
+</section>
+<section id="data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure">Data Structure</h2>
+<section id="instance-of-item" class="level3">
+<h3 class="anchored" data-anchor-id="instance-of-item">1. Instance of Item</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>ist eine</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Instance of</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>The item is classified as an artwork or object</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P31</td>
+</tr>
+<tr class="even">
+<td><strong>Recommended Values</strong></td>
+<td>Q3305213 (painting), Q11410 (sculpture), Q14919 (relief), etc.</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P31:Q3305213</code></td>
+<td>Instance of artwork type</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E22_Man-Made_Object</code></td>
+<td>Object created by humans</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>instance_of</code></td>
+<td>Object type in Wikibase4Research</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="title" class="level3">
+<h3 class="anchored" data-anchor-id="title">2. Title</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Titel</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Title</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Official title or name of the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Monolingual text</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P1476</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Text (multilingual titles supported)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-1" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-1">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1476</code></td>
+<td>Title of artwork</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P102_has_title (E35_Title)</code></td>
+<td>Identifies artwork through naming</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>title</code></td>
+<td>Title property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="creator" class="level3">
+<h3 class="anchored" data-anchor-id="creator">3. Creator</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Künstler/Creator</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Creator</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Artist or person who created the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to person)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P170</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Link to artist Wikidata item</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-2" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-2">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P170</code></td>
+<td>Creator of artwork</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P14_carried_out_by (E39_Actor)</code></td>
+<td>Person/actor carried out creation</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>author</code></td>
+<td>Creator in Wikibase4Research</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="inception-date" class="level3">
+<h3 class="anchored" data-anchor-id="inception-date">4. Inception Date</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Entstehung</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Inception</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Date or period when the artwork was created</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Point in time or period</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P571</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>YYYY, YYYY-MM, or YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-3" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-3">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P571</code></td>
+<td>Inception date of artwork</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P108_has_produced (E65_Creation)</code></td>
+<td>Creation event dates</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>creation_date</code></td>
+<td>Creation date in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="current-location" class="level3">
+<h3 class="anchored" data-anchor-id="current-location">5. Current Location</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Ort</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Location</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Current museum or institution housing the item</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to place/institution)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P276 (original location) / P1753 (current location)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-4" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-4">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P276</code> / <code>P1753</code></td>
+<td>Location/current location of artwork</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P87_is_identified_by (E53_Place)</code></td>
+<td>Physical location</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>location</code></td>
+<td>Location property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="collection" class="level3">
+<h3 class="anchored" data-anchor-id="collection">6. Collection</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Sammlung</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Collection</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Museum or collection the item belongs to</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to institution/collection)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P195</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-5" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-5">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P195</code></td>
+<td>Collection membership</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P46_is_composed_of (E18_Physical_Thing)</code></td>
+<td>Part of collection</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>collection</code></td>
+<td>Collection in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="main-subject" class="level3">
+<h3 class="anchored" data-anchor-id="main-subject">7. Main Subject</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Thema</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Main subject</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Primary subject or topic depicted in the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P921</td>
+</tr>
+<tr class="even">
+<td><strong>Example</strong></td>
+<td>Q117010959 (Hercules and Omphale)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-6" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-6">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P921</code></td>
+<td>Main subject of artwork</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P129_is_about (E1_CRM_Entity)</code></td>
+<td>Object is about entity</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>main_subject</code></td>
+<td>Subject reference in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="materials" class="level3">
+<h3 class="anchored" data-anchor-id="materials">8. Materials</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Material</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Material</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Material(s) used to create the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item or text</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P186</td>
+</tr>
+<tr class="even">
+<td><strong>Examples</strong></td>
+<td>Oil, canvas, bronze, marble, etc.</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-7" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-7">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P186</code></td>
+<td>Material composition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P45_consists_of (E57_Material)</code></td>
+<td>Object consists of material</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>material</code></td>
+<td>Material in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="inventory-number" class="level3">
+<h3 class="anchored" data-anchor-id="inventory-number">9. Inventory Number</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Inventarnummer</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Inventory number</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Museum catalog or inventory identifier</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Text</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P217</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Alphanumeric identifier (museum-specific format)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-8" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-8">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P217</code></td>
+<td>Inventory number</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E42_Identifier)</code></td>
+<td>Object identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>inventory_number</code></td>
+<td>Inventory number in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="catalog-code" class="level3">
+<h3 class="anchored" data-anchor-id="catalog-code">10. Catalog Code</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Katalognummer</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Catalog code</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Publication or exhibition catalog reference code</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Text</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P528</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Alphanumeric reference</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-9" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-9">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P528</code></td>
+<td>Catalog code</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E42_Identifier)</code></td>
+<td>Identifier reference</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>catalog_code</code></td>
+<td>Catalog code in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="width" class="level3">
+<h3 class="anchored" data-anchor-id="width">11. Width</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Breite</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Width</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Width measurement of the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Quantity</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P2049</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Numeric value with unit (cm, m, etc.)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-10" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-10">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P2049</code></td>
+<td>Width of object</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P43_has_dimension (E54_Dimension)</code></td>
+<td>Dimension specification</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>width</code></td>
+<td>Width in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="height" class="level3">
+<h3 class="anchored" data-anchor-id="height">12. Height</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Höhe</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Height</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Height measurement of the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Quantity</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P2048</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Numeric value with unit (cm, m, etc.)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-11" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-11">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P2048</code></td>
+<td>Height of object</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P43_has_dimension (E54_Dimension)</code></td>
+<td>Dimension specification</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>height</code></td>
+<td>Height in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="depth" class="level3">
+<h3 class="anchored" data-anchor-id="depth">13. Depth</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Tiefe</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Depth</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Depth measurement of the artwork (for 3D objects)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Quantity</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P2610</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Numeric value with unit (cm, m, etc.)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-12" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-12">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P2610</code></td>
+<td>Depth of object</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P43_has_dimension (E54_Dimension)</code></td>
+<td>Dimension specification</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>depth</code></td>
+<td>Depth in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="part-of-series" class="level3">
+<h3 class="anchored" data-anchor-id="part-of-series">14. Part of Series</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Teil einer Serie</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Part of series</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Series or collection grouping the item belongs to</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P179</td>
+</tr>
+<tr class="even">
+<td><strong>Example</strong></td>
+<td>Q131680678 (series or collection)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-13" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-13">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P179</code></td>
+<td>Part of series</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P108_has_produced (E65_Creation)</code></td>
+<td>Creation context</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>part_of_series</code></td>
+<td>Series membership in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="depicts" class="level3">
+<h3 class="anchored" data-anchor-id="depicts">15. Depicts</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Darstellen</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Depicts</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Additional entities or persons depicted in the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (multiple allowed)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P180</td>
+</tr>
+<tr class="even">
+<td><strong>Examples</strong></td>
+<td>Persons, mythological figures, events</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-14" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-14">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P180</code></td>
+<td>Depicts entity</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P129_is_about</code></td>
+<td>Content representation</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>depicts</code></td>
+<td>Depicted entities in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="image" class="level3">
+<h3 class="anchored" data-anchor-id="image">16. Image</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Bild</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Image</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Digital image or photograph of the artwork</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Commons media file</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P18</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Wikimedia Commons filename</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-15" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-15">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P18</code></td>
+<td>Image of artwork</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E36_Visual_Item</code></td>
+<td>Visual representation</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>image</code></td>
+<td>Image reference in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="described-at-url" class="level3">
+<h3 class="anchored" data-anchor-id="described-at-url">17. Described at URL</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Beschrieben auf</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Described at URL</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Link to documentation or webpage describing the item</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>URL</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P973</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>https://…</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-16" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-16">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P973</code></td>
+<td>Described at URL</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E42_Identifier)</code></td>
+<td>Digital identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>described_at</code></td>
+<td>Reference URL in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="exhibited-at-exhibition-history" class="level3">
+<h3 class="anchored" data-anchor-id="exhibited-at-exhibition-history">18. Exhibited at (Exhibition History)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Ausgestellt in</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Exhibited at</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Exhibitions in which the item has been displayed</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (multiple exhibitions allowed)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P1431</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Links to exhibition Wikidata items with dates</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-17" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-17">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1431</code></td>
+<td>Exhibited at exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E7_Activity (exhibition event)</code></td>
+<td>Object participated in exhibition event</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>exhibition_history</code></td>
+<td>Exhibition participation history</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="acquisition-event" class="level3">
+<h3 class="anchored" data-anchor-id="acquisition-event">19. Acquisition Event</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Akquisition</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Acquisition</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Event and details of how the item was acquired</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Complex event (date, method, price, source)</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>Multiple dates and parties involved</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-18" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-18">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1830</code></td>
+<td>Acquisition event details</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E8_Acquisition</code></td>
+<td>Formal acquisition event class</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>acquisition_event</code></td>
+<td>Acquisition in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="provenance" class="level3">
+<h3 class="anchored" data-anchor-id="provenance">20. Provenance</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Provenienz</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Provenance</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Complete ownership and location history of the item</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Chain of provenance events</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>Chronological sequence of previous owners/locations</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-19" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-19">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P2670</code></td>
+<td>Provenance chain</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P46_is_composed_of + provenance events</code></td>
+<td>Object’s history chain</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>provenance</code></td>
+<td>Provenance documentation</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="previous-owner" class="level3">
+<h3 class="anchored" data-anchor-id="previous-owner">21. Previous Owner</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Früherer Besitzer</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Previous Owner</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Person or institution who previously owned the item</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (person or organization)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P127</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Link to previous owner item</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-20" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-20">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P127</code></td>
+<td>Previous owner</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P24_transferred_title_of (E8_Acquisition)</code></td>
+<td>Title transferred in acquisition</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>previous_owner</code></td>
+<td>Previous ownership record</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="condition-state" class="level3">
+<h3 class="anchored" data-anchor-id="condition-state">22. Condition State</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Zustand</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Condition</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Current conservation or condition status of the item</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Text/Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>Condition assessment (excellent, good, fair, poor, damaged)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-21" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-21">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>—</code></td>
+<td>Not directly mapped</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E3_Condition_State</code></td>
+<td>Condition state class</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>condition</code></td>
+<td>Conservation condition in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="date-entered-collection" class="level3">
+<h3 class="anchored" data-anchor-id="date-entered-collection">23. Date Entered Collection</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Eingangsdatum</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Date Entered Collection</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Date when the item was formally acquired or accessioned</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Point in time</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>YYYY, YYYY-MM, or YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-22" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-22">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>—</code></td>
+<td>Part of P1830 context</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E8_Acquisition + P4_has_time_span</code></td>
+<td>Acquisition event time</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>date_acquired</code></td>
+<td>Acquisition date in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="best-practices-for-item-records" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-item-records">Best Practices for Item Records</h2>
+<ol type="1">
+<li><p><strong>Creator Attribution</strong>: Always link to the artist’s Wikidata item (P170) to enable comprehensive artist profiles and work discovery.</p></li>
+<li><p><strong>Materials Specification</strong>: Use standardized material items (oil, canvas, bronze) rather than free text to enable material-based collection browsing and conservation research.</p></li>
+<li><p><strong>Dimensions</strong>: Record all three dimensions (width, height, depth) with consistent units (typically cm for smaller works, m for large installations) to support condition assessments and exhibition planning.</p></li>
+<li><p><strong>Exhibition History Documentation</strong>: Record all known exhibitions where the item has been displayed (P1431) with corresponding dates to support provenance research and exhibition network analysis.</p></li>
+<li><p><strong>Provenance Chain</strong>: Document the complete ownership history (P2670, P127) in chronological order from creation through current ownership. Flag items with gaps or uncertain provenance for curatorial review.</p></li>
+<li><p><strong>Acquisition Records</strong>: Link acquisition events (P1830) with date entered collection (acquisition dates) to establish clear accession points and support repatriation research where applicable.</p></li>
+<li><p><strong>Subject Classification</strong>: Use P921 for primary subject and P180 for depicted entities to enable thematic searching across exhibitions.</p></li>
+<li><p><strong>Inventory Standards</strong>: Maintain distinct inventory numbers (P217) and catalog codes (P528) to distinguish between institutional accession records and publication references.</p></li>
+<li><p><strong>Image Uploads</strong>: Always upload high-quality images to Wikimedia Commons (P18) to provide visual context and enhance global knowledge sharing.</p></li>
+<li><p><strong>Collection Cross-Reference</strong>: Link to both the holding institution (P276/P1753) and the broader collection (P195) to support organizational hierarchies.</p></li>
+<li><p><strong>URL Persistence</strong>: Use institutional persistent identifiers (DOI, UUID) when available to ensure long-term reference stability.</p></li>
+<li><p><strong>Condition Documentation</strong>: Record current condition status regularly and document any conservation treatments with dates to support curatorial decision-making and insurance records.</p></li>
+</ol>
+<hr>
+</section>
+<section id="related-standards-references" class="level2">
+<h2 class="anchored" data-anchor-id="related-standards-references">Related Standards &amp; References</h2>
+<ul>
+<li><a href="https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html">CIDOC CRM v7.1.3</a> - Formal ontology standard for cultural heritage</li>
+<li><a href="https://gitlab.com/nfdi4culture/wikibase4research/model">Wikibase4Research (WB4R)</a> - NFDI4Culture platform implementation</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions/Properties">Wikidata WikiProject Exhibitions</a> - Community guidelines for exhibition properties</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:Art">Wikidata Art Project</a> - Guidelines for artwork documentation</li>
+<li><a href="https://commons.wikimedia.org/">Wikimedia Commons</a> - Free media repository for artwork images</li>
+<li><a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Exhibition Project</a> - Project repository</li>
+</ul>
+<hr>
+</section>
+<section id="contact-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="contact-contributions">Contact &amp; Contributions</h2>
+<p>For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via <a href="https://github.com/NFDI4Culture/linked-open-exhibition">GitHub</a>.</p>
+<hr>
+</section>
+<section id="attribution" class="level2">
+<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
+<p>This data model documentation was created with assistance from <strong>GitHub Copilot</strong> (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Exhibitions guidelines through AI-assisted analysis and formatting.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/item-in-exhibition-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/a870858">a870858</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

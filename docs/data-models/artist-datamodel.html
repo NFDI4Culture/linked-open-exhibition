@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A unified data model for artists aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards">
+
+<title>Artist Data Model – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
+        <li>
+    <a class="dropdown-item" href="../data-models/artist-datamodel.html">
+ <span class="dropdown-text">Artist Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/exhibition-datamodel.html">
+ <span class="dropdown-text">Exhibition Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/dnb-catalogue-datamodel.html">
+ <span class="dropdown-text">DNB Catalogue Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/item-in-exhibition-datamodel.html">
+ <span class="dropdown-text">Item in Exhibition Data Model</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary-de.html"> 
+<span class="menu-text">Glossar (DE)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NFDI4Culture/linked-open-exhibition"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#quick-reference-schema-mappings" id="toc-quick-reference-schema-mappings" class="nav-link" data-scroll-target="#quick-reference-schema-mappings">Quick Reference: Schema Mappings</a></li>
+  <li><a href="#example-max-ernst-q108968" id="toc-example-max-ernst-q108968" class="nav-link" data-scroll-target="#example-max-ernst-q108968">Example: Max Ernst (Q108968)</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data Structure</a>
+  <ul class="collapse">
+  <li><a href="#entity-type" id="toc-entity-type" class="nav-link" data-scroll-target="#entity-type">1. Entity Type</a></li>
+  <li><a href="#given-name" id="toc-given-name" class="nav-link" data-scroll-target="#given-name">2. Given Name</a></li>
+  <li><a href="#family-name" id="toc-family-name" class="nav-link" data-scroll-target="#family-name">3. Family Name</a></li>
+  <li><a href="#profession-occupation" id="toc-profession-occupation" class="nav-link" data-scroll-target="#profession-occupation">4. Profession / Occupation</a></li>
+  <li><a href="#date-of-birth" id="toc-date-of-birth" class="nav-link" data-scroll-target="#date-of-birth">5. Date of Birth</a></li>
+  <li><a href="#date-of-death" id="toc-date-of-death" class="nav-link" data-scroll-target="#date-of-death">6. Date of Death</a></li>
+  <li><a href="#nationality-citizenship" id="toc-nationality-citizenship" class="nav-link" data-scroll-target="#nationality-citizenship">7. Nationality / Citizenship</a></li>
+  <li><a href="#reference-identifier" id="toc-reference-identifier" class="nav-link" data-scroll-target="#reference-identifier">8. Reference / Identifier</a></li>
+  <li><a href="#commons-category" id="toc-commons-category" class="nav-link" data-scroll-target="#commons-category">9. Commons Category</a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a>
+  <ul class="collapse">
+  <li><a href="#when-creating-artist-records" id="toc-when-creating-artist-records" class="nav-link" data-scroll-target="#when-creating-artist-records">When Creating Artist Records:</a></li>
+  <li><a href="#for-exhibition-context" id="toc-for-exhibition-context" class="nav-link" data-scroll-target="#for-exhibition-context">For Exhibition Context:</a></li>
+  </ul></li>
+  <li><a href="#related-standards-resources" id="toc-related-standards-resources" class="nav-link" data-scroll-target="#related-standards-resources">Related Standards &amp; Resources</a></li>
+  <li><a href="#contact-contributions" id="toc-contact-contributions" class="nav-link" data-scroll-target="#contact-contributions">Contact &amp; Contributions</a></li>
+  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/artist-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Artist Data Model</h1>
+<p class="subtitle lead">Linked Open Exhibition</p>
+</div>
+
+<div>
+  <div class="description">
+    A unified data model for artists aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This data model provides a standardized schema for describing artists and their biographical information within the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:</p>
+<ul>
+<li><strong>CIDOC CRM</strong> (Conceptual Reference Model) v7.1.3</li>
+<li><strong>Wikibase4Research</strong> (WB4R) - NFDI4Culture platform</li>
+<li><strong>Wikidata</strong> - WikiProject Exhibitions</li>
+</ul>
+</section>
+<section id="quick-reference-schema-mappings" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-schema-mappings">Quick Reference: Schema Mappings</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 23%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Wikibase4Research</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Entity</strong></td>
+<td>P31:Q5 (instance of human)</td>
+<td>E21_Person</td>
+<td>wgm:human (Q5)</td>
+</tr>
+<tr class="even">
+<td><strong>Given Name</strong></td>
+<td>P735</td>
+<td>P1_is_identified_by (E82_Appellation)</td>
+<td>wgm:title (P4)</td>
+</tr>
+<tr class="odd">
+<td><strong>Family Name</strong></td>
+<td>P734</td>
+<td>P1_is_identified_by (E82_Appellation)</td>
+<td>wgm:title (P4)</td>
+</tr>
+<tr class="even">
+<td><strong>Profession</strong></td>
+<td>P106</td>
+<td>P2_has_type (E55_Type)</td>
+<td>wgm:classified_as (P97)</td>
+</tr>
+<tr class="odd">
+<td><strong>Birth Date</strong></td>
+<td>P569</td>
+<td>P82_at_some_time_within (E52_Time-Span)</td>
+<td>wgm:date (P12)</td>
+</tr>
+<tr class="even">
+<td><strong>Death Date</strong></td>
+<td>P570</td>
+<td>P82_at_some_time_within (E52_Time-Span)</td>
+<td>wgm:date (P12)</td>
+</tr>
+<tr class="odd">
+<td><strong>Nationality</strong></td>
+<td>P27</td>
+<td>P2_has_type (E55_Type_Nationality)</td>
+<td>wgm:classified_as (P97)</td>
+</tr>
+<tr class="even">
+<td><strong>Reference</strong></td>
+<td>Q-identifier</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>wgm:internal_id (P96)</td>
+</tr>
+<tr class="odd">
+<td><strong>Commons Category</strong></td>
+<td>P373</td>
+<td>P87_is_identified_by (E39_Actor)</td>
+<td>wgm:gnd (P102) / wgm:getty_ulan (P100)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="example-max-ernst-q108968" class="level2">
+<h2 class="anchored" data-anchor-id="example-max-ernst-q108968">Example: Max Ernst (Q108968)</h2>
+<p><strong>Name:</strong> Max Ernst<br>
+<strong>Given Name:</strong> Max<br>
+<strong>Family Name:</strong> Ernst<br>
+<strong>Profession:</strong> Painter, Sculptor, Artist (Surrealist movement)<br>
+<strong>Date of Birth:</strong> 1891<br>
+<strong>Date of Death:</strong> 1976<br>
+<strong>Nationality:</strong> German (later naturalized French and American)<br>
+<strong>Reference:</strong> <a href="https://www.wikidata.org/wiki/Q108968">https://www.wikidata.org/wiki/Q108968</a></p>
+<hr>
+</section>
+<section id="data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure">Data Structure</h2>
+<section id="entity-type" class="level3">
+<h3 class="anchored" data-anchor-id="entity-type">1. Entity Type</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Entität</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Entity</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>The item itself is classified as a human</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P31:Q5</code></td>
+<td>Instance of human</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E21_Person</code></td>
+<td>Defines the entity as a person</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:human (Q5)</code> / <code>wgm:instance_of (P1)</code></td>
+<td>Human classification in Wikibase4Research</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="given-name" class="level3">
+<h3 class="anchored" data-anchor-id="given-name">2. Given Name</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Vorname</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Given name</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P735 (given name)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to name item)</td>
+</tr>
+<tr class="odd">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P735</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-1" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-1">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P735</code></td>
+<td>Given name (recommended for exhibitions)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E82_Appellation)</code></td>
+<td>Identifies the person through naming</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:title (P4)</code> or <code>wgm:classified_as (P97)</code></td>
+<td>Name classification in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="family-name" class="level3">
+<h3 class="anchored" data-anchor-id="family-name">3. Family Name</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Nachname</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Family name</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P734 (family name)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to name item)</td>
+</tr>
+<tr class="odd">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P734</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-2" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-2">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P734</code></td>
+<td>Family name (recommended for exhibitions)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E82_Appellation)</code></td>
+<td>Identifies the person through family name</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:title (P4)</code> or <code>wgm:classified_as (P97)</code></td>
+<td>Name classification in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="profession-occupation" class="level3">
+<h3 class="anchored" data-anchor-id="profession-occupation">4. Profession / Occupation</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Beruf</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Profession</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P106 (occupation)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to occupation type)</td>
+</tr>
+<tr class="odd">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P106</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-3" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-3">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P106</code></td>
+<td>Occupation (use specific art/exhibition roles)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P2_has_type (E55_Type)</code></td>
+<td>Types applied to the person</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:classified_as (P97)</code></td>
+<td>Classification of professional role</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples" class="level4">
+<h4 class="anchored" data-anchor-id="examples">Examples</h4>
+<ul>
+<li>Painter (Q3391743)</li>
+<li>Sculptor (Q729)</li>
+<li>Photographer (Q33231)</li>
+<li>Architect (Q42973)</li>
+<li>Musician (Q639669)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="date-of-birth" class="level3">
+<h3 class="anchored" data-anchor-id="date-of-birth">5. Date of Birth</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Geburtsdatum</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Birth</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P569 (date of birth)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Date</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>YYYY-MM-DD or YYYY</td>
+</tr>
+<tr class="even">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P569</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-4" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-4">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P569</code></td>
+<td>Date of birth (format: YYYY-MM-DD or YYYY)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P82_at_some_time_within (E52_Time-Span)</code></td>
+<td>Time-span for birth event</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:date (P12)</code> via Birth Event or <code>wgm:start_date (P10)</code></td>
+<td>Event-based approach</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="date-of-death" class="level3">
+<h3 class="anchored" data-anchor-id="date-of-death">6. Date of Death</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Sterbedatum</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Death</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P570 (date of death)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Date</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>YYYY-MM-DD or YYYY</td>
+</tr>
+<tr class="even">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P570</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-5" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-5">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P570</code></td>
+<td>Date of death (format: YYYY-MM-DD or YYYY)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P82_at_some_time_within (E52_Time-Span)</code></td>
+<td>Time-span for death event</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:date (P12)</code> via Death Event or <code>wgm:end_date (P11)</code></td>
+<td>Event-based approach</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="nationality-citizenship" class="level3">
+<h3 class="anchored" data-anchor-id="nationality-citizenship">7. Nationality / Citizenship</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Nationalität</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Nationality</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P27 (citizenship)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to country)</td>
+</tr>
+<tr class="odd">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P27</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-6" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-6">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P27</code></td>
+<td>Citizenship (link to country item)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P2_has_type (E55_Type_Nationality)</code></td>
+<td>Nationality as type</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:classified_as (P97)</code> with place reference</td>
+<td>Classification with location context</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples-1" class="level4">
+<h4 class="anchored" data-anchor-id="examples-1">Examples</h4>
+<ul>
+<li>Germany (Q183)</li>
+<li>France (Q142)</li>
+<li>Italy (Q38)</li>
+<li>United States (Q30)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="reference-identifier" class="level3">
+<h3 class="anchored" data-anchor-id="reference-identifier">8. Reference / Identifier</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Referenz</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Reference</td>
+</tr>
+<tr class="odd">
+<td><strong>Data Type</strong></td>
+<td>URI / Identifier</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Wikidata Q-identifier or external authority file</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-7" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-7">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td>Q-identifiers</td>
+<td>Use Q-identifiers; also add P227 (GND) and P245 (Getty ULAN)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E42_Identifier)</code></td>
+<td>Unique identifier for the person</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:internal_id (P96)</code> or <code>wgm:gnd (P102)</code> / <code>wgm:getty_ulan (P100)</code></td>
+<td>Authority file references</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="authority-file-properties" class="level4">
+<h4 class="anchored" data-anchor-id="authority-file-properties">Authority File Properties</h4>
+<ul>
+<li><strong>GND</strong> (German National Library): <code>P227</code></li>
+<li><strong>Getty ULAN</strong> (Union List of Artist Names): <code>P245</code></li>
+<li><strong>Europeana ID</strong>: <code>P380</code></li>
+<li><strong>ISNI</strong>: <code>P213</code></li>
+<li><strong>VIAF</strong>: <code>P214</code></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="commons-category" class="level3">
+<h3 class="anchored" data-anchor-id="commons-category">9. Commons Category</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Commons category</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Commons category</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P373 (search name)</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>String</td>
+</tr>
+<tr class="odd">
+<td><strong>URI</strong></td>
+<td>https://www.wikidata.org/wiki/Property:P373</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-8" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-8">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P373</code></td>
+<td>Commons category (for related media/images)</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td>Referenced via E78_Curated Holding</td>
+<td>Media representation</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:external_link (P57)</code></td>
+<td>External resource linking</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="purpose" class="level4">
+<h4 class="anchored" data-anchor-id="purpose">Purpose</h4>
+<p>Link to Wikimedia Commons categories containing images, documents, or other media representations of the artist.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
+<section id="when-creating-artist-records" class="level3">
+<h3 class="anchored" data-anchor-id="when-creating-artist-records">When Creating Artist Records:</h3>
+<ol type="1">
+<li><strong>Always include:</strong> Q-identifier (Wikidata link) for interoperability</li>
+<li><strong>Use controlled vocabularies</strong> for professions and nationalities</li>
+<li><strong>Specify date precision:</strong> Use YYYY if only year is known, YYYY-MM-DD if full date available</li>
+<li><strong>Cross-reference authority files:</strong> Include P227 (GND) and P245 (Getty ULAN) identifiers when available</li>
+<li><strong>Link to Commons:</strong> Provide P373 references to media collections</li>
+<li><strong>Use consistent naming:</strong> Follow “Given Name” + “Family Name” convention</li>
+</ol>
+</section>
+<section id="for-exhibition-context" class="level3">
+<h3 class="anchored" data-anchor-id="for-exhibition-context">For Exhibition Context:</h3>
+<ul>
+<li>Use <strong>WikiProject Exhibitions</strong> properties to link artists to exhibitions (P1690: related work)</li>
+<li>For performing artists: Reference <strong>WikiProject Performing arts</strong> guidelines</li>
+<li>For visual artists: Reference <strong>WikiProject Visual arts</strong> guidelines</li>
+<li>Ensure all date formats are ISO 8601 (YYYY-MM-DD) for data interoperability</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="related-standards-resources" class="level2">
+<h2 class="anchored" data-anchor-id="related-standards-resources">Related Standards &amp; Resources</h2>
+<ul>
+<li><a href="http://www.cidoc-crm.org/">CIDOC CRM Official Documentation</a></li>
+<li><a href="https://gitlab.com/nfdi4culture/wikibase4research">Wikibase4Research Documentation</a></li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions">Wikidata WikiProject Exhibitions</a></li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts">Wikidata WikiProject Visual Arts</a></li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Performing_arts">Wikidata WikiProject Performing Arts</a></li>
+</ul>
+<hr>
+</section>
+<section id="contact-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="contact-contributions">Contact &amp; Contributions</h2>
+<p>For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via <a href="https://github.com/NFDI4Culture/linked-open-exhibition">GitHub</a>.</p>
+<hr>
+</section>
+<section id="attribution" class="level2">
+<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
+<p>This data model documentation was created with assistance from <strong>GitHub Copilot</strong> (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Exhibitions guidelines through AI-assisted analysis and formatting.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/artist-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/a870858">a870858</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

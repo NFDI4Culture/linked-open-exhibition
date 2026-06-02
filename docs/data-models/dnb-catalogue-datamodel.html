@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A unified data model for exhibition catalogues aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards">
 
-<title>linked-art-ontology – Linked Open Exhibition</title>
+<title>DNB Exhibition Catalogue Data Model – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,877 +167,816 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linked-art-ontology-things-classes-reference" id="toc-linked-art-ontology-things-classes-reference" class="nav-link active" data-scroll-target="#linked-art-ontology-things-classes-reference">Linked Art Ontology — Things (Classes) Reference</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#quick-reference-schema-mappings" id="toc-quick-reference-schema-mappings" class="nav-link" data-scroll-target="#quick-reference-schema-mappings">Quick Reference: Schema Mappings</a></li>
+  <li><a href="#example-winckelmanns-history-of-ancient-art-1764" id="toc-example-winckelmanns-history-of-ancient-art-1764" class="nav-link" data-scroll-target="#example-winckelmanns-history-of-ancient-art-1764">Example: Winckelmann’s History of Ancient Art (1764)</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data Structure</a>
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#core-entity-classes" id="toc-core-entity-classes" class="nav-link" data-scroll-target="#core-entity-classes">1. Core Entity Classes</a></li>
-  <li><a href="#event-activity-classes" id="toc-event-activity-classes" class="nav-link" data-scroll-target="#event-activity-classes">2. Event / Activity Classes</a></li>
-  <li><a href="#supporting-embedded-classes" id="toc-supporting-embedded-classes" class="nav-link" data-scroll-target="#supporting-embedded-classes">3. Supporting / Embedded Classes</a></li>
-  <li><a href="#core-properties-json-ld" id="toc-core-properties-json-ld" class="nav-link" data-scroll-target="#core-properties-json-ld">4. Core Properties (JSON-LD)</a></li>
-  <li><a href="#model-sections-summary" id="toc-model-sections-summary" class="nav-link" data-scroll-target="#model-sections-summary">5. Model Sections Summary</a></li>
-  <li><a href="#api-endpoints" id="toc-api-endpoints" class="nav-link" data-scroll-target="#api-endpoints">6. API Endpoints</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#instance-of-catalogue" id="toc-instance-of-catalogue" class="nav-link" data-scroll-target="#instance-of-catalogue">1. Instance of Catalogue</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">2. Title</a></li>
+  <li><a href="#author" id="toc-author" class="nav-link" data-scroll-target="#author">3. Author</a></li>
+  <li><a href="#publisher" id="toc-publisher" class="nav-link" data-scroll-target="#publisher">4. Publisher</a></li>
+  <li><a href="#publication-date" id="toc-publication-date" class="nav-link" data-scroll-target="#publication-date">5. Publication Date</a></li>
+  <li><a href="#isbn-13" id="toc-isbn-13" class="nav-link" data-scroll-target="#isbn-13">6. ISBN-13</a></li>
+  <li><a href="#gnd" id="toc-gnd" class="nav-link" data-scroll-target="#gnd">7. GND</a></li>
+  <li><a href="#described-at-url" id="toc-described-at-url" class="nav-link" data-scroll-target="#described-at-url">8. Described at URL</a></li>
+  <li><a href="#image" id="toc-image" class="nav-link" data-scroll-target="#image">9. Image</a></li>
   </ul></li>
+  <li><a href="#best-practices-for-catalogue-records" id="toc-best-practices-for-catalogue-records" class="nav-link" data-scroll-target="#best-practices-for-catalogue-records">Best Practices for Catalogue Records</a></li>
+  <li><a href="#related-standards-references" id="toc-related-standards-references" class="nav-link" data-scroll-target="#related-standards-references">Related Standards &amp; References</a></li>
+  <li><a href="#contact-contributions" id="toc-contact-contributions" class="nav-link" data-scroll-target="#contact-contributions">Contact &amp; Contributions</a></li>
+  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Linkedart/linked-art-ontology.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/dnb-catalogue-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DNB Exhibition Catalogue Data Model</h1>
+<p class="subtitle lead">Linked Open Exhibition</p>
+</div>
+
+<div>
+  <div class="description">
+    A unified data model for exhibition catalogues aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
 
-<section id="linked-art-ontology-things-classes-reference" class="level1">
-<h1>Linked Art Ontology — Things (Classes) Reference</h1>
-<blockquote class="blockquote">
-<p>Based on the <a href="https://linked.art/model/">Linked Art Data Model 1.0</a> — an application profile of <a href="https://www.cidoc-crm.org/">CIDOC-CRM 7.1.3</a> for describing cultural heritage resources.</p>
-</blockquote>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Linked Art defines a streamlined subset of CIDOC-CRM classes organised into <strong>core entities</strong> (the primary things you describe), <strong>event/activity classes</strong> (things that happen), and <strong>supporting classes</strong> (structures embedded within descriptions). The ontology is serialised as <a href="https://linked.art/api/1.0/json-ld/">JSON-LD 1.1</a>.</p>
-<hr>
-</section>
-<section id="core-entity-classes" class="level2">
-<h2 class="anchored" data-anchor-id="core-entity-classes">1. Core Entity Classes</h2>
-<p>These are the primary “things” that receive their own record in the Linked Art API.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>JSON-LD type</th>
-<th>CRM Class</th>
-<th>Category</th>
-<th>Description</th>
-<th>Model docs</th>
-<th>API endpoint</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>HumanMadeObject</code></td>
-<td>E22</td>
-<td>Physical Objects</td>
-<td>A physical thing made or modified by humans, e.g.&nbsp;a painting, sculpture, or manuscript</td>
-<td><a href="https://linked.art/model/object/">Objects</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/physical_object/">Physical Objects</a></td>
-</tr>
-<tr class="even">
-<td><code>DigitalObject</code></td>
-<td>— (LA extension)</td>
-<td>Digital</td>
-<td>A born-digital or digitised resource that exists only in computers, e.g.&nbsp;a web page or digital image</td>
-<td><a href="https://linked.art/model/digital/">Digital Content</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/digital_object/">Digital Objects</a></td>
-</tr>
-<tr class="odd">
-<td><code>Person</code></td>
-<td>E21</td>
-<td>Agents</td>
-<td>An individual human being, e.g.&nbsp;Rembrandt</td>
-<td><a href="https://linked.art/model/actor/">People and Organizations</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/person/">People</a></td>
-</tr>
-<tr class="even">
-<td><code>Group</code></td>
-<td>E74</td>
-<td>Agents</td>
-<td>A collective of people capable of acting together, e.g.&nbsp;a museum department, workshop, or married couple</td>
-<td><a href="https://linked.art/model/actor/">People and Organizations</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/group/">Groups</a></td>
-</tr>
-<tr class="odd">
-<td><code>Place</code></td>
-<td>E53</td>
-<td>Places</td>
-<td>A geographic location, typically with coordinates, e.g.&nbsp;Paris</td>
-<td><a href="https://linked.art/model/place/">Places</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/place/">Places</a></td>
-</tr>
-<tr class="even">
-<td><code>Type</code></td>
-<td>E55</td>
-<td>Concepts</td>
-<td>A category, concept, material, technique, or vocabulary term, e.g.&nbsp;“painting” or “oil on canvas”</td>
-<td><a href="https://linked.art/model/concept/">Concepts</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/concept/">Concepts</a></td>
-</tr>
-<tr class="odd">
-<td><code>Language</code></td>
-<td>E56</td>
-<td>Concepts</td>
-<td>A human language, e.g.&nbsp;English, Dutch</td>
-<td><a href="https://linked.art/model/concept/">Concepts</a></td>
-<td>(via Concepts)</td>
-</tr>
-<tr class="even">
-<td><code>Material</code></td>
-<td>E57</td>
-<td>Concepts</td>
-<td>A physical material or substance, e.g.&nbsp;oil paint, marble</td>
-<td><a href="https://linked.art/model/concept/">Concepts</a></td>
-<td>(via Concepts)</td>
-</tr>
-<tr class="odd">
-<td><code>MeasurementUnit</code></td>
-<td>E58</td>
-<td>Concepts</td>
-<td>A unit of measurement, e.g.&nbsp;centimetres, inches</td>
-<td><a href="https://linked.art/model/concept/">Concepts</a></td>
-<td>(via Concepts)</td>
-</tr>
-<tr class="even">
-<td><code>Currency</code></td>
-<td>E98</td>
-<td>Concepts</td>
-<td>A monetary currency, e.g.&nbsp;USD, EUR</td>
-<td><a href="https://linked.art/model/concept/">Concepts</a></td>
-<td>(via Concepts)</td>
-</tr>
-<tr class="odd">
-<td><code>VisualItem</code></td>
-<td>E36</td>
-<td>Works</td>
-<td>The conceptual visual/image content shown by an object, e.g.&nbsp;the image of the Mona Lisa</td>
-<td><a href="https://linked.art/model/digital/">Digital Content</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/visual_work/">Visual Works</a></td>
-</tr>
-<tr class="even">
-<td><code>LinguisticObject</code></td>
-<td>E33</td>
-<td>Works / Documents</td>
-<td>Textual content carried by a physical or digital object, e.g.&nbsp;the text of a book</td>
-<td><a href="https://linked.art/model/document/">Textual Documents</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/textual_work/">Textual Works</a></td>
-</tr>
-<tr class="odd">
-<td><code>PropositionalObject</code></td>
-<td>E89</td>
-<td>Works</td>
-<td>An entirely abstract work that is neither linguistic nor visual, e.g.&nbsp;the notion of an exhibition or performance</td>
-<td><a href="https://linked.art/model/exhibition/">Exhibitions</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/abstract_work/">Abstract Works</a></td>
-</tr>
-<tr class="even">
-<td><code>Set</code></td>
-<td>— (LA extension)</td>
-<td>Collections</td>
-<td>A set or collection of entities, e.g.&nbsp;a museum collection</td>
-<td><a href="https://linked.art/model/collection/">Collections</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/set/">Sets</a></td>
-</tr>
-<tr class="odd">
-<td><code>Activity</code></td>
-<td>E7</td>
-<td>Events</td>
-<td>An activity carried out by people or groups, e.g.&nbsp;an exhibition or provenance transfer</td>
-<td><a href="https://linked.art/model/provenance/">Provenance</a>, <a href="https://linked.art/model/exhibition/">Exhibitions</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/provenance_activity/">Provenance Activities</a></td>
-</tr>
-<tr class="even">
-<td><code>Period</code></td>
-<td>E4</td>
-<td>Events</td>
-<td>A historical period or era, e.g.&nbsp;the Renaissance</td>
-<td><a href="https://linked.art/model/event/">Events</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/event/">Events</a></td>
-</tr>
-<tr class="odd">
-<td><code>Event</code></td>
-<td>E5</td>
-<td>Events</td>
-<td>An event that may be depicted or referenced, e.g.&nbsp;a battle</td>
-<td><a href="https://linked.art/model/event/">Events</a></td>
-<td><a href="https://linked.art/api/1.0/endpoint/event/">Events</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="event-activity-classes" class="level2">
-<h2 class="anchored" data-anchor-id="event-activity-classes">2. Event / Activity Classes</h2>
-<p>Activities and events model the “what happened” — connecting objects, people, places and time.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON-LD type</th>
-<th>CRM Class</th>
-<th>Category</th>
-<th>Description</th>
-<th>Used for</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Production</code></td>
-<td>E12</td>
-<td>Creation</td>
-<td>The making of a physical object</td>
-<td>Object production</td>
-</tr>
-<tr class="even">
-<td><code>Creation</code></td>
-<td>E65</td>
-<td>Creation</td>
-<td>The creation of a conceptual work (text, image, concept, set)</td>
-<td>Works, sets, concepts</td>
-</tr>
-<tr class="odd">
-<td><code>Destruction</code></td>
-<td>E6</td>
-<td>End of existence</td>
-<td>The destruction of a physical object</td>
-<td>Object destruction</td>
-</tr>
-<tr class="even">
-<td><code>Erasure</code></td>
-<td>— (LA extension)</td>
-<td>End of existence</td>
-<td>The erasure/deletion of a digital object</td>
-<td>Digital object deletion</td>
-</tr>
-<tr class="odd">
-<td><code>Birth</code></td>
-<td>E67</td>
-<td>Life events</td>
-<td>The birth of a person</td>
-<td>Person birth</td>
-</tr>
-<tr class="even">
-<td><code>Death</code></td>
-<td>E69</td>
-<td>Life events</td>
-<td>The death of a person</td>
-<td>Person death</td>
-</tr>
-<tr class="odd">
-<td><code>Formation</code></td>
-<td>E66</td>
-<td>Group events</td>
-<td>The formation of a group or organization</td>
-<td>Group formation</td>
-</tr>
-<tr class="even">
-<td><code>Dissolution</code></td>
-<td>E68</td>
-<td>Group events</td>
-<td>The dissolution of a group or organization</td>
-<td>Group dissolution</td>
-</tr>
-<tr class="odd">
-<td><code>Acquisition</code></td>
-<td>E8</td>
-<td>Provenance</td>
-<td>The acquisition of ownership of an object</td>
-<td>Transfer of ownership</td>
-</tr>
-<tr class="even">
-<td><code>TransferOfCustody</code></td>
-<td>E10</td>
-<td>Provenance</td>
-<td>The transfer of physical custody of an object (without ownership change)</td>
-<td>Loans, exhibitions</td>
-</tr>
-<tr class="odd">
-<td><code>Move</code></td>
-<td>E9</td>
-<td>Provenance</td>
-<td>The physical movement of an object to a new location</td>
-<td>Location changes</td>
-</tr>
-<tr class="even">
-<td><code>Modification</code></td>
-<td>E11</td>
-<td>Conservation</td>
-<td>A significant change or modification to an object</td>
-<td>Conservation, restoration</td>
-</tr>
-<tr class="odd">
-<td><code>PartAddition</code></td>
-<td>E79</td>
-<td>Conservation</td>
-<td>Adding a part to an object</td>
-<td>Conservation</td>
-</tr>
-<tr class="even">
-<td><code>PartRemoval</code></td>
-<td>E80</td>
-<td>Conservation</td>
-<td>Removing a part from an object</td>
-<td>Conservation, sampling</td>
-</tr>
-<tr class="odd">
-<td><code>AttributeAssignment</code></td>
-<td>E13</td>
-<td>Assertion</td>
-<td>Recording a previously held belief or assertion</td>
-<td>Specific assertions</td>
-</tr>
-<tr class="even">
-<td><code>Joining</code></td>
-<td>E85</td>
-<td>Group membership</td>
-<td>A person joining a group</td>
-<td>Marriage, employment</td>
-</tr>
-<tr class="odd">
-<td><code>Leaving</code></td>
-<td>E86</td>
-<td>Group membership</td>
-<td>A person leaving a group</td>
-<td>Divorce, retirement</td>
-</tr>
-<tr class="even">
-<td><code>Encounter</code></td>
-<td>— (LA extension)</td>
-<td>Provenance</td>
-<td>An encounter with an object (e.g.&nbsp;archaeological find)</td>
-<td>Discovery of objects</td>
-</tr>
-<tr class="odd">
-<td><code>Payment</code></td>
-<td>— (LA extension)</td>
-<td>Provenance</td>
-<td>A payment of money</td>
-<td>Auction payments</td>
-</tr>
-<tr class="even">
-<td><code>Right</code></td>
-<td>E30</td>
-<td>Rights</td>
-<td>A right held over an object (appropriated in Linked Art)</td>
-<td>Copyright, ownership rights</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="supporting-embedded-classes" class="level2">
-<h2 class="anchored" data-anchor-id="supporting-embedded-classes">3. Supporting / Embedded Classes</h2>
-<p>These classes appear as embedded structures within core entity records.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON-LD type</th>
-<th>CRM Class</th>
-<th>Category</th>
-<th>Description</th>
-<th>Key properties</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Name</code></td>
-<td>E33_E41</td>
-<td>Identification</td>
-<td>A name or appellation for an entity</td>
-<td><code>content</code>, <code>language</code>, <code>classified_as</code></td>
-</tr>
-<tr class="even">
-<td><code>Identifier</code></td>
-<td>E42</td>
-<td>Identification</td>
-<td>A formal identifier such as an accession number</td>
-<td><code>content</code>, <code>classified_as</code></td>
-</tr>
-<tr class="odd">
-<td><code>TimeSpan</code></td>
-<td>E52</td>
-<td>Temporal</td>
-<td>A span of time with begin/end dates</td>
-<td><code>begin_of_the_begin</code>, <code>end_of_the_end</code>, <code>begin_of_the_end</code>, <code>end_of_the_begin</code></td>
-</tr>
-<tr class="even">
-<td><code>Dimension</code></td>
-<td>E54</td>
-<td>Measurement</td>
-<td>A measured dimension (height, width, weight, duration, etc.)</td>
-<td><code>value</code>, <code>unit</code>, <code>classified_as</code></td>
-</tr>
-<tr class="odd">
-<td><code>MonetaryAmount</code></td>
-<td>E97</td>
-<td>Measurement</td>
-<td>An amount of money</td>
-<td><code>value</code>, <code>currency</code></td>
-</tr>
-<tr class="even">
-<td><code>InformationObject</code></td>
-<td>E73</td>
-<td>Reference</td>
-<td>A reference to an external standard or document</td>
-<td><code>id</code>, <code>type</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="core-properties-json-ld" class="level2">
-<h2 class="anchored" data-anchor-id="core-properties-json-ld">4. Core Properties (JSON-LD)</h2>
-<p>These are the key properties used across all Linked Art entities.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>CRM Property</th>
-<th>Domain → Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>id</code></td>
-<td>—</td>
-<td>all → URI</td>
-<td>The URI identifying the entity</td>
-</tr>
-<tr class="even">
-<td><code>type</code></td>
-<td><code>rdf:type</code></td>
-<td>all → Class</td>
-<td>The class of the entity</td>
-</tr>
-<tr class="odd">
-<td><code>_label</code></td>
-<td><code>rdfs:label</code></td>
-<td>all → string</td>
-<td>Human-readable label for developers</td>
-</tr>
-<tr class="even">
-<td><code>classified_as</code></td>
-<td>P2 has type</td>
-<td>all → Type</td>
-<td>Classification using controlled vocabulary (e.g.&nbsp;AAT)</td>
-</tr>
-<tr class="odd">
-<td><code>identified_by</code></td>
-<td>P1 is identified by</td>
-<td>all → Name / Identifier</td>
-<td>Names and identifiers</td>
-</tr>
-<tr class="even">
-<td><code>referred_to_by</code></td>
-<td>P67i is referred to by</td>
-<td>all → LinguisticObject</td>
-<td>Statements and descriptions</td>
-</tr>
-<tr class="odd">
-<td><code>equivalent</code></td>
-<td>— (LA)</td>
-<td>all → same class</td>
-<td>Links to equivalent resources in other datasets</td>
-</tr>
-<tr class="even">
-<td><code>representation</code></td>
-<td>— (LA)</td>
-<td>all → VisualItem</td>
-<td>Image representations</td>
-</tr>
-<tr class="odd">
-<td><code>member_of</code></td>
-<td>P107i is current or former member of</td>
-<td>Agent → Group, Entity → Set</td>
-<td>Membership in a group or set</td>
-</tr>
-<tr class="even">
-<td><code>part_of</code></td>
-<td>P46i forms part of</td>
-<td>Entity → Entity (same class)</td>
-<td>Part–whole relationship</td>
-</tr>
-<tr class="odd">
-<td><code>produced_by</code></td>
-<td>P108i was produced by</td>
-<td>HumanMadeObject → Production</td>
-<td>Production event</td>
-</tr>
-<tr class="even">
-<td><code>created_by</code></td>
-<td>P94i was created by</td>
-<td>Conceptual → Creation</td>
-<td>Creation event</td>
-</tr>
-<tr class="odd">
-<td><code>destroyed_by</code></td>
-<td>P13i was destroyed by</td>
-<td>HumanMadeObject → Destruction</td>
-<td>Destruction event</td>
-</tr>
-<tr class="even">
-<td><code>born</code></td>
-<td>P98i was born</td>
-<td>Person → Birth</td>
-<td>Birth event</td>
-</tr>
-<tr class="odd">
-<td><code>died</code></td>
-<td>P100i died in</td>
-<td>Person → Death</td>
-<td>Death event</td>
-</tr>
-<tr class="even">
-<td><code>formed_by</code></td>
-<td>P95i was formed by</td>
-<td>Group → Formation</td>
-<td>Formation event</td>
-</tr>
-<tr class="odd">
-<td><code>dissolved_by</code></td>
-<td>P99i was dissolved by</td>
-<td>Group → Dissolution</td>
-<td>Dissolution event</td>
-</tr>
-<tr class="even">
-<td><code>carried_out_by</code></td>
-<td>P14 carried out by</td>
-<td>Activity → Person / Group</td>
-<td>Who performed an activity</td>
-</tr>
-<tr class="odd">
-<td><code>took_place_at</code></td>
-<td>P7 took place at</td>
-<td>Event → Place</td>
-<td>Where something happened</td>
-</tr>
-<tr class="even">
-<td><code>timespan</code></td>
-<td>P4 has time-span</td>
-<td>Event → TimeSpan</td>
-<td>When something happened</td>
-</tr>
-<tr class="odd">
-<td><code>during</code></td>
-<td>— (LA)</td>
-<td>Event → Period</td>
-<td>Period during which an event occurred</td>
-</tr>
-<tr class="even">
-<td><code>used_specific_object</code></td>
-<td>P16 used specific object</td>
-<td>Activity → HumanMadeObject</td>
-<td>Object used in an activity</td>
-</tr>
-<tr class="odd">
-<td><code>technique</code></td>
-<td>P32 used general technique</td>
-<td>Activity → Type</td>
-<td>Technique or method used</td>
-</tr>
-<tr class="even">
-<td><code>carries</code></td>
-<td>P128 carries</td>
-<td>HumanMadeObject → LinguisticObject</td>
-<td>Textual content on an object</td>
-</tr>
-<tr class="odd">
-<td><code>shows</code></td>
-<td>P65 shows visual item</td>
-<td>HumanMadeObject → VisualItem</td>
-<td>Visual content on an object</td>
-</tr>
-<tr class="even">
-<td><code>about</code></td>
-<td>P129 is about</td>
-<td>Work → any entity</td>
-<td>Subject matter</td>
-</tr>
-<tr class="odd">
-<td><code>represents</code></td>
-<td>P138 represents</td>
-<td>VisualItem → any entity</td>
-<td>What is depicted</td>
-</tr>
-<tr class="even">
-<td><code>content</code></td>
-<td>P190 has symbolic content</td>
-<td>LinguisticObject / Name / Identifier → string</td>
-<td>The textual value</td>
-</tr>
-<tr class="odd">
-<td><code>language</code></td>
-<td>P72 has language</td>
-<td>LinguisticObject → Language</td>
-<td>Language of text</td>
-</tr>
-<tr class="even">
-<td><code>format</code></td>
-<td>dc:format</td>
-<td>LinguisticObject / DigitalObject → string</td>
-<td>Media type (e.g.&nbsp;“text/html”)</td>
-</tr>
-<tr class="odd">
-<td><code>value</code></td>
-<td>P90 has value</td>
-<td>Dimension → number</td>
-<td>Numeric measurement value</td>
-</tr>
-<tr class="even">
-<td><code>unit</code></td>
-<td>P91 has unit</td>
-<td>Dimension → MeasurementUnit</td>
-<td>Unit of measurement</td>
-</tr>
-<tr class="odd">
-<td><code>currency</code></td>
-<td>— (LA)</td>
-<td>MonetaryAmount → Currency</td>
-<td>Currency of a monetary amount</td>
-</tr>
-<tr class="even">
-<td><code>begin_of_the_begin</code></td>
-<td>P82a</td>
-<td>TimeSpan → xsd:dateTime</td>
-<td>Earliest possible start</td>
-</tr>
-<tr class="odd">
-<td><code>end_of_the_end</code></td>
-<td>P82b</td>
-<td>TimeSpan → xsd:dateTime</td>
-<td>Latest possible end</td>
-</tr>
-<tr class="even">
-<td><code>current_owner</code></td>
-<td>P52 has current owner</td>
-<td>HumanMadeObject → Person / Group</td>
-<td>Current owner</td>
-</tr>
-<tr class="odd">
-<td><code>current_location</code></td>
-<td>P55 has current location</td>
-<td>HumanMadeObject → Place</td>
-<td>Current location</td>
-</tr>
-<tr class="even">
-<td><code>made_of</code></td>
-<td>P45 consists of</td>
-<td>HumanMadeObject → Material</td>
-<td>Material composition</td>
-</tr>
-<tr class="odd">
-<td><code>dimension</code></td>
-<td>P43 has dimension</td>
-<td>HumanMadeObject → Dimension</td>
-<td>Measured dimensions</td>
-</tr>
-<tr class="even">
-<td><code>access_point</code></td>
-<td>— (LA)</td>
-<td>DigitalObject → DigitalObject</td>
-<td>Downloadable file URL</td>
-</tr>
-<tr class="odd">
-<td><code>digitally_carries</code></td>
-<td>— (LA)</td>
-<td>DigitalObject → LinguisticObject</td>
-<td>Text in a digital object</td>
-</tr>
-<tr class="even">
-<td><code>digitally_shows</code></td>
-<td>— (LA)</td>
-<td>DigitalObject → VisualItem</td>
-<td>Image in a digital object</td>
-</tr>
-<tr class="odd">
-<td><code>conforms_to</code></td>
-<td>P2 has type (refinement)</td>
-<td>DigitalObject → InformationObject</td>
-<td>Standard the digital object conforms to</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="model-sections-summary" class="level2">
-<h2 class="anchored" data-anchor-id="model-sections-summary">5. Model Sections Summary</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Section</th>
-<th>Description</th>
-<th>Documentation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Objects</td>
-<td>Physical things: production, destruction, physical characteristics, aboutness, ownership, rights</td>
-<td><a href="https://linked.art/model/object/">Objects</a></td>
-</tr>
-<tr class="even">
-<td>Digital Content</td>
-<td>Digital representations of or about physical objects</td>
-<td><a href="https://linked.art/model/digital/">Digital</a></td>
-</tr>
-<tr class="odd">
-<td>Collections</td>
-<td>Sets and collections of objects and other entities</td>
-<td><a href="https://linked.art/model/collection/">Collections</a></td>
-</tr>
-<tr class="even">
-<td>Provenance</td>
-<td>Ownership history: acquisitions, loans, auctions, custody, encounters, movement, promises, rights transfer</td>
-<td><a href="https://linked.art/model/provenance/">Provenance</a></td>
-</tr>
-<tr class="odd">
-<td>Exhibitions</td>
-<td>Exhibition events and the objects exhibited</td>
-<td><a href="https://linked.art/model/exhibition/">Exhibitions</a></td>
-</tr>
-<tr class="even">
-<td>Conservation</td>
-<td>Modification, part addition/removal, and condition of objects</td>
-<td><a href="https://linked.art/model/conservation/">Conservation</a></td>
-</tr>
-<tr class="odd">
-<td>People and Organizations</td>
-<td>Persons and groups: birth/death, formation/dissolution, membership</td>
-<td><a href="https://linked.art/model/actor/">Actors</a></td>
-</tr>
-<tr class="even">
-<td>Places</td>
-<td>Geographic locations, coordinates, hierarchies</td>
-<td><a href="https://linked.art/model/place/">Places</a></td>
-</tr>
-<tr class="odd">
-<td>Concepts</td>
-<td>Types, vocabularies, materials, techniques, languages, units</td>
-<td><a href="https://linked.art/model/concept/">Concepts</a></td>
-</tr>
-<tr class="even">
-<td>Events</td>
-<td>Historical periods and events</td>
-<td><a href="https://linked.art/model/event/">Events</a></td>
-</tr>
-<tr class="odd">
-<td>Textual Documents</td>
-<td>Textual works and documents</td>
-<td><a href="https://linked.art/model/document/">Documents</a></td>
-</tr>
-<tr class="even">
-<td>Archival Hierarchies</td>
-<td>Archival arrangement and description</td>
-<td><a href="https://linked.art/model/archives/">Archives</a></td>
-</tr>
-<tr class="odd">
-<td>Specific Assertions</td>
-<td>Previously held beliefs and attribute assignments</td>
-<td><a href="https://linked.art/model/assertion/">Assertions</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="api-endpoints" class="level2">
-<h2 class="anchored" data-anchor-id="api-endpoints">6. API Endpoints</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Endpoint</th>
-<th>Entity Type</th>
-<th>URL</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Physical Objects</td>
-<td><code>HumanMadeObject</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/physical_object/">/api/1.0/endpoint/physical_object/</a></td>
-</tr>
-<tr class="even">
-<td>Digital Objects</td>
-<td><code>DigitalObject</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/digital_object/">/api/1.0/endpoint/digital_object/</a></td>
-</tr>
-<tr class="odd">
-<td>People</td>
-<td><code>Person</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/person/">/api/1.0/endpoint/person/</a></td>
-</tr>
-<tr class="even">
-<td>Groups</td>
-<td><code>Group</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/group/">/api/1.0/endpoint/group/</a></td>
-</tr>
-<tr class="odd">
-<td>Places</td>
-<td><code>Place</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/place/">/api/1.0/endpoint/place/</a></td>
-</tr>
-<tr class="even">
-<td>Concepts</td>
-<td><code>Type</code>, <code>Language</code>, <code>Material</code>, <code>MeasurementUnit</code>, <code>Currency</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/concept/">/api/1.0/endpoint/concept/</a></td>
-</tr>
-<tr class="odd">
-<td>Visual Works</td>
-<td><code>VisualItem</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/visual_work/">/api/1.0/endpoint/visual_work/</a></td>
-</tr>
-<tr class="even">
-<td>Textual Works</td>
-<td><code>LinguisticObject</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/textual_work/">/api/1.0/endpoint/textual_work/</a></td>
-</tr>
-<tr class="odd">
-<td>Abstract Works</td>
-<td><code>PropositionalObject</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/abstract_work/">/api/1.0/endpoint/abstract_work/</a></td>
-</tr>
-<tr class="even">
-<td>Sets</td>
-<td><code>Set</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/set/">/api/1.0/endpoint/set/</a></td>
-</tr>
-<tr class="odd">
-<td>Events</td>
-<td><code>Period</code>, <code>Event</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/event/">/api/1.0/endpoint/event/</a></td>
-</tr>
-<tr class="even">
-<td>Provenance Activities</td>
-<td><code>Activity</code></td>
-<td><a href="https://linked.art/api/1.0/endpoint/provenance_activity/">/api/1.0/endpoint/provenance_activity/</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>This data model provides a standardized schema for describing exhibition catalogues and bibliographic information within the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:</p>
 <ul>
-<li>Linked Art website: <a href="https://linked.art/" class="uri">https://linked.art/</a></li>
-<li>Data Model 1.0: <a href="https://linked.art/model/" class="uri">https://linked.art/model/</a></li>
-<li>API 1.0: <a href="https://linked.art/api/1.0/" class="uri">https://linked.art/api/1.0/</a></li>
-<li>Profile (CIDOC-CRM subset): <a href="https://linked.art/model/profile/" class="uri">https://linked.art/model/profile/</a></li>
-<li>Class Analysis: <a href="https://linked.art/model/profile/class_analysis/" class="uri">https://linked.art/model/profile/class_analysis/</a></li>
-<li>JSON-LD Context: <a href="https://linked.art/ns/v1/linked-art.json" class="uri">https://linked.art/ns/v1/linked-art.json</a></li>
-<li>Linked Art Ontology (additional terms): <a href="https://linked.art/ns/terms/" class="uri">https://linked.art/ns/terms/</a></li>
-<li>CIDOC-CRM: <a href="https://www.cidoc-crm.org/" class="uri">https://www.cidoc-crm.org/</a></li>
-<li>Getty AAT: <a href="http://vocab.getty.edu/aat/" class="uri">http://vocab.getty.edu/aat/</a></li>
+<li><strong>CIDOC CRM</strong> (Conceptual Reference Model) v7.1.3</li>
+<li><strong>Wikibase4Research</strong> (WB4R) - NFDI4Culture platform</li>
+<li><strong>Wikidata</strong> - WikiProject Books</li>
+</ul>
+</section>
+<section id="quick-reference-schema-mappings" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-schema-mappings">Quick Reference: Schema Mappings</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Wikibase4Research</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Instance of</strong></td>
+<td>P31 (catalogue)</td>
+<td>crm:P2_has_type</td>
+<td>instance_of</td>
+</tr>
+<tr class="even">
+<td><strong>Title</strong></td>
+<td>P1476</td>
+<td>E35_Title</td>
+<td>title</td>
+</tr>
+<tr class="odd">
+<td><strong>Author</strong></td>
+<td>P50</td>
+<td>E39_Actor</td>
+<td>author</td>
+</tr>
+<tr class="even">
+<td><strong>Publisher</strong></td>
+<td>P123</td>
+<td>E39_Actor</td>
+<td>publisher</td>
+</tr>
+<tr class="odd">
+<td><strong>Publication Date</strong></td>
+<td>P577</td>
+<td>E52_Time-Span</td>
+<td>publication_date</td>
+</tr>
+<tr class="even">
+<td><strong>ISBN-13</strong></td>
+<td>P212</td>
+<td>E42_Identifier</td>
+<td>not found</td>
+</tr>
+<tr class="odd">
+<td><strong>GND</strong></td>
+<td>P227</td>
+<td>E42_Identifier</td>
+<td>gnd</td>
+</tr>
+<tr class="even">
+<td><strong>Described at URL</strong></td>
+<td>P973</td>
+<td>E42_Identifier</td>
+<td>reference_url</td>
+</tr>
+<tr class="odd">
+<td><strong>Image</strong></td>
+<td>P18</td>
+<td>E36_Visual_Item</td>
+<td>digital_object</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="example-winckelmanns-history-of-ancient-art-1764" class="level2">
+<h2 class="anchored" data-anchor-id="example-winckelmanns-history-of-ancient-art-1764">Example: Winckelmann’s History of Ancient Art (1764)</h2>
+<p><strong>Title:</strong> Geschichte der Kunst des Alterthums (History of Ancient Art)<br>
+<strong>Author:</strong> Johann Joachim Winckelmann (Q104039)<br>
+<strong>Publisher:</strong> C. A. Koch, Dresden<br>
+<strong>Publication Date:</strong> 1764<br>
+<strong>ISBN-13:</strong> Not applicable (18th century publication)<br>
+<strong>GND:</strong> 118634941<br>
+<strong>Catalogue URL:</strong> https://www.dnb.de/DE/Professionell/Metadatendienste/metadatendienste_node.html<br>
+<strong>Catalogue Image:</strong> <a href="https://commons.wikimedia.org/wiki/Johann_Joachim_Winckelmann">Winckelmann’s portrait - Wikimedia Commons</a><br>
+<strong>Reference:</strong> [Wikibase Item Q5377317]</p>
+<hr>
+</section>
+<section id="data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure">Data Structure</h2>
+<section id="instance-of-catalogue" class="level3">
+<h3 class="anchored" data-anchor-id="instance-of-catalogue">1. Instance of Catalogue</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Instanziierung (?) ist eine…</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Instance of</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>The item itself is classified as a catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P31</td>
+</tr>
+<tr class="even">
+<td><strong>Recommended Value</strong></td>
+<td>Q2352616 (Catalogue)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P31:Q2352616</code></td>
+<td>Instance of catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>crm:P2_has_type</code></td>
+<td>Type classification</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>instance_of</code></td>
+<td>Instance type in Wikibase4Research</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="title" class="level3">
+<h3 class="anchored" data-anchor-id="title">2. Title</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Titel</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Title</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Official title of the catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Monolingual text</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P1476</td>
+</tr>
+<tr class="even">
+<td><strong>Example</strong></td>
+<td>“Vermeer and the Masters of Genre Painting”</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-1" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-1">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1476</code></td>
+<td>Title of the catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E35_Title</code></td>
+<td>Title entity defining the resource</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>title</code></td>
+<td>Title property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="author" class="level3">
+<h3 class="anchored" data-anchor-id="author">3. Author</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Autor</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Author</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Main curator or art historian responsible for the catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to person)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P50</td>
+</tr>
+<tr class="even">
+<td><strong>Note</strong></td>
+<td>Link to existing Wikidata person item</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-2" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-2">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P50</code></td>
+<td>Author of catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E39_Actor</code></td>
+<td>Person responsible for resource</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>author</code></td>
+<td>Author property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="publisher" class="level3">
+<h3 class="anchored" data-anchor-id="publisher">4. Publisher</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Verleger</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Publisher</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Museum, publishing house, or institution publishing the catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to organization)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P123</td>
+</tr>
+<tr class="even">
+<td><strong>Examples</strong></td>
+<td>Louvre Museum, Sprengel Museum Hannover, etc.</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-3" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-3">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P123</code></td>
+<td>Publisher of catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E39_Actor</code></td>
+<td>Organization responsible for publication</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>publisher</code></td>
+<td>Publisher property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="publication-date" class="level3">
+<h3 class="anchored" data-anchor-id="publication-date">5. Publication Date</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Erscheinungsdatum</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Publication date</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Year or date when the catalogue was published</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (date/year)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P577</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>YYYY or YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-4" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-4">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P577</code></td>
+<td>Publication date</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E52_Time-Span</code></td>
+<td>Time span of publication</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>publication_date</code></td>
+<td>Publication date in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="isbn-13" class="level3">
+<h3 class="anchored" data-anchor-id="isbn-13">6. ISBN-13</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Internationale Standardbuchnummer/ ISB-Nummer</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>ISBN-13</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>13-digit International Standard Book Number</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>External Identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P212</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>13 digits (e.g., 978-2-7118-7123-4)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-5" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-5">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P212</code></td>
+<td>ISBN-13 identifier</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E42_Identifier</code></td>
+<td>Standard identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>not found</code></td>
+<td>No WB4R mapping available</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="gnd" class="level3">
+<h3 class="anchored" data-anchor-id="gnd">7. GND</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>GND-Kennung</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>GND</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>German National Library (DNB) identifier</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>External Identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P227</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Numeric or alphanumeric GND identifier</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-6" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-6">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P227</code></td>
+<td>GND identifier</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E42_Identifier</code></td>
+<td>Standard identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>gnd</code></td>
+<td>GND property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="described-at-url" class="level3">
+<h3 class="anchored" data-anchor-id="described-at-url">8. Described at URL</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>offizielle Webseite</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Described at URL</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Link to the catalogue’s page on the museum’s website</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>URL</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P973</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>https://…</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-7" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-7">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P973</code></td>
+<td>Described at URL</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E42_Identifier</code></td>
+<td>Digital location identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>reference_url</code></td>
+<td>Reference URL in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="image" class="level3">
+<h3 class="anchored" data-anchor-id="image">9. Image</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Bild</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Image</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Cover image or representative image of the catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Commons media file</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P18</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Wikimedia Commons filename</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-8" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-8">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P18</code></td>
+<td>Image of catalogue</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E36_Visual_Item</code></td>
+<td>Visual representation</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>digital_object</code></td>
+<td>Digital object in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="best-practices-for-catalogue-records" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-catalogue-records">Best Practices for Catalogue Records</h2>
+<ol type="1">
+<li><p><strong>Use Wikidata Items</strong>: Always link to existing Wikidata items for authors (P50), publishers (P123), and organizations to enable cross-institutional discovery.</p></li>
+<li><p><strong>ISBN Validation</strong>: Ensure ISBN-13 numbers are valid according to the standard checksum algorithm. Use the format with hyphens (978-X-XXXX-XXXX-X) for readability.</p></li>
+<li><p><strong>GND Integration</strong>: Cross-reference GND identifiers from the German National Library to enhance discoverability within German cultural heritage networks.</p></li>
+<li><p><strong>Publication Dates</strong>: Use ISO 8601 format (YYYY-MM-DD) where precise dates are available, or just YYYY for year-only precision.</p></li>
+<li><p><strong>Multilingual Titles</strong>: Where catalogues are published in multiple languages, create additional title entries using monolingual text or language-qualified items.</p></li>
+<li><p><strong>Cover Images</strong>: Upload catalogue cover images to Wikimedia Commons (P18) to provide visual context and enhance accessibility.</p></li>
+<li><p><strong>URL Persistence</strong>: Prefer institutional persistent URLs (with DOI or similar) over temporary web links when available to ensure long-term reference stability.</p></li>
+</ol>
+<hr>
+</section>
+<section id="related-standards-references" class="level2">
+<h2 class="anchored" data-anchor-id="related-standards-references">Related Standards &amp; References</h2>
+<ul>
+<li><a href="https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html">CIDOC CRM v7.1.3</a> - Formal ontology standard for cultural heritage</li>
+<li><a href="https://gitlab.com/nfdi4culture/wikibase4research/model">Wikibase4Research (WB4R)</a> - NFDI4Culture platform implementation</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Books">Wikidata WikiProject Books</a> - Community guidelines for bibliographic properties</li>
+<li><a href="https://www.dnb.de/">German National Library (DNB)</a> - Primary source for GND identifiers</li>
+<li><a href="https://www.isbn-international.org/">ISBN Standard</a> - ISBN-13 validation and format standards</li>
+<li><a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Exhibition Project</a> - Project repository</li>
 </ul>
 <hr>
-<p><em>Generated from the Linked Art 1.0 specification on 2026-04-15.</em></p>
-
-
 </section>
+<section id="contact-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="contact-contributions">Contact &amp; Contributions</h2>
+<p>For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via <a href="https://github.com/NFDI4Culture/linked-open-exhibition">GitHub</a>.</p>
+<hr>
+</section>
+<section id="attribution" class="level2">
+<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
+<p>This data model documentation was created with assistance from <strong>GitHub Copilot</strong> (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Books guidelines through AI-assisted analysis and formatting.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1468,7 +1408,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Linkedart/linked-art-ontology.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/dnb-catalogue-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/a870858">a870858</a></p>
 </div>

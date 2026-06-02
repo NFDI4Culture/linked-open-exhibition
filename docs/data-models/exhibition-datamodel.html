@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A unified data model for exhibitions aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards">
+
+<title>Exhibition Data Model – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../exhibitions.html"> 
+<span class="menu-text">Exhibitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
+        <li>
+    <a class="dropdown-item" href="../data-models/artist-datamodel.html">
+ <span class="dropdown-text">Artist Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/exhibition-datamodel.html">
+ <span class="dropdown-text">Exhibition Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/dnb-catalogue-datamodel.html">
+ <span class="dropdown-text">DNB Catalogue Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/item-in-exhibition-datamodel.html">
+ <span class="dropdown-text">Item in Exhibition Data Model</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary-de.html"> 
+<span class="menu-text">Glossar (DE)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NFDI4Culture/linked-open-exhibition"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#quick-reference-schema-mappings" id="toc-quick-reference-schema-mappings" class="nav-link" data-scroll-target="#quick-reference-schema-mappings">Quick Reference: Schema Mappings</a></li>
+  <li><a href="#example-sprengel-museum-exhibition-q138573075" id="toc-example-sprengel-museum-exhibition-q138573075" class="nav-link" data-scroll-target="#example-sprengel-museum-exhibition-q138573075">Example: Sprengel Museum Exhibition (Q138573075)</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data Structure</a>
+  <ul class="collapse">
+  <li><a href="#instance-of-exhibition" id="toc-instance-of-exhibition" class="nav-link" data-scroll-target="#instance-of-exhibition">1. Instance of Exhibition</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">2. Title</a></li>
+  <li><a href="#location" id="toc-location" class="nav-link" data-scroll-target="#location">3. Location</a></li>
+  <li><a href="#start-time" id="toc-start-time" class="nav-link" data-scroll-target="#start-time">4. Start Time</a></li>
+  <li><a href="#end-time" id="toc-end-time" class="nav-link" data-scroll-target="#end-time">5. End Time</a></li>
+  <li><a href="#curator" id="toc-curator" class="nav-link" data-scroll-target="#curator">6. Curator</a></li>
+  <li><a href="#participant" id="toc-participant" class="nav-link" data-scroll-target="#participant">7. Participant</a></li>
+  <li><a href="#official-website" id="toc-official-website" class="nav-link" data-scroll-target="#official-website">8. Official Website</a></li>
+  <li><a href="#organizer" id="toc-organizer" class="nav-link" data-scroll-target="#organizer">9. Organizer</a></li>
+  <li><a href="#country" id="toc-country" class="nav-link" data-scroll-target="#country">10. Country</a></li>
+  <li><a href="#language" id="toc-language" class="nav-link" data-scroll-target="#language">11. Language</a></li>
+  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme">12. Theme</a></li>
+  <li><a href="#sponsor" id="toc-sponsor" class="nav-link" data-scroll-target="#sponsor">13. Sponsor</a></li>
+  <li><a href="#number-of-visitors" id="toc-number-of-visitors" class="nav-link" data-scroll-target="#number-of-visitors">14. Number of Visitors</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">15. Reference</a></li>
+  <li><a href="#commons-category" id="toc-commons-category" class="nav-link" data-scroll-target="#commons-category">16. Commons Category</a></li>
+  </ul></li>
+  <li><a href="#best-practices-for-exhibition-records" id="toc-best-practices-for-exhibition-records" class="nav-link" data-scroll-target="#best-practices-for-exhibition-records">Best Practices for Exhibition Records</a></li>
+  <li><a href="#related-standards-references" id="toc-related-standards-references" class="nav-link" data-scroll-target="#related-standards-references">Related Standards &amp; References</a></li>
+  <li><a href="#contact-contributions" id="toc-contact-contributions" class="nav-link" data-scroll-target="#contact-contributions">Contact &amp; Contributions</a></li>
+  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/exhibition-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exhibition Data Model</h1>
+<p class="subtitle lead">Linked Open Exhibition</p>
+</div>
+
+<div>
+  <div class="description">
+    A unified data model for exhibitions aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This data model provides a standardized schema for describing exhibitions and their contextual information within the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:</p>
+<ul>
+<li><strong>CIDOC CRM</strong> (Conceptual Reference Model) v7.1.3</li>
+<li><strong>Wikibase4Research</strong> (WB4R) - NFDI4Culture platform</li>
+<li><strong>Wikidata</strong> - WikiProject Exhibitions</li>
+</ul>
+</section>
+<section id="quick-reference-schema-mappings" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-schema-mappings">Quick Reference: Schema Mappings</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 23%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Wikibase4Research</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Instance of</strong></td>
+<td>P31:Q464980 (exhibition)</td>
+<td>E21_Person / E55_Type</td>
+<td>crm:P2_has_type</td>
+</tr>
+<tr class="even">
+<td><strong>Title</strong></td>
+<td>P1476</td>
+<td>P1_is_identified_by (E82_Appellation)</td>
+<td>wgm:title (P4)</td>
+</tr>
+<tr class="odd">
+<td><strong>Location</strong></td>
+<td>P276</td>
+<td>P7_took_place_at</td>
+<td>wgm:has_occupation</td>
+</tr>
+<tr class="even">
+<td><strong>Start Time</strong></td>
+<td>P580</td>
+<td>P4_has_time-span (E52_Time-Span)</td>
+<td>wgm:birth</td>
+</tr>
+<tr class="odd">
+<td><strong>End Time</strong></td>
+<td>P582</td>
+<td>P4_has_time-span (E52_Time-Span)</td>
+<td>wgm:death</td>
+</tr>
+<tr class="even">
+<td><strong>Curator</strong></td>
+<td>P1640</td>
+<td>P14_carried_out_by</td>
+<td>wgm:classified_as</td>
+</tr>
+<tr class="odd">
+<td><strong>Participant</strong></td>
+<td>P710</td>
+<td>P11_had_participant (E42_Identifier)</td>
+<td>wgm:stated_in</td>
+</tr>
+<tr class="even">
+<td><strong>Official Website</strong></td>
+<td>P856</td>
+<td>P1_is_identified_by (E78_Primitive_Data)</td>
+<td>not found</td>
+</tr>
+<tr class="odd">
+<td><strong>Organizer</strong></td>
+<td>P664</td>
+<td>P14_carried_out_by</td>
+<td>same as Wikidata</td>
+</tr>
+<tr class="even">
+<td><strong>Country</strong></td>
+<td>P17</td>
+<td>P7_took_place_at</td>
+<td>same as Wikidata</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>P407</td>
+<td>P72_has_language</td>
+<td>same as Wikidata</td>
+</tr>
+<tr class="even">
+<td><strong>Theme</strong></td>
+<td>P921</td>
+<td>P129_is_about</td>
+<td>same as Wikidata</td>
+</tr>
+<tr class="odd">
+<td><strong>Sponsor</strong></td>
+<td>P859</td>
+<td>not found</td>
+<td>not found</td>
+</tr>
+<tr class="even">
+<td><strong>Number of Visitors</strong></td>
+<td>P1174</td>
+<td>not found</td>
+<td>not found</td>
+</tr>
+<tr class="odd">
+<td><strong>Reference</strong></td>
+<td>QID</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>same as Wikidata</td>
+</tr>
+<tr class="even">
+<td><strong>Commons Category</strong></td>
+<td>P373</td>
+<td>P1_is_identified_by (E78_Primitive_Data)</td>
+<td>same as Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="example-sprengel-museum-exhibition-q138573075" class="level2">
+<h2 class="anchored" data-anchor-id="example-sprengel-museum-exhibition-q138573075">Example: Sprengel Museum Exhibition (Q138573075)</h2>
+<p><strong>Name:</strong> Sprengel Museum Exhibition<br>
+<strong>Location:</strong> Sprengel Museum Hannover (Q510144)<br>
+<strong>Start Date:</strong> 2024-01-15<br>
+<strong>End Date:</strong> 2024-06-30<br>
+<strong>Curator:</strong> [Person Item]<br>
+<strong>Participants:</strong> Various artists<br>
+<strong>Official Website:</strong> https://www.sprengel-museum.de/<br>
+<strong>Organizer:</strong> Sprengel Museum<br>
+<strong>Country:</strong> Germany (Q183)<br>
+<strong>Language:</strong> German (Q188)<br>
+<strong>Reference:</strong> <a href="https://www.wikidata.org/wiki/Q138573075">https://www.wikidata.org/wiki/Q138573075</a></p>
+<hr>
+</section>
+<section id="data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure">Data Structure</h2>
+<section id="instance-of-exhibition" class="level3">
+<h3 class="anchored" data-anchor-id="instance-of-exhibition">1. Instance of Exhibition</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>ist ein(e)</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Instance of</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>The item itself is classified as an exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P31</td>
+</tr>
+<tr class="even">
+<td><strong>Recommended Value</strong></td>
+<td>Q464980 (Exhibition)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P31:Q464980</code></td>
+<td>Instance of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>E55_Type</code></td>
+<td>Type classification</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>crm:P2_has_type</code></td>
+<td>Type property in Wikibase4Research</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="title" class="level3">
+<h3 class="anchored" data-anchor-id="title">2. Title</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Titel</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Title</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Official name/title of the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Monolingual text</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P1476</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Plain text</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-1" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-1">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1476</code></td>
+<td>Title of the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E82_Appellation)</code></td>
+<td>Identifies exhibition through naming</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:title (P4)</code></td>
+<td>Title property in WB4R</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="location" class="level3">
+<h3 class="anchored" data-anchor-id="location">3. Location</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Ort</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Location</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>The place where the exhibition took place</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to place/institution)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P276</td>
+</tr>
+<tr class="even">
+<td><strong>Example</strong></td>
+<td>Sprengel Museum Hannover (Q510144)</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-2" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-2">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P276</code></td>
+<td>Location of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P7_took_place_at</code></td>
+<td>Event took place at location</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:has_occupation</code></td>
+<td>Related place reference</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="start-time" class="level3">
+<h3 class="anchored" data-anchor-id="start-time">4. Start Time</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Startzeitpunkt</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Start time</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Date when the exhibition opened</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Point in time</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P580</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-3" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-3">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P580</code></td>
+<td>Start time of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P4_has_time-span (E52_Time-Span)</code></td>
+<td>Event time-span definition</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:birth</code></td>
+<td>Start date mapping</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="end-time" class="level3">
+<h3 class="anchored" data-anchor-id="end-time">5. End Time</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Endzeitpunkt</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>End time</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Date when the exhibition closed</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Point in time</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P582</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-4" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-4">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P582</code></td>
+<td>End time of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P4_has_time-span (E52_Time-Span)</code></td>
+<td>Event time-span definition</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:death</code></td>
+<td>End date mapping</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="curator" class="level3">
+<h3 class="anchored" data-anchor-id="curator">6. Curator</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Kurator</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Curator</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Person responsible for curating the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to person)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P1640</td>
+</tr>
+<tr class="even">
+<td><strong>Note</strong></td>
+<td>Create person item if it doesn’t exist</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-5" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-5">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1640</code></td>
+<td>Curator of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P14_carried_out_by</code></td>
+<td>Event carried out by person</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:classified_as (P97)</code></td>
+<td>Classification reference</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="participant" class="level3">
+<h3 class="anchored" data-anchor-id="participant">7. Participant</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Teilnehmer</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Participant</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Artists or entities participating in the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to person/artist)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P710</td>
+</tr>
+<tr class="even">
+<td><strong>Note</strong></td>
+<td>Can reference multiple participants</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-6" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-6">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P710</code></td>
+<td>Participant in exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P11_had_participant (E42_Identifier)</code></td>
+<td>Event had participant</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>wgm:stated_in</code></td>
+<td>Stated in reference</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="official-website" class="level3">
+<h3 class="anchored" data-anchor-id="official-website">8. Official Website</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>offizielle Website</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Official website</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>URL of the exhibition’s official website</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>URL</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P856</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>https://…</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-7" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-7">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P856</code></td>
+<td>Official website</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E78_Primitive_Data)</code></td>
+<td>Digital location identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td><code>not found</code></td>
+<td>No WB4R mapping available</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="organizer" class="level3">
+<h3 class="anchored" data-anchor-id="organizer">9. Organizer</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Veranstalter</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Organizer</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Institution or person organizing the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to institution/person)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P664</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-8" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-8">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P664</code></td>
+<td>Organizer of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P14_carried_out_by</code></td>
+<td>Event carried out by organizer</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Same as Wikidata</td>
+<td>Aligned with Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="country" class="level3">
+<h3 class="anchored" data-anchor-id="country">10. Country</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Land</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Country</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Country where the exhibition took place</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to country)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P17</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-9" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-9">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P17</code></td>
+<td>Country</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P7_took_place_at</code></td>
+<td>Event location (country)</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Same as Wikidata</td>
+<td>Aligned with Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="language" class="level3">
+<h3 class="anchored" data-anchor-id="language">11. Language</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Sprache</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Language</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Language(s) of the exhibition materials</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to language)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P407</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-10" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-10">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P407</code></td>
+<td>Language of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P72_has_language</code></td>
+<td>Entity has language</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Same as Wikidata</td>
+<td>Aligned with Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="theme" class="level3">
+<h3 class="anchored" data-anchor-id="theme">12. Theme</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Thema</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Theme</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Main subject or topic of the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item (reference to topic)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P921</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-11" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-11">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P921</code></td>
+<td>Main subject of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P129_is_about</code></td>
+<td>Entity is about topic</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Same as Wikidata</td>
+<td>Aligned with Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="sponsor" class="level3">
+<h3 class="anchored" data-anchor-id="sponsor">13. Sponsor</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Sponsor</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Sponsor</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Organization or entity sponsoring the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Item</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P859</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-12" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-12">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P859</code></td>
+<td>Sponsor of exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>not found</code></td>
+<td>No direct CRM mapping</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Not found</td>
+<td>No WB4R mapping available</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="number-of-visitors" class="level3">
+<h3 class="anchored" data-anchor-id="number-of-visitors">14. Number of Visitors</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Besucherzahl</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Number of visitors</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Total number of visitors to the exhibition</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>Quantity</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P1174</td>
+</tr>
+<tr class="even">
+<td><strong>Format</strong></td>
+<td>Numeric value</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-13" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-13">Schema Mappings</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P1174</code></td>
+<td>Number of visitors</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>not found</code></td>
+<td>No direct CRM mapping</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Not found</td>
+<td>No WB4R mapping available</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">15. Reference</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Referenz</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Reference</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Wikidata QID or external identifier URI</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>URI</td>
+</tr>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>Q-identifier or full URI</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-14" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-14">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>QID</code></td>
+<td>Wikidata identifier</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E42_Identifier)</code></td>
+<td>Identifier for entity</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Same as Wikidata</td>
+<td>Aligned with Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="commons-category" class="level3">
+<h3 class="anchored" data-anchor-id="commons-category">16. Commons Category</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>German Label</strong></td>
+<td>Commons-Kategorie</td>
+</tr>
+<tr class="even">
+<td><strong>English Label</strong></td>
+<td>Commons category</td>
+</tr>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Wikimedia Commons category for exhibition images</td>
+</tr>
+<tr class="even">
+<td><strong>Data Type</strong></td>
+<td>String</td>
+</tr>
+<tr class="odd">
+<td><strong>Wikidata Property</strong></td>
+<td>P373</td>
+</tr>
+</tbody>
+</table>
+<section id="schema-mappings-15" class="level4">
+<h4 class="anchored" data-anchor-id="schema-mappings-15">Schema Mappings</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wikidata</strong></td>
+<td><code>P373</code></td>
+<td>Commons category</td>
+</tr>
+<tr class="even">
+<td><strong>CIDOC CRM</strong></td>
+<td><code>P1_is_identified_by (E78_Primitive_Data)</code></td>
+<td>Digital resource identifier</td>
+</tr>
+<tr class="odd">
+<td><strong>WB4R</strong></td>
+<td>Same as Wikidata</td>
+<td>Aligned with Wikidata</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="best-practices-for-exhibition-records" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-exhibition-records">Best Practices for Exhibition Records</h2>
+<ol type="1">
+<li><p><strong>Use QIDs for References</strong>: Always link to existing Wikidata items when available (Q464980 for exhibitions, institution Q-numbers, country Q-numbers, etc.)</p></li>
+<li><p><strong>Date Formatting</strong>: Use ISO 8601 format (YYYY-MM-DD) for all temporal data. For exhibitions spanning years, precision can be reduced to YYYY (year only).</p></li>
+<li><p><strong>Multilingual Titles</strong>: Where applicable, add exhibition titles in multiple languages using separate items or monolingual text fields.</p></li>
+<li><p><strong>Institutional Context</strong>: Link to the organizing institution’s Wikidata item (P17 for country, P664 for organizer) to enable cross-institutional exhibition discovery.</p></li>
+<li><p><strong>Participant Documentation</strong>: Ensure all participating artists have Wikidata items. Create items for lesser-known artists to enrich the knowledge graph.</p></li>
+<li><p><strong>Commons Integration</strong>: Regularly link exhibition items to Wikimedia Commons categories (P373) to support multimedia documentation and community contributions.</p></li>
+</ol>
+<hr>
+</section>
+<section id="related-standards-references" class="level2">
+<h2 class="anchored" data-anchor-id="related-standards-references">Related Standards &amp; References</h2>
+<ul>
+<li><a href="https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html">CIDOC CRM v7.1.3</a> - Formal ontology standard for cultural heritage</li>
+<li><a href="https://gitlab.com/nfdi4culture/wikibase4research/model">Wikibase4Research (WB4R)</a> - NFDI4Culture platform implementation</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions/Properties">Wikidata WikiProject Exhibitions</a> - Community guidelines for exhibition properties</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata Main Properties Guide</a> - Core Wikidata documentation</li>
+<li><a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Exhibition Project</a> - Project repository</li>
+</ul>
+<hr>
+</section>
+<section id="contact-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="contact-contributions">Contact &amp; Contributions</h2>
+<p>For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via <a href="https://github.com/NFDI4Culture/linked-open-exhibition">GitHub</a>.</p>
+<hr>
+</section>
+<section id="attribution" class="level2">
+<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
+<p>This data model documentation was created with assistance from <strong>GitHub Copilot</strong> (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Exhibitions guidelines through AI-assisted analysis and formatting.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0 — Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/exhibition-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/a870858">a870858</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,16 @@
+Item in an exhibition,Example: https://www.wikidata.org/wiki/Q88170880          ,,Commons Image,,https://commons.wikimedia.org/wiki/Category:Paintings_of_Hercules_and_Omphale_by_Lucas_Cranach_(I),,,,,,,
+,,,,,Instructions for use,,,Activity #2: Top-down data modeling validation,,,,
+Concept,,Wikidata: Property (P) and Item (Q),Data type,URI,Add,Note,,Schemas,,,,
+DE,EN,,,,,,,,,,,
+ist eine,instance of,P31/Q3305213,,,,,,Name,Wikibase4Research  ,CIDOC CRM (Full),Wikidata,Wikidata:WikiProject Exhibitions/Properties
+,inception,P571,,,,,,URL,https://gitlab.com/nfdi4culture/wikibase4research/auxiliary-service-repositories/wikibase-model/-/blob/main/README.md#event  ,https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html ,https://www.wikidata.org/wiki/Wikidata:Main_Page ,https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions/Properties 
+Titel,Title,P1476,,,,,,,,,,
+Ort,Location,P276/Q88183395,,,,,,,,,,
+,part of the series,P179/Q131680678,,,,,,,,,,
+,main subject,P921/Q117010959,,,,,,,,,,
+,catalog code,,,,,,,,,,,
+,made from material,,,,,,,,,,,
+,collection,,,,,,,,,,,
+,inventory number,,,,,,,,,,,
+,width,,,,,,,,,,,
+,described at,,,,,,,,,,,

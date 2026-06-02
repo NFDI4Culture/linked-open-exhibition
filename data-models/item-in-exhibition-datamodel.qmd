@@ -1,0 +1,590 @@
+---
+title: "Item in Exhibition Data Model"
+subtitle: "Linked Open Exhibition"
+description: "A unified data model for artworks and items in exhibitions aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards"
+date: today
+---
+
+## Overview
+
+This data model provides a standardized schema for describing artworks, objects, and items within exhibition contexts in the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:
+
+- **CIDOC CRM** (Conceptual Reference Model) v7.1.3
+- **Wikibase4Research** (WB4R) - NFDI4Culture platform
+- **Wikidata** - WikiProject Exhibitions
+
+## Quick Reference: Schema Mappings
+
+| Field | Wikidata | CIDOC CRM | Wikibase4Research |
+|-------|----------|-----------|-------------------|
+| **Instance of** | P31:Q3305213 (artwork) | E22_Man-Made_Object | instance_of |
+| **Title** | P1476 | P102_has_title (E35_Title) | title |
+| **Creator** | P170 | P14_carried_out_by (E39_Actor) | author |
+| **Inception** | P571 | P108_has_produced (E65_Creation) | creation_date |
+| **Location** | P276/P1753 | P87_is_identified_by (E53_Place) | location |
+| **Collection** | P195 | P46_is_composed_of (E18_Physical_Thing) | collection |
+| **Main Subject** | P921 | P129_is_about (E1_CRM_Entity) | main_subject |
+| **Materials** | P186 | P45_consists_of (E57_Material) | material |
+| **Inventory Number** | P217 | P1_is_identified_by (E42_Identifier) | inventory_number |
+| **Catalog Code** | P528 | P1_is_identified_by (E42_Identifier) | catalog_code |
+| **Width** | P2049 | P43_has_dimension (E54_Dimension) | width |
+| **Height** | P2048 | P43_has_dimension (E54_Dimension) | height |
+| **Depth** | P2610 | P43_has_dimension (E54_Dimension) | depth |
+| **Part of Series** | P179 | P108_has_produced (E65_Creation) | part_of_series |
+| **Depicts** | P180 | P129_is_about | depicts |
+| **Image** | P18 | E36_Visual_Item | image |
+| **Described at** | P973 | P1_is_identified_by (E42_Identifier) | described_at |
+| **Exhibited at** | P1431 | E7_Activity (exhibition event) | exhibition_history |
+| **Acquisition** | P1830 | E8_Acquisition | acquisition_event |
+| **Provenance** | P2670 | P46_is_composed_of + provenance chain | provenance |
+| **Previous Owner** | P127 | P24_transferred_title_of (E8_Acquisition) | previous_owner |
+| **Condition** | — | E3_Condition_State | condition |
+| **Date Entered Collection** | — | E8_Acquisition + P4_has_time_span | date_acquired |
+
+---
+
+## Example: Hercules and Omphale by Lucas Cranach the Elder
+
+**Title:** Hercules and Omphale  
+**Creator:** Lucas Cranach the Elder (Q191748)  
+**Instance of:** Painting (Q3305213)  
+**Inception:** 16th century  
+**Current Location:** Kunsthistorisches Museum, Vienna (Q160112)  
+**Collection:** Kunsthistorisches Museum  
+**Main Subject:** Hercules and Omphale (Q117010959) / Greek mythology  
+**Material:** Oil on wood panel  
+**Width:** 210 cm  
+**Height:** 160 cm  
+**Inventory Number:** [Museum catalog number]  
+**Image:** [Wikimedia Commons: Hercules and Omphale by Lucas Cranach]  
+**Described at:** https://commons.wikimedia.org/wiki/Category:Paintings_of_Hercules_and_Omphale_by_Lucas_Cranach_(I)
+
+---
+
+## Data Structure
+
+### 1. Instance of Item
+
+| Field | Value |
+|-------|-------|
+| **German Label** | ist eine |
+| **English Label** | Instance of |
+| **Description** | The item is classified as an artwork or object |
+| **Data Type** | Item |
+| **Wikidata Property** | P31 |
+| **Recommended Values** | Q3305213 (painting), Q11410 (sculpture), Q14919 (relief), etc. |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P31:Q3305213` | Instance of artwork type |
+| **CIDOC CRM** | `E22_Man-Made_Object` | Object created by humans |
+| **WB4R** | `instance_of` | Object type in Wikibase4Research |
+
+---
+
+### 2. Title
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Titel |
+| **English Label** | Title |
+| **Description** | Official title or name of the artwork |
+| **Data Type** | Monolingual text |
+| **Wikidata Property** | P1476 |
+| **Format** | Text (multilingual titles supported) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1476` | Title of artwork |
+| **CIDOC CRM** | `P102_has_title (E35_Title)` | Identifies artwork through naming |
+| **WB4R** | `title` | Title property in WB4R |
+
+---
+
+### 3. Creator
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Künstler/Creator |
+| **English Label** | Creator |
+| **Description** | Artist or person who created the artwork |
+| **Data Type** | Item (reference to person) |
+| **Wikidata Property** | P170 |
+| **Format** | Link to artist Wikidata item |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P170` | Creator of artwork |
+| **CIDOC CRM** | `P14_carried_out_by (E39_Actor)` | Person/actor carried out creation |
+| **WB4R** | `author` | Creator in Wikibase4Research |
+
+---
+
+### 4. Inception Date
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Entstehung |
+| **English Label** | Inception |
+| **Description** | Date or period when the artwork was created |
+| **Data Type** | Point in time or period |
+| **Wikidata Property** | P571 |
+| **Format** | YYYY, YYYY-MM, or YYYY-MM-DD |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P571` | Inception date of artwork |
+| **CIDOC CRM** | `P108_has_produced (E65_Creation)` | Creation event dates |
+| **WB4R** | `creation_date` | Creation date in WB4R |
+
+---
+
+### 5. Current Location
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Ort |
+| **English Label** | Location |
+| **Description** | Current museum or institution housing the item |
+| **Data Type** | Item (reference to place/institution) |
+| **Wikidata Property** | P276 (original location) / P1753 (current location) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P276` / `P1753` | Location/current location of artwork |
+| **CIDOC CRM** | `P87_is_identified_by (E53_Place)` | Physical location |
+| **WB4R** | `location` | Location property in WB4R |
+
+---
+
+### 6. Collection
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Sammlung |
+| **English Label** | Collection |
+| **Description** | Museum or collection the item belongs to |
+| **Data Type** | Item (reference to institution/collection) |
+| **Wikidata Property** | P195 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P195` | Collection membership |
+| **CIDOC CRM** | `P46_is_composed_of (E18_Physical_Thing)` | Part of collection |
+| **WB4R** | `collection` | Collection in WB4R |
+
+---
+
+### 7. Main Subject
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Thema |
+| **English Label** | Main subject |
+| **Description** | Primary subject or topic depicted in the artwork |
+| **Data Type** | Item |
+| **Wikidata Property** | P921 |
+| **Example** | Q117010959 (Hercules and Omphale) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P921` | Main subject of artwork |
+| **CIDOC CRM** | `P129_is_about (E1_CRM_Entity)` | Object is about entity |
+| **WB4R** | `main_subject` | Subject reference in WB4R |
+
+---
+
+### 8. Materials
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Material |
+| **English Label** | Material |
+| **Description** | Material(s) used to create the artwork |
+| **Data Type** | Item or text |
+| **Wikidata Property** | P186 |
+| **Examples** | Oil, canvas, bronze, marble, etc. |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P186` | Material composition |
+| **CIDOC CRM** | `P45_consists_of (E57_Material)` | Object consists of material |
+| **WB4R** | `material` | Material in WB4R |
+
+---
+
+### 9. Inventory Number
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Inventarnummer |
+| **English Label** | Inventory number |
+| **Description** | Museum catalog or inventory identifier |
+| **Data Type** | Text |
+| **Wikidata Property** | P217 |
+| **Format** | Alphanumeric identifier (museum-specific format) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P217` | Inventory number |
+| **CIDOC CRM** | `P1_is_identified_by (E42_Identifier)` | Object identifier |
+| **WB4R** | `inventory_number` | Inventory number in WB4R |
+
+---
+
+### 10. Catalog Code
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Katalognummer |
+| **English Label** | Catalog code |
+| **Description** | Publication or exhibition catalog reference code |
+| **Data Type** | Text |
+| **Wikidata Property** | P528 |
+| **Format** | Alphanumeric reference |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P528` | Catalog code |
+| **CIDOC CRM** | `P1_is_identified_by (E42_Identifier)` | Identifier reference |
+| **WB4R** | `catalog_code` | Catalog code in WB4R |
+
+---
+
+### 11. Width
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Breite |
+| **English Label** | Width |
+| **Description** | Width measurement of the artwork |
+| **Data Type** | Quantity |
+| **Wikidata Property** | P2049 |
+| **Format** | Numeric value with unit (cm, m, etc.) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P2049` | Width of object |
+| **CIDOC CRM** | `P43_has_dimension (E54_Dimension)` | Dimension specification |
+| **WB4R** | `width` | Width in WB4R |
+
+---
+
+### 12. Height
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Höhe |
+| **English Label** | Height |
+| **Description** | Height measurement of the artwork |
+| **Data Type** | Quantity |
+| **Wikidata Property** | P2048 |
+| **Format** | Numeric value with unit (cm, m, etc.) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P2048` | Height of object |
+| **CIDOC CRM** | `P43_has_dimension (E54_Dimension)` | Dimension specification |
+| **WB4R** | `height` | Height in WB4R |
+
+---
+
+### 13. Depth
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Tiefe |
+| **English Label** | Depth |
+| **Description** | Depth measurement of the artwork (for 3D objects) |
+| **Data Type** | Quantity |
+| **Wikidata Property** | P2610 |
+| **Format** | Numeric value with unit (cm, m, etc.) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P2610` | Depth of object |
+| **CIDOC CRM** | `P43_has_dimension (E54_Dimension)` | Dimension specification |
+| **WB4R** | `depth` | Depth in WB4R |
+
+---
+
+### 14. Part of Series
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Teil einer Serie |
+| **English Label** | Part of series |
+| **Description** | Series or collection grouping the item belongs to |
+| **Data Type** | Item |
+| **Wikidata Property** | P179 |
+| **Example** | Q131680678 (series or collection) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P179` | Part of series |
+| **CIDOC CRM** | `P108_has_produced (E65_Creation)` | Creation context |
+| **WB4R** | `part_of_series` | Series membership in WB4R |
+
+---
+
+### 15. Depicts
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Darstellen |
+| **English Label** | Depicts |
+| **Description** | Additional entities or persons depicted in the artwork |
+| **Data Type** | Item (multiple allowed) |
+| **Wikidata Property** | P180 |
+| **Examples** | Persons, mythological figures, events |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P180` | Depicts entity |
+| **CIDOC CRM** | `P129_is_about` | Content representation |
+| **WB4R** | `depicts` | Depicted entities in WB4R |
+
+---
+
+### 16. Image
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Bild |
+| **English Label** | Image |
+| **Description** | Digital image or photograph of the artwork |
+| **Data Type** | Commons media file |
+| **Wikidata Property** | P18 |
+| **Format** | Wikimedia Commons filename |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P18` | Image of artwork |
+| **CIDOC CRM** | `E36_Visual_Item` | Visual representation |
+| **WB4R** | `image` | Image reference in WB4R |
+
+---
+
+### 17. Described at URL
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Beschrieben auf |
+| **English Label** | Described at URL |
+| **Description** | Link to documentation or webpage describing the item |
+| **Data Type** | URL |
+| **Wikidata Property** | P973 |
+| **Format** | https://... |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P973` | Described at URL |
+| **CIDOC CRM** | `P1_is_identified_by (E42_Identifier)` | Digital identifier |
+| **WB4R** | `described_at` | Reference URL in WB4R |
+
+---
+
+### 18. Exhibited at (Exhibition History)
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Ausgestellt in |
+| **English Label** | Exhibited at |
+| **Description** | Exhibitions in which the item has been displayed |
+| **Data Type** | Item (multiple exhibitions allowed) |
+| **Wikidata Property** | P1431 |
+| **Format** | Links to exhibition Wikidata items with dates |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1431` | Exhibited at exhibition |
+| **CIDOC CRM** | `E7_Activity (exhibition event)` | Object participated in exhibition event |
+| **WB4R** | `exhibition_history` | Exhibition participation history |
+
+---
+
+### 19. Acquisition Event
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Akquisition |
+| **English Label** | Acquisition |
+| **Description** | Event and details of how the item was acquired |
+| **Data Type** | Complex event (date, method, price, source) |
+| **Format** | Multiple dates and parties involved |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P1830` | Acquisition event details |
+| **CIDOC CRM** | `E8_Acquisition` | Formal acquisition event class |
+| **WB4R** | `acquisition_event` | Acquisition in WB4R |
+
+---
+
+### 20. Provenance
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Provenienz |
+| **English Label** | Provenance |
+| **Description** | Complete ownership and location history of the item |
+| **Data Type** | Chain of provenance events |
+| **Format** | Chronological sequence of previous owners/locations |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P2670` | Provenance chain |
+| **CIDOC CRM** | `P46_is_composed_of + provenance events` | Object's history chain |
+| **WB4R** | `provenance` | Provenance documentation |
+
+---
+
+### 21. Previous Owner
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Früherer Besitzer |
+| **English Label** | Previous Owner |
+| **Description** | Person or institution who previously owned the item |
+| **Data Type** | Item (person or organization) |
+| **Wikidata Property** | P127 |
+| **Format** | Link to previous owner item |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P127` | Previous owner |
+| **CIDOC CRM** | `P24_transferred_title_of (E8_Acquisition)` | Title transferred in acquisition |
+| **WB4R** | `previous_owner` | Previous ownership record |
+
+---
+
+### 22. Condition State
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Zustand |
+| **English Label** | Condition |
+| **Description** | Current conservation or condition status of the item |
+| **Data Type** | Text/Item |
+| **Format** | Condition assessment (excellent, good, fair, poor, damaged) |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `—` | Not directly mapped |
+| **CIDOC CRM** | `E3_Condition_State` | Condition state class |
+| **WB4R** | `condition` | Conservation condition in WB4R |
+
+---
+
+### 23. Date Entered Collection
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Eingangsdatum |
+| **English Label** | Date Entered Collection |
+| **Description** | Date when the item was formally acquired or accessioned |
+| **Data Type** | Point in time |
+| **Format** | YYYY, YYYY-MM, or YYYY-MM-DD |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `—` | Part of P1830 context |
+| **CIDOC CRM** | `E8_Acquisition + P4_has_time_span` | Acquisition event time |
+| **WB4R** | `date_acquired` | Acquisition date in WB4R |
+
+---
+
+## Best Practices for Item Records
+
+1. **Creator Attribution**: Always link to the artist's Wikidata item (P170) to enable comprehensive artist profiles and work discovery.
+
+2. **Materials Specification**: Use standardized material items (oil, canvas, bronze) rather than free text to enable material-based collection browsing and conservation research.
+
+3. **Dimensions**: Record all three dimensions (width, height, depth) with consistent units (typically cm for smaller works, m for large installations) to support condition assessments and exhibition planning.
+
+4. **Exhibition History Documentation**: Record all known exhibitions where the item has been displayed (P1431) with corresponding dates to support provenance research and exhibition network analysis.
+
+5. **Provenance Chain**: Document the complete ownership history (P2670, P127) in chronological order from creation through current ownership. Flag items with gaps or uncertain provenance for curatorial review.
+
+6. **Acquisition Records**: Link acquisition events (P1830) with date entered collection (acquisition dates) to establish clear accession points and support repatriation research where applicable.
+
+7. **Subject Classification**: Use P921 for primary subject and P180 for depicted entities to enable thematic searching across exhibitions.
+
+8. **Inventory Standards**: Maintain distinct inventory numbers (P217) and catalog codes (P528) to distinguish between institutional accession records and publication references.
+
+9. **Image Uploads**: Always upload high-quality images to Wikimedia Commons (P18) to provide visual context and enhance global knowledge sharing.
+
+10. **Collection Cross-Reference**: Link to both the holding institution (P276/P1753) and the broader collection (P195) to support organizational hierarchies.
+
+11. **URL Persistence**: Use institutional persistent identifiers (DOI, UUID) when available to ensure long-term reference stability.
+
+12. **Condition Documentation**: Record current condition status regularly and document any conservation treatments with dates to support curatorial decision-making and insurance records.
+
+---
+
+## Related Standards & References
+
+- [CIDOC CRM v7.1.3](https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html) - Formal ontology standard for cultural heritage
+- [Wikibase4Research (WB4R)](https://gitlab.com/nfdi4culture/wikibase4research/model) - NFDI4Culture platform implementation
+- [Wikidata WikiProject Exhibitions](https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions/Properties) - Community guidelines for exhibition properties
+- [Wikidata Art Project](https://www.wikidata.org/wiki/Wikidata:Art) - Guidelines for artwork documentation
+- [Wikimedia Commons](https://commons.wikimedia.org/) - Free media repository for artwork images
+- [Linked Open Exhibition Project](https://github.com/NFDI4Culture/linked-open-exhibition) - Project repository
+
+---
+
+## Contact & Contributions
+
+For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via [GitHub](https://github.com/NFDI4Culture/linked-open-exhibition).
+
+---
+
+## Attribution
+
+This data model documentation was created with assistance from **GitHub Copilot** (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Exhibitions guidelines through AI-assisted analysis and formatting.

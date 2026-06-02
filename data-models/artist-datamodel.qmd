@@ -1,0 +1,288 @@
+---
+title: "Artist Data Model"
+subtitle: "Linked Open Exhibition"
+description: "A unified data model for artists aligned with CIDOC CRM, Wikibase4Research, and Wikidata standards"
+date: today
+---
+
+## Overview
+
+This data model provides a standardized schema for describing artists and their biographical information within the Linked Open Exhibition ecosystem. It is aligned with three major sector standards:
+
+- **CIDOC CRM** (Conceptual Reference Model) v7.1.3
+- **Wikibase4Research** (WB4R) - NFDI4Culture platform
+- **Wikidata** - WikiProject Exhibitions
+
+## Quick Reference: Schema Mappings
+
+| Field | Wikidata | CIDOC CRM | Wikibase4Research |
+|-------|----------|-----------|-------------------|
+| **Entity** | P31:Q5 (instance of human) | E21_Person | wgm:human (Q5) |
+| **Given Name** | P735 | P1_is_identified_by (E82_Appellation) | wgm:title (P4) |
+| **Family Name** | P734 | P1_is_identified_by (E82_Appellation) | wgm:title (P4) |
+| **Profession** | P106 | P2_has_type (E55_Type) | wgm:classified_as (P97) |
+| **Birth Date** | P569 | P82_at_some_time_within (E52_Time-Span) | wgm:date (P12) |
+| **Death Date** | P570 | P82_at_some_time_within (E52_Time-Span) | wgm:date (P12) |
+| **Nationality** | P27 | P2_has_type (E55_Type_Nationality) | wgm:classified_as (P97) |
+| **Reference** | Q-identifier | P1_is_identified_by (E42_Identifier) | wgm:internal_id (P96) |
+| **Commons Category** | P373 | P87_is_identified_by (E39_Actor) | wgm:gnd (P102) / wgm:getty_ulan (P100) |
+
+---
+
+## Example: Max Ernst (Q108968)
+
+**Name:** Max Ernst  
+**Given Name:** Max  
+**Family Name:** Ernst  
+**Profession:** Painter, Sculptor, Artist (Surrealist movement)  
+**Date of Birth:** 1891  
+**Date of Death:** 1976  
+**Nationality:** German (later naturalized French and American)  
+**Reference:** [https://www.wikidata.org/wiki/Q108968](https://www.wikidata.org/wiki/Q108968)
+
+---
+
+## Data Structure
+
+### 1. Entity Type
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Entität |
+| **English Label** | Entity |
+| **Description** | The item itself is classified as a human |
+| **Data Type** | Item |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P31:Q5` | Instance of human |
+| **CIDOC CRM** | `E21_Person` | Defines the entity as a person |
+| **WB4R** | `wgm:human (Q5)` / `wgm:instance_of (P1)` | Human classification in Wikibase4Research |
+
+---
+
+### 2. Given Name
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Vorname |
+| **English Label** | Given name |
+| **Wikidata Property** | P735 (given name) |
+| **Data Type** | Item (reference to name item) |
+| **URI** | https://www.wikidata.org/wiki/Property:P735 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P735` | Given name (recommended for exhibitions) |
+| **CIDOC CRM** | `P1_is_identified_by (E82_Appellation)` | Identifies the person through naming |
+| **WB4R** | `wgm:title (P4)` or `wgm:classified_as (P97)` | Name classification in WB4R |
+
+---
+
+### 3. Family Name
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Nachname |
+| **English Label** | Family name |
+| **Wikidata Property** | P734 (family name) |
+| **Data Type** | Item (reference to name item) |
+| **URI** | https://www.wikidata.org/wiki/Property:P734 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P734` | Family name (recommended for exhibitions) |
+| **CIDOC CRM** | `P1_is_identified_by (E82_Appellation)` | Identifies the person through family name |
+| **WB4R** | `wgm:title (P4)` or `wgm:classified_as (P97)` | Name classification in WB4R |
+
+---
+
+### 4. Profession / Occupation
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Beruf |
+| **English Label** | Profession |
+| **Wikidata Property** | P106 (occupation) |
+| **Data Type** | Item (reference to occupation type) |
+| **URI** | https://www.wikidata.org/wiki/Property:P106 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P106` | Occupation (use specific art/exhibition roles) |
+| **CIDOC CRM** | `P2_has_type (E55_Type)` | Types applied to the person |
+| **WB4R** | `wgm:classified_as (P97)` | Classification of professional role |
+
+#### Examples
+- Painter (Q3391743)
+- Sculptor (Q729)
+- Photographer (Q33231)
+- Architect (Q42973)
+- Musician (Q639669)
+
+---
+
+### 5. Date of Birth
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Geburtsdatum |
+| **English Label** | Birth |
+| **Wikidata Property** | P569 (date of birth) |
+| **Data Type** | Date |
+| **Format** | YYYY-MM-DD or YYYY |
+| **URI** | https://www.wikidata.org/wiki/Property:P569 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P569` | Date of birth (format: YYYY-MM-DD or YYYY) |
+| **CIDOC CRM** | `P82_at_some_time_within (E52_Time-Span)` | Time-span for birth event |
+| **WB4R** | `wgm:date (P12)` via Birth Event or `wgm:start_date (P10)` | Event-based approach |
+
+---
+
+### 6. Date of Death
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Sterbedatum |
+| **English Label** | Death |
+| **Wikidata Property** | P570 (date of death) |
+| **Data Type** | Date |
+| **Format** | YYYY-MM-DD or YYYY |
+| **URI** | https://www.wikidata.org/wiki/Property:P570 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P570` | Date of death (format: YYYY-MM-DD or YYYY) |
+| **CIDOC CRM** | `P82_at_some_time_within (E52_Time-Span)` | Time-span for death event |
+| **WB4R** | `wgm:date (P12)` via Death Event or `wgm:end_date (P11)` | Event-based approach |
+
+---
+
+### 7. Nationality / Citizenship
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Nationalität |
+| **English Label** | Nationality |
+| **Wikidata Property** | P27 (citizenship) |
+| **Data Type** | Item (reference to country) |
+| **URI** | https://www.wikidata.org/wiki/Property:P27 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P27` | Citizenship (link to country item) |
+| **CIDOC CRM** | `P2_has_type (E55_Type_Nationality)` | Nationality as type |
+| **WB4R** | `wgm:classified_as (P97)` with place reference | Classification with location context |
+
+#### Examples
+- Germany (Q183)
+- France (Q142)
+- Italy (Q38)
+- United States (Q30)
+
+---
+
+### 8. Reference / Identifier
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Referenz |
+| **English Label** | Reference |
+| **Data Type** | URI / Identifier |
+| **Format** | Wikidata Q-identifier or external authority file |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | Q-identifiers | Use Q-identifiers; also add P227 (GND) and P245 (Getty ULAN) |
+| **CIDOC CRM** | `P1_is_identified_by (E42_Identifier)` | Unique identifier for the person |
+| **WB4R** | `wgm:internal_id (P96)` or `wgm:gnd (P102)` / `wgm:getty_ulan (P100)` | Authority file references |
+
+#### Authority File Properties
+- **GND** (German National Library): `P227`
+- **Getty ULAN** (Union List of Artist Names): `P245`
+- **Europeana ID**: `P380`
+- **ISNI**: `P213`
+- **VIAF**: `P214`
+
+---
+
+### 9. Commons Category
+
+| Field | Value |
+|-------|-------|
+| **German Label** | Commons category |
+| **English Label** | Commons category |
+| **Wikidata Property** | P373 (search name) |
+| **Data Type** | String |
+| **URI** | https://www.wikidata.org/wiki/Property:P373 |
+
+#### Schema Mappings
+
+| Standard | Property | Description |
+|----------|----------|-------------|
+| **Wikidata** | `P373` | Commons category (for related media/images) |
+| **CIDOC CRM** | Referenced via E78_Curated Holding | Media representation |
+| **WB4R** | `wgm:external_link (P57)` | External resource linking |
+
+#### Purpose
+Link to Wikimedia Commons categories containing images, documents, or other media representations of the artist.
+
+---
+
+## Best Practices
+
+### When Creating Artist Records:
+
+1. **Always include:** Q-identifier (Wikidata link) for interoperability
+2. **Use controlled vocabularies** for professions and nationalities
+3. **Specify date precision:** Use YYYY if only year is known, YYYY-MM-DD if full date available
+4. **Cross-reference authority files:** Include P227 (GND) and P245 (Getty ULAN) identifiers when available
+5. **Link to Commons:** Provide P373 references to media collections
+6. **Use consistent naming:** Follow "Given Name" + "Family Name" convention
+
+### For Exhibition Context:
+
+- Use **WikiProject Exhibitions** properties to link artists to exhibitions (P1690: related work)
+- For performing artists: Reference **WikiProject Performing arts** guidelines
+- For visual artists: Reference **WikiProject Visual arts** guidelines
+- Ensure all date formats are ISO 8601 (YYYY-MM-DD) for data interoperability
+
+---
+
+## Related Standards & Resources
+
+- [CIDOC CRM Official Documentation](http://www.cidoc-crm.org/)
+- [Wikibase4Research Documentation](https://gitlab.com/nfdi4culture/wikibase4research)
+- [Wikidata WikiProject Exhibitions](https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions)
+- [Wikidata WikiProject Visual Arts](https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts)
+- [Wikidata WikiProject Performing Arts](https://www.wikidata.org/wiki/Wikidata:WikiProject_Performing_arts)
+
+---
+
+## Contact & Contributions
+
+For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via [GitHub](https://github.com/NFDI4Culture/linked-open-exhibition).
+
+---
+
+## Attribution
+
+This data model documentation was created with assistance from **GitHub Copilot** (powered by Claude Haiku 4.5). The model was aligned against sector standards including CIDOC CRM v7.1.3, Wikibase4Research, and Wikidata WikiProject Exhibitions guidelines through AI-assisted analysis and formatting.

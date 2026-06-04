@@ -1,0 +1,117 @@
+---
+title: "Sprengel Museum Exhibitions"
+subtitle: "Linked Open Data — Wikidata Records"
+description: "Exhibitions at the Sprengel Museum Hannover drawn from Wikidata, enriched with start and end dates."
+date: today
+execute:
+  echo: false
+jupyter: python3
+---
+
+```{python}
+#| label: load-data
+import csv
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from IPython.display import HTML
+
+XML_PATH = Path("ausstellungen/exhibitions.xml")
+tree = ET.parse(XML_PATH)
+root = tree.getroot()
+
+def text(el, tag):
+    child = el.find(tag)
+    return child.text.strip() if child is not None and child.text else ""
+
+exhibitions = []
+for ex in root.findall("exhibition"):
+    exhibitions.append({k: text(ex, k) for k in [
+        "qid", "wikidata_url", "museum_url", "slug",
+        "title", "start_date", "end_date",
+        "location", "curator", "organizer",
+        "country", "website", "image", "description",
+    ]})
+
+# Sort by start date
+exhibitions.sort(key=lambda x: x["start_date"])
+print(f"Loaded {len(exhibitions)} exhibitions")
+```
+
+```{python}
+#| label: build-cards
+#| output: asis
+
+def date_range(ex):
+    if ex["start_date"] and ex["end_date"]:
+        return f"{ex['start_date']} – {ex['end_date']}"
+    if ex["start_date"]:
+        return f"from {ex['start_date']}"
+    return "Date unknown"
+
+def badge(label, colour="secondary"):
+    return f'<span class="badge bg-{colour} me-1">{label}</span>'
+
+cards_html = '<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">\n'
+
+for ex in exhibitions:
+    title   = ex["title"] or ex["slug"]
+    wd_url  = ex["wikidata_url"]
+    mus_url = ex["museum_url"] or ex["website"]
+    curator = ex["curator"]
+    loc     = ex["location"]
+    desc    = ex["description"]
+    img     = ex["image"]
+
+    img_html = (
+        f'<img src="{img}" class="card-img-top" alt="{title}" '
+        f'style="max-height:180px;object-fit:cover;" loading="lazy">'
+        if img else
+        '<div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" '
+        'style="height:120px;"><span class="text-white text-muted">No image</span></div>'
+    )
+
+    curator_badge = badge(curator, "info") if curator else ""
+    loc_badge     = badge(loc, "light text-dark") if loc else ""
+
+    links = ""
+    if wd_url:
+        links += f'<a href="{wd_url}" class="btn btn-sm btn-outline-secondary me-1" target="_blank">Wikidata</a>'
+    if mus_url:
+        links += f'<a href="{mus_url}" class="btn btn-sm btn-outline-primary" target="_blank">Museum</a>'
+
+    cards_html += f"""  <div class="col">
+    <div class="card h-100 shadow-sm">
+      {img_html}
+      <div class="card-body">
+        <h5 class="card-title">{title}</h5>
+        <p class="card-text text-muted small mb-1">{date_range(ex)}</p>
+        <p class="card-text small mb-2">{curator_badge}{loc_badge}</p>
+        <p class="card-text small">{desc[:200] + '…' if len(desc) > 200 else desc}</p>
+      </div>
+      <div class="card-footer bg-transparent border-0">{links}</div>
+    </div>
+  </div>
+"""
+
+cards_html += "</div>\n"
+print(cards_html)
+```
+
+---
+
+## Full Exhibition Table
+
+```{python}
+#| label: table
+import pandas as pd
+
+df = pd.DataFrame(exhibitions)[[
+    "title", "start_date", "end_date", "location", "curator", "qid"
+]]
+df.columns = ["Title", "Start", "End", "Location", "Curator", "QID"]
+df["QID"] = df["QID"].apply(
+    lambda q: f'<a href="https://www.wikidata.org/wiki/{q}" target="_blank">{q}</a>' if q else ""
+)
+df.index = range(1, len(df) + 1)
+HTML(df.to_html(escape=False, classes="table table-sm table-hover", border=0))
+```

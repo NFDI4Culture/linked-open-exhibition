@@ -12,6 +12,12 @@ website:
         text: Home
       - href: exhibitions.qmd
         text: Exhibitions
+      - text: "Wikidata Exhibitions"
+        menu:
+          - href: exhibitions-list.qmd
+            text: Exhibition Listing
+          - href: exhibitions-timeline.qmd
+            text: Exhibition Timeline
       - href: data-analysis.qmd
         text: Data Analysis
       - text: "Data Models"

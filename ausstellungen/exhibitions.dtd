@@ -1,0 +1,73 @@
+<!-- exhibitions.dtd
+     Document Type Definition for Linked Open Exhibition XML
+     Aligned with the Exhibition Data Model (data-models/exhibition.csv)
+     and Wikidata WikiProject Exhibitions property set.
+     
+     Required fields: qid, title, start_date
+     Optional fields: all others
+-->
+
+<!ELEMENT exhibitions (exhibition+)>
+
+<!ELEMENT exhibition (
+  qid,
+  wikidata_url,
+  museum_url,
+  slug,
+  title,
+  start_date,
+  end_date,
+  location,
+  location_qid,
+  curator,
+  organizer,
+  country,
+  website,
+  image,
+  description
+)>
+
+<!-- Wikidata Q-identifier, e.g. Q138573075 -->
+<!ELEMENT qid              (#PCDATA)>
+
+<!-- Canonical Wikidata item URL -->
+<!ELEMENT wikidata_url     (#PCDATA)>
+
+<!-- Sprengel Museum website URL for the exhibition (P856 / P1 CIDOC) -->
+<!ELEMENT museum_url       (#PCDATA)>
+
+<!-- URL slug derived from museum_url -->
+<!ELEMENT slug             (#PCDATA)>
+
+<!-- Exhibition title (Wikidata P1476 / CIDOC P1_is_identified_by) -->
+<!ELEMENT title            (#PCDATA)>
+
+<!-- Start date ISO 8601 YYYY-MM-DD (Wikidata P580 / CIDOC P4_has_time-span) -->
+<!ELEMENT start_date       (#PCDATA)>
+
+<!-- End date ISO 8601 YYYY-MM-DD (Wikidata P582 / CIDOC P4_has_time-span) -->
+<!ELEMENT end_date         (#PCDATA)>
+
+<!-- Exhibition venue label (Wikidata P276 / CIDOC P7_took_place_at) -->
+<!ELEMENT location         (#PCDATA)>
+
+<!-- Wikidata Q-identifier for the venue -->
+<!ELEMENT location_qid     (#PCDATA)>
+
+<!-- Curator name (Wikidata P1640 / CIDOC P14_carried_out_by) -->
+<!ELEMENT curator          (#PCDATA)>
+
+<!-- Organizer name (Wikidata P664 / CIDOC P14_carried_out_by) -->
+<!ELEMENT organizer        (#PCDATA)>
+
+<!-- Country label (Wikidata P17 / CIDOC P7_took_place_at) -->
+<!ELEMENT country          (#PCDATA)>
+
+<!-- Official website URL (Wikidata P856) -->
+<!ELEMENT website          (#PCDATA)>
+
+<!-- Wikimedia Commons image URL (Wikidata P18) -->
+<!ELEMENT image            (#PCDATA)>
+
+<!-- Short English / German description of the exhibition -->
+<!ELEMENT description      (#PCDATA)>

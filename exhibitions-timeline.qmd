@@ -1,0 +1,126 @@
+---
+title: "Exhibition Timeline"
+subtitle: "Sprengel Museum Hannover — chronological view of exhibitions"
+description: "Interactive timeline of Sprengel Museum exhibitions sourced from Wikidata."
+date: today
+execute:
+  echo: false
+jupyter: python3
+---
+
+```{python}
+#| label: load-json
+#| output: false
+import json
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from IPython.display import display, Javascript
+
+XML_PATH = Path("ausstellungen/exhibitions.xml")
+tree = ET.parse(XML_PATH)
+root = tree.getroot()
+
+def text(el, tag):
+    child = el.find(tag)
+    return child.text.strip() if child is not None and child.text else ""
+
+items = []
+for i, ex in enumerate(root.findall("exhibition"), start=1):
+    start = text(ex, "start_date")
+    end   = text(ex, "end_date")
+    title = text(ex, "title") or text(ex, "slug")
+    if not start:
+        continue
+    item = {
+        "id":      i,
+        "content": title,
+        "start":   start,
+        "title":   (
+            f"<b>{title}</b><br>"
+            f"{start} – {end or '?'}<br>"
+            f"{text(ex, 'curator') or ''}"
+        ),
+        "group":   1,
+    }
+    if end:
+        item["end"] = end
+        item["type"] = "range"
+    else:
+        item["type"] = "point"
+    items.append(item)
+
+# Emit JSON for use in OJS cell below
+items_json = json.dumps(items, ensure_ascii=False)
+```
+
+```{python}
+#| label: pass-to-ojs
+#| output: false
+from IPython.display import display
+
+# Write the items JSON to a side-car file read by OJS
+import pathlib
+pathlib.Path("ausstellungen/timeline-items.json").write_text(
+    items_json, encoding="utf-8"
+)
+print(f"Wrote {len(items)} timeline items.")
+```
+
+```{=html}
+<link  href="https://unpkg.com/vis-timeline@7.7.3/dist/vis-timeline-graph2d.min.css" rel="stylesheet">
+<script src="https://unpkg.com/vis-timeline@7.7.3/dist/vis-timeline-graph2d.min.js"></script>
+
+<div id="timeline-container" style="height: 520px; border: 1px solid #ddd; border-radius: 4px;"></div>
+
+<script type="module">
+  // Load timeline items written by Python above
+  const resp  = await fetch("ausstellungen/timeline-items.json");
+  const items = await resp.json();
+
+  const container = document.getElementById("timeline-container");
+  const dataset   = new vis.DataSet(items);
+  const options   = {
+    orientation: { axis: "top" },
+    stack: true,
+    showMajorLabels: true,
+    showMinorLabels: true,
+    zoomMin: 1000 * 60 * 60 * 24 * 30,      // 1 month minimum zoom
+    zoomMax: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years maximum zoom
+    tooltip: { followMouse: true, overflowMethod: "cap" },
+    locale: "en",
+  };
+  new vis.Timeline(container, dataset, options);
+</script>
+```
+
+---
+
+## Exhibition List (sorted by date)
+
+```{python}
+#| label: sorted-table
+import pandas as pd
+from IPython.display import HTML
+
+rows = []
+for ex in root.findall("exhibition"):
+    start = text(ex, "start_date")
+    if not start:
+        continue
+    qid = text(ex, "qid")
+    rows.append({
+        "Title":    text(ex, "title") or text(ex, "slug"),
+        "Start":    start,
+        "End":      text(ex, "end_date") or "–",
+        "Location": text(ex, "location"),
+        "Curator":  text(ex, "curator"),
+        "Wikidata": (
+            f'<a href="https://www.wikidata.org/wiki/{qid}" target="_blank">{qid}</a>'
+            if qid else ""
+        ),
+    })
+
+df = pd.DataFrame(rows).sort_values("Start").reset_index(drop=True)
+df.index = range(1, len(df) + 1)
+HTML(df.to_html(escape=False, classes="table table-sm table-striped table-hover", border=0))
+```

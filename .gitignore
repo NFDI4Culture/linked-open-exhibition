@@ -1,7 +1,5 @@
 /.quarto/
 .env
-scans/*
-/scans/
 scans/baldessari-sprengel.pdf
    
 

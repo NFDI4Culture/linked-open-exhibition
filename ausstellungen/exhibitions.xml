@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exhibitions SYSTEM "exhibitions.dtd">
+<exhibitions>
+  <exhibition>
+    <qid>Q138547468</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138547468</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/aktuell/gabriela-jolowicz</museum_url>
+    <slug>gabriela-jolowicz</slug>
+    <title>Gabriela Jolowicz Holzschnitte - Woodcuts</title>
+    <start_date>2026-01-21</start_date>
+    <end_date>2026-05-26</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Stefan Gronert</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/aktuell/gabriela-jolowicz</website>
+    <image/>
+    <description>Gabriela Jolowicz woodcuts exhibition in the Sprengel Museum, Hanover, 2026</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138572978</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138572978</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/fotografien-moderne</museum_url>
+    <slug>fotografien-moderne</slug>
+    <title>Fotografien Der Moderne Aus Der Sammlung</title>
+    <start_date>2023-11-23</start_date>
+    <end_date>2024-02-25</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Stefan Gronert</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/fotografien-moderne</website>
+    <image/>
+    <description>Fotografien Der Moderne Aus Der Sammlung, Ausstellung im Sprengel Museum, Hannover, 2026</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138572994</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138572994</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/aktuell/abenteuer-abstraktion</museum_url>
+    <slug>abenteuer-abstraktion</slug>
+    <title>Abenteuer Abstraktion Von Der Moderne Bis Zur Gegenwart Sammlung</title>
+    <start_date>2023-04-23</start_date>
+    <end_date/>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Isabel Schulz</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/aktuell/abenteuer-abstraktion</website>
+    <image/>
+    <description>The Adventure of Abstraction. Exhibitions in Sprengel Museum Hannover 23.4.2023</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138572988</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138572988</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/vorschau/horst-antes</museum_url>
+    <slug>horst-antes</slug>
+    <title>EINE SAMMLUNG</title>
+    <start_date>2026-04-11</start_date>
+    <end_date>2026-07-05</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Reinhard Spieler</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/vorschau/horst-antes</website>
+    <image/>
+    <description>Eine Sammlung, Ausstellung im Sprengel Museum, Hannover, 2026</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138772341</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138772341</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/vorschau/kaloki-nyamai</museum_url>
+    <slug>kaloki-nyamai</slug>
+    <title>Kaloki Nyamai</title>
+    <start_date>2025-04-11</start_date>
+    <end_date>2025-07-05</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/vorschau/kaloki-nyamai</website>
+    <image/>
+    <description>exhibition at Sprengel Museum Hannover, 2025</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573058</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573058</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/vorschau/maja-zipf</museum_url>
+    <slug>maja-zipf</slug>
+    <title>EMOTIONAL SUPPORT OBJECTS - Hoping for Better Days</title>
+    <start_date>2026-04-18</start_date>
+    <end_date>2026-07-05</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Nora Niefanger</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/vorschau/maja-zipf</website>
+    <image/>
+    <description>Hoping for Better Days - EMOTIONAL SUPPORT OBJECTS, exhibition, Sprengel Museum,Hannover, 2026</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138650553</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138650553</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/vorschau/paul-sepuya</museum_url>
+    <slug>paul-sepuya</slug>
+    <title>PAUL MPAGI SEPUYAIN THE VIEW OF DESIRE</title>
+    <start_date>2026-07-01</start_date>
+    <end_date>2026-10-04</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Stefan Gronert</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/vorschau/paul-sepuya</website>
+    <image/>
+    <description>art exhibition at the Sprengel Museum, Hanover</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573096</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573096</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/vorschau/gleichmann</museum_url>
+    <slug>gleichmann</slug>
+    <title>Otto Gleichmann and Expressionism in Hanover</title>
+    <start_date>2026-08-01</start_date>
+    <end_date>2026-11-01</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer>Sprengel Museum</organizer>
+    <country/>
+    <website/>
+    <image/>
+    <description>art exhibition at the Sprengel Museum Hannover</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138652613</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138652613</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/vorschau/aladag</museum_url>
+    <slug>aladag</slug>
+    <title>Nevin Aladağ</title>
+    <start_date>2025-07-06</start_date>
+    <end_date>2026-01-11</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/vorschau/aladag</website>
+    <image/>
+    <description>exhibition at Sprengel Museum Hannover</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138638019</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138638019</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/sven-julien-kanclerski</museum_url>
+    <slug>sven-julien-kanclerski</slug>
+    <title>The Universal (Trumpets Starting to Play)</title>
+    <start_date>2025-11-22</start_date>
+    <end_date>2026-03-01</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/sven-julien-kanclerski</website>
+    <image/>
+    <description>Sven-Julien Kanclerski. The Universal (Trumpets Starting to Play), exhibition in Sprengel Museum, Hanover, 2026</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573028</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573028</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/adrian-sauer-spectrum-stiftung</museum_url>
+    <slug>adrian-sauer-spectrum-stiftung</slug>
+    <title>Adrian Sauer: Truth Tablespectrum Internationaler Preis für Fotografie der Stiftung Niedersachsen</title>
+    <start_date>2023-10-14</start_date>
+    <end_date>2024-01-14</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Stefan Gronert</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/adrian-sauer-spectrum-stiftung</website>
+    <image/>
+    <description>Adrian Sauer: Truth Table exhibition in the Sprengel Museum, Hanover, 2026</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138797847</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138797847</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/neuer-kunstclub2</museum_url>
+    <slug>neuer-kunstclub2</slug>
+    <title>NEUER KUNSTCLUB II</title>
+    <start_date>2025-06-15</start_date>
+    <end_date>2025-07-13</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country>Germany</country>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/neuer-kunstclub2</website>
+    <image/>
+    <description>Exhibition at Sprengel Museum Hannover, 2025</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573327</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573327</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/feministische-avantgarde</museum_url>
+    <slug>feministische-avantgarde</slug>
+    <title>Stand Up! Feministische Avantgarde. Werke aus der Sammlung Verbund, Wien</title>
+    <start_date>2025-07-05</start_date>
+    <end_date>2025-09-28</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Gabriele Schor</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/feministische-avantgarde</website>
+    <image/>
+    <description>Exhibition at the Sprengel Museum showcasing the radical feminist art movement of the 1970s.</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138651627</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138651627</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/frida-orupabo</museum_url>
+    <slug>frida-orupabo</slug>
+    <title>Frida Orupabo - Spectrum Internationaler Preis Für Fotografie Der Stiftung Niedersachsen</title>
+    <start_date>2025-04-05</start_date>
+    <end_date>2025-07-20</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Inka Schube</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/frida-orupabo</website>
+    <image/>
+    <description>Exhibition</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138779118</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138779118</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/grethe-juergens</museum_url>
+    <slug>grethe-juergens</slug>
+    <title>Grethe Jürgens. Retrospektive</title>
+    <start_date>2025-02-22</start_date>
+    <end_date>2025-06-15</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer>Sprengel Museum</organizer>
+    <country/>
+    <website/>
+    <image/>
+    <description>art exhibition at Sprengel Museum Hannover about Grethe Jürgens</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573010</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573010</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/geyso</museum_url>
+    <slug>geyso</slug>
+    <title>Das Atelier als Gemeinschaft</title>
+    <start_date>2025-01-22</start_date>
+    <end_date>2025-04-06</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/geyso-20</website>
+    <image/>
+    <description>Exhibition at the Sprengel Museum Hannover about collaborative artistic work at Atelier Geyso20</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138651552</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138651552</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/kresta</museum_url>
+    <slug>kresta</slug>
+    <title>Martina Kresta</title>
+    <start_date>2007-07-17</start_date>
+    <end_date>2024-10-20</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Alexander Leinemann</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/kresta</website>
+    <image/>
+    <description>Austrian. contemporary artist</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573075</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573075</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/skulpturen-erfassen-2</museum_url>
+    <slug>skulpturen-erfassen-2</slug>
+    <title>Skulpturen Erfassen</title>
+    <start_date>2024-11-13</start_date>
+    <end_date>2025-05-04</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/skulpturen-erfassen-2</website>
+    <image/>
+    <description>In the exhibition SKULPTUREN ERFASSEN, important positions in modern sculpture come together at the Sprengel Museum Hannover: Tony Cragg, Richard Deacon, and Barbara Hepworth.</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138572984</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138572984</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/nordlichter</museum_url>
+    <slug>nordlichter</slug>
+    <title>Nordlichter</title>
+    <start_date>2024-04-10</start_date>
+    <end_date>2024-07-28</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Karin Orchard</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/nordlichtery</website>
+    <image/>
+    <description>Nordlichter, exhibition in the Sprengel Museum, Hanover, 2024</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573017</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573017</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/burckhardt-blum</museum_url>
+    <slug>burckhardt-blum</slug>
+    <title>Elsa Burckhardt-blum Zeichnungen</title>
+    <start_date>2024-10-09</start_date>
+    <end_date>2025-01-26</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Karin Orchard</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/burckhardt-blum</website>
+    <image/>
+    <description>Exhibition at the Sprenger Gallery featuring the drawings of Elsa BURCKHARDT-BLUM</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573242</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573242</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/joar-nango</museum_url>
+    <slug>joar-nango</slug>
+    <title>Joar Nango</title>
+    <start_date>2024-09-28</start_date>
+    <end_date>2025-01-05</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Carina Plath</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/joar-nango</website>
+    <image/>
+    <description>art exhibition at Sprengel Museum Hannover</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138572983</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138572983</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/peter-tuma</museum_url>
+    <slug>peter-tuma</slug>
+    <title>Peter Tuma Aufkommende Unruhe</title>
+    <start_date>2024-04-10</start_date>
+    <end_date>2024-07-28</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Talia Walther</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/peter-tuma</website>
+    <image/>
+    <description>Peter Tuma Aufkommende Unruhe, Exhibition at the Sprengel Museum, Hannover, 2024</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q139288222</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q139288222</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/thomas-rentmeister</museum_url>
+    <slug>thomas-rentmeister</slug>
+    <title>Thomas Rentmeister</title>
+    <start_date>2024-09-00</start_date>
+    <end_date>2024-11-00</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator/>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/thomas-rentmeister</website>
+    <image/>
+    <description>art exhibition by Thomas Rentmeister in 2024</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138572982</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138572982</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/das-bild-ist-was-es-tut</museum_url>
+    <slug>das-bild-ist-was-es-tut</slug>
+    <title>Das Bild ist, was es tut</title>
+    <start_date>2024-08-21</start_date>
+    <end_date>2024-11-17</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Inka Schube</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/das-bild-ist-was-es-tut</website>
+    <image/>
+    <description>exhibition featuring works from the collection of the Lower Saxony Sparkassen Foundation at Sprengel Museum Hannover</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138573169</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138573169</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/jean-leppien</museum_url>
+    <slug>jean-leppien</slug>
+    <title>Jean Leppien - The Donation</title>
+    <start_date>2024-03-16</start_date>
+    <end_date>2024-06-23</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Carina Plath</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/jean-leppien</website>
+    <image/>
+    <description>Art Exhibition at the Sprengel Museum, Hanover</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138652122</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138652122</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/raphael-denis</museum_url>
+    <slug>raphael-denis</slug>
+    <title>Das normale Gesetz Der Fehler</title>
+    <start_date>2024-02-17</start_date>
+    <end_date>2024-05-26</end_date>
+    <location>Hanover</location>
+    <location_qid>Q1715</location_qid>
+    <curator>Q133010916</curator>
+    <organizer>Sprengel Museum</organizer>
+    <country/>
+    <website>https://raphaeldenis.com/</website>
+    <image/>
+    <description>research and installation exhibition</description>
+  </exhibition>
+  <exhibition>
+    <qid>Q138645279</qid>
+    <wikidata_url>https://www.wikidata.org/wiki/Q138645279</wikidata_url>
+    <museum_url>https://www.sprengel-museum.de/ausstellungen/archiv/phyllida-barlow-kurt-schwitters-preis-nsks</museum_url>
+    <slug>phyllida-barlow-kurt-schwitters-preis-nsks</slug>
+    <title>Breach</title>
+    <start_date>2022-10-15</start_date>
+    <end_date>2023-03-19</end_date>
+    <location>Sprengel Museum</location>
+    <location_qid>Q510144</location_qid>
+    <curator>Carina Plath</curator>
+    <organizer/>
+    <country/>
+    <website>https://www.sprengel-museum.de/ausstellungen/archiv/phyllida-barlow-kurt-schwitters-preis-nsks</website>
+    <image/>
+    <description>Phyllida Barlow: Breach Exhibition at the Sprengel Museum, Hanover, 2022</description>
+  </exhibition>
+</exhibitions>

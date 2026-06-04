@@ -6,3 +6,7 @@ wikibaseintegrator
 mwclient
 python-dotenv
 SPARQLWrapper
+# OCR pipeline for catalogue scans
+pytesseract
+Pillow
+pymupdf

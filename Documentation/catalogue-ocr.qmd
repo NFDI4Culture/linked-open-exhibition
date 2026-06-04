@@ -1,0 +1,210 @@
+---
+title: "Exhibition Catalogue OCR Pipeline"
+subtitle: "Extracting structured artwork data from scanned PDF catalogues"
+description: "Technical documentation for the three-stage pipeline that OCRs a scanned museum catalogue and produces a structured CSV ready for Wikibase import."
+date: today
+---
+
+## Overview
+
+This document describes the pipeline for digitising structured data from scanned art museum exhibition catalogues. The primary source is `scans/baldessari-sprengel.pdf`, a scanned exhibition catalogue from the Sprengel Museum Hannover.
+
+The pipeline has three stages:
+
+| Stage | Script | Input | Output |
+|-------|--------|-------|--------|
+| 1 – OCR | `scripts/ocr_catalogue.py` | `scans/*.pdf` | `output/ocr/pages/*.txt`, `output/ocr/*_ocr_full.txt` |
+| 2 – Extract | `scripts/extract_artworks.py` | OCR full text | `output/baldessari-sprengel-artworks.csv` |
+| 3 – Validate | `scripts/validate_csv.py` | CSV | Console quality report |
+
+An interactive [JupyterLab notebook](../catalogues/catalogue-ocr.ipynb) (`catalogues/catalogue-ocr.ipynb`) combines all stages with data exploration visualisations.
+
+---
+
+## Data Model
+
+Output columns are derived from the three Linked Open Exhibition data models:
+
+### Artwork fields — `data-models/item-in-exhibition.csv`
+
+| Column | Wikidata | CIDOC CRM | Notes |
+|--------|----------|-----------|-------|
+| `catalogue_no` | P528 | E42_Identifier | Printed catalogue number |
+| `artwork_title` | P1476 | P102_has_title | May include year suffix |
+| `artwork_title_lang` | — | P72_has_language | ISO 639-1 code |
+| `artwork_type` | P31 | E22_Man-Made_Object | e.g. painting, photograph |
+| `artwork_inception` | P571 | P108_has_produced | YYYY or YYYY-MM-DD |
+| `medium_material` | P186 | P45_consists_of | e.g. "oil on canvas" |
+| `height_cm` | P2048 | P43_has_dimension | numeric, centimetres |
+| `width_cm` | P2049 | P43_has_dimension | numeric, centimetres |
+| `depth_cm` | P2610 | P43_has_dimension | numeric, centimetres |
+| `collection` | P195 | P46_is_composed_of | owning institution / lender |
+| `inventory_number` | P217 | E42_Identifier | |
+| `depicts` | P180 | P129_is_about | comma-separated subjects |
+| `image_url` | P18 | E36_Visual_Item | Wikimedia Commons URL |
+| `described_at_url` | P973 | E42_Identifier | |
+
+### Artist fields — `data-models/artists-data-model.csv`
+
+| Column | Wikidata | CIDOC CRM | Notes |
+|--------|----------|-----------|-------|
+| `artist_full_name` | — | E82_Appellation | Display name |
+| `artist_given_name` | P735 | P1_is_identified_by | |
+| `artist_family_name` | P734 | P1_is_identified_by | |
+| `artist_birth_year` | P569 | P82_at_some_time_within | YYYY |
+| `artist_death_year` | P570 | P82_at_some_time_within | YYYY |
+| `artist_nationality` | P27 | P2_has_type | ISO country code or label |
+| `artist_profession` | P106 | P2_has_type | |
+| `artist_wikidata_qid` | QID | E42_Identifier | e.g. Q108968 |
+| `artist_gnd_id` | P227 | E42_Identifier | Deutsche Nationalbibliothek GND |
+| `artist_ulan_id` | P245 | E42_Identifier | Getty ULAN |
+
+### Exhibition fields — `data-models/exhibition.csv`
+
+| Column | Wikidata | CIDOC CRM | Notes |
+|--------|----------|-----------|-------|
+| `exhibition_title` | P1476 | P102_has_title | |
+| `exhibition_location` | P276 | P7_took_place_at | |
+| `exhibition_start` | P580 | P4_has_time-span | YYYY-MM-DD |
+| `exhibition_end` | P582 | P4_has_time-span | YYYY-MM-DD |
+| `exhibition_organizer` | P664 | P14_carried_out_by | |
+| `exhibition_wikidata_qid` | QID | E42_Identifier | |
+
+---
+
+## Prerequisites
+
+### Python packages
+
+Install via `pip install -r requirements.txt`:
+
+```
+pdf2image
+pytesseract
+Pillow
+pymupdf
+pandas
+```
+
+### Tesseract OCR engine
+
+Tesseract must be installed separately on your operating system.
+
+**Windows:**
+Download and run the installer from the [UB Mannheim repository](https://github.com/UB-Mannheim/tesseract/wiki).
+During installation, tick the language packs **German (deu)** and **English (eng)**.
+
+After installation, if Tesseract is not on your `PATH`, set the path explicitly in Python:
+
+```python
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+```
+
+**Linux/macOS:**
+```bash
+sudo apt install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng   # Debian/Ubuntu
+brew install tesseract                                                   # macOS
+```
+
+### Poppler (required by pdf2image)
+
+**Windows:** Download from [poppler for Windows](https://github.com/oschwartz10612/poppler-windows/releases)
+and add the `bin/` directory to your `PATH`.
+
+**Linux:** `sudo apt install poppler-utils`  
+**macOS:** `brew install poppler`
+
+---
+
+## Usage
+
+### Command-line scripts
+
+**Stage 1 – OCR:**
+```bash
+python scripts/ocr_catalogue.py scans/baldessari-sprengel.pdf \
+  --output output/ocr \
+  --lang deu+eng \
+  --dpi 300
+```
+
+Options:
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--output` | `output/ocr` | Directory for OCR artefacts |
+| `--lang` | `deu+eng` | Tesseract language string |
+| `--dpi` | `300` | Rendering DPI (≥300 recommended) |
+| `--pages` | all | Page range, e.g. `1-30` or `5,10,15` |
+
+**Stage 2 – Extract:**
+```bash
+python scripts/extract_artworks.py output/ocr/baldessari-sprengel_ocr_full.txt \
+  --output output/baldessari-sprengel-artworks.csv \
+  --exhibition "Baldessari. Sprengel Museum Hannover" \
+  --location "Sprengel Museum Hannover" \
+  --start 2000-09-17 \
+  --end 2001-01-14
+```
+
+**Stage 3 – Validate:**
+```bash
+python scripts/validate_csv.py output/baldessari-sprengel-artworks.csv
+```
+
+### Jupyter notebook
+
+Open `catalogues/catalogue-ocr.ipynb` in JupyterLab and run cells sequentially.
+The notebook includes interactive data quality visualisations.
+
+---
+
+## Parsing Strategy
+
+Exhibition catalogue entries typically follow a repeating block pattern:
+
+```
+JOHN BALDESSARI
+Big Red Arm with Thumb, 2000
+Chromogenic print
+76 × 61 cm
+Sprengel Museum Hannover
+Kat.-Nr. 5
+```
+
+The `extract_artworks.py` parser uses the following heuristics:
+
+1. **Artist name** — a line in ALL-CAPS (≥4 characters) starts a new entry block.
+2. **Dimensions** — any line matching `N×N` or `N x N` patterns.
+3. **Medium** — lines containing material keywords (`print`, `photograph`, `oil`, `Druck`, etc.).
+4. **Collection** — lines containing institution keywords (`Museum`, `Sammlung`, `Courtesy`, etc.).
+5. **Catalogue number** — lines matching `Kat.-Nr.`, `Cat.`, `No.`, or `[N]` patterns.
+6. **Year** — a standalone four-digit number, or a year suffix on the title line.
+7. **Title** — the first unmatched line after the artist name.
+
+Values that cannot be assigned with confidence are flagged with ` [?]` for manual review.
+
+---
+
+## Manual Review
+
+After Stage 2, open `output/baldessari-sprengel-artworks.csv` in LibreOffice Calc, Excel, or similar:
+
+1. Remove `[?]` suffixes from corrected values.
+2. Fix obvious OCR artefacts (confused characters: `0`/`O`, `1`/`l`, `rn`/`m`, etc.).
+3. Fill in `artist_wikidata_qid` for known artists (e.g. `Q318159` for John Baldessari).
+4. Add `artist_gnd_id` values where available from the GND authority file.
+5. Verify `catalogue_no` matches the printed catalogue numbering.
+6. Re-run Stage 3 to confirm the quality score is satisfactory.
+
+---
+
+## Future Work: DTD and XML Import
+
+Once the CSV quality is confirmed, the following will be created:
+
+- **`output/artwork-catalogue.dtd`** — document type definition describing the XML structure, aligned with the Linked Open Exhibition data models.
+- **`output/baldessari-sprengel-import.xml`** — one `<item>` element per artwork, structured for batch import into the NFDI4Culture Wikibase instance.
+
+The DTD design and XML generation scripts will be documented in a separate notebook (`catalogues/wikibase-xml-import.ipynb`) when data quality is sufficient.

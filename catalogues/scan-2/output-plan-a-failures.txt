@@ -1,0 +1,61 @@
+--- Block 103 ---
+which consist of several manipulated and/or merely decontextualized images which can be linked via a linguistic tertium comparationis - such as "Team", "Box (Blind Fate and Culture)" or “Hands/Feet" (1987). The effect which these works have on us is even more astonishing and, in a certain
+--- Error/Raw Response ---
+{
+  "title": null,
+  "creator": null,
+  "date": "1987",
+  "object_type": null,
+  "materials": [null],
+  "height_cm": null,
+  "width_cm": null,
+  "depth_cm": null,
+  "inventory_number": null,
+  "catalog_number": null,
+  "notes": "which consist of several manipulated and/or merely decontextualized images which can be linked via a linguistic tertium comparationis - such as \"Team\", \"Box (Blind Fate and Culture)\" or “Hands/Feet""
+}
+
+7). The effect which these works have on us is even more astonishing and, in a certain"
+}
+
+--- Block 324 ---
+McKenna, Kristine. “Turning Gray to Black and White", Los Angeles Times, April 20, 1997, (calendar) p.54-55 "Kunstmarkt", Frankfurter Allgemeine Zeitung, Germany, July 19, Nr.165 / p.35 "Tips und Termine", Kölner Stadtanzeiger, Germany, July 4, Nr. 154 / p.5 Knight, Christopher. "An Enlightened Twist on Tradition", Los Angeles Times, April 30, FI&F6 Pricenthal, Nancy. "John Baldessari", On Paper The journal of Prints, Drawings and Photography, May-June 1997, p.38 Lindgard, Jade. "John Baldessari", Les Inrockuptibles, Paris, 30 April - 6 May, 19 and insert "John Baldessari le Manipulateur", Le Monde, Paris, April 15, 22
+--- Error/Raw Response ---
+```json
+{
+  "title": null,
+  "creator": "John Baldessari",
+  "date": null,
+  "object_type": null,
+  "materials": [],
+  "height_cm": null,
+  "width_cm": null,
+  "depth_cm": null,
+  "inventory_number": null,
+  "catalog_number": null,
+  "notes": [
+    "McKenna, Kristine. “Turning Gray to Black and White", Los Angeles Times, April 20, 1997, (calendar) p.54-55",
+    "Knight, Christopher. \"An Enlightened Twist on Tradition\", Los Angeles Times, April 30, FI&F6",
+    "Pricenthal, Nancy. \"John Baldessari\", On Paper The journal of Prints, Drawings and Photography, May-June 1997, p.38",
+    "Lindgard, Jade. \"John Baldessari\", Les Inrockuptibles, Paris, 30 April - 6 May, 19 and insert \"John Baldessari le Manipulateur\", Le Monde, Paris, April 15, 22"
+  ]
+}
+```
+
+--- Block 355 ---
+Taking a Slate: Ilene and David (#2), 1974, Super-8 film loop (originally 16 mm), color, 3 minutes
+--- Error/Raw Response ---
+{
+  "title": "Taking a Slate: Ilene and David (#2)",
+  "creator": ["Ilene"], // Assuming Ilene is the creator based on the title structure; need confirmation if it should be Ilene, David or both.
+  "date": 1974,
+  "object_type": "Super-8 film loop (originally 16 mm)",
+  "materials": ["color"],
+  "height_cm": null,
+  "width_cm": null,
+  "depth_cm": null,
+  "inventory_number": null,
+  "catalog_number": null,
+  "notes": "3 minutes"
+}
+

@@ -10,14 +10,17 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: exhibitions.qmd
-        text: Exhibitions
-      - text: "Wikidata Exhibitions"
+      - text: "Exhibitions"
         menu:
+          - href: exhibitions.qmd
+            text: Wikibase Catalogue
           - href: exhibitions-list.qmd
             text: Exhibition Listing
           - href: exhibitions-timeline.qmd
             text: Exhibition Timeline
+          - text: "---"
+          - href: catalogue-baldessari.qmd
+            text: "Baldessari — Sprengel Museum"
       - href: data-analysis.qmd
         text: Data Analysis
       - text: "Data Models"

@@ -1,0 +1,175 @@
+---
+title: "John Baldessari — Exhibition Catalogue"
+subtitle: "Sprengel Museum Hannover"
+description: "Catalogue of works by John Baldessari shown at the Sprengel Museum Hannover, sourced from OCR-processed exhibition catalogue (scan-2)."
+date: today
+execute:
+  echo: false
+jupyter: python3
+---
+
+```{python}
+#| label: load-xml
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+XML = Path("catalogues/scan-2/catalogue-items.xml")
+tree = ET.parse(XML)
+root = tree.getroot()
+
+def t(el, tag):
+    child = el.find(tag)
+    return child.text.strip() if child is not None and child.text else ""
+
+meta = root.find("meta")
+exhibition_title = t(meta, "exhibition_title")
+venue            = t(meta, "venue")
+creator_name     = t(meta, "creator_name")
+creator_qid      = t(meta, "creator_qid")
+
+items = []
+for item in root.findall("items/item"):
+    dim = item.find("dimensions")
+    h = t(dim, "height_cm") if dim is not None else ""
+    w = t(dim, "width_cm")  if dim is not None else ""
+    d = t(dim, "depth_cm")  if dim is not None else ""
+    dim_str = ""
+    if h and w:
+        dim_str = f"{h} × {w}" + (f" × {d} cm" if d else " cm")
+    items.append({
+        "title":           t(item, "title"),
+        "date":            t(item, "date"),
+        "object_type":     t(item, "object_type"),
+        "object_type_qid": t(item, "object_type_qid"),
+        "materials":       t(item, "materials"),
+        "dimensions":      dim_str,
+        "catalog_number":  t(item, "catalog_number"),
+        "inventory_number":t(item, "inventory_number"),
+        "location":        t(item, "location"),
+        "notes":           t(item, "notes"),
+    })
+
+print(f"Loaded {len(items)} catalogue entries")
+```
+
+::: {.callout-note}
+**Creator:** [{{< meta title >}}](https://www.wikidata.org/wiki/Q312793) (Q312793) &ensp;|&ensp;
+**Venue:** [Sprengel Museum Hannover](https://www.wikidata.org/wiki/Q510144) &ensp;|&ensp;
+**Source:** OCR-processed exhibition catalogue, `catalogues/scan-2/`
+:::
+
+## Works in the Exhibition
+
+```{python}
+#| label: cards
+#| output: asis
+
+# Group items by object type for display
+from collections import Counter
+type_counts = Counter(i["object_type"] or "unclassified" for i in items)
+
+def wd_badge(qid, label, colour="secondary"):
+    if qid:
+        return (f'<a href="https://www.wikidata.org/wiki/{qid}" target="_blank" '
+                f'class="badge bg-{colour} text-decoration-none me-1">{label}</a>')
+    return f'<span class="badge bg-{colour} me-1">{label}</span>'
+
+cards_html = '<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mt-1">\n'
+
+for item in items:
+    title = item["title"] or "(untitled)"
+    date  = item["date"]
+    otype = item["object_type"]
+    oqid  = item["object_type_qid"]
+    mats  = item["materials"]
+    dims  = item["dimensions"]
+    cat_n = item["catalog_number"]
+    inv_n = item["inventory_number"]
+    notes = item["notes"]
+
+    type_badge = wd_badge(oqid, otype, "primary") if otype else ""
+    cat_badge  = (f'<span class="badge bg-light text-dark border me-1">cat. {cat_n}</span>'
+                  if cat_n else "")
+
+    meta_lines = []
+    if date:   meta_lines.append(f"<b>Date:</b> {date}")
+    if mats:   meta_lines.append(f"<b>Materials:</b> {mats}")
+    if dims:   meta_lines.append(f"<b>Dimensions:</b> {dims}")
+    if inv_n:  meta_lines.append(f"<b>Inventory:</b> {inv_n}")
+    if notes:  meta_lines.append(f"<b>Note:</b> {notes}")
+    meta_html = "<br>".join(meta_lines)
+
+    cards_html += f"""  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h6 class="card-title fw-semibold">{title}</h6>
+        <p class="card-text mb-1">{type_badge}{cat_badge}</p>
+        <p class="card-text small text-muted">{meta_html}</p>
+      </div>
+    </div>
+  </div>
+"""
+
+cards_html += "</div>\n"
+print(cards_html)
+```
+
+---
+
+## Summary Statistics
+
+```{python}
+#| label: summary
+from IPython.display import HTML
+import pandas as pd
+
+# Object type breakdown
+type_df = (pd.DataFrame(list(type_counts.items()), columns=["Object Type", "Count"])
+             .sort_values("Count", ascending=False)
+             .reset_index(drop=True))
+type_df.index = range(1, len(type_df) + 1)
+
+# Date breakdown (year only)
+year_counts = Counter()
+for i in items:
+    d = i["date"]
+    if d:
+        year = d[:4] if len(d) >= 4 else d
+        year_counts[year] += 1
+
+year_df = (pd.DataFrame(list(year_counts.items()), columns=["Year / Period", "Count"])
+             .sort_values("Year / Period")
+             .reset_index(drop=True))
+year_df.index = range(1, len(year_df) + 1)
+
+html = (
+    '<div class="row">'
+    '<div class="col-md-5">'
+    + type_df.to_html(classes="table table-sm table-bordered", border=0, escape=False)
+    + '</div><div class="col-md-4 offset-md-1">'
+    + year_df.to_html(classes="table table-sm table-bordered", border=0, escape=False)
+    + '</div></div>'
+)
+HTML(html)
+```
+
+---
+
+## Full Catalogue Table
+
+```{python}
+#| label: full-table
+df = pd.DataFrame(items)
+df.columns = ["Title", "Date", "Type", "Type QID", "Materials",
+              "Dimensions", "Cat. No.", "Inv. No.", "Location", "Notes"]
+df = df.drop(columns=["Type QID"])
+df.index = range(1, len(df) + 1)
+
+# Truncate very long material strings for readability
+df["Materials"] = df["Materials"].str[:60].where(
+    df["Materials"].str.len() <= 60,
+    df["Materials"].str[:60] + "…"
+)
+
+HTML(df.to_html(classes="table table-sm table-hover", border=0, escape=False))
+```

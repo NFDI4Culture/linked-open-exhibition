@@ -1,0 +1,24 @@
+Page 46: could not parse JSON
+Raw output:
+[
+  {
+    "title": "SUNNY DONUTS",
+    "creator": "Philipp Scholz-Rittermann",
+    "date": "1996",
+    "object_type": "photograph",
+    "materials": [
+      "Acrylfarbe und Injekt auf Leinwand",
+      "Acrylic and inkjet on canvas"
+    ],
+    "height_cm": 150,
+    "width_cm": 114,
+    "depth_cm": null,
+    "inventory_number": null,
+    "catalog_number": null
+  },
+  {
+    "title": "FORMER SITE OF DUCK POND BAR",
+    "creator": "Philipp Scholz-Rittermann",
+    "date": "1996",
+    "object_type": "p
+---

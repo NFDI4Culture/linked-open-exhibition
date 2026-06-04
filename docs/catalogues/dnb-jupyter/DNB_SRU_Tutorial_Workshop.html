@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Altair in JupyterLite – Linked Open Exhibition</title>
+<title>DNBLab Jupyter Notebook zur SRU Abfrage – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Linked Open Exhibition</span>
     </a>
   </div>
@@ -123,15 +123,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../data-analysis.html"> 
+    <a class="nav-link" href="../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -140,45 +160,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
         <li>
-    <a class="dropdown-item" href="../../../data-models/artist-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/artist-datamodel.html">
  <span class="dropdown-text">Artist Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/exhibition-datamodel.html">
  <span class="dropdown-text">Exhibition Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/dnb-catalogue-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/dnb-catalogue-datamodel.html">
  <span class="dropdown-text">DNB Catalogue Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/item-in-exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/item-in-exhibition-datamodel.html">
  <span class="dropdown-text">Item in Exhibition Data Model</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../PLAN.html"> 
+    <a class="nav-link" href="../../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/glossary.html"> 
+    <a class="nav-link" href="../../Documentation/glossary.html"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/glossary-de.html"> 
+    <a class="nav-link" href="../../Documentation/glossary-de.html"> 
 <span class="menu-text">Glossar (DE)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/orcid-guide.html"> 
+    <a class="nav-link" href="../../Documentation/orcid-guide.html"> 
 <span class="menu-text">ORCID Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/protocol.html"> 
+    <a class="nav-link" href="../../Documentation/protocol.html"> 
 <span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
@@ -204,21 +224,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-the-dependencies" id="toc-import-the-dependencies" class="nav-link active" data-scroll-target="#import-the-dependencies">Import the dependencies:</a></li>
-  <li><a href="#simple-bar-chart" id="toc-simple-bar-chart" class="nav-link" data-scroll-target="#simple-bar-chart">Simple Bar Chart</a></li>
-  <li><a href="#simple-heatmap" id="toc-simple-heatmap" class="nav-link" data-scroll-target="#simple-heatmap">Simple Heatmap</a></li>
-  <li><a href="#install-the-vega-dataset" id="toc-install-the-vega-dataset" class="nav-link" data-scroll-target="#install-the-vega-dataset">Install the Vega Dataset</a></li>
-  <li><a href="#interactive-average" id="toc-interactive-average" class="nav-link" data-scroll-target="#interactive-average">Interactive Average</a></li>
-  <li><a href="#locations-of-us-airports" id="toc-locations-of-us-airports" class="nav-link" data-scroll-target="#locations-of-us-airports">Locations of US Airports</a></li>
+  <li><a href="#sru---schnittstellenabfrage-und-datenauslieferung" id="toc-sru---schnittstellenabfrage-und-datenauslieferung" class="nav-link active" data-scroll-target="#sru---schnittstellenabfrage-und-datenauslieferung">SRU - Schnittstellenabfrage und Datenauslieferung</a></li>
+  <li><a href="#abfrage-über-alle-datensätze" id="toc-abfrage-über-alle-datensätze" class="nav-link" data-scroll-target="#abfrage-über-alle-datensätze">Abfrage über alle Datensätze… </a><a class="anchor nav-link" id="Teil2" data-scroll-target="undefined"></a></li>
+  <li><a href="#felder-titel-und-links-zu-den-objekten-durchsuchen" id="toc-felder-titel-und-links-zu-den-objekten-durchsuchen" class="nav-link" data-scroll-target="#felder-titel-und-links-zu-den-objekten-durchsuchen">Felder Titel und Links zu den Objekten durchsuchen… </a><a class="anchor nav-link" id="Teil3" data-scroll-target="undefined"></a></li>
+  <li><a href="#abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten" id="toc-abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten" class="nav-link" data-scroll-target="#abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten">Abfrage nach Suchwort “Pandemie” im Titel + Links zu frei verfügbaren Objekten!</a></li>
+  <li><a href="#anzeige-der-treffer-in-einer-tabelle" id="toc-anzeige-der-treffer-in-einer-tabelle" class="nav-link" data-scroll-target="#anzeige-der-treffer-in-einer-tabelle">Anzeige der Treffer in einer Tabelle… </a><a class="anchor nav-link" id="Teil4" data-scroll-target="undefined"></a></li>
+  <li><a href="#speichern-der-ergebnisse-als-csv-datei" id="toc-speichern-der-ergebnisse-als-csv-datei" class="nav-link" data-scroll-target="#speichern-der-ergebnisse-als-csv-datei">Speichern der Ergebnisse als CSV-Datei!</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/altair.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Tutorial_Workshop.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Altair in <code>JupyterLite</code></h1>
+<h1 class="title">DNBLab Jupyter Notebook zur SRU Abfrage</h1>
 </div>
 
 
@@ -235,122 +255,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Altair</strong> is a declarative statistical visualization library for Python.</p>
-<p>Most of the examples below are from: https://altair-viz.github.io/gallery</p>
-<section id="import-the-dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="import-the-dependencies">Import the dependencies:</h2>
-<div id="cell-3" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q altair</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="sru---schnittstellenabfrage-und-datenauslieferung" class="level2">
+<h2 class="anchored" data-anchor-id="sru---schnittstellenabfrage-und-datenauslieferung">SRU - Schnittstellenabfrage und Datenauslieferung</h2>
+<p>Dieses DNBLab-Tutorial beschreibt eine Beispielabfrage über die SRU-Schnittstelle mit Python. In dem Jupyter Notebook kann der dokumentierte Code direkt ausgeführt und angepasst werden. Das Tutorial umfasst die exemplarische Abfrage und Ausgabe der Daten im Format MARC21-xml zur weiteren Verarbeitung und den Export der Ergebnisse als CSV-Datei.</p>
+<div id="cell-4" class="cell" data-trusted="true" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.parsefrom pyodide.http <span class="im">import</span> open_url, pyfetchfrom js <span class="im">import</span> fetchfrom bs4 <span class="im">import</span> BeautifulSoup <span class="im">as</span> soupimport unicodedatafrom lxml <span class="im">import</span> etreeimport pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="simple-bar-chart" class="level2">
-<h2 class="anchored" data-anchor-id="simple-bar-chart">Simple Bar Chart</h2>
-<div id="cell-5" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'a'</span>: [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>, <span class="st">'G'</span>, <span class="st">'H'</span>, <span class="st">'I'</span>],</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'b'</span>: [<span class="dv">28</span>, <span class="dv">55</span>, <span class="dv">43</span>, <span class="dv">91</span>, <span class="dv">81</span>, <span class="dv">53</span>, <span class="dv">19</span>, <span class="dv">87</span>, <span class="dv">52</span>]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>alt.Chart(source).mark_bar().encode(</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'a'</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'b'</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="abfrage-über-alle-datensätze" class="level2">
+<h2 class="anchored" data-anchor-id="abfrage-über-alle-datensätze">Abfrage über alle Datensätze… <a class="anchor" id="Teil2"></a></h2>
+<div id="cell-6" class="cell" data-trusted="true" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> dnb_sru(query):        base_url <span class="op">=</span> <span class="st">"https://services.dnb.de/sru/dnb"</span>    params <span class="op">=</span> {<span class="st">'recordSchema'</span> : <span class="st">'MARC21-xml'</span>,          <span class="st">'operation'</span>: <span class="st">'searchRetrieve'</span>,          <span class="st">'version'</span>: <span class="st">'1.1'</span>,          <span class="st">'maximumRecords'</span>: <span class="st">'100'</span>,          <span class="st">'query'</span>: query         }        r <span class="op">=</span> <span class="cf">await</span> fetch(base_url <span class="op">+</span> <span class="st">"?"</span> <span class="op">+</span> urllib.parse.urlencode(params))      r_text <span class="op">=</span> <span class="cf">await</span> r.text()    xml <span class="op">=</span> soup(r_text, features<span class="op">=</span><span class="st">"xml"</span>)    records <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})            <span class="cf">if</span> <span class="bu">len</span>(records) <span class="op">&lt;</span> <span class="dv">100</span>:                <span class="cf">return</span> records        <span class="cf">else</span>:                num_results <span class="op">=</span> <span class="dv">100</span>        i <span class="op">=</span> <span class="dv">101</span>        <span class="cf">while</span> num_results <span class="op">==</span> <span class="dv">100</span>:                        params.update({<span class="st">'startRecord'</span>: i})            r <span class="op">=</span> <span class="cf">await</span> fetch(base_url <span class="op">+</span> <span class="st">"?"</span> <span class="op">+</span> urllib.parse.urlencode(params))              r_text <span class="op">=</span> <span class="cf">await</span> r.text()            xml <span class="op">=</span> soup(r_text, features<span class="op">=</span><span class="st">"xml"</span>)            new_records <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})            records<span class="op">+=</span>new_records            i<span class="op">+=</span><span class="dv">100</span>            num_results <span class="op">=</span> <span class="bu">len</span>(new_records)                    <span class="cf">return</span> records</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="simple-heatmap" class="level2">
-<h2 class="anchored" data-anchor-id="simple-heatmap">Simple Heatmap</h2>
-<div id="cell-7" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute x^2 + y^2 across a 2D grid</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> np.meshgrid(<span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>))</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> y <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert this grid to columnar data expected by Altair</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: x.ravel(),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'y'</span>: y.ravel(),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'z'</span>: z.ravel()})</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>alt.Chart(source).mark_rect().encode(</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'x:O'</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'y:O'</span>,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'z:Q'</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="felder-titel-und-links-zu-den-objekten-durchsuchen" class="level2">
+<h2 class="anchored" data-anchor-id="felder-titel-und-links-zu-den-objekten-durchsuchen">Felder Titel und Links zu den Objekten durchsuchen… <a class="anchor" id="Teil3"></a></h2>
+<div id="cell-8" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_record(record):        ns <span class="op">=</span> {<span class="st">"marc"</span>:<span class="st">"http://www.loc.gov/MARC21/slim"</span>}    xml <span class="op">=</span> etree.fromstring(unicodedata.normalize(<span class="st">"NFC"</span>, <span class="bu">str</span>(record)))        <span class="co">#idn    idn = xml.xpath("marc:controlfield[@tag = '001']", namespaces=ns)    try:        idn = idn[0].text    except:        idn = 'fail'        # link    link = xml.xpath("marc:datafield[@tag = '856']/marc:subfield[@code = 'u']", namespaces=ns)        try:        link = link[0].text        #titel = unicodedata.normalize("NFC", titel)    except:        link = "unkown"                  # titel    titel = xml.xpath("marc:datafield[@tag = '245']/marc:subfield[@code = 'a']", namespaces=ns)        try:        titel = titel[0].text        #titel = unicodedata.normalize("NFC", titel)    except:        titel = "unkown"                meta_dict = {"idn":idn,                 "titel":titel,                 "link":link}        return meta_dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="install-the-vega-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="install-the-vega-dataset">Install the Vega Dataset</h2>
-<div id="cell-9" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q vega_datasets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten" class="level2">
+<h2 class="anchored" data-anchor-id="abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten">Abfrage nach Suchwort “Pandemie” im Titel + Links zu frei verfügbaren Objekten!</h2>
+<div id="cell-10" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> <span class="cf">await</span> dnb_sru(<span class="st">'tit=Pandemie and location=onlinefree'</span>)<span class="bu">print</span>(<span class="bu">len</span>(records), <span class="st">'Ergebnisse'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="interactive-average" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-average">Interactive Average</h2>
-<div id="cell-11" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> data.seattle_weather()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>brush <span class="op">=</span> alt.selection(<span class="bu">type</span><span class="op">=</span><span class="st">'interval'</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> alt.Chart().mark_bar().encode(</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'month(date):O'</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mean(precipitation):Q'</span>,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span>alt.condition(brush, alt.OpacityValue(<span class="dv">1</span>), alt.OpacityValue(<span class="fl">0.7</span>)),</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>).add_selection(</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    brush</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> alt.Chart().mark_rule(color<span class="op">=</span><span class="st">'firebrick'</span>).encode(</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mean(precipitation):Q'</span>,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>alt.SizeValue(<span class="dv">3</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>).transform_filter(</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    brush</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>alt.layer(bars, line, data<span class="op">=</span>source)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="anzeige-der-treffer-in-einer-tabelle" class="level2">
+<h2 class="anchored" data-anchor-id="anzeige-der-treffer-in-einer-tabelle">Anzeige der Treffer in einer Tabelle… <a class="anchor" id="Teil4"></a></h2>
+<div id="cell-12" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> [parse_record(record) <span class="cf">for</span> record <span class="kw">in</span> records]df <span class="op">=</span> pd.DataFrame(output)df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="locations-of-us-airports" class="level2">
-<h2 class="anchored" data-anchor-id="locations-of-us-airports">Locations of US Airports</h2>
-<div id="cell-13" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>airports <span class="op">=</span> data.airports.url</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> alt.topo_feature(data.us_10m.url, feature<span class="op">=</span><span class="st">'states'</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># US states background</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>background <span class="op">=</span> alt.Chart(states).mark_geoshape(</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    fill<span class="op">=</span><span class="st">'lightgray'</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span><span class="st">'white'</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>).properties(</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">500</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">300</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>).project(<span class="st">'albersUsa'</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># airport positions on background</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> alt.Chart(airports).transform_aggregate(</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    latitude<span class="op">=</span><span class="st">'mean(latitude)'</span>,</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    longitude<span class="op">=</span><span class="st">'mean(longitude)'</span>,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span><span class="st">'count()'</span>,</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    groupby<span class="op">=</span>[<span class="st">'state'</span>]</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>).mark_circle().encode(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    longitude<span class="op">=</span><span class="st">'longitude:Q'</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    latitude<span class="op">=</span><span class="st">'latitude:Q'</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>alt.Size(<span class="st">'count:Q'</span>, title<span class="op">=</span><span class="st">'Number of Airports'</span>),</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.value(<span class="st">'steelblue'</span>),</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'state:N'</span>,<span class="st">'count:Q'</span>]</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>).properties(</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Number of airports in US'</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>background <span class="op">+</span> points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="speichern-der-ergebnisse-als-csv-datei" class="level2">
+<h2 class="anchored" data-anchor-id="speichern-der-ergebnisse-als-csv-datei">Speichern der Ergebnisse als CSV-Datei!</h2>
+<div id="cell-14" class="cell" data-trusted="true" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"SRU_Titel.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -785,9 +724,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/altair.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Tutorial_Workshop.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

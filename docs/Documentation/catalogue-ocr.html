@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Technical documentation for the three-stage pipeline that OCRs a scanned museum catalogue and produces a structured CSV ready for Wikibase import.">
 
-<title>protocol – Linked Open Exhibition</title>
+<title>Exhibition Catalogue OCR Pipeline – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -92,10 +127,30 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
@@ -144,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">ORCID Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Documentation/protocol.html" aria-current="page"> 
+    <a class="nav-link" href="../Documentation/protocol.html"> 
 <span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
@@ -170,304 +225,481 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-protocol-work-log" id="toc-project-protocol-work-log" class="nav-link active" data-scroll-target="#project-protocol-work-log">Project Protocol &amp; Work Log</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model">Data Model</a>
   <ul class="collapse">
-  <li><a href="#purpose-of-this-document" id="toc-purpose-of-this-document" class="nav-link" data-scroll-target="#purpose-of-this-document">Purpose of this document</a></li>
-  <li><a href="#work-log" id="toc-work-log" class="nav-link" data-scroll-target="#work-log">Work Log</a>
+  <li><a href="#artwork-fields-data-modelsitem-in-exhibition.csv" id="toc-artwork-fields-data-modelsitem-in-exhibition.csv" class="nav-link" data-scroll-target="#artwork-fields-data-modelsitem-in-exhibition.csv">Artwork fields — <code>data-models/item-in-exhibition.csv</code></a></li>
+  <li><a href="#artist-fields-data-modelsartists-data-model.csv" id="toc-artist-fields-data-modelsartists-data-model.csv" class="nav-link" data-scroll-target="#artist-fields-data-modelsartists-data-model.csv">Artist fields — <code>data-models/artists-data-model.csv</code></a></li>
+  <li><a href="#exhibition-fields-data-modelsexhibition.csv" id="toc-exhibition-fields-data-modelsexhibition.csv" class="nav-link" data-scroll-target="#exhibition-fields-data-modelsexhibition.csv">Exhibition fields — <code>data-models/exhibition.csv</code></a></li>
+  </ul></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2026-04-22</a></li>
+  <li><a href="#python-packages" id="toc-python-packages" class="nav-link" data-scroll-target="#python-packages">Python packages</a></li>
+  <li><a href="#tesseract-ocr-engine" id="toc-tesseract-ocr-engine" class="nav-link" data-scroll-target="#tesseract-ocr-engine">Tesseract OCR engine</a></li>
+  <li><a href="#poppler-required-by-pdf2image" id="toc-poppler-required-by-pdf2image" class="nav-link" data-scroll-target="#poppler-required-by-pdf2image">Poppler (required by pdf2image)</a></li>
   </ul></li>
-  <li><a href="#decisions-log" id="toc-decisions-log" class="nav-link" data-scroll-target="#decisions-log">Decisions log</a></li>
-  <li><a href="#known-issues-next-steps" id="toc-known-issues-next-steps" class="nav-link" data-scroll-target="#known-issues-next-steps">Known issues &amp; next steps</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
+  <ul class="collapse">
+  <li><a href="#command-line-scripts" id="toc-command-line-scripts" class="nav-link" data-scroll-target="#command-line-scripts">Command-line scripts</a></li>
+  <li><a href="#jupyter-notebook" id="toc-jupyter-notebook" class="nav-link" data-scroll-target="#jupyter-notebook">Jupyter notebook</a></li>
   </ul></li>
+  <li><a href="#parsing-strategy" id="toc-parsing-strategy" class="nav-link" data-scroll-target="#parsing-strategy">Parsing Strategy</a></li>
+  <li><a href="#manual-review" id="toc-manual-review" class="nav-link" data-scroll-target="#manual-review">Manual Review</a></li>
+  <li><a href="#future-work-dtd-and-xml-import" id="toc-future-work-dtd-and-xml-import" class="nav-link" data-scroll-target="#future-work-dtd-and-xml-import">Future Work: DTD and XML Import</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Documentation/protocol.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Documentation/catalogue-ocr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exhibition Catalogue OCR Pipeline</h1>
+<p class="subtitle lead">Extracting structured artwork data from scanned PDF catalogues</p>
+</div>
+
+<div>
+  <div class="description">
+    Technical documentation for the three-stage pipeline that OCRs a scanned museum catalogue and produces a structured CSV ready for Wikibase import.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
 
-<section id="project-protocol-work-log" class="level1">
-<h1>Project Protocol &amp; Work Log</h1>
-<p><strong>Project:</strong> Linked Open Exhibition<br>
-<strong>Repository:</strong> <a href="https://github.com/NFDI4Culture/linked-open-exhibition">NFDI4Culture/linked-open-exhibition</a><br>
-<strong>Course:</strong> BIM-126-02 Data Science, SoSe 2026 — Hochschule Hannover<br>
-<strong>Leads:</strong> Simon Worthington (TIB); Prof.&nbsp;Ina Blümel (Hochschule Hannover)<br>
-<strong>AI tooling:</strong> GitHub Copilot (Claude Sonnet 4.6)</p>
-<hr>
-<section id="purpose-of-this-document" class="level2">
-<h2 class="anchored" data-anchor-id="purpose-of-this-document">Purpose of this document</h2>
-<p>This file records all significant work carried out on the repository — decisions made, files created or modified, and issues encountered. It is updated as work progresses and is intended to give any contributor a clear overview of the project’s history.</p>
-<hr>
-</section>
-<section id="work-log" class="level2">
-<h2 class="anchored" data-anchor-id="work-log">Work Log</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section">2026-04-22</h3>
-<section id="documentation-glossary" class="level4">
-<h4 class="anchored" data-anchor-id="documentation-glossary">Documentation — Glossary</h4>
-<ul>
-<li><p><strong>Created</strong> <code>Documentation/glossary.md</code> — a full glossary of terms and acronyms used across the project, covering:</p>
-<ul>
-<li>Protocols &amp; standards: SRU, CQL, MARC21, RDF, SPARQL, JSON-LD, OWL, XML, IRI/URI</li>
-<li>Data models &amp; ontologies: CIDOC-CRM, Linked Art, WB4R, LIDO, FOAF, GND</li>
-<li>Platforms &amp; tools: DNB, DNB Library Lab, Wikidata, Wikibase, MediaWiki, Wikimedia Commons, Wikiversity, GitHub Pages, Quarto, JupyterLite</li>
-<li>APIs &amp; libraries: DNB SRU API, Lobid-GND, SPARQLWrapper, wikibaseintegrator, mwclient, python-dotenv</li>
-<li>Project-specific terms: GLAM, NFDI4Culture, BIM-126-02, WB4R, Sprengel Museum, IDN, QID, CC0, CC BY-SA 4.0</li>
-</ul></li>
-<li><p><strong>Updated</strong> <code>Documentation/glossary.md</code> — expanded SRU entry with full DNB-specific details (endpoint URL, SRU 1.1, pagination behaviour, CC0 access terms).</p></li>
-<li><p><strong>Updated</strong> <code>Documentation/glossary.md</code> — expanded QID entry to explain why the <code>Q</code> prefix was used (arbitrary choice by Wikidata developers to distinguish items from properties <code>P</code> and lexemes <code>L</code>; no semantic meaning; stable and language-neutral).</p></li>
-</ul>
-<hr>
-</section>
-<section id="wikibase-bot-test-notebook" class="level4">
-<h4 class="anchored" data-anchor-id="wikibase-bot-test-notebook">Wikibase Bot Test Notebook</h4>
-<ul>
-<li><strong>Created</strong> <code>catalogues/dnb-jupyter/00_wikibase_bot_test.ipynb</code> — a standalone notebook for testing a Wikibase bot account against the project instance at <code>https://wikibase.wbworkshop.tibwiki.io/</code>. Includes:
-<ul>
-<li>Prerequisites: how to create a bot password at <code>Special:BotPasswords</code></li>
-<li>Cell 1: install <code>wikibaseintegrator</code> and <code>python-dotenv</code></li>
-<li>Cell 2: load credentials from <code>.env</code></li>
-<li>Cell 3: configure <code>wikibaseintegrator</code> endpoints and log in</li>
-<li>Cell 4: read test — fetch item <code>Q1</code></li>
-<li>Cell 5: write test — create a labelled temporary item</li>
-<li>Cell 6: clean-up — delete the test item via the MediaWiki Action API</li>
-<li>Troubleshooting table (common errors, causes, fixes)</li>
-</ul></li>
-<li><strong>Added</strong> Part 2 cell to <code>00_wikibase_bot_test.ipynb</code> — brief explanations of <code>.env</code> files and <code>.gitignore</code>, with links to GeeksforGeeks guides.</li>
-</ul>
-<hr>
-</section>
-<section id="credentials-version-control" class="level4">
-<h4 class="anchored" data-anchor-id="credentials-version-control">Credentials &amp; Version Control</h4>
-<ul>
-<li><p><strong>Created</strong> <code>.env.example</code> (repository root) — template for bot/MediaWiki credentials with all required keys (<code>WB_URL</code>, <code>WB_USER</code>, <code>WB_PASSWORD</code>, <code>MW_URL</code>, <code>MW_USER</code>, <code>MW_PASSWORD</code>) and inline comments explaining format.</p></li>
-<li><p><strong>Updated</strong> <code>.gitignore</code> — added <code>.env</code> to prevent credentials from being committed.</p></li>
-</ul>
-<hr>
-</section>
-<section id="plan.md-execution-full-pipeline" class="level4">
-<h4 class="anchored" data-anchor-id="plan.md-execution-full-pipeline">PLAN.md Execution — Full Pipeline</h4>
-<p>Executed all phases of <code>PLAN.md</code> (DNB → Wikibase → Quarto Website pipeline):</p>
-<p><strong>Phase 1 — Project Setup</strong></p>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 4, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This document describes the pipeline for digitising structured data from scanned art museum exhibition catalogues. The primary source is <code>scans/baldessari-sprengel.pdf</code>, a scanned exhibition catalogue from the Sprengel Museum Hannover.</p>
+<p>The pipeline has three stages:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 23%">
+<col style="width: 26%">
+<col style="width: 23%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>File</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>requirements.txt</code></td>
-<td>Created with 8 Python dependencies: <code>requests</code>, <code>pandas</code>, <code>lxml</code>, <code>beautifulsoup4</code>, <code>wikibaseintegrator</code>, <code>mwclient</code>, <code>python-dotenv</code>, <code>SPARQLWrapper</code></td>
-</tr>
-<tr class="even">
-<td><code>_quarto.yml</code></td>
-<td>Converted output format from <code>revealjs</code> to <code>html</code>; added <code>website:</code> block with navbar (Home / Exhibitions / Data Analysis / About) and page footer</td>
-</tr>
-<tr class="odd">
-<td><code>index.qmd</code></td>
-<td>Replaced RevealJS slide content with a Quarto website homepage: project description, pipeline overview table, navigation links, live Wikidata SPARQL timeline iframe</td>
-</tr>
-<tr class="even">
-<td><code>.gitignore</code></td>
-<td>Extended with: <code>catalogues/images/</code>, <code>catalogues/sprengel_raw/</code>, generated CSVs, <code>wikibase_property_map.json</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Phase 2 — DNB Data Retrieval Notebooks</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Notebook</th>
-<th>Purpose</th>
+<th>Stage</th>
+<th>Script</th>
+<th>Input</th>
 <th>Output</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>catalogues/dnb-jupyter/01_dnb_search.ipynb</code></td>
-<td>SRU query to DNB API; paginated retrieval; saves raw MARC21-XML</td>
-<td><code>catalogues/sprengel_raw/page_NNN.xml</code></td>
+<td>1 – OCR</td>
+<td><code>scripts/ocr_catalogue.py</code></td>
+<td><code>scans/*.pdf</code></td>
+<td><code>output/ocr/pages/*.txt</code>, <code>output/ocr/*_ocr_full.txt</code></td>
 </tr>
 <tr class="even">
-<td><code>catalogues/dnb-jupyter/02_dnb_filter_exhibitions.ipynb</code></td>
-<td>Parse MARC21-XML; filter by <code>Ausstellungskatalog</code>; extract IDN, title, year, ISBN, URL, subjects; clean year field</td>
-<td><code>catalogues/sprengel_exhibitions.csv</code></td>
+<td>2 – Extract</td>
+<td><code>scripts/extract_artworks.py</code></td>
+<td>OCR full text</td>
+<td><code>output/baldessari-sprengel-artworks.csv</code></td>
 </tr>
 <tr class="odd">
-<td><code>catalogues/dnb-jupyter/03_dnb_cover_images.ipynb</code></td>
-<td>Download cover images via DNB enrichment API; includes rights disclaimer</td>
-<td><code>catalogues/images/{IDN}.jpg</code> (gitignored)</td>
+<td>3 – Validate</td>
+<td><code>scripts/validate_csv.py</code></td>
+<td>CSV</td>
+<td>Console quality report</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Phase 3 — Wikibase Data Model</strong></p>
+<p>An interactive <a href="../catalogues/catalogue-ocr.html">JupyterLab notebook</a> (<code>catalogues/catalogue-ocr.ipynb</code>) combines all stages with data exploration visualisations.</p>
+<hr>
+</section>
+<section id="data-model" class="level2">
+<h2 class="anchored" data-anchor-id="data-model">Data Model</h2>
+<p>Output columns are derived from the three Linked Open Exhibition data models:</p>
+<section id="artwork-fields-data-modelsitem-in-exhibition.csv" class="level3">
+<h3 class="anchored" data-anchor-id="artwork-fields-data-modelsitem-in-exhibition.csv">Artwork fields — <code>data-models/item-in-exhibition.csv</code></h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 30%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Notebook</th>
-<th>Purpose</th>
-<th>Output</th>
+<th>Column</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>catalogues/dnb-jupyter/04_wikibase_data_model.ipynb</code></td>
-<td>Define and upload minimal exhibition data model (properties + item classes) to Wikibase; idempotent (checks for existing entities before creating)</td>
-<td><code>catalogues/wikibase_property_map.json</code></td>
+<td><code>catalogue_no</code></td>
+<td>P528</td>
+<td>E42_Identifier</td>
+<td>Printed catalogue number</td>
+</tr>
+<tr class="even">
+<td><code>artwork_title</code></td>
+<td>P1476</td>
+<td>P102_has_title</td>
+<td>May include year suffix</td>
+</tr>
+<tr class="odd">
+<td><code>artwork_title_lang</code></td>
+<td>—</td>
+<td>P72_has_language</td>
+<td>ISO 639-1 code</td>
+</tr>
+<tr class="even">
+<td><code>artwork_type</code></td>
+<td>P31</td>
+<td>E22_Man-Made_Object</td>
+<td>e.g.&nbsp;painting, photograph</td>
+</tr>
+<tr class="odd">
+<td><code>artwork_inception</code></td>
+<td>P571</td>
+<td>P108_has_produced</td>
+<td>YYYY or YYYY-MM-DD</td>
+</tr>
+<tr class="even">
+<td><code>medium_material</code></td>
+<td>P186</td>
+<td>P45_consists_of</td>
+<td>e.g.&nbsp;“oil on canvas”</td>
+</tr>
+<tr class="odd">
+<td><code>height_cm</code></td>
+<td>P2048</td>
+<td>P43_has_dimension</td>
+<td>numeric, centimetres</td>
+</tr>
+<tr class="even">
+<td><code>width_cm</code></td>
+<td>P2049</td>
+<td>P43_has_dimension</td>
+<td>numeric, centimetres</td>
+</tr>
+<tr class="odd">
+<td><code>depth_cm</code></td>
+<td>P2610</td>
+<td>P43_has_dimension</td>
+<td>numeric, centimetres</td>
+</tr>
+<tr class="even">
+<td><code>collection</code></td>
+<td>P195</td>
+<td>P46_is_composed_of</td>
+<td>owning institution / lender</td>
+</tr>
+<tr class="odd">
+<td><code>inventory_number</code></td>
+<td>P217</td>
+<td>E42_Identifier</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>depicts</code></td>
+<td>P180</td>
+<td>P129_is_about</td>
+<td>comma-separated subjects</td>
+</tr>
+<tr class="odd">
+<td><code>image_url</code></td>
+<td>P18</td>
+<td>E36_Visual_Item</td>
+<td>Wikimedia Commons URL</td>
+</tr>
+<tr class="even">
+<td><code>described_at_url</code></td>
+<td>P973</td>
+<td>E42_Identifier</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>Data model created: - <strong>Properties:</strong> instance of, title, start date, end date, location, GND ID, DNB IDN, exhibition catalogue - <strong>Item classes:</strong> Exhibition, Exhibition Catalogue, Sprengel Museum Hannover</p>
-<p><strong>Phase 4 — Wikibase &amp; MediaWiki Upload</strong></p>
+</section>
+<section id="artist-fields-data-modelsartists-data-model.csv" class="level3">
+<h3 class="anchored" data-anchor-id="artist-fields-data-modelsartists-data-model.csv">Artist fields — <code>data-models/artists-data-model.csv</code></h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 30%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Notebook</th>
-<th>Purpose</th>
+<th>Column</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>catalogues/dnb-jupyter/05_wikibase_upload.ipynb</code></td>
-<td>Create one Wikibase item per CSV row; idempotent via SPARQL DNB IDN lookup; adds statements for type, location, dates, DNB IDN</td>
+<td><code>artist_full_name</code></td>
+<td>—</td>
+<td>E82_Appellation</td>
+<td>Display name</td>
 </tr>
 <tr class="even">
-<td><code>catalogues/dnb-jupyter/06_mediawiki_upload.ipynb</code></td>
-<td>Upload cover images to MediaWiki via <code>mwclient</code>; adds file description pages; links images back to Wikibase items</td>
+<td><code>artist_given_name</code></td>
+<td>P735</td>
+<td>P1_is_identified_by</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>artist_family_name</code></td>
+<td>P734</td>
+<td>P1_is_identified_by</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>artist_birth_year</code></td>
+<td>P569</td>
+<td>P82_at_some_time_within</td>
+<td>YYYY</td>
+</tr>
+<tr class="odd">
+<td><code>artist_death_year</code></td>
+<td>P570</td>
+<td>P82_at_some_time_within</td>
+<td>YYYY</td>
+</tr>
+<tr class="even">
+<td><code>artist_nationality</code></td>
+<td>P27</td>
+<td>P2_has_type</td>
+<td>ISO country code or label</td>
+</tr>
+<tr class="odd">
+<td><code>artist_profession</code></td>
+<td>P106</td>
+<td>P2_has_type</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>artist_wikidata_qid</code></td>
+<td>QID</td>
+<td>E42_Identifier</td>
+<td>e.g.&nbsp;Q108968</td>
+</tr>
+<tr class="odd">
+<td><code>artist_gnd_id</code></td>
+<td>P227</td>
+<td>E42_Identifier</td>
+<td>Deutsche Nationalbibliothek GND</td>
+</tr>
+<tr class="even">
+<td><code>artist_ulan_id</code></td>
+<td>P245</td>
+<td>E42_Identifier</td>
+<td>Getty ULAN</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Phase 5 — Quarto Website Pages</strong></p>
+</section>
+<section id="exhibition-fields-data-modelsexhibition.csv" class="level3">
+<h3 class="anchored" data-anchor-id="exhibition-fields-data-modelsexhibition.csv">Exhibition fields — <code>data-models/exhibition.csv</code></h3>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>File</th>
-<th>Content</th>
+<th>Column</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>exhibitions.qmd</code></td>
-<td>Live SPARQL query against Wikibase; renders results as linked HTML table</td>
+<td><code>exhibition_title</code></td>
+<td>P1476</td>
+<td>P102_has_title</td>
+<td></td>
 </tr>
 <tr class="even">
-<td><code>data-analysis.qmd</code></td>
-<td>Pipeline walkthrough; year distribution chart; notebook index table</td>
+<td><code>exhibition_location</code></td>
+<td>P276</td>
+<td>P7_took_place_at</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td><code>about.qmd</code></td>
-<td>Licences (CC0 for DNB data, CC BY-SA 4.0 for project content); AI attribution; full credits; technical stack</td>
+<td><code>exhibition_start</code></td>
+<td>P580</td>
+<td>P4_has_time-span</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr class="even">
+<td><code>exhibition_end</code></td>
+<td>P582</td>
+<td>P4_has_time-span</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr class="odd">
+<td><code>exhibition_organizer</code></td>
+<td>P664</td>
+<td>P14_carried_out_by</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>exhibition_wikidata_qid</code></td>
+<td>QID</td>
+<td>E42_Identifier</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <hr>
 </section>
-<section id="documentation-protocol" class="level4">
-<h4 class="anchored" data-anchor-id="documentation-protocol">Documentation — Protocol</h4>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<section id="python-packages" class="level3">
+<h3 class="anchored" data-anchor-id="python-packages">Python packages</h3>
+<p>Install via <code>pip install -r requirements.txt</code>:</p>
+<pre><code>pdf2image
+pytesseract
+Pillow
+pymupdf
+pandas</code></pre>
+</section>
+<section id="tesseract-ocr-engine" class="level3">
+<h3 class="anchored" data-anchor-id="tesseract-ocr-engine">Tesseract OCR engine</h3>
+<p>Tesseract must be installed separately on your operating system.</p>
+<p><strong>Windows:</strong> Download and run the installer from the <a href="https://github.com/UB-Mannheim/tesseract/wiki">UB Mannheim repository</a>. During installation, tick the language packs <strong>German (deu)</strong> and <strong>English (eng)</strong>.</p>
+<p>After installation, if Tesseract is not on your <code>PATH</code>, set the path explicitly in Python:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytesseract</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pytesseract.pytesseract.tesseract_cmd <span class="op">=</span> <span class="vs">r"C:\Program Files\Tesseract-OCR\tesseract.exe"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Linux/macOS:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng   <span class="co"># Debian/Ubuntu</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install tesseract                                                   <span class="co"># macOS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="poppler-required-by-pdf2image" class="level3">
+<h3 class="anchored" data-anchor-id="poppler-required-by-pdf2image">Poppler (required by pdf2image)</h3>
+<p><strong>Windows:</strong> Download from <a href="https://github.com/oschwartz10612/poppler-windows/releases">poppler for Windows</a> and add the <code>bin/</code> directory to your <code>PATH</code>.</p>
+<p><strong>Linux:</strong> <code>sudo apt install poppler-utils</code><br>
+<strong>macOS:</strong> <code>brew install poppler</code></p>
+<hr>
+</section>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<section id="command-line-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-scripts">Command-line scripts</h3>
+<p><strong>Stage 1 – OCR:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/ocr_catalogue.py scans/baldessari-sprengel.pdf <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--output</span> output/ocr <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--lang</span> deu+eng <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--dpi</span> 300</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Options:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--output</code></td>
+<td><code>output/ocr</code></td>
+<td>Directory for OCR artefacts</td>
+</tr>
+<tr class="even">
+<td><code>--lang</code></td>
+<td><code>deu+eng</code></td>
+<td>Tesseract language string</td>
+</tr>
+<tr class="odd">
+<td><code>--dpi</code></td>
+<td><code>300</code></td>
+<td>Rendering DPI (≥300 recommended)</td>
+</tr>
+<tr class="even">
+<td><code>--pages</code></td>
+<td>all</td>
+<td>Page range, e.g.&nbsp;<code>1-30</code> or <code>5,10,15</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stage 2 – Extract:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/extract_artworks.py output/ocr/baldessari-sprengel_ocr_full.txt <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--output</span> output/baldessari-sprengel-artworks.csv <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--exhibition</span> <span class="st">"Baldessari. Sprengel Museum Hannover"</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--location</span> <span class="st">"Sprengel Museum Hannover"</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--start</span> 2000-09-17 <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--end</span> 2001-01-14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Stage 3 – Validate:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/validate_csv.py output/baldessari-sprengel-artworks.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="jupyter-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="jupyter-notebook">Jupyter notebook</h3>
+<p>Open <code>catalogues/catalogue-ocr.ipynb</code> in JupyterLab and run cells sequentially. The notebook includes interactive data quality visualisations.</p>
+<hr>
+</section>
+</section>
+<section id="parsing-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="parsing-strategy">Parsing Strategy</h2>
+<p>Exhibition catalogue entries typically follow a repeating block pattern:</p>
+<pre><code>JOHN BALDESSARI
+Big Red Arm with Thumb, 2000
+Chromogenic print
+76 × 61 cm
+Sprengel Museum Hannover
+Kat.-Nr. 5</code></pre>
+<p>The <code>extract_artworks.py</code> parser uses the following heuristics:</p>
+<ol type="1">
+<li><strong>Artist name</strong> — a line in ALL-CAPS (≥4 characters) starts a new entry block.</li>
+<li><strong>Dimensions</strong> — any line matching <code>N×N</code> or <code>N x N</code> patterns.</li>
+<li><strong>Medium</strong> — lines containing material keywords (<code>print</code>, <code>photograph</code>, <code>oil</code>, <code>Druck</code>, etc.).</li>
+<li><strong>Collection</strong> — lines containing institution keywords (<code>Museum</code>, <code>Sammlung</code>, <code>Courtesy</code>, etc.).</li>
+<li><strong>Catalogue number</strong> — lines matching <code>Kat.-Nr.</code>, <code>Cat.</code>, <code>No.</code>, or <code>[N]</code> patterns.</li>
+<li><strong>Year</strong> — a standalone four-digit number, or a year suffix on the title line.</li>
+<li><strong>Title</strong> — the first unmatched line after the artist name.</li>
+</ol>
+<p>Values that cannot be assigned with confidence are flagged with <code>[?]</code> for manual review.</p>
+<hr>
+</section>
+<section id="manual-review" class="level2">
+<h2 class="anchored" data-anchor-id="manual-review">Manual Review</h2>
+<p>After Stage 2, open <code>output/baldessari-sprengel-artworks.csv</code> in LibreOffice Calc, Excel, or similar:</p>
+<ol type="1">
+<li>Remove <code>[?]</code> suffixes from corrected values.</li>
+<li>Fix obvious OCR artefacts (confused characters: <code>0</code>/<code>O</code>, <code>1</code>/<code>l</code>, <code>rn</code>/<code>m</code>, etc.).</li>
+<li>Fill in <code>artist_wikidata_qid</code> for known artists (e.g.&nbsp;<code>Q318159</code> for John Baldessari).</li>
+<li>Add <code>artist_gnd_id</code> values where available from the GND authority file.</li>
+<li>Verify <code>catalogue_no</code> matches the printed catalogue numbering.</li>
+<li>Re-run Stage 3 to confirm the quality score is satisfactory.</li>
+</ol>
+<hr>
+</section>
+<section id="future-work-dtd-and-xml-import" class="level2">
+<h2 class="anchored" data-anchor-id="future-work-dtd-and-xml-import">Future Work: DTD and XML Import</h2>
+<p>Once the CSV quality is confirmed, the following will be created:</p>
 <ul>
-<li><strong>Created</strong> <code>Documentation/protocol.md</code> (this file) — project protocol and running work log.</li>
+<li><strong><code>output/artwork-catalogue.dtd</code></strong> — document type definition describing the XML structure, aligned with the Linked Open Exhibition data models.</li>
+<li><strong><code>output/baldessari-sprengel-import.xml</code></strong> — one <code>&lt;item&gt;</code> element per artwork, structured for batch import into the NFDI4Culture Wikibase instance.</li>
 </ul>
-<hr>
-</section>
-</section>
-</section>
-<section id="decisions-log" class="level2">
-<h2 class="anchored" data-anchor-id="decisions-log">Decisions log</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-<th>Decision</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2026-04-22</td>
-<td>Quarto format</td>
-<td>Converted from RevealJS slides to full website (<code>html</code> format)</td>
-</tr>
-<tr class="even">
-<td>2026-04-22</td>
-<td>Credentials</td>
-<td><code>.env</code> via <code>python-dotenv</code>; <code>.env.example</code> committed; <code>.env</code> gitignored</td>
-</tr>
-<tr class="odd">
-<td>2026-04-22</td>
-<td>Cover images</td>
-<td>Fetched at runtime, not committed; gitignored <code>catalogues/images/</code></td>
-</tr>
-<tr class="even">
-<td>2026-04-22</td>
-<td>DNB data licence</td>
-<td>CC0 1.0 Universal — documented in <code>about.qmd</code></td>
-</tr>
-<tr class="odd">
-<td>2026-04-22</td>
-<td>AI attribution</td>
-<td>GitHub Copilot (Claude Sonnet 4.6) credited in all documentation and notebooks</td>
-</tr>
-<tr class="even">
-<td>2026-04-22</td>
-<td>Idempotency</td>
-<td>Notebooks 04 and 05 check for existing entities before creating, preventing duplicates</td>
-</tr>
-<tr class="odd">
-<td>2026-04-22</td>
-<td>Wikibase instance</td>
-<td>Temporary: <code>https://wikibase.wbworkshop.tibwiki.io/</code> — permanent URL TBD</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="known-issues-next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="known-issues-next-steps">Known issues &amp; next steps</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">Run notebooks 01–06 end-to-end in the <code>.venv</code> environment to verify the pipeline executes without errors</label></li>
-<li><label><input type="checkbox">Verify Wikibase property IDs after running Notebook 04 and confirm <code>wikibase_property_map.json</code> is correct</label></li>
-<li><label><input type="checkbox">Add an <code>image</code> property to the data model in Notebook 04 so Notebook 06 can link images</label></li>
-<li><label><input type="checkbox">Test <code>quarto render</code> locally and confirm GitHub Pages deployment from <code>docs/</code></label></li>
-<li><label><input type="checkbox">Replace temporary Wikibase instance URL with a permanent one when available — update <code>WB_URL</code> in <code>.env</code></label></li>
-<li><label><input type="checkbox">Add course session notes from Sessions 4–8 as they are completed</label></li>
-</ul>
-<hr>
-<p><em>This protocol is maintained by the project team. Update this file after each significant work session.</em></p>
+<p>The DTD design and XML generation scripts will be documented in a separate notebook (<code>catalogues/wikibase-xml-import.ipynb</code>) when data quality is sufficient.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -899,9 +1131,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Documentation/protocol.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Documentation/catalogue-ocr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>folium Interactive Map Demo – Linked Open Exhibition</title>
+<title>plan-b-hocr-chunked-extraction – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Linked Open Exhibition</span>
     </a>
   </div>
@@ -123,15 +123,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../data-analysis.html"> 
+    <a class="nav-link" href="../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -140,45 +160,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
         <li>
-    <a class="dropdown-item" href="../../../data-models/artist-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/artist-datamodel.html">
  <span class="dropdown-text">Artist Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/exhibition-datamodel.html">
  <span class="dropdown-text">Exhibition Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/dnb-catalogue-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/dnb-catalogue-datamodel.html">
  <span class="dropdown-text">DNB Catalogue Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/item-in-exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/item-in-exhibition-datamodel.html">
  <span class="dropdown-text">Item in Exhibition Data Model</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../PLAN.html"> 
+    <a class="nav-link" href="../../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/glossary.html"> 
+    <a class="nav-link" href="../../Documentation/glossary.html"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/glossary-de.html"> 
+    <a class="nav-link" href="../../Documentation/glossary-de.html"> 
 <span class="menu-text">Glossar (DE)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/orcid-guide.html"> 
+    <a class="nav-link" href="../../Documentation/orcid-guide.html"> 
 <span class="menu-text">ORCID Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/protocol.html"> 
+    <a class="nav-link" href="../../Documentation/protocol.html"> 
 <span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
@@ -204,87 +224,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#demo-of-folium-map" id="toc-demo-of-folium-map" class="nav-link active" data-scroll-target="#demo-of-folium-map">Demo of <code>folium</code> Map</a></li>
+  <li><a href="#plan-b-hocr-chunked-reading-combined-segmentation-extraction" id="toc-plan-b-hocr-chunked-reading-combined-segmentation-extraction" class="nav-link active" data-scroll-target="#plan-b-hocr-chunked-reading-combined-segmentation-extraction">Plan B — hOCR Chunked Reading + Combined Segmentation &amp; Extraction</a>
+  <ul class="collapse">
+  <li><a href="#approach-summary" id="toc-approach-summary" class="nav-link" data-scroll-target="#approach-summary">Approach summary</a></li>
+  <li><a href="#ocr-quality-gate-step-0" id="toc-ocr-quality-gate-step-0" class="nav-link" data-scroll-target="#ocr-quality-gate-step-0">OCR Quality Gate (Step 0)</a></li>
+  <li><a href="#pipeline" id="toc-pipeline" class="nav-link" data-scroll-target="#pipeline">Pipeline</a>
+  <ul class="collapse">
+  <li><a href="#step-1-reconstruct-reading-order-from-hocr" id="toc-step-1-reconstruct-reading-order-from-hocr" class="nav-link" data-scroll-target="#step-1-reconstruct-reading-order-from-hocr">Step 1 — Reconstruct reading order from hOCR</a></li>
+  <li><a href="#step-2-chunk-the-document" id="toc-step-2-chunk-the-document" class="nav-link" data-scroll-target="#step-2-chunk-the-document">Step 2 — Chunk the document</a></li>
+  <li><a href="#step-3-local-entity-resolution" id="toc-step-3-local-entity-resolution" class="nav-link" data-scroll-target="#step-3-local-entity-resolution">Step 3 — Local entity resolution</a></li>
+  <li><a href="#step-4-output" id="toc-step-4-output" class="nav-link" data-scroll-target="#step-4-output">Step 4 — Output</a></li>
+  </ul></li>
+  <li><a href="#tradeoffs" id="toc-tradeoffs" class="nav-link" data-scroll-target="#tradeoffs">Tradeoffs</a></li>
+  <li><a href="#compared-to-plan-a" id="toc-compared-to-plan-a" class="nav-link" data-scroll-target="#compared-to-plan-a">Compared to Plan A</a></li>
+  <li><a href="#verification" id="toc-verification" class="nav-link" data-scroll-target="#verification">Verification</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/folium.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/catalogues/scan-2/plan-b-hocr-chunked-extraction.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><code>folium</code> Interactive Map Demo</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
+<section id="plan-b-hocr-chunked-reading-combined-segmentation-extraction" class="level1">
+<h1>Plan B — hOCR Chunked Reading + Combined Segmentation &amp; Extraction</h1>
+<section id="approach-summary" class="level2">
+<h2 class="anchored" data-anchor-id="approach-summary">Approach summary</h2>
+<p>Use the hOCR output (HTML with embedded word coordinates) to reconstruct reading order, then feed document chunks to a text LLM via <code>ollama run</code> that handles <strong>both segmentation and extraction in one pass</strong> — no separate geometry-based classifier. Simpler pipeline, trades spatial precision for flexibility.</p>
+</section>
+<section id="ocr-quality-gate-step-0" class="level2">
+<h2 class="anchored" data-anchor-id="ocr-quality-gate-step-0">OCR Quality Gate (Step 0)</h2>
+<p>Same aspell-based word validity check as Plan A:</p>
+<pre><code>validity_ratio = recognised_words / total_words  (aspell -l en + -l de union)</code></pre>
+<p>Threshold: <code>&gt;= 0.80</code> proceed. Below that: consider Chandra-2 or Plan C.</p>
+<hr>
+</section>
+<section id="pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline">Pipeline</h2>
+<section id="step-1-reconstruct-reading-order-from-hocr" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-reconstruct-reading-order-from-hocr">Step 1 — Reconstruct reading order from hOCR</h3>
+<p>Parse <code>baldessari-sprengel.hocr</code> with BeautifulSoup. hOCR encodes each word with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">'ocrx_word'</span><span class="ot"> title</span><span class="op">=</span><span class="st">'bbox 120 340 210 360'</span><span class="dt">&gt;</span>Acrylic<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reconstruct page text in reading order (sort by y-then-x bbox), preserving paragraph breaks where vertical gap between lines exceeds a threshold. Output: plain text per page, with page boundary markers.</p>
+<p>Advantage over ALTO: hOCR is standard HTML; no custom XML namespace handling needed.</p>
+</section>
+<section id="step-2-chunk-the-document" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-chunk-the-document">Step 2 — Chunk the document</h3>
+<p>Split reconstructed text into overlapping chunks of ~800 tokens (roughly 2–3 pages). Each chunk passed to the LLM with a dual instruction:</p>
+<pre><code>"In the following text from an exhibition catalog, identify any artwork entries
+(catalog items with title, date, materials, dimensions) and extract each one as JSON.
+Ignore essay prose. Return a JSON array — one object per artwork found, or [] if none.
 
-    
-  
-    
-  </div>
-  
+Fields: title, creator, date, object_type, materials[], height_cm, width_cm, depth_cm,
+inventory_number, catalog_number.
+
+Text:
+&lt;CHUNK&gt;
+"</code></pre>
+<p>Model: <strong>qwen2.5:14b</strong> or <strong>qwen2.5:32b</strong> (the larger model is better at not hallucinating entries from prose).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$CHUNK_TEXT</span><span class="st">"</span> <span class="kw">|</span> <span class="ex">ollama</span> run qwen2.5:32b <span class="st">"&lt;prompt above&gt;"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Overlap between chunks (100-token overlap) catches entries that straddle chunk boundaries. Deduplicate by <code>(title, catalog_number)</code> after all chunks processed.</p>
+</section>
+<section id="step-3-local-entity-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-local-entity-resolution">Step 3 — Local entity resolution</h3>
+<p>Same local lookup JSON as Plan A (no external APIs). Fuzzy match with <code>difflib</code>.</p>
+</section>
+<section id="step-4-output" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-output">Step 4 — Output</h3>
+<p>Write a flat CSV with Wikidata P-number column headers — QuickStatements-compatible for direct Wikibase upload. Also write a human-readable version with field name headers for QA.</p>
+<p>Column order: <code>qid, P31, P1476, P170, P571, P276, P195, P186, P2048, P2049, P2610, P217, P528, P1431</code></p>
+<p><code>P1431</code> (Exhibited at) is hardcoded to <code>Q138573075</code> (the Sprengel Museum exhibition Q-ID) for every record.</p>
+<p>Output files: <code>output-plan-b.csv</code> (P-headers), <code>output-plan-b-readable.csv</code> (field name headers).</p>
+<hr>
+</section>
+</section>
+<section id="tradeoffs" class="level2">
+<h2 class="anchored" data-anchor-id="tradeoffs">Tradeoffs</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Strengths</strong></td>
+<td>No geometry tuning needed; LLM tolerates minor OCR errors naturally (“heals” garbled tokens in context); handles non-standard layouts gracefully</td>
+</tr>
+<tr class="even">
+<td><strong>Weaknesses</strong></td>
+<td>LLM may miss entries or fabricate them from essay prose (hallucination risk); harder to debug than geometric segmentation; slower if using qwen2.5:32b (19GB)</td>
+</tr>
+<tr class="odd">
+<td><strong>Model</strong></td>
+<td>qwen2.5:14b (fast) or qwen2.5:32b (more reliable — already pulled)</td>
+</tr>
+<tr class="even">
+<td><strong>Speed</strong></td>
+<td>~5–15 min depending on model size and chunk count</td>
+</tr>
+<tr class="odd">
+<td><strong>Risk</strong></td>
+<td>Hallucination of non-existent catalog entries from essay passages; duplicate detection logic needed</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="compared-to-plan-a" class="level2">
+<h2 class="anchored" data-anchor-id="compared-to-plan-a">Compared to Plan A</h2>
+<ul>
+<li><strong>Simpler</strong> to implement (no ALTO lxml parsing or geometry heuristics)</li>
+<li><strong>More robust</strong> to OCR errors and unusual layouts</li>
+<li><strong>Less precise</strong> — segmentation depends entirely on LLM judgment</li>
+<li><strong>Better choice</strong> if the catalog mixes entries and essay text on the same pages (no clean layout separation)</li>
+</ul>
+<hr>
+</section>
+<section id="verification" class="level2">
+<h2 class="anchored" data-anchor-id="verification">Verification</h2>
+<ol type="1">
+<li>Run quality gate → word validity ratio</li>
+<li>Run chunked extraction on pages 10–20</li>
+<li>Cross-reference all found entries against a manual count of artworks in the catalog</li>
+<li>Check for fabricated entries (titles not in PDF)</li>
+<li>Validate JSON-LD structure</li>
+</ol>
 
 
-</header>
-
-
-<p>Simple demonstration of rendering a map in a <code>jupyterlite</code> notebook.</p>
-<p>Note that the <code>folium</code> package has several dependencies which themselves may have dependencies.</p>
-<p>The following code fragement, run in a fresh Python enviroment into which <code>folium</code> has already been installed, identifies the packages that are loaded in when <code>folium</code> is loaded:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#https://stackoverflow.com/a/40381601/454773</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>before <span class="op">=</span> [<span class="bu">str</span>(m) <span class="cf">for</span> m <span class="kw">in</span> sys.modules]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>after <span class="op">=</span> [<span class="bu">str</span>(m) <span class="cf">for</span> m <span class="kw">in</span> sys.modules]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>([m.split(<span class="st">'.'</span>)[<span class="dv">0</span>] <span class="cf">for</span> m <span class="kw">in</span> after <span class="cf">if</span> <span class="kw">not</span> m <span class="kw">in</span> before <span class="kw">and</span> <span class="kw">not</span> m.startswith(<span class="st">'_'</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The loaded packages are:</p>
-<pre><code>{'branca',
- 'certifi',
- 'chardet',
- 'cmath',
- 'csv',
- 'dateutil',
- 'encodings',
- 'folium',
- 'gzip',
- 'http',
- 'idna',
- 'importlib',
- 'jinja2',
- 'markupsafe',
- 'mmap',
- 'numpy',
- 'pandas',
- 'pkg_resources',
- 'pytz',
- 'requests',
- 'secrets',
- 'stringprep',
- 'urllib3',
- 'zipfile'}</code></pre>
-<p>The following packages seem to need installing in order load <code>folium</code>, along with folium itself:</p>
-<pre><code>chardet, certifi, idna, branca, urllib3, Jinja2, requests, Markupsafe</code></pre>
-<p>Universal wheels, with filenames of the form <code>PACKAGE-VERSION-py2.py3-none-any.whl</code> appearing in the <em>Download files</em> area of a PyPi package page (<a href="https://pypi.org/project/requests/#files">example</a>] are required in order to install the package.</p>
-<p>One required package, <a href="https://pypi.org/project/Markupsafe/#files"><code>Markupsafe</code></a>) <em>did not</em> have a universal wheel available, so a wheel was manually built elsewhere (by hacking the <a href="https://github.com/pallets/markupsafe/blob/main/setup.py"><code>setup.py</code> file</a> to force it to build the wheel in a platform and speedup free way) and pushed to a downloadable location in an <a href="https://opencomputinglab.github.io/vce-wheelhouse/"><em>ad hoc</em> wheelhouse</a>.</p>
-<div id="cell-3" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install folium requirements</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q folium</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="demo-of-folium-map" class="level2">
-<h2 class="anchored" data-anchor-id="demo-of-folium-map">Demo of <code>folium</code> Map</h2>
-<p>Load in the <code>folium</code> package:</p>
-<div id="cell-5" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>And render a demo map:</p>
-<div id="cell-7" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> folium.Map(location<span class="op">=</span>[<span class="fl">50.693848</span>, <span class="op">-</span><span class="fl">1.304734</span>], zoom_start<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -716,9 +784,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/folium.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/catalogues/scan-2/plan-b-hocr-chunked-extraction.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

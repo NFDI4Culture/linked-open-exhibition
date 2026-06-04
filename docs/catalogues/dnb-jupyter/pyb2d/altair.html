@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>linked-art-terms – Linked Open Exhibition</title>
+<title>Altair in JupyterLite – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -78,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Linked Open Exhibition</span>
     </a>
   </div>
@@ -89,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -98,26 +132,26 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
         <li>
-    <a class="dropdown-item" href="../exhibitions.html">
+    <a class="dropdown-item" href="../../../exhibitions.html">
  <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../exhibitions-list.html">
+    <a class="dropdown-item" href="../../../exhibitions-list.html">
  <span class="dropdown-text">Exhibition Listing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../exhibitions-timeline.html">
+    <a class="dropdown-item" href="../../../exhibitions-timeline.html">
  <span class="dropdown-text">Exhibition Timeline</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../catalogue-baldessari.html">
+    <a class="dropdown-item" href="../../../catalogue-baldessari.html">
  <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../data-analysis.html"> 
+    <a class="nav-link" href="../../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -126,45 +160,45 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
         <li>
-    <a class="dropdown-item" href="../data-models/artist-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/artist-datamodel.html">
  <span class="dropdown-text">Artist Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-models/exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/exhibition-datamodel.html">
  <span class="dropdown-text">Exhibition Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-models/dnb-catalogue-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/dnb-catalogue-datamodel.html">
  <span class="dropdown-text">DNB Catalogue Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-models/item-in-exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/item-in-exhibition-datamodel.html">
  <span class="dropdown-text">Item in Exhibition Data Model</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../PLAN.html"> 
+    <a class="nav-link" href="../../../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Documentation/glossary.html"> 
+    <a class="nav-link" href="../../../Documentation/glossary.html"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Documentation/glossary-de.html"> 
+    <a class="nav-link" href="../../../Documentation/glossary-de.html"> 
 <span class="menu-text">Glossar (DE)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Documentation/orcid-guide.html"> 
+    <a class="nav-link" href="../../../Documentation/orcid-guide.html"> 
 <span class="menu-text">ORCID Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Documentation/protocol.html"> 
+    <a class="nav-link" href="../../../Documentation/protocol.html"> 
 <span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
@@ -190,365 +224,156 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linked-art-terms-quick-reference" id="toc-linked-art-terms-quick-reference" class="nav-link active" data-scroll-target="#linked-art-terms-quick-reference">Linked Art Terms — Quick Reference</a>
-  <ul class="collapse">
-  <li><a href="#core-entities" id="toc-core-entities" class="nav-link" data-scroll-target="#core-entities">Core Entities</a></li>
-  <li><a href="#events-activities" id="toc-events-activities" class="nav-link" data-scroll-target="#events-activities">Events &amp; Activities</a></li>
-  <li><a href="#supporting-classes" id="toc-supporting-classes" class="nav-link" data-scroll-target="#supporting-classes">Supporting Classes</a></li>
-  <li><a href="#namespaces" id="toc-namespaces" class="nav-link" data-scroll-target="#namespaces">Namespaces</a></li>
-  </ul></li>
+  <li><a href="#import-the-dependencies" id="toc-import-the-dependencies" class="nav-link active" data-scroll-target="#import-the-dependencies">Import the dependencies:</a></li>
+  <li><a href="#simple-bar-chart" id="toc-simple-bar-chart" class="nav-link" data-scroll-target="#simple-bar-chart">Simple Bar Chart</a></li>
+  <li><a href="#simple-heatmap" id="toc-simple-heatmap" class="nav-link" data-scroll-target="#simple-heatmap">Simple Heatmap</a></li>
+  <li><a href="#install-the-vega-dataset" id="toc-install-the-vega-dataset" class="nav-link" data-scroll-target="#install-the-vega-dataset">Install the Vega Dataset</a></li>
+  <li><a href="#interactive-average" id="toc-interactive-average" class="nav-link" data-scroll-target="#interactive-average">Interactive Average</a></li>
+  <li><a href="#locations-of-us-airports" id="toc-locations-of-us-airports" class="nav-link" data-scroll-target="#locations-of-us-airports">Locations of US Airports</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Linkedart/linked-art-terms.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/altair.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Altair in <code>JupyterLite</code></h1>
+</div>
 
 
 
-<section id="linked-art-terms-quick-reference" class="level1">
-<h1>Linked Art Terms — Quick Reference</h1>
-<blockquote class="blockquote">
-<p><a href="https://linked.art/">Linked Art 1.0</a> · <a href="https://www.cidoc-crm.org/">CIDOC-CRM 7.1.3</a></p>
-</blockquote>
-<section id="core-entities" class="level2">
-<h2 class="anchored" data-anchor-id="core-entities">Core Entities</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Term</th>
-<th>CIDOC-CRM</th>
-<th>Wikidata</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>HumanMadeObject</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E22_Human-Made_Object">E22</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q16686448">Q16686448</a></td>
-<td>Physical object made by humans</td>
-</tr>
-<tr class="even">
-<td><code>DigitalObject</code></td>
-<td><a href="http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object">D1</a> (CRMdig)</td>
-<td><a href="https://www.wikidata.org/wiki/Q59138870">Q59138870</a></td>
-<td>Digital file or resource</td>
-</tr>
-<tr class="odd">
-<td><code>Person</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E21_Person">E21</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q5">Q5</a></td>
-<td>Individual human</td>
-</tr>
-<tr class="even">
-<td><code>Group</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E74_Group">E74</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q16334295">Q16334295</a></td>
-<td>Collective of people</td>
-</tr>
-<tr class="odd">
-<td><code>Place</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E53_Place">E53</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q2221906">Q2221906</a></td>
-<td>Geographic location</td>
-</tr>
-<tr class="even">
-<td><code>Type</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E55_Type">E55</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q151885">Q151885</a></td>
-<td>Concept or vocabulary term</td>
-</tr>
-<tr class="odd">
-<td><code>Language</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E56_Language">E56</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q34770">Q34770</a></td>
-<td>Human language</td>
-</tr>
-<tr class="even">
-<td><code>Material</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E57_Material">E57</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q214609">Q214609</a></td>
-<td>Physical material</td>
-</tr>
-<tr class="odd">
-<td><code>MeasurementUnit</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit">E58</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q47574">Q47574</a></td>
-<td>Unit of measurement</td>
-</tr>
-<tr class="even">
-<td><code>Currency</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E98_Currency">E98</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q8142">Q8142</a></td>
-<td>Monetary currency</td>
-</tr>
-<tr class="odd">
-<td><code>VisualItem</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item">E36</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q110910970">Q110910970</a></td>
-<td>Visual/image content</td>
-</tr>
-<tr class="even">
-<td><code>LinguisticObject</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object">E33</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q234460">Q234460</a></td>
-<td>Textual content</td>
-</tr>
-<tr class="odd">
-<td><code>PropositionalObject</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object">E89</a></td>
-<td>—</td>
-<td>Abstract (non-visual, non-textual) work</td>
-</tr>
-<tr class="even">
-<td><code>Set</code></td>
-<td><a href="https://linked.art/ns/terms/Set">la:Set</a> (LA ext.)</td>
-<td><a href="https://www.wikidata.org/wiki/Q2668072">Q2668072</a></td>
-<td>Collection of entities</td>
-</tr>
-<tr class="odd">
-<td><code>Activity</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E7_Activity">E7</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q61788060">Q61788060</a></td>
-<td>Intentional human activity</td>
-</tr>
-<tr class="even">
-<td><code>Period</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E4_Period">E4</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q11514315">Q11514315</a></td>
-<td>Historical period</td>
-</tr>
-<tr class="odd">
-<td><code>Event</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E5_Event">E5</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q1656682">Q1656682</a></td>
-<td>Event or occurrence</td>
-</tr>
-</tbody>
-</table>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Altair</strong> is a declarative statistical visualization library for Python.</p>
+<p>Most of the examples below are from: https://altair-viz.github.io/gallery</p>
+<section id="import-the-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-dependencies">Import the dependencies:</h2>
+<div id="cell-3" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q altair</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="events-activities" class="level2">
-<h2 class="anchored" data-anchor-id="events-activities">Events &amp; Activities</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Term</th>
-<th>CIDOC-CRM</th>
-<th>Wikidata</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Production</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E12_Production">E12</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q739302">Q739302</a></td>
-<td>Making a physical object</td>
-</tr>
-<tr class="even">
-<td><code>Creation</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E65_Creation">E65</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q11398090">Q11398090</a></td>
-<td>Creating a conceptual work</td>
-</tr>
-<tr class="odd">
-<td><code>Destruction</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E6_Destruction">E6</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q17781833">Q17781833</a></td>
-<td>Destroying a physical object</td>
-</tr>
-<tr class="even">
-<td><code>Erasure</code></td>
-<td>LA extension</td>
-<td><a href="https://www.wikidata.org/wiki/Q18411409">Q18411409</a></td>
-<td>Deleting a digital object</td>
-</tr>
-<tr class="odd">
-<td><code>Birth</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E67_Birth">E67</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q14819852">Q14819852</a></td>
-<td>Birth of a person</td>
-</tr>
-<tr class="even">
-<td><code>Death</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E69_Death">E69</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q4">Q4</a></td>
-<td>Death of a person</td>
-</tr>
-<tr class="odd">
-<td><code>Formation</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E66_Formation">E66</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q3075355">Q3075355</a></td>
-<td>Founding a group</td>
-</tr>
-<tr class="even">
-<td><code>Dissolution</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E68_Dissolution">E68</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q5282797">Q5282797</a></td>
-<td>Dissolving a group</td>
-</tr>
-<tr class="odd">
-<td><code>Acquisition</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition">E8</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q22340494">Q22340494</a></td>
-<td>Gaining ownership</td>
-</tr>
-<tr class="even">
-<td><code>TransferOfCustody</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E10_Transfer_of_Custody">E10</a></td>
-<td>—</td>
-<td>Transferring physical custody</td>
-</tr>
-<tr class="odd">
-<td><code>Move</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E9_Move">E9</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q2918584">Q2918584</a></td>
-<td>Moving an object</td>
-</tr>
-<tr class="even">
-<td><code>Modification</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E11_Modification">E11</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q109243379">Q109243379</a></td>
-<td>Altering an object</td>
-</tr>
-<tr class="odd">
-<td><code>PartAddition</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E79_Part_Addition">E79</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q23009538">Q23009538</a></td>
-<td>Adding a part</td>
-</tr>
-<tr class="even">
-<td><code>PartRemoval</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E80_Part_Removal">E80</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q23009442">Q23009442</a></td>
-<td>Removing a part</td>
-</tr>
-<tr class="odd">
-<td><code>AttributeAssignment</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment">E13</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q230768">Q230768</a></td>
-<td>Recording an assertion</td>
-</tr>
-<tr class="even">
-<td><code>Joining</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E85_Joining">E85</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q12819913">Q12819913</a></td>
-<td>Person joining a group</td>
-</tr>
-<tr class="odd">
-<td><code>Leaving</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E86_Leaving">E86</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q21171241">Q21171241</a></td>
-<td>Person leaving a group</td>
-</tr>
-<tr class="even">
-<td><code>Encounter</code></td>
-<td><a href="http://www.ics.forth.gr/isl/CRMsci/S19_Encounter_Event">S19</a> (CRMsci)</td>
-<td><a href="https://www.wikidata.org/wiki/Q10855061">Q10855061</a></td>
-<td>Discovery of an object</td>
-</tr>
-<tr class="odd">
-<td><code>Payment</code></td>
-<td><a href="https://linked.art/ns/terms/Payment">la:Payment</a> (LA ext.)</td>
-<td><a href="https://www.wikidata.org/wiki/Q1148747">Q1148747</a></td>
-<td>Payment of money</td>
-</tr>
-<tr class="even">
-<td><code>Right</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E30_Right">E30</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q780687">Q780687</a></td>
-<td>Legal right or entitlement</td>
-</tr>
-</tbody>
-</table>
+<section id="simple-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="simple-bar-chart">Simple Bar Chart</h2>
+<div id="cell-5" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'a'</span>: [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>, <span class="st">'G'</span>, <span class="st">'H'</span>, <span class="st">'I'</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'b'</span>: [<span class="dv">28</span>, <span class="dv">55</span>, <span class="dv">43</span>, <span class="dv">91</span>, <span class="dv">81</span>, <span class="dv">53</span>, <span class="dv">19</span>, <span class="dv">87</span>, <span class="dv">52</span>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>alt.Chart(source).mark_bar().encode(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'a'</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'b'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="supporting-classes" class="level2">
-<h2 class="anchored" data-anchor-id="supporting-classes">Supporting Classes</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Term</th>
-<th>CIDOC-CRM</th>
-<th>Wikidata</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Name</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E33_E41_Linguistic_Appellation">E33_E41</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q82799">Q82799</a></td>
-<td>Name or appellation</td>
-</tr>
-<tr class="even">
-<td><code>Identifier</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E42_Identifier">E42</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q853614">Q853614</a></td>
-<td>Formal identifier (e.g.&nbsp;accession no.)</td>
-</tr>
-<tr class="odd">
-<td><code>TimeSpan</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span">E52</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q186081">Q186081</a></td>
-<td>Time interval with begin/end</td>
-</tr>
-<tr class="even">
-<td><code>Dimension</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E54_Dimension">E54</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q4440864">Q4440864</a></td>
-<td>Measured dimension</td>
-</tr>
-<tr class="odd">
-<td><code>MonetaryAmount</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E97_Monetary_Amount">E97</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q30242023">Q30242023</a></td>
-<td>Amount of money</td>
-</tr>
-<tr class="even">
-<td><code>InformationObject</code></td>
-<td><a href="http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object">E73</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q37866906">Q37866906</a></td>
-<td>Reference to external resource</td>
-</tr>
-</tbody>
-</table>
+<section id="simple-heatmap" class="level2">
+<h2 class="anchored" data-anchor-id="simple-heatmap">Simple Heatmap</h2>
+<div id="cell-7" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute x^2 + y^2 across a 2D grid</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> np.meshgrid(<span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> y <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert this grid to columnar data expected by Altair</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: x.ravel(),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'y'</span>: y.ravel(),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'z'</span>: z.ravel()})</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>alt.Chart(source).mark_rect().encode(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'x:O'</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'y:O'</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'z:Q'</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="namespaces" class="level2">
-<h2 class="anchored" data-anchor-id="namespaces">Namespaces</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Prefix</th>
-<th>URI</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>crm:</code></td>
-<td><code>http://www.cidoc-crm.org/cidoc-crm/</code></td>
-</tr>
-<tr class="even">
-<td><code>la:</code></td>
-<td><code>https://linked.art/ns/terms/</code></td>
-</tr>
-<tr class="odd">
-<td><code>dig:</code></td>
-<td><code>http://www.ics.forth.gr/isl/CRMdig/</code></td>
-</tr>
-<tr class="even">
-<td><code>sci:</code></td>
-<td><code>http://www.ics.forth.gr/isl/CRMsci/</code></td>
-</tr>
-<tr class="odd">
-<td><code>schema:</code></td>
-<td><code>http://schema.org/</code></td>
-</tr>
-</tbody>
-</table>
+<section id="install-the-vega-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-vega-dataset">Install the Vega Dataset</h2>
+<div id="cell-9" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q vega_datasets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="interactive-average" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-average">Interactive Average</h2>
+<div id="cell-11" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> data.seattle_weather()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>brush <span class="op">=</span> alt.selection(<span class="bu">type</span><span class="op">=</span><span class="st">'interval'</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> alt.Chart().mark_bar().encode(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'month(date):O'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mean(precipitation):Q'</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span>alt.condition(brush, alt.OpacityValue(<span class="dv">1</span>), alt.OpacityValue(<span class="fl">0.7</span>)),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>).add_selection(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    brush</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> alt.Chart().mark_rule(color<span class="op">=</span><span class="st">'firebrick'</span>).encode(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'mean(precipitation):Q'</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>alt.SizeValue(<span class="dv">3</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>).transform_filter(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    brush</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>alt.layer(bars, line, data<span class="op">=</span>source)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="locations-of-us-airports" class="level2">
+<h2 class="anchored" data-anchor-id="locations-of-us-airports">Locations of US Airports</h2>
+<div id="cell-13" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>airports <span class="op">=</span> data.airports.url</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> alt.topo_feature(data.us_10m.url, feature<span class="op">=</span><span class="st">'states'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># US states background</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>background <span class="op">=</span> alt.Chart(states).mark_geoshape(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    fill<span class="op">=</span><span class="st">'lightgray'</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span><span class="st">'white'</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">300</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>).project(<span class="st">'albersUsa'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># airport positions on background</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> alt.Chart(airports).transform_aggregate(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    latitude<span class="op">=</span><span class="st">'mean(latitude)'</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    longitude<span class="op">=</span><span class="st">'mean(longitude)'</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span><span class="st">'count()'</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    groupby<span class="op">=</span>[<span class="st">'state'</span>]</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>).mark_circle().encode(</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    longitude<span class="op">=</span><span class="st">'longitude:Q'</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    latitude<span class="op">=</span><span class="st">'latitude:Q'</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>alt.Size(<span class="st">'count:Q'</span>, title<span class="op">=</span><span class="st">'Number of Airports'</span>),</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.value(<span class="st">'steelblue'</span>),</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'state:N'</span>,<span class="st">'count:Q'</span>]</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Number of airports in US'</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>background <span class="op">+</span> points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -980,7 +805,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/Linkedart/linked-art-terms.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/altair.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>

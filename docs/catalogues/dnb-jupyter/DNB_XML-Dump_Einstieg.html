@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DNBLab Jupyter Notebook zum Datenbezug über die SRU-Schnittstelle – Linked Open Exhibition</title>
+<title>DNBLab Jupyter Notebook zur Datenextraktion aus XML-Datei – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,6 +100,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -126,10 +129,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
@@ -205,20 +228,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#arbeitsumgebung-einrichten" id="toc-arbeitsumgebung-einrichten" class="nav-link active" data-scroll-target="#arbeitsumgebung-einrichten">Arbeitsumgebung einrichten </a><a class="anchor nav-link" id="Teil1" data-scroll-target="undefined"></a></li>
-  <li><a href="#abfrage-über-alle-datensätze" id="toc-abfrage-über-alle-datensätze" class="nav-link" data-scroll-target="#abfrage-über-alle-datensätze">Abfrage über alle Datensätze </a><a class="anchor nav-link" id="Teil2" data-scroll-target="undefined"></a></li>
-  <li><a href="#felder-titel-und-links-zu-den-objekten-durchsuchen" id="toc-felder-titel-und-links-zu-den-objekten-durchsuchen" class="nav-link" data-scroll-target="#felder-titel-und-links-zu-den-objekten-durchsuchen">Felder Titel und Links zu den Objekten durchsuchen </a><a class="anchor nav-link" id="Teil3" data-scroll-target="undefined"></a></li>
-  <li><a href="#abfrage-projekt-28-codd028" id="toc-abfrage-projekt-28-codd028" class="nav-link" data-scroll-target="#abfrage-projekt-28-codd028">Abfrage Projekt 28 (cod=d028)</a></li>
-  <li><a href="#anzeige-der-treffer-in-einer-tabelle" id="toc-anzeige-der-treffer-in-einer-tabelle" class="nav-link" data-scroll-target="#anzeige-der-treffer-in-einer-tabelle">Anzeige der Treffer in einer Tabelle </a><a class="anchor nav-link" id="Teil4" data-scroll-target="undefined"></a></li>
-  <li><a href="#speichern-der-ergebnisse-als-csv-datei" id="toc-speichern-der-ergebnisse-als-csv-datei" class="nav-link" data-scroll-target="#speichern-der-ergebnisse-als-csv-datei">Speichern der Ergebnisse als CSV-Datei!</a></li>
+  <li><a href="#laden-der-daten-aus-datei" id="toc-laden-der-daten-aus-datei" class="nav-link" data-scroll-target="#laden-der-daten-aus-datei">Laden der Daten aus Datei</a></li>
+  <li><a href="#parsen-und-anzeige-des-ersten-datensatzes" id="toc-parsen-und-anzeige-des-ersten-datensatzes" class="nav-link" data-scroll-target="#parsen-und-anzeige-des-ersten-datensatzes">Parsen und Anzeige des ersten Datensatzes</a></li>
+  <li><a href="#suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen" id="toc-suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen" class="nav-link" data-scroll-target="#suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen">Suche nach ausgewählten Informationen in den einzelnen Datensätzen</a></li>
+  <li><a href="#sammeln-der-extrahierten-informationen-aus-allen-datensätzen" id="toc-sammeln-der-extrahierten-informationen-aus-allen-datensätzen" class="nav-link" data-scroll-target="#sammeln-der-extrahierten-informationen-aus-allen-datensätzen">Sammeln der extrahierten Informationen aus allen Datensätzen</a></li>
+  <li><a href="#anzeige-der-daten-in-einer-tabelle-dataframe" id="toc-anzeige-der-daten-in-einer-tabelle-dataframe" class="nav-link" data-scroll-target="#anzeige-der-daten-in-einer-tabelle-dataframe">Anzeige der Daten in einer Tabelle/ Dataframe</a></li>
+  <li><a href="#export-der-daten-als-csv-datei" id="toc-export-der-daten-als-csv-datei" class="nav-link" data-scroll-target="#export-der-daten-als-csv-datei">Export der Daten als CSV-Datei</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Einstieg.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_XML-Dump_Einstieg.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DNBLab Jupyter Notebook zum Datenbezug über die SRU-Schnittstelle</h1>
+<h1 class="title">DNBLab Jupyter Notebook zur Datenextraktion aus XML-Datei</h1>
 </div>
 
 
@@ -235,133 +259,471 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Dieses DNBLab-Tutorial beschreibt eine Beispielabfrage über die SRU-Schnittstelle mit Python. In der Jupyter Notebook Umgebung kann der dokumentierte Code direkt ausgeführt und angepasst werden. Das Tutorial umfasst die exemplarische Abfrage und Ausgabe der Daten in MARC21-xml zur weiteren Verarbeitung mit Python.</p>
+<p>Dieses DNBLab-Tutorial beschreibt das beispielhafte Laden einer XML-Datei im MARC21-Format. In der Jupyter Notebook Umgebung kann der dokumentierte Code direkt ausgeführt und angepasst werden. Das Tutorial umfasst das Durchsuchen der Daten in MARC21-xml und Ausgabe ausgewählter Elemente als CSV-Datei.</p>
 <section id="arbeitsumgebung-einrichten" class="level2">
 <h2 class="anchored" data-anchor-id="arbeitsumgebung-einrichten">Arbeitsumgebung einrichten <a class="anchor" id="Teil1"></a></h2>
-<div id="cell-4" class="cell" data-trusted="true" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.parse</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyodide.http <span class="im">import</span> open_url, pyfetch</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> js <span class="im">import</span> fetch</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup <span class="im">as</span> soup</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unicodedata</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lxml <span class="im">import</span> etree</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg ansi-bold">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg ansi-bold">In[1], line 2</span>
-<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">urllib</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">parse</span>
-<span class="ansi-green-fg ansi-bold">----&gt; 2</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">pyodide</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">http</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> open_url, pyfetch
-<span class="ansi-green-fg">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">js</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> fetch
-<span class="ansi-green-fg">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">bs4</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> BeautifulSoup <span style="font-weight:bold;color:rgb(0,135,0)">as</span> soup
+<div id="5822ae30-ba11-46f3-a22f-c6d85d11ff9f" class="cell" data-trusted="true" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pdimport lxml.etree <span class="im">as</span> ETfrom bs4 <span class="im">import</span> BeautifulSoup <span class="im">as</span> soupimport unicodedata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="laden-der-daten-aus-datei" class="level2">
+<h2 class="anchored" data-anchor-id="laden-der-daten-aus-datei">Laden der Daten aus Datei</h2>
+<div id="23cbec67-9978-43b5-939c-649f536e08fd" class="cell" data-trusted="true" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># open from file: with open("d028.xml", "r", encoding="utf-8") as f2:    result = f2.readlines()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="parsen-und-anzeige-des-ersten-datensatzes" class="level2">
+<h2 class="anchored" data-anchor-id="parsen-und-anzeige-des-ersten-datensatzes">Parsen und Anzeige des ersten Datensatzes</h2>
+<div id="545e8c48-d8bf-4781-b1c3-bbee197cc626" class="cell" data-trusted="true" data-scrolled="true" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> <span class="st">""</span>.join(result)xml <span class="op">=</span> soup(content, <span class="st">"lxml"</span>)myquery <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})<span class="bu">print</span>(<span class="bu">len</span>(myquery))<span class="bu">print</span>(myquery[<span class="dv">0</span>].prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>196
+&lt;record type="Bibliographic" xmlns="http://www.loc.gov/MARC21/slim"&gt;
+ &lt;leader&gt;
+  00000nam a2200000 c 4500
+ &lt;/leader&gt;
+ &lt;controlfield tag="001"&gt;
+  1163616249
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="003"&gt;
+  DE-101
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="005"&gt;
+  20240212135623.0
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="007"&gt;
+  cr||||||||||||
+ &lt;/controlfield&gt;
+ &lt;controlfield tag="008"&gt;
+  180731r20181964gw |||||o|||| 00||||ger
+ &lt;/controlfield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="015"&gt;
+  &lt;subfield code="a"&gt;
+   19,O01
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   dnb
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="7" ind2=" " tag="016"&gt;
+  &lt;subfield code="2"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   1163616249
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="7" ind2=" " tag="024"&gt;
+  &lt;subfield code="2"&gt;
+   urn
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   urn:nbn:de:101:1-2018090918265168878989
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="035"&gt;
+  &lt;subfield code="a"&gt;
+   (DE-599)DNB1163616249
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="035"&gt;
+  &lt;subfield code="a"&gt;
+   (OCoLC)1187509762
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="040"&gt;
+  &lt;subfield code="a"&gt;
+   1140
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   ger
+  &lt;/subfield&gt;
+  &lt;subfield code="c"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="d"&gt;
+   1215
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="041"&gt;
+  &lt;subfield code="a"&gt;
+   ger
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="044"&gt;
+  &lt;subfield code="c"&gt;
+   XA-DE
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="084"&gt;
+  &lt;subfield code="a"&gt;
+   46
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   700
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   730
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   740
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   750
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   760
+  &lt;/subfield&gt;
+  &lt;subfield code="q"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   sdnb
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="0" ind2="0" tag="245"&gt;
+  &lt;subfield code="a"&gt;
+   13 Konkrete
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   Vordemberge-Gildewart ... ; [Kunstverein Ulm im Rathaus, 26. Juli - 6. September 1964]
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="1" ind2="3" tag="246"&gt;
+  &lt;subfield code="a"&gt;
+   Dreizehn Konkrete
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2="1" tag="264"&gt;
+  &lt;subfield code="a"&gt;
+   Leipzig
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   Frankfurt am Main
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   Deutsche Nationalbibliothek
+  &lt;/subfield&gt;
+  &lt;subfield code="c"&gt;
+   2018
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="300"&gt;
+  &lt;subfield code="a"&gt;
+   1 Online-Ressource ([16] S.)
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   Ill.
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="336"&gt;
+  &lt;subfield code="a"&gt;
+   Text
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   txt
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   rdacontent
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="337"&gt;
+  &lt;subfield code="a"&gt;
+   Computermedien
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   c
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   rdamedia
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="338"&gt;
+  &lt;subfield code="a"&gt;
+   Online-Ressource
+  &lt;/subfield&gt;
+  &lt;subfield code="b"&gt;
+   cr
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   rdacarrier
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="500"&gt;
+  &lt;subfield code="a"&gt;
+   Wahrnehmung der Rechte durch die VG WORT (§ 51 VGG)
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="0" ind2=" " tag="506"&gt;
+  &lt;subfield code="a"&gt;
+   Open Access
+  &lt;/subfield&gt;
+  &lt;subfield code="f"&gt;
+   Unrestricted online access
+  &lt;/subfield&gt;
+  &lt;subfield code="g"&gt;
+   20220111
+  &lt;/subfield&gt;
+  &lt;subfield code="q"&gt;
+   DNB
+  &lt;/subfield&gt;
+  &lt;subfield code="u"&gt;
+   http://purl.org/coar/access_right/c_abf2
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   star
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="540"&gt;
+  &lt;subfield code="a"&gt;
+   Urheberrechtsschutz, Wahrnehmung der Rechte durch die VG WORT (§ 51 VGG)
+  &lt;/subfield&gt;
+  &lt;subfield code="f"&gt;
+   InC 1.0
+  &lt;/subfield&gt;
+  &lt;subfield code="g"&gt;
+   20220111
+  &lt;/subfield&gt;
+  &lt;subfield code="q"&gt;
+   DNB
+  &lt;/subfield&gt;
+  &lt;subfield code="u"&gt;
+   http://rightsstatements.org/vocab/InC/1.0/
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="1" ind2=" " tag="583"&gt;
+  &lt;subfield code="a"&gt;
+   Archivierung/Langzeitarchivierung gewährleistet
+  &lt;/subfield&gt;
+  &lt;subfield code="5"&gt;
+   DE-101
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   pdager
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="1" ind2=" " tag="700"&gt;
+  &lt;subfield code="0"&gt;
+   (DE-588)118627864
+  &lt;/subfield&gt;
+  &lt;subfield code="0"&gt;
+   https://d-nb.info/gnd/118627864
+  &lt;/subfield&gt;
+  &lt;subfield code="0"&gt;
+   (DE-101)118627864
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   Vordemberge-Gildewart, Friedrich
+  &lt;/subfield&gt;
+  &lt;subfield code="d"&gt;
+   1899-1962
+  &lt;/subfield&gt;
+  &lt;subfield code="e"&gt;
+   Illustrator
+  &lt;/subfield&gt;
+  &lt;subfield code="4"&gt;
+   ill
+  &lt;/subfield&gt;
+  &lt;subfield code="2"&gt;
+   gnd
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="0" ind2="8" tag="776"&gt;
+  &lt;subfield code="i"&gt;
+   Elektronische Reproduktion von
+  &lt;/subfield&gt;
+  &lt;subfield code="t"&gt;
+   Dreizehn Konkrete
+  &lt;/subfield&gt;
+  &lt;subfield code="d"&gt;
+   Ulm : Kunstverein, 1964
+  &lt;/subfield&gt;
+  &lt;subfield code="h"&gt;
+   [16] S., Ill.
+  &lt;/subfield&gt;
+  &lt;subfield code="w"&gt;
+   (DE-101)830311173
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="850"&gt;
+  &lt;subfield code="a"&gt;
+   DE-101a
+  &lt;/subfield&gt;
+  &lt;subfield code="a"&gt;
+   DE-101b
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="4" ind2="0" tag="856"&gt;
+  &lt;subfield code="u"&gt;
+   https://nbn-resolving.org/urn:nbn:de:101:1-2018090918265168878989
+  &lt;/subfield&gt;
+  &lt;subfield code="x"&gt;
+   Resolving-System
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2="0" tag="856"&gt;
+  &lt;subfield code="u"&gt;
+   https://d-nb.info/1163616249/34
+  &lt;/subfield&gt;
+  &lt;subfield code="x"&gt;
+   Langzeitarchivierung Nationalbibliothek
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="r" ind2=" " tag="925"&gt;
+  &lt;subfield code="a"&gt;
+   ro
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1="d" ind2=" " tag="925"&gt;
+  &lt;subfield code="a"&gt;
+   d028
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+ &lt;datafield ind1=" " ind2=" " tag="927"&gt;
+  &lt;subfield code="a"&gt;
+   174292998
+  &lt;/subfield&gt;
+ &lt;/datafield&gt;
+&lt;/record&gt;
+</code></pre>
+</div>
+</div>
+</section>
+<section id="suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen" class="level2">
+<h2 class="anchored" data-anchor-id="suche-nach-ausgewählten-informationen-in-den-einzelnen-datensätzen">Suche nach ausgewählten Informationen in den einzelnen Datensätzen</h2>
+<div id="b2d2703e-ce32-4451-bc33-34d28dbacb3c" class="cell" data-trusted="true" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Funktion für Titeldaten in MARC21def parse_record_marc(item):    ns = {"marc":"http://www.loc.gov/MARC21/slim"}    xml = ET.fromstring(unicodedata.normalize("NFC", str(item)))        #idn    idn = xml.findall("marc:controlfield[@tag = '001']", namespaces=ns)    try:        idn = idn[0].text    except:        idn = 'N/A'                 #Titel     title = xml.findall("marc:datafield[@tag = '245']/marc:subfield[@code = 'a']", namespaces=ns)    title2 = xml.findall("marc:datafield[@tag = '245']/marc:subfield[@code = 'b']", namespaces=ns)        if title and not title2:        titletext = title[0].text    elif title and title2:             titletext = title[0].text + " " + title2[0].text   #Hier wird extra nur mit einem Leerzeichen getrennt statt eines Separators    else:        titletext = "N/A"            #date    date = xml.findall("marc:datafield[@tag = '264']/marc:subfield[@code = 'c']", namespaces=ns)    date2 = xml.findall("marc:controlfield[@tag = '008']", namespaces=ns)    if date:        date = date[0].text    elif date2:        date = date2[0].text        date = date[7:11]    else:            date = 'N/A'              #lang:    lang = xml.findall("marc:datafield[@tag = '041']/marc:subfield[@code = 'a']", namespaces=ns)    try:        lang = lang[0].text    except:        lang = 'N/A'            #URN:     urn = "N/A"    for urn in xml.findall("marc:datafield[@tag = '024']/marc:subfield[@code = 'a']", namespaces=ns):        if urn.text.startswith("urn:nbn"):            urn = urn.text        else:             urn = "N/A"            meta_dict = {"idn":idn, "title": titletext, "date":date, "lang":lang, "urn":urn}                    return meta_dict    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sammeln-der-extrahierten-informationen-aus-allen-datensätzen" class="level2">
+<h2 class="anchored" data-anchor-id="sammeln-der-extrahierten-informationen-aus-allen-datensätzen">Sammeln der extrahierten Informationen aus allen Datensätzen</h2>
+<div id="6597d705-6952-44d0-b0f4-d0c6b3599954" class="cell" data-trusted="true" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> [parse_record_marc(record) <span class="cf">for</span> record <span class="kw">in</span> myquery]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="anzeige-der-daten-in-einer-tabelle-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="anzeige-der-daten-in-einer-tabelle-dataframe">Anzeige der Daten in einer Tabelle/ Dataframe</h2>
+<div id="84639af9-da1e-4039-bec7-d7743682cf2e" class="cell" data-trusted="true" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(output)df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
 
-<span class="ansi-red-fg ansi-bold">ModuleNotFoundError</span>: No module named 'pyodide'</pre>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">idn</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">lang</th>
+<th data-quarto-table-cell-role="th">urn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1163616249</td>
+<td>13 Konkrete Vordemberge-Gildewart ... ; [Kunst...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090918265168878989</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1163613266</td>
+<td>200 Jahre Frommann-Verlag [1727-1927]</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090917393540952215</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1163614645</td>
+<td>60 Fotos</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018101418234208736122</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1163615773</td>
+<td>Abendgesang (Neila) Letzte Gedichte</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090918272331231107</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1163615218</td>
+<td>Abstraktion in der Malerei Kandinsky, Feininge...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090918270991257647</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">191</td>
+<td>1163612235</td>
+<td>Willy Baumeister [Ausstellung Willy Baumeister...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018102211013265416631</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">192</td>
+<td>1163615420</td>
+<td>Zeitberichte und Dokumente</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018101418250397989578</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">193</td>
+<td>1163614211</td>
+<td>Ziele des Schriftunterrichts Ein Beitr. zur mo...</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018090917544063233045</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">194</td>
+<td>1163614912</td>
+<td>Zum neuen Bauen Vorträge</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018092317065678945974</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">195</td>
+<td>1163615838</td>
+<td>Zum neuen Stil</td>
+<td>2018</td>
+<td>ger</td>
+<td>urn:nbn:de:101:1-2018091618182280146612</td>
+</tr>
+</tbody>
+</table>
+
+<p>196 rows × 5 columns</p>
 </div>
 </div>
 </div>
 </section>
-<section id="abfrage-über-alle-datensätze" class="level2">
-<h2 class="anchored" data-anchor-id="abfrage-über-alle-datensätze">Abfrage über alle Datensätze <a class="anchor" id="Teil2"></a></h2>
-<div id="cell-6" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> dnb_sru(query):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="st">"https://services.dnb.de/sru/dnb"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {<span class="st">'recordSchema'</span> : <span class="st">'MARC21-xml'</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">'operation'</span>: <span class="st">'searchRetrieve'</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">'version'</span>: <span class="st">'1.1'</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">'maximumRecords'</span>: <span class="st">'100'</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>          <span class="st">'query'</span>: query</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         }</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="cf">await</span> fetch(base_url <span class="op">+</span> <span class="st">"?"</span> <span class="op">+</span> urllib.parse.urlencode(params))  </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    r_text <span class="op">=</span> <span class="cf">await</span> r.text()</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    xml <span class="op">=</span> soup(r_text, features<span class="op">=</span><span class="st">"xml"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    records <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(records) <span class="op">&lt;</span> <span class="dv">100</span>:</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> records</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        num_results <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="dv">101</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> num_results <span class="op">==</span> <span class="dv">100</span>:</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            params.update({<span class="st">'startRecord'</span>: i})</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            r <span class="op">=</span> <span class="cf">await</span> fetch(base_url <span class="op">+</span> <span class="st">"?"</span> <span class="op">+</span> urllib.parse.urlencode(params))  </span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            r_text <span class="op">=</span> <span class="cf">await</span> r.text()</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            xml <span class="op">=</span> soup(r_text, features<span class="op">=</span><span class="st">"xml"</span>)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            new_records <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            records<span class="op">+=</span>new_records</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            i<span class="op">+=</span><span class="dv">100</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            num_results <span class="op">=</span> <span class="bu">len</span>(new_records)</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> records</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="export-der-daten-als-csv-datei" class="level2">
+<h2 class="anchored" data-anchor-id="export-der-daten-als-csv-datei">Export der Daten als CSV-Datei</h2>
+<div id="eebef657-a133-4dba-a580-5d8b6467c4ca" class="cell" data-trusted="true" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"Dump_Titel.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="felder-titel-und-links-zu-den-objekten-durchsuchen" class="level2">
-<h2 class="anchored" data-anchor-id="felder-titel-und-links-zu-den-objekten-durchsuchen">Felder Titel und Links zu den Objekten durchsuchen <a class="anchor" id="Teil3"></a></h2>
-<div id="cell-8" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_record(record):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ns <span class="op">=</span> {<span class="st">"marc"</span>:<span class="st">"http://www.loc.gov/MARC21/slim"</span>}</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    xml <span class="op">=</span> etree.fromstring(unicodedata.normalize(<span class="st">"NFC"</span>, <span class="bu">str</span>(record)))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#idn</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    idn <span class="op">=</span> xml.xpath(<span class="st">"marc:controlfield[@tag = '001']"</span>, namespaces<span class="op">=</span>ns)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        idn <span class="op">=</span> idn[<span class="dv">0</span>].text</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        idn <span class="op">=</span> <span class="st">'fail'</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># link</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    link <span class="op">=</span> xml.xpath(<span class="st">"marc:datafield[@tag = '856']/marc:subfield[@code = 'u']"</span>, namespaces<span class="op">=</span>ns)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        link <span class="op">=</span> link[<span class="dv">0</span>].text</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">#titel = unicodedata.normalize("NFC", titel)</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        link <span class="op">=</span> <span class="st">"unkown"</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>          <span class="co"># titel</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    titel <span class="op">=</span> xml.xpath(<span class="st">"marc:datafield[@tag = '245']/marc:subfield[@code = 'a']"</span>, namespaces<span class="op">=</span>ns)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        titel <span class="op">=</span> titel[<span class="dv">0</span>].text</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="co">#titel = unicodedata.normalize("NFC", titel)</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        titel <span class="op">=</span> <span class="st">"unkown"</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    meta_dict <span class="op">=</span> {<span class="st">"idn"</span>:idn,</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"titel"</span>:titel,</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"link"</span>:link}</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> meta_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="abfrage-projekt-28-codd028" class="level2">
-<h2 class="anchored" data-anchor-id="abfrage-projekt-28-codd028">Abfrage Projekt 28 (cod=d028)</h2>
-<div id="cell-10" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> <span class="cf">await</span> dnb_sru(<span class="st">'cod=d028'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(records), <span class="st">'Ergebnisse'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="anzeige-der-treffer-in-einer-tabelle" class="level2">
-<h2 class="anchored" data-anchor-id="anzeige-der-treffer-in-einer-tabelle">Anzeige der Treffer in einer Tabelle <a class="anchor" id="Teil4"></a></h2>
-<div id="cell-12" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> [parse_record(record) <span class="cf">for</span> record <span class="kw">in</span> records]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(output)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="speichern-der-ergebnisse-als-csv-datei" class="level1">
-<h1>Speichern der Ergebnisse als CSV-Datei!</h1>
-<div id="cell-14" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"SRU_Titel.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="172ffa43-f157-4a06-8af9-a0c0b73a12d0" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -796,9 +1158,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Einstieg.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_XML-Dump_Einstieg.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

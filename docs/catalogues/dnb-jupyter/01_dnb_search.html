@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DNBLab Jupyter Notebook zur SRU Abfrage – Linked Open Exhibition</title>
+<title>Notebook 01 — DNB SRU Search – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,10 +126,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
@@ -204,21 +224,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sru---schnittstellenabfrage-und-datenauslieferung" id="toc-sru---schnittstellenabfrage-und-datenauslieferung" class="nav-link active" data-scroll-target="#sru---schnittstellenabfrage-und-datenauslieferung">SRU - Schnittstellenabfrage und Datenauslieferung</a></li>
-  <li><a href="#abfrage-über-alle-datensätze" id="toc-abfrage-über-alle-datensätze" class="nav-link" data-scroll-target="#abfrage-über-alle-datensätze">Abfrage über alle Datensätze… </a><a class="anchor nav-link" id="Teil2" data-scroll-target="undefined"></a></li>
-  <li><a href="#felder-titel-und-links-zu-den-objekten-durchsuchen" id="toc-felder-titel-und-links-zu-den-objekten-durchsuchen" class="nav-link" data-scroll-target="#felder-titel-und-links-zu-den-objekten-durchsuchen">Felder Titel und Links zu den Objekten durchsuchen… </a><a class="anchor nav-link" id="Teil3" data-scroll-target="undefined"></a></li>
-  <li><a href="#abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten" id="toc-abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten" class="nav-link" data-scroll-target="#abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten">Abfrage nach Suchwort “Pandemie” im Titel + Links zu frei verfügbaren Objekten!</a></li>
-  <li><a href="#anzeige-der-treffer-in-einer-tabelle" id="toc-anzeige-der-treffer-in-einer-tabelle" class="nav-link" data-scroll-target="#anzeige-der-treffer-in-einer-tabelle">Anzeige der Treffer in einer Tabelle… </a><a class="anchor nav-link" id="Teil4" data-scroll-target="undefined"></a></li>
-  <li><a href="#speichern-der-ergebnisse-als-csv-datei" id="toc-speichern-der-ergebnisse-als-csv-datei" class="nav-link" data-scroll-target="#speichern-der-ergebnisse-als-csv-datei">Speichern der Ergebnisse als CSV-Datei!</a></li>
+  <li><a href="#background-sru" id="toc-background-sru" class="nav-link active" data-scroll-target="#background-sru">Background: SRU</a></li>
+  <li><a href="#step-1-count-total-records" id="toc-step-1-count-total-records" class="nav-link" data-scroll-target="#step-1-count-total-records">Step 1 — Count total records</a></li>
+  <li><a href="#step-2-retrieve-all-pages-and-save-as-xml" id="toc-step-2-retrieve-all-pages-and-save-as-xml" class="nav-link" data-scroll-target="#step-2-retrieve-all-pages-and-save-as-xml">Step 2 — Retrieve all pages and save as XML</a></li>
+  <li><a href="#step-3-inspect-the-first-record" id="toc-step-3-inspect-the-first-record" class="nav-link" data-scroll-target="#step-3-inspect-the-first-record">Step 3 — Inspect the first record</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Tutorial_Workshop.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/01_dnb_search.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DNBLab Jupyter Notebook zur SRU Abfrage</h1>
+<h1 class="title">Notebook 01 — DNB SRU Search</h1>
 </div>
 
 
@@ -235,42 +253,180 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="sru---schnittstellenabfrage-und-datenauslieferung" class="level2">
-<h2 class="anchored" data-anchor-id="sru---schnittstellenabfrage-und-datenauslieferung">SRU - Schnittstellenabfrage und Datenauslieferung</h2>
-<p>Dieses DNBLab-Tutorial beschreibt eine Beispielabfrage über die SRU-Schnittstelle mit Python. In dem Jupyter Notebook kann der dokumentierte Code direkt ausgeführt und angepasst werden. Das Tutorial umfasst die exemplarische Abfrage und Ausgabe der Daten im Format MARC21-xml zur weiteren Verarbeitung und den Export der Ergebnisse als CSV-Datei.</p>
-<div id="cell-4" class="cell" data-trusted="true" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.parsefrom pyodide.http <span class="im">import</span> open_url, pyfetchfrom js <span class="im">import</span> fetchfrom bs4 <span class="im">import</span> BeautifulSoup <span class="im">as</span> soupimport unicodedatafrom lxml <span class="im">import</span> etreeimport pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Project:</strong> Linked Open Exhibition — NFDI4Culture / Hochschule Hannover (BIM-126-02)<br>
+<strong>AI attribution:</strong> GitHub Copilot (Claude Sonnet 4.6)<br>
+<strong>Licence (DNB data):</strong> CC0 1.0 Universal — see <a href="https://www.dnb.de/EN/Professionell/Metadatendienste/metadatendienste_node.html">dnb.de/metadataservice</a></p>
+<p><strong>Purpose:</strong> Count and retrieve all DNB book records related to Sprengel Museum Hannover and save them as raw MARC21-XML files.</p>
+<hr>
+<section id="background-sru" class="level2">
+<h2 class="anchored" data-anchor-id="background-sru">Background: SRU</h2>
+<p><strong>SRU (Search/Retrieve via URL)</strong> is an OASIS/Library of Congress standard protocol for performing bibliographic searches over HTTP. You send a URL with query parameters; the response is XML.</p>
+<p><strong>DNB SRU endpoint:</strong> <code>https://services.dnb.de/sru/dnb</code></p>
+<p>Key parameters:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>operation</code></td>
+<td><code>searchRetrieve</code></td>
+<td>perform a search</td>
+</tr>
+<tr class="even">
+<td><code>query</code></td>
+<td><code>Sprengel Museum and mat=books</code></td>
+<td>keyword search, books only</td>
+</tr>
+<tr class="odd">
+<td><code>recordSchema</code></td>
+<td><code>MARC21-xml</code></td>
+<td>return MARC21-XML records</td>
+</tr>
+<tr class="even">
+<td><code>maximumRecords</code></td>
+<td><code>100</code></td>
+<td>up to 100 records per request</td>
+</tr>
+<tr class="odd">
+<td><code>startRecord</code></td>
+<td><code>1</code>, <code>101</code>, <code>201</code>, …</td>
+<td>pagination offset</td>
+</tr>
+</tbody>
+</table>
+<p>This is the same search as the DNB portal: <a href="https://portal.dnb.de/opac/moveDown?currentResultId=Sprengel+and+Museum%26any&amp;categoryId=books">portal.dnb.de — Sprengel Museum books</a></p>
+<p>All DNB bibliographic metadata is released under <strong>CC0 1.0 Universal</strong> — it may be freely reused without attribution.</p>
+<div id="79a271ae" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xml.etree.ElementTree <span class="im">as</span> ET</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Output directory for raw XML files</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>OUTPUT_DIR <span class="op">=</span> Path(<span class="st">"../sprengel_raw"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>OUTPUT_DIR.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>SRU_BASE    <span class="op">=</span> <span class="st">"https://services.dnb.de/sru/dnb"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>QUERY       <span class="op">=</span> <span class="st">"Sprengel Museum and mat=books"</span>   <span class="co"># simple keyword search, books only</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>MAX_RECORDS <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Output directory : </span><span class="sc">{</span>OUTPUT_DIR<span class="sc">.</span>resolve()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Query            : </span><span class="sc">{</span>QUERY<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Output directory : C:\git\linked-open-exhibition\catalogues\sprengel_raw
+Query            : Sprengel Museum and mat=books</code></pre>
+</div>
 </div>
 </section>
-<section id="abfrage-über-alle-datensätze" class="level2">
-<h2 class="anchored" data-anchor-id="abfrage-über-alle-datensätze">Abfrage über alle Datensätze… <a class="anchor" id="Teil2"></a></h2>
-<div id="cell-6" class="cell" data-trusted="true" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> dnb_sru(query):        base_url <span class="op">=</span> <span class="st">"https://services.dnb.de/sru/dnb"</span>    params <span class="op">=</span> {<span class="st">'recordSchema'</span> : <span class="st">'MARC21-xml'</span>,          <span class="st">'operation'</span>: <span class="st">'searchRetrieve'</span>,          <span class="st">'version'</span>: <span class="st">'1.1'</span>,          <span class="st">'maximumRecords'</span>: <span class="st">'100'</span>,          <span class="st">'query'</span>: query         }        r <span class="op">=</span> <span class="cf">await</span> fetch(base_url <span class="op">+</span> <span class="st">"?"</span> <span class="op">+</span> urllib.parse.urlencode(params))      r_text <span class="op">=</span> <span class="cf">await</span> r.text()    xml <span class="op">=</span> soup(r_text, features<span class="op">=</span><span class="st">"xml"</span>)    records <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})            <span class="cf">if</span> <span class="bu">len</span>(records) <span class="op">&lt;</span> <span class="dv">100</span>:                <span class="cf">return</span> records        <span class="cf">else</span>:                num_results <span class="op">=</span> <span class="dv">100</span>        i <span class="op">=</span> <span class="dv">101</span>        <span class="cf">while</span> num_results <span class="op">==</span> <span class="dv">100</span>:                        params.update({<span class="st">'startRecord'</span>: i})            r <span class="op">=</span> <span class="cf">await</span> fetch(base_url <span class="op">+</span> <span class="st">"?"</span> <span class="op">+</span> urllib.parse.urlencode(params))              r_text <span class="op">=</span> <span class="cf">await</span> r.text()            xml <span class="op">=</span> soup(r_text, features<span class="op">=</span><span class="st">"xml"</span>)            new_records <span class="op">=</span> xml.find_all(<span class="st">'record'</span>, {<span class="st">'type'</span>:<span class="st">'Bibliographic'</span>})            records<span class="op">+=</span>new_records            i<span class="op">+=</span><span class="dv">100</span>            num_results <span class="op">=</span> <span class="bu">len</span>(new_records)                    <span class="cf">return</span> records</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="step-1-count-total-records" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-count-total-records">Step 1 — Count total records</h2>
+<p>Before downloading anything, ask the DNB how many records the query returns. This is exactly the same number shown on the <a href="https://portal.dnb.de/opac/moveDown?currentResultId=Sprengel+and+Museum%26any&amp;categoryId=books">DNB portal search</a>.</p>
+<div id="8f11b673" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"operation"</span>: <span class="st">"searchRetrieve"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"version"</span>: <span class="st">"1.1"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"query"</span>: QUERY,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"recordSchema"</span>: <span class="st">"MARC21-xml"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"maximumRecords"</span>: <span class="dv">1</span>,   <span class="co"># we only need the count for now</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"startRecord"</span>: <span class="dv">1</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> requests.get(SRU_BASE, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>resp.raise_for_status()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>root <span class="op">=</span> ET.fromstring(resp.text)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ns_srw <span class="op">=</span> {<span class="st">"srw"</span>: <span class="st">"http://www.loc.gov/zing/srw/"</span>}</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>total  <span class="op">=</span> <span class="bu">int</span>(root.findtext(<span class="st">"srw:numberOfRecords"</span>, default<span class="op">=</span><span class="st">"0"</span>, namespaces<span class="op">=</span>ns_srw))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>pages <span class="op">=</span> (total <span class="op">+</span> MAX_RECORDS <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> MAX_RECORDS</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total records matching query : </span><span class="sc">{</span>total<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pages to retrieve (100/page) : </span><span class="sc">{</span>pages<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total records matching query : 582
+Pages to retrieve (100/page) : 6</code></pre>
+</div>
 </div>
 </section>
-<section id="felder-titel-und-links-zu-den-objekten-durchsuchen" class="level2">
-<h2 class="anchored" data-anchor-id="felder-titel-und-links-zu-den-objekten-durchsuchen">Felder Titel und Links zu den Objekten durchsuchen… <a class="anchor" id="Teil3"></a></h2>
-<div id="cell-8" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_record(record):        ns <span class="op">=</span> {<span class="st">"marc"</span>:<span class="st">"http://www.loc.gov/MARC21/slim"</span>}    xml <span class="op">=</span> etree.fromstring(unicodedata.normalize(<span class="st">"NFC"</span>, <span class="bu">str</span>(record)))        <span class="co">#idn    idn = xml.xpath("marc:controlfield[@tag = '001']", namespaces=ns)    try:        idn = idn[0].text    except:        idn = 'fail'        # link    link = xml.xpath("marc:datafield[@tag = '856']/marc:subfield[@code = 'u']", namespaces=ns)        try:        link = link[0].text        #titel = unicodedata.normalize("NFC", titel)    except:        link = "unkown"                  # titel    titel = xml.xpath("marc:datafield[@tag = '245']/marc:subfield[@code = 'a']", namespaces=ns)        try:        titel = titel[0].text        #titel = unicodedata.normalize("NFC", titel)    except:        titel = "unkown"                meta_dict = {"idn":idn,                 "titel":titel,                 "link":link}        return meta_dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="step-2-retrieve-all-pages-and-save-as-xml" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-retrieve-all-pages-and-save-as-xml">Step 2 — Retrieve all pages and save as XML</h2>
+<p>Each page of 100 records is saved as a separate file: <code>sprengel_raw/page_001.xml</code>, <code>page_002.xml</code>, etc.</p>
+<p>A 1-second pause between requests avoids overloading the DNB server.</p>
+<div id="d0fc6284" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> page <span class="kw">in</span> <span class="bu">range</span>(pages):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> page <span class="op">*</span> MAX_RECORDS <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"operation"</span>: <span class="st">"searchRetrieve"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"version"</span>: <span class="st">"1.1"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"query"</span>: QUERY,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"recordSchema"</span>: <span class="st">"MARC21-xml"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"maximumRecords"</span>: MAX_RECORDS,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"startRecord"</span>: start,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    resp <span class="op">=</span> requests.get(SRU_BASE, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    resp.raise_for_status()</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    out_file <span class="op">=</span> OUTPUT_DIR <span class="op">/</span> <span class="ss">f"page_</span><span class="sc">{</span>page<span class="op">+</span><span class="dv">1</span><span class="sc">:03d}</span><span class="ss">.xml"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    out_file.write_text(resp.text, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Saved page </span><span class="sc">{</span>page<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>pages<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>out_file<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> (startRecord=</span><span class="sc">{</span>start<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page <span class="op">&lt;</span> pages <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="dv">1</span>)  <span class="co"># be polite to the DNB server</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">All pages retrieved."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saved page 1/6 → page_001.xml (startRecord=1)
+Saved page 2/6 → page_002.xml (startRecord=101)
+Saved page 3/6 → page_003.xml (startRecord=201)
+Saved page 4/6 → page_004.xml (startRecord=301)
+Saved page 5/6 → page_005.xml (startRecord=401)
+Saved page 6/6 → page_006.xml (startRecord=501)
+
+All pages retrieved.</code></pre>
+</div>
 </div>
 </section>
-<section id="abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten" class="level2">
-<h2 class="anchored" data-anchor-id="abfrage-nach-suchwort-pandemie-im-titel-links-zu-frei-verfügbaren-objekten">Abfrage nach Suchwort “Pandemie” im Titel + Links zu frei verfügbaren Objekten!</h2>
-<div id="cell-10" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> <span class="cf">await</span> dnb_sru(<span class="st">'tit=Pandemie and location=onlinefree'</span>)<span class="bu">print</span>(<span class="bu">len</span>(records), <span class="st">'Ergebnisse'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="step-3-inspect-the-first-record" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-inspect-the-first-record">Step 3 — Inspect the first record</h2>
+<p>Print the first MARC21-XML record from page 1 to verify the data looks correct.</p>
+<div id="3bca7999" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>first_page <span class="op">=</span> OUTPUT_DIR <span class="op">/</span> <span class="st">"page_001.xml"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>root <span class="op">=</span> ET.parse(first_page).getroot()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ns_srw  <span class="op">=</span> <span class="st">"http://www.loc.gov/zing/srw/"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ns_marc <span class="op">=</span> <span class="st">"http://www.loc.gov/MARC21/slim"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> root.findall(<span class="ss">f".//</span><span class="ch">{{</span><span class="sc">{</span>ns_srw<span class="sc">}</span><span class="ch">}}</span><span class="ss">recordData/</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">record"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Records in first page: </span><span class="sc">{</span><span class="bu">len</span>(records)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a summary of the first record</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>rec <span class="op">=</span> records[<span class="dv">0</span>]</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>idn   <span class="op">=</span> rec.findtext(<span class="ss">f"</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">controlfield[@tag='001']"</span>) <span class="kw">or</span> <span class="st">"—"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> rec.findtext(<span class="ss">f".//</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">datafield[@tag='245']/</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">subfield[@code='a']"</span>) <span class="kw">or</span> <span class="st">"—"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>year  <span class="op">=</span> (rec.findtext(<span class="ss">f".//</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">datafield[@tag='264']/</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">subfield[@code='c']"</span>) <span class="kw">or</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>         rec.findtext(<span class="ss">f".//</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">datafield[@tag='260']/</span><span class="ch">{{</span><span class="sc">{</span>ns_marc<span class="sc">}</span><span class="ch">}}</span><span class="ss">subfield[@code='c']"</span>) <span class="kw">or</span> <span class="st">"—"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">First record:</span><span class="ch">\n</span><span class="ss">  IDN  : </span><span class="sc">{</span>idn<span class="sc">}</span><span class="ch">\n</span><span class="ss">  Title: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ch">\n</span><span class="ss">  Year : </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Records in first page: 100
+
+First record:
+  IDN  : 1375818457
+  Title: Niki de Saint Phalle - Die Grotte
+  Year : 2026</code></pre>
 </div>
-</section>
-<section id="anzeige-der-treffer-in-einer-tabelle" class="level2">
-<h2 class="anchored" data-anchor-id="anzeige-der-treffer-in-einer-tabelle">Anzeige der Treffer in einer Tabelle… <a class="anchor" id="Teil4"></a></h2>
-<div id="cell-12" class="cell" data-trusted="true">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> [parse_record(record) <span class="cf">for</span> record <span class="kw">in</span> records]df <span class="op">=</span> pd.DataFrame(output)df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="speichern-der-ergebnisse-als-csv-datei" class="level2">
-<h2 class="anchored" data-anchor-id="speichern-der-ergebnisse-als-csv-datei">Speichern der Ergebnisse als CSV-Datei!</h2>
-<div id="cell-14" class="cell" data-trusted="true" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"SRU_Titel.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<hr>
+<p><strong>Next step:</strong> Run <code>02_dnb_filter_exhibitions.ipynb</code> to parse these XML files, filter for exhibition catalogues, and extract structured fields into a CSV.</p>
 
 
 </section>
@@ -704,9 +860,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Tutorial_Workshop.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/01_dnb_search.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>readme-(1 – Linked Open Exhibition</title>
+<title>folium Interactive Map Demo – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -78,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Linked Open Exhibition</span>
     </a>
   </div>
@@ -89,15 +123,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../data-analysis.html"> 
+    <a class="nav-link" href="../../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -106,45 +160,45 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
         <li>
-    <a class="dropdown-item" href="../../data-models/artist-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/artist-datamodel.html">
  <span class="dropdown-text">Artist Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../data-models/exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/exhibition-datamodel.html">
  <span class="dropdown-text">Exhibition Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../data-models/dnb-catalogue-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/dnb-catalogue-datamodel.html">
  <span class="dropdown-text">DNB Catalogue Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../data-models/item-in-exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../../data-models/item-in-exhibition-datamodel.html">
  <span class="dropdown-text">Item in Exhibition Data Model</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../PLAN.html"> 
+    <a class="nav-link" href="../../../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Documentation/glossary.html"> 
+    <a class="nav-link" href="../../../Documentation/glossary.html"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Documentation/glossary-de.html"> 
+    <a class="nav-link" href="../../../Documentation/glossary-de.html"> 
 <span class="menu-text">Glossar (DE)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Documentation/orcid-guide.html"> 
+    <a class="nav-link" href="../../../Documentation/orcid-guide.html"> 
 <span class="menu-text">ORCID Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Documentation/protocol.html"> 
+    <a class="nav-link" href="../../../Documentation/protocol.html"> 
 <span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
@@ -170,75 +224,87 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#start-dnbs-jupyterlite-environment" id="toc-start-dnbs-jupyterlite-environment" class="nav-link active" data-scroll-target="#start-dnbs-jupyterlite-environment">Start DNB’s JupyterLite environment:</a>
-  <ul class="collapse">
-  <li><a href="#this-repository-has-been-cloned-from-the-jupyterlite-demo" id="toc-this-repository-has-been-cloned-from-the-jupyterlite-demo" class="nav-link" data-scroll-target="#this-repository-has-been-cloned-from-the-jupyterlite-demo">This repository has been cloned from the JupyterLite Demo</a></li>
-  </ul></li>
-  <li><a href="#jupyterlite-demo" id="toc-jupyterlite-demo" class="nav-link" data-scroll-target="#jupyterlite-demo">JupyterLite Demo</a>
-  <ul class="collapse">
-  <li><a href="#try-it-in-your-browser" id="toc-try-it-in-your-browser" class="nav-link" data-scroll-target="#try-it-in-your-browser">✨ Try it in your browser ✨</a></li>
-  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
-  <li><a href="#deploy-your-jupyterlite-website-on-github-pages" id="toc-deploy-your-jupyterlite-website-on-github-pages" class="nav-link" data-scroll-target="#deploy-your-jupyterlite-website-on-github-pages">Deploy your JupyterLite website on GitHub Pages</a></li>
-  <li><a href="#further-information-and-updates" id="toc-further-information-and-updates" class="nav-link" data-scroll-target="#further-information-and-updates">Further Information and Updates</a></li>
-  </ul></li>
+  <li><a href="#demo-of-folium-map" id="toc-demo-of-folium-map" class="nav-link active" data-scroll-target="#demo-of-folium-map">Demo of <code>folium</code> Map</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/catalogues/dnb-jupyter/README (1).md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/folium.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-
-
-<section id="start-dnbs-jupyterlite-environment" class="level1">
-<h1>Start DNB’s JupyterLite environment:</h1>
-<p>Click to start JupyterLite: <a href="https://deutsche-nationalbibliothek.github.io/jupyterlite"><img src="https://jupyterlite.rtfd.io/en/latest/_static/badge.svg" class="img-fluid" alt="lite-badge"></a></p>
-<section id="this-repository-has-been-cloned-from-the-jupyterlite-demo" class="level3">
-<h3 class="anchored" data-anchor-id="this-repository-has-been-cloned-from-the-jupyterlite-demo">This repository has been cloned from the JupyterLite Demo</h3>
-<p>For more information on JupyterLite, please see the information below:</p>
-</section>
-</section>
-<section id="jupyterlite-demo" class="level1">
-<h1>JupyterLite Demo</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://jupyterlite.github.io/demo"><img src="https://jupyterlite.rtfd.io/en/latest/_static/badge.svg" class="img-fluid figure-img" alt="lite-badge"></a></p>
-<figcaption>lite-badge</figcaption>
-</figure>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><code>folium</code> Interactive Map Demo</h1>
 </div>
-<p>JupyterLite deployed as a static site to GitHub Pages, for demo purposes.</p>
-<section id="try-it-in-your-browser" class="level2">
-<h2 class="anchored" data-anchor-id="try-it-in-your-browser">✨ Try it in your browser ✨</h2>
-<p>➡️ <strong>https://jupyterlite.github.io/demo</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif" class="img-fluid figure-img"></p>
-<figcaption>github-pages</figcaption>
-</figure>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Simple demonstration of rendering a map in a <code>jupyterlite</code> notebook.</p>
+<p>Note that the <code>folium</code> package has several dependencies which themselves may have dependencies.</p>
+<p>The following code fragement, run in a fresh Python enviroment into which <code>folium</code> has already been installed, identifies the packages that are loaded in when <code>folium</code> is loaded:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#https://stackoverflow.com/a/40381601/454773</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>before <span class="op">=</span> [<span class="bu">str</span>(m) <span class="cf">for</span> m <span class="kw">in</span> sys.modules]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>after <span class="op">=</span> [<span class="bu">str</span>(m) <span class="cf">for</span> m <span class="kw">in</span> sys.modules]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>([m.split(<span class="st">'.'</span>)[<span class="dv">0</span>] <span class="cf">for</span> m <span class="kw">in</span> after <span class="cf">if</span> <span class="kw">not</span> m <span class="kw">in</span> before <span class="kw">and</span> <span class="kw">not</span> m.startswith(<span class="st">'_'</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The loaded packages are:</p>
+<pre><code>{'branca',
+ 'certifi',
+ 'chardet',
+ 'cmath',
+ 'csv',
+ 'dateutil',
+ 'encodings',
+ 'folium',
+ 'gzip',
+ 'http',
+ 'idna',
+ 'importlib',
+ 'jinja2',
+ 'markupsafe',
+ 'mmap',
+ 'numpy',
+ 'pandas',
+ 'pkg_resources',
+ 'pytz',
+ 'requests',
+ 'secrets',
+ 'stringprep',
+ 'urllib3',
+ 'zipfile'}</code></pre>
+<p>The following packages seem to need installing in order load <code>folium</code>, along with folium itself:</p>
+<pre><code>chardet, certifi, idna, branca, urllib3, Jinja2, requests, Markupsafe</code></pre>
+<p>Universal wheels, with filenames of the form <code>PACKAGE-VERSION-py2.py3-none-any.whl</code> appearing in the <em>Download files</em> area of a PyPi package page (<a href="https://pypi.org/project/requests/#files">example</a>] are required in order to install the package.</p>
+<p>One required package, <a href="https://pypi.org/project/Markupsafe/#files"><code>Markupsafe</code></a>) <em>did not</em> have a universal wheel available, so a wheel was manually built elsewhere (by hacking the <a href="https://github.com/pallets/markupsafe/blob/main/setup.py"><code>setup.py</code> file</a> to force it to build the wheel in a platform and speedup free way) and pushed to a downloadable location in an <a href="https://opencomputinglab.github.io/vce-wheelhouse/"><em>ad hoc</em> wheelhouse</a>.</p>
+<div id="cell-3" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install folium requirements</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q folium</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="requirements" class="level2">
-<h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
-<p>JupyterLite is being tested against modern web browsers:</p>
-<ul>
-<li>Firefox 90+</li>
-<li>Chromium 89+</li>
-</ul>
-</section>
-<section id="deploy-your-jupyterlite-website-on-github-pages" class="level2">
-<h2 class="anchored" data-anchor-id="deploy-your-jupyterlite-website-on-github-pages">Deploy your JupyterLite website on GitHub Pages</h2>
-<p>Check out the guide on the JupyterLite documentation: https://jupyterlite.readthedocs.io/en/latest/quickstart/deploy.html</p>
-</section>
-<section id="further-information-and-updates" class="level2">
-<h2 class="anchored" data-anchor-id="further-information-and-updates">Further Information and Updates</h2>
-<p>For more info, keep an eye on the JupyterLite documentation:</p>
-<ul>
-<li>How-to Guides: https://jupyterlite.readthedocs.io/en/latest/howto/index.html</li>
-<li>Reference: https://jupyterlite.readthedocs.io/en/latest/reference/index.html</li>
-</ul>
+<section id="demo-of-folium-map" class="level2">
+<h2 class="anchored" data-anchor-id="demo-of-folium-map">Demo of <code>folium</code> Map</h2>
+<p>Load in the <code>folium</code> package:</p>
+<div id="cell-5" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And render a demo map:</p>
+<div id="cell-7" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> folium.Map(location<span class="op">=</span>[<span class="fl">50.693848</span>, <span class="op">-</span><span class="fl">1.304734</span>], zoom_start<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -670,9 +736,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/catalogues/dnb-jupyter/README (1).md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/folium.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

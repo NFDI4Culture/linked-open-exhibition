@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ipywidgets Interactive Demo – Linked Open Exhibition</title>
+<title>p5 notebook – Linked Open Exhibition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Linked Open Exhibition</span>
     </a>
   </div>
@@ -123,15 +123,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../exhibitions.html"> 
-<span class="menu-text">Exhibitions</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../data-analysis.html"> 
+    <a class="nav-link" href="../../data-analysis.html"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -140,45 +160,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
         <li>
-    <a class="dropdown-item" href="../../../data-models/artist-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/artist-datamodel.html">
  <span class="dropdown-text">Artist Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/exhibition-datamodel.html">
  <span class="dropdown-text">Exhibition Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/dnb-catalogue-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/dnb-catalogue-datamodel.html">
  <span class="dropdown-text">DNB Catalogue Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../data-models/item-in-exhibition-datamodel.html">
+    <a class="dropdown-item" href="../../data-models/item-in-exhibition-datamodel.html">
  <span class="dropdown-text">Item in Exhibition Data Model</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../PLAN.html"> 
+    <a class="nav-link" href="../../PLAN.html"> 
 <span class="menu-text">Plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/glossary.html"> 
+    <a class="nav-link" href="../../Documentation/glossary.html"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/glossary-de.html"> 
+    <a class="nav-link" href="../../Documentation/glossary-de.html"> 
 <span class="menu-text">Glossar (DE)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/orcid-guide.html"> 
+    <a class="nav-link" href="../../Documentation/orcid-guide.html"> 
 <span class="menu-text">ORCID Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Documentation/protocol.html"> 
+    <a class="nav-link" href="../../Documentation/protocol.html"> 
 <span class="menu-text">Protocol</span></a>
   </li>  
 </ul>
@@ -204,16 +224,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bqplot-interactive-demo" id="toc-bqplot-interactive-demo" class="nav-link active" data-scroll-target="#bqplot-interactive-demo"><code>bqplot</code> Interactive Demo</a></li>
+  <li><a href="#the-setup-functionthe-usual-p5-setup-function-which-creates-the-canvas." id="toc-the-setup-functionthe-usual-p5-setup-function-which-creates-the-canvas." class="nav-link active" data-scroll-target="#the-setup-functionthe-usual-p5-setup-function-which-creates-the-canvas.">The <code>setup</code> functionThe usual p5 setup function, which creates the canvas.</a></li>
+  <li><a href="#the-draw-functionfrom-the-p5.js-documentation-the-draw-function-continuously-executes-the-lines-of-code-contained-inside-its-block-until-the-program-is-stopped-or-noloop-is-called." id="toc-the-draw-functionfrom-the-p5.js-documentation-the-draw-function-continuously-executes-the-lines-of-code-contained-inside-its-block-until-the-program-is-stopped-or-noloop-is-called." class="nav-link" data-scroll-target="#the-draw-functionfrom-the-p5.js-documentation-the-draw-function-continuously-executes-the-lines-of-code-contained-inside-its-block-until-the-program-is-stopped-or-noloop-is-called.">The <code>draw</code> functionFrom the p5.js documentation:&gt; The <code>draw()</code> function continuously executes the lines of code contained inside its block until the program is stopped or <code>noLoop()</code> is called.</a></li>
+  <li><a href="#show-the-sketchnow-lets-show-the-sketch-by-using-the-show-magic" id="toc-show-the-sketchnow-lets-show-the-sketch-by-using-the-show-magic" class="nav-link" data-scroll-target="#show-the-sketchnow-lets-show-the-sketch-by-using-the-show-magic">Show the sketchNow let’s show the sketch by using the <code>%show</code> magic:</a></li>
+  <li><a href="#tweak-the-valueswe-can-also-tweak-some-values-in-real-time" id="toc-tweak-the-valueswe-can-also-tweak-some-values-in-real-time" class="nav-link" data-scroll-target="#tweak-the-valueswe-can-also-tweak-some-values-in-real-time">Tweak the valuesWe can also tweak some values in real time:</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/interactive-widgets.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/p5.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><code>ipywidgets</code> Interactive Demo</h1>
+<h1 class="title">p5 notebook</h1>
 </div>
 
 
@@ -230,102 +253,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Simple demonstration of rendering Interactive widgets in a <code>jupyterlite</code> notebook.</p>
-<p><code>ipywidgets</code> can be installed in this deployment (it provides the <span class="citation" data-cites="jupyter-widgets/jupyterlab-manager">@jupyter-widgets/jupyterlab-manager</span> federated extension), but you will need to make your own deployment to have access to other interactive widgets libraries.</p>
-<div id="d62fba6e" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q ipywidgets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A minimal Jupyter notebook UI for <a href="https://p5js.org">p5.js</a> kernels.</p>
+<p>First let’s define a couple of variables:</p>
+<div id="cell-3" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> n <span class="op">=</span> <span class="dv">4</span><span class="op">;</span><span class="kw">var</span> speed <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3bab23f8-de91-43c9-9cec-84f4924425fc" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> IntSlider</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="the-setup-functionthe-usual-p5-setup-function-which-creates-the-canvas." class="level2">
+<h2 class="anchored" data-anchor-id="the-setup-functionthe-usual-p5-setup-function-which-creates-the-canvas.">The <code>setup</code> functionThe usual p5 setup function, which creates the canvas.</h2>
+<div id="cell-5" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">setup</span> () {  <span class="fu">createCanvas</span>(innerWidth<span class="op">,</span> innerHeight)<span class="op">;</span>  <span class="fu">rectMode</span>(CENTER)<span class="op">;</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a15c5acb-ee72-4005-8761-5693db853f22" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>slider <span class="op">=</span> IntSlider()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-draw-functionfrom-the-p5.js-documentation-the-draw-function-continuously-executes-the-lines-of-code-contained-inside-its-block-until-the-program-is-stopped-or-noloop-is-called." class="level2">
+<h2 class="anchored" data-anchor-id="the-draw-functionfrom-the-p5.js-documentation-the-draw-function-continuously-executes-the-lines-of-code-contained-inside-its-block-until-the-program-is-stopped-or-noloop-is-called.">The <code>draw</code> functionFrom the <a href="https://p5js.org/reference/#/p5/draw">p5.js documentation</a>:&gt; The <code>draw()</code> function continuously executes the lines of code contained inside its block until the program is stopped or <code>noLoop()</code> is called.</h2>
+<div id="cell-7" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">draw</span>() {  <span class="fu">background</span>(<span class="st">'#ddd'</span>)<span class="op">;</span>  <span class="fu">translate</span>(innerWidth <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> innerHeight <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++</span>) {    <span class="fu">push</span>()<span class="op">;</span>    <span class="fu">rotate</span>(frameCount <span class="op">*</span> speed <span class="op">/</span> <span class="dv">1000</span> <span class="op">*</span> (i <span class="op">+</span> <span class="dv">1</span>))<span class="op">;</span>    <span class="fu">fill</span>(i <span class="op">*</span> <span class="dv">5</span><span class="op">,</span> i <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> i <span class="op">*</span> <span class="dv">150</span>)<span class="op">;</span>    <span class="kw">const</span> s <span class="op">=</span> <span class="dv">200</span> <span class="op">-</span> i <span class="op">*</span> <span class="dv">10</span><span class="op">;</span>    <span class="fu">rect</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> s<span class="op">,</span> s)<span class="op">;</span>    <span class="fu">pop</span>()<span class="op">;</span>  }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8ba89682-e0d7-4bd2-961a-f9956850fd5a" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>slider</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="show-the-sketchnow-lets-show-the-sketch-by-using-the-show-magic" class="level2">
+<h2 class="anchored" data-anchor-id="show-the-sketchnow-lets-show-the-sketch-by-using-the-show-magic">Show the sketchNow let’s show the sketch by using the <code>%show</code> magic:</h2>
+<div id="cell-9" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="50510ade-668f-4477-8cb2-41574609ac73" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>slider</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tweak-the-valueswe-can-also-tweak-some-values-in-real-time" class="level2">
+<h2 class="anchored" data-anchor-id="tweak-the-valueswe-can-also-tweak-some-values-in-real-time">Tweak the valuesWe can also tweak some values in real time:</h2>
+<div id="cell-11" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7bac1ed8-8c77-426b-a781-1c1a6cfad829" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>slider.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="976a70a0-e99d-4c20-b005-f59bbba10f85" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>slider.value <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="3134c76e-cffb-4701-8230-e6c4bfbbfdb9" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> IntText, link</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="f7b3fe0a-5695-4ef2-a573-40785e68fbae" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> IntText()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="5e2fd50e-19e0-4e20-a1f7-ad65400ec636" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="bb3bedce-7311-48c0-aeab-8fe3aa554b92" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>link((slider, <span class="st">'value'</span>), (text, <span class="st">'value'</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="bqplot-interactive-demo" class="level1">
-<h1><code>bqplot</code> Interactive Demo</h1>
-<p>Plotting in JupyterLite</p>
-<p><code>bqplot</code> can be installed in this deployment (it provides the bqplot federated extension), but you will need to make your own deployment to have access to other interactive widgets libraries.</p>
-<div id="119eb9a3-ac98-42c3-98d4-1ac460eb75d3" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q bqplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="23b32857-2958-4083-b16a-ac26cd2408d4" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bqplot <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(n))</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.cumsum(np.random.randn(n)) <span class="op">+</span> <span class="fl">100.</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>sc_x <span class="op">=</span> LinearScale()</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>sc_y <span class="op">=</span> LinearScale()</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> Lines(</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>x, y<span class="op">=</span>y,</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    scales<span class="op">=</span>{<span class="st">'x'</span>: sc_x, <span class="st">'y'</span>: sc_y}</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>ax_x <span class="op">=</span> Axis(scale<span class="op">=</span>sc_x, label<span class="op">=</span><span class="st">'Index'</span>)</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>ax_y <span class="op">=</span> Axis(scale<span class="op">=</span>sc_y, orientation<span class="op">=</span><span class="st">'vertical'</span>, label<span class="op">=</span><span class="st">'lines'</span>)</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>Figure(marks<span class="op">=</span>[lines], axes<span class="op">=</span>[ax_x, ax_y], title<span class="op">=</span><span class="st">'Lines'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="ddb6b44e-06a0-4049-a79d-33ffc90d5a03" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lines.colors <span class="op">=</span> [<span class="st">'green'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="e367e7fb-b403-41aa-9629-224827ec3005" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lines.fill <span class="op">=</span> <span class="st">'bottom'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="d4a167f3-07c4-4880-92f5-7fcdea0c61c6" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lines.marker <span class="op">=</span> <span class="st">'circle'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="1d1342f7-ec08-4f53-84dc-d712226d9e46" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(n))</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.cumsum(np.random.randn(n))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>sc_x <span class="op">=</span> LinearScale()</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>sc_y <span class="op">=</span> LinearScale()</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> Bars(</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>x, y<span class="op">=</span>y,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    scales<span class="op">=</span>{<span class="st">'x'</span>: sc_x, <span class="st">'y'</span>: sc_y}</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax_x <span class="op">=</span> Axis(scale<span class="op">=</span>sc_x, label<span class="op">=</span><span class="st">'Index'</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ax_y <span class="op">=</span> Axis(scale<span class="op">=</span>sc_y, orientation<span class="op">=</span><span class="st">'vertical'</span>, label<span class="op">=</span><span class="st">'bars'</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>Figure(marks<span class="op">=</span>[bars], axes<span class="op">=</span>[ax_x, ax_y], title<span class="op">=</span><span class="st">'Bars'</span>, animation_duration<span class="op">=</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="f86bbcfb-5b02-4700-b8d6-f90068893b55" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>bars.y <span class="op">=</span> np.cumsum(np.random.randn(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can also show the sketch a second time taking into account the new values:</p>
+<div id="cell-14" class="cell" data-trusted="true">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -760,9 +721,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/pyb2d/interactive-widgets.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/p5.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/d64f96a">d64f96a</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/f2c5786">f2c5786</a></p>
 </div>
   </div>
 </footer>

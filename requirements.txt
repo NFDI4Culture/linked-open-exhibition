@@ -10,3 +10,4 @@ SPARQLWrapper
 pytesseract
 Pillow
 pymupdf
+ollama

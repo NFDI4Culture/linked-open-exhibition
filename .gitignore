@@ -1,6 +1,17 @@
 /.quarto/
 .env
-scans/baldessari-sprengel.pdf
+
+# PDF input files — source docs not for public distribution
+scans/
+
+# OCR source transcripts
+catalogues/scan-2/baldessari-sprengel.hocr
+catalogues/scan-2/baldessari-sprengel.txt
+catalogues/scan-2/baldessari-sprengel.xml
+output/ocr/
+
+# Page image directories created by pdftoppm when running notebooks locally
+*_pages/
    
 
 

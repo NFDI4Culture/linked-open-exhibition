@@ -1,5 +1,5 @@
 ---
-title: "John Baldessari — Exhibition Catalogue"
+title: "John Baldessari — Exhibition Catalogue: ISBN 3-88375-396-3"
 subtitle: "Sprengel Museum Hannover"
 description: "Catalogue of works by John Baldessari shown at the Sprengel Museum Hannover, sourced from OCR-processed exhibition catalogue (scan-2)."
 date: today
@@ -57,6 +57,188 @@ print(f"Loaded {len(items)} catalogue entries")
 **Venue:** [Sprengel Museum Hannover](https://www.wikidata.org/wiki/Q510144) &ensp;|&ensp;
 **Source:** OCR-processed exhibition catalogue, `catalogues/scan-2/`
 :::
+
+## Source Catalogue
+
+```{python}
+#| label: dnb-metadata
+import requests
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from IPython.display import HTML
+
+DNB_IDN    = "957409494"
+SRU_URL    = (f"https://services.dnb.de/sru/dnb?version=1.1"
+              f"&operation=searchRetrieve"
+              f"&query=idn%3D{DNB_IDN}"
+              f"&recordSchema=MARC21-xml")
+MARC       = "http://www.loc.gov/MARC21/slim"
+CACHE_FILE = Path("catalogues/scan-2/dnb-cache.xml")
+
+if CACHE_FILE.exists():
+    xml_text = CACHE_FILE.read_text(encoding="utf-8")
+else:
+    resp = requests.get(SRU_URL, headers={"User-Agent": "linked-open-exhibition/1.0"}, timeout=15)
+    resp.raise_for_status()
+    xml_text = resp.text
+    CACHE_FILE.write_text(xml_text, encoding="utf-8")
+
+rec = ET.fromstring(xml_text).find(f".//{{{MARC}}}record")
+
+def marc_sub(rec, tag, code):
+    """First matching subfield value."""
+    el = rec.find(f".//{{{MARC}}}datafield[@tag='{tag}']/{{{MARC}}}subfield[@code='{code}']")
+    return el.text.strip() if el is not None and el.text else ""
+
+def marc_subs(rec, tag, code):
+    """All matching subfield values."""
+    return [e.text.strip() for e in
+            rec.findall(f".//{{{MARC}}}datafield[@tag='{tag}']/{{{MARC}}}subfield[@code='{code}']")
+            if e.text]
+
+# --- extract fields -------------------------------------------------------
+title      = marc_sub(rec, "245", "a")
+subtitle   = marc_sub(rec, "245", "b")
+resp_stmt  = marc_sub(rec, "245", "c")   # responsibility statement
+place      = marc_sub(rec, "264", "a")
+publisher  = marc_sub(rec, "264", "b")
+year       = marc_sub(rec, "264", "c")
+extent     = marc_sub(rec, "300", "a")
+ill        = marc_sub(rec, "300", "b")
+dimensions = marc_sub(rec, "300", "c")
+languages  = marc_subs(rec, "041", "a")
+isbns      = marc_subs(rec, "020", "a")
+isbn13     = next((i for i in isbns if len(i) == 13), isbns[0] if isbns else "")
+
+# contributors: tag 700 (persons) and 710 (corporate bodies)
+contributors = []
+for df in rec.findall(f".//{{{MARC}}}datafield[@tag='700']"):
+    name = next((e.text for e in df.findall(f"{{{MARC}}}subfield[@code='a']") if e.text), "")
+    role = next((e.text for e in df.findall(f"{{{MARC}}}subfield[@code='e']") if e.text), "")
+    gnd  = next((e.text for e in df.findall(f"{{{MARC}}}subfield[@code='0']") if e.text and "d-nb.info/gnd" in e.text), "")
+    if name:
+        contributors.append({"name": name, "role": role, "gnd": gnd})
+for df in rec.findall(f".//{{{MARC}}}datafield[@tag='710']"):
+    name = next((e.text for e in df.findall(f"{{{MARC}}}subfield[@code='a']") if e.text), "")
+    role = next((e.text for e in df.findall(f"{{{MARC}}}subfield[@code='e']") if e.text), "")
+    gnd  = next((e.text for e in df.findall(f"{{{MARC}}}subfield[@code='0']") if e.text and "d-nb.info/gnd" in e.text), "")
+    if name:
+        contributors.append({"name": name, "role": role, "gnd": gnd})
+
+# --- cover image (Open Library, public API, no auth) ----------------------
+cover_url = f"https://covers.openlibrary.org/b/isbn/{isbn13}-L.jpg" if isbn13 else ""
+
+# --- build HTML card -------------------------------------------------------
+contrib_items = []
+for c in contributors:
+    link_open  = f'<a href="{c["gnd"]}" target="_blank">' if c["gnd"] else ""
+    link_close = "</a>" if c["gnd"] else ""
+    role_span  = f' <span class="text-muted">({c["role"]})</span>' if c["role"] else ""
+    contrib_items.append(f"<li>{link_open}{c['name']}{link_close}{role_span}</li>")
+contrib_html = "".join(contrib_items)
+lang_map = {"ger": "German", "eng": "English"}
+lang_str  = ", ".join(lang_map.get(l, l) for l in languages)
+isbn_html = " &ensp;|&ensp; ".join(f'<code>{i}</code>' for i in isbns)
+
+img_block = (
+    f'<a href="https://d-nb.info/{DNB_IDN}" target="_blank">'
+    f'<img src="{cover_url}" alt="Cover: {title}" '
+    f'style="max-height:220px;box-shadow:0 2px 8px rgba(0,0,0,.25);border-radius:3px;">'
+    f'</a>'
+) if cover_url else ""
+
+card = f"""
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-auto">{img_block}</div>
+      <div class="col">
+        <h5 class="card-title mb-1">
+          <a href="https://d-nb.info/{DNB_IDN}" target="_blank">{title}</a>
+        </h5>
+        <p class="text-muted mb-2" style="font-size:.9rem">{subtitle}</p>
+        <table class="table table-sm table-borderless mb-2" style="font-size:.875rem">
+          <tbody>
+            <tr><th scope="row" style="width:140px">Responsibility</th><td>{resp_stmt}</td></tr>
+            <tr><th scope="row">Publisher</th><td>{place}: {publisher}, {year}</td></tr>
+            <tr><th scope="row">Extent</th><td>{extent} {ill} — {dimensions}</td></tr>
+            <tr><th scope="row">Language</th><td>{lang_str}</td></tr>
+            <tr><th scope="row">ISBN</th><td>{isbn_html}</td></tr>
+            <tr><th scope="row">DNB record</th>
+                <td><a href="https://d-nb.info/{DNB_IDN}" target="_blank">d-nb.info/{DNB_IDN}</a></td></tr>
+          </tbody>
+        </table>
+        <p class="mb-1" style="font-size:.875rem"><strong>Contributors</strong></p>
+        <ul class="mb-0" style="font-size:.875rem">{contrib_html}</ul>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+HTML(card)
+```
+
+## Data Sources
+
+### Input XML
+
+The catalogue items are stored in a structured XML file validated against a custom DTD:
+
+| File | Description |
+|------|-------------|
+| [`catalogues/scan-2/catalogue-items.xml`](catalogues/scan-2/catalogue-items.xml) | Exhibition catalogue data — 73 items |
+| [`catalogues/scan-2/catalogue-items.dtd`](catalogues/scan-2/catalogue-items.dtd) | Document Type Definition (DTD) |
+
+### Schema Mappings
+
+Each element in the DTD is aligned to two Linked Data vocabularies:
+
+| XML element | Wikidata property | CIDOC CRM |
+|-------------|-------------------|-----------|
+| `title` | [P1476](https://www.wikidata.org/wiki/Property:P1476) title | P102_has_title |
+| `creator` | [P170](https://www.wikidata.org/wiki/Property:P170) creator | P14_carried_out_by |
+| `date` | [P571](https://www.wikidata.org/wiki/Property:P571) inception | P108_has_produced |
+| `object_type` | [P31](https://www.wikidata.org/wiki/Property:P31) instance of | — |
+| `materials` | [P186](https://www.wikidata.org/wiki/Property:P186) material used | P45_consists_of |
+| `dimensions` | [P2048](https://www.wikidata.org/wiki/Property:P2048)/[P2049](https://www.wikidata.org/wiki/Property:P2049)/[P2610](https://www.wikidata.org/wiki/Property:P2610) | P43_has_dimension |
+| `inventory_number` | [P217](https://www.wikidata.org/wiki/Property:P217) inventory number | P1_is_identified_by (E42) |
+| `catalog_number` | [P528](https://www.wikidata.org/wiki/Property:P528) catalogue code | P1_is_identified_by (E42) |
+| `location` | [P276](https://www.wikidata.org/wiki/Property:P276) location | — |
+| `exhibited_at` | [P1431](https://www.wikidata.org/wiki/Property:P1431) participant | E7_Activity |
+
+### Viewing and Editing the XML
+
+::: {.callout-tip}
+**Recommended tool — [XML Notepad](https://microsoft.github.io/XmlNotepad/)** (Microsoft, free, Windows)
+
+XML Notepad provides a tree view of the XML document, DTD-aware validation, XPath search, and syntax highlighting. Open `catalogue-items.xml` directly; it will automatically locate `catalogue-items.dtd` in the same folder and report any validation errors.
+
+Alternatives: [oXygen XML Editor](https://www.oxygenxml.com/) (cross-platform, commercial), [VSCodium](https://vscodium.com/) with the [XML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml).
+:::
+
+## Full Catalogue Table
+
+```{python}
+#| label: full-table
+import pandas as pd
+from IPython.display import HTML
+
+df = pd.DataFrame(items)
+df.columns = ["Title", "Date", "Type", "Type QID", "Materials",
+              "Dimensions", "Cat. No.", "Inv. No.", "Location", "Notes"]
+df = df.drop(columns=["Type QID"])
+df.index = range(1, len(df) + 1)
+
+# Truncate very long material strings for readability
+df["Materials"] = df["Materials"].str[:60].where(
+    df["Materials"].str.len() <= 60,
+    df["Materials"].str[:60] + "…"
+)
+
+HTML(df.to_html(classes="table table-sm table-hover", border=0, escape=False))
+```
+
+---
 
 ## Works in the Exhibition
 
@@ -153,23 +335,4 @@ html = (
 HTML(html)
 ```
 
----
 
-## Full Catalogue Table
-
-```{python}
-#| label: full-table
-df = pd.DataFrame(items)
-df.columns = ["Title", "Date", "Type", "Type QID", "Materials",
-              "Dimensions", "Cat. No.", "Inv. No.", "Location", "Notes"]
-df = df.drop(columns=["Type QID"])
-df.index = range(1, len(df) + 1)
-
-# Truncate very long material strings for readability
-df["Materials"] = df["Materials"].str[:60].where(
-    df["Materials"].str.len() <= 60,
-    df["Materials"].str[:60] + "…"
-)
-
-HTML(df.to_html(classes="table table-sm table-hover", border=0, escape=False))
-```

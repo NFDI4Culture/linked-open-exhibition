@@ -1,0 +1,1547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogue SYSTEM "catalogue-items.dtd">
+<catalogue>
+  <meta>
+    <exhibition_title>John Baldessari at Sprengel Museum Hannover</exhibition_title>
+    <venue>Sprengel Museum Hannover</venue>
+    <venue_qid>Q510144</venue_qid>
+    <creator_name>John Baldessari</creator_name>
+    <creator_qid>Q312793</creator_qid>
+    <source_file>output-plan-b-readable.csv</source_file>
+  </meta>
+  <items>
+    <item>
+      <title>DUCK POND BAR, NATIONAL CITY, CALIFORNIA</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1967</date>
+      <object_type>painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Acrylfarbe; Fotoemulsion auf Leinwand</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>152</height_cm>
+        <width_cm>170</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>THE FORMER SITE OF DUCK POND BAR, 3003 NATIONAL CITY BLVD., NATIONAL city CALIFORNIA</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1996 revisited</date>
+      <object_type>painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Acrylfarbe; Fotoemulsion auf Leinwand</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>150</height_cm>
+        <width_cm>114</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>SIZE /SHAPE (DESTINY)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1988-89</date>
+      <object_type>Photography and Painting</object_type>
+      <object_type_qid/>
+      <materials>Black and white photographs</materials>
+      <materials_qids>Q125191</materials_qids>
+      <dimensions>
+        <height_cm>198</height_cm>
+        <width_cm>259</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>Private collection, Courtesy Sonnabend Gallery, New York</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>POTATO AND LIGHTBULB</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997-98</date>
+      <object_type>photograph or installation component</object_type>
+      <object_type_qid/>
+      <materials>potted plants; lamps</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>PRETZEL AND EAR</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997-98</date>
+      <object_type>photograph or installation component</object_type>
+      <object_type_qid/>
+      <materials>potted plants; lamps</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>WALLPAPER: rooms with windows</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>varies/1997-98</date>
+      <object_type>wallpapers</object_type>
+      <object_type_qid/>
+      <materials>tapeten; maße variabel</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>PAGE 13</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>STRANGE</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Ink-jet auf Leinwand</object_type>
+      <object_type_qid/>
+      <materials>Ink jet on canvas</materials>
+      <materials_qids>Q4259259</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>GOWA SERIES</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>These Too</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date/>
+      <object_type/>
+      <object_type_qid/>
+      <materials/>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number>23 22</inventory_number>
+      <catalog_number>THESE TOO</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>These 10</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Ink-jet on canvas</object_type>
+      <object_type_qid/>
+      <materials>ink; canvas</materials>
+      <materials_qids>Q127418; Q4259259</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>THESE 10</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>ALL GETTING ON TOGETHER</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1999</date>
+      <object_type>Digitaldruck, handgeschriebener Text, Acrylfarbe auf Leinwand/ Digital printing, hand lettering, acrylic paint on canvas</object_type>
+      <object_type_qid/>
+      <materials>Digitaldruck; handgeschriebener Text; Acrylfarbe auf Leinwand</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>239</height_cm>
+        <width_cm>239</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>114</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>REAL SHADOWS</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1989</date>
+      <object_type>Digitaldruck, handgeschriebener Text, Acrylfarbe auf Leinwand/ Digital printing, hand lettering, acrylic paint on canvas</object_type>
+      <object_type_qid/>
+      <materials>Digitaldruck; handgeschriebener Text; Acrylfarbe auf Leinwand</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>239</height_cm>
+        <width_cm>239</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>112</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Flying Saucer: Rainbow/Two Cyclists/Dog/Gorilla and Bananas/Chaotic Situation/Couple/Tortoise/Gunman (Fallen)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1992</date>
+      <object_type>photograph</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials/>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Three Running Figures (One Splashed), Trash Cans, and Poles (With Large Blue Shape)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1995</date>
+      <object_type>photograph</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials/>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Telephone (for Kafka)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1991</date>
+      <object_type>photograph</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>black and white</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Schwarzweißfotografien, Acrylfarbe</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1987</date>
+      <object_type>painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Black and white photographs; acrylic</materials>
+      <materials_qids>Q125191; Q207849</materials_qids>
+      <dimensions>
+        <height_cm>48.25</height_cm>
+        <width_cm>48.25</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>TEAM</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1987</date>
+      <object_type>photograph</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color and black and white photographs; Acrylfarbe; Metallpapier</materials>
+      <materials_qids>Q125191</materials_qids>
+      <dimensions>
+        <height_cm>156</height_cm>
+        <width_cm>225</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>Collection of Mr. and Mrs. William Wilson Ill</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>HANDS/FEET</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1988</date>
+      <object_type>photograph</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Schwarzweißfotografien</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>244</height_cm>
+        <width_cm>267</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>Private collection, Courtesy Baldessari</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>SIX WAYS TO RRONOUNCE FIDDLES TICK (For L. Sterne)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1988</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Oil stain on gelatin silver photographs mounted on aluminium</materials>
+      <materials_qids>Q296955</materials_qids>
+      <dimensions>
+        <height_cm>305</height_cm>
+        <width_cm>406</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>62</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>MAN RUNNING/MEN CARRYING BOX</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1988-90</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Black and white photographs, vinyl paint, oil tint</materials>
+      <materials_qids>Q296955</materials_qids>
+      <dimensions>
+        <height_cm>123</height_cm>
+        <width_cm>268</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>64</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>THREE ACTIVE PERSONS 7 WITH STANDING PERSON</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1990</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photographs, vinyl paint</materials>
+      <materials_qids>Q125191</materials_qids>
+      <dimensions>
+        <height_cm>234</height_cm>
+        <width_cm>147</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>66</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>TWO VOIDED BOOKS</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1990</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Black and white photographs, vinyl paint</materials>
+      <materials_qids>Q125191</materials_qids>
+      <dimensions>
+        <height_cm>157</height_cm>
+        <width_cm>245</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>68</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>TELERHONE (FOR KAFKA)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1991</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photograph, black and white photograph, vinyl paint</materials>
+      <materials_qids>Q125191</materials_qids>
+      <dimensions>
+        <height_cm>243.84</height_cm>
+        <width_cm>487.68</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>71</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>FOUR FABRICS (PATTERNED): TWO GLASSES/ PASSERS-BY</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1992</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photographs, black and white photographs, oil tint, Masonite</materials>
+      <materials_qids>Q296955</materials_qids>
+      <dimensions>
+        <height_cm>250</height_cm>
+        <width_cm>219</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>73</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>THE PHONE CALL: FACELESS MAN (ORANGE) WITH GLASSES / ENTANGLEMENT OF WORMS</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1992</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photographs, acrylic paint, crayon</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>203</height_cm>
+        <width_cm>119</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>75</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>FLYING SAUCER: RAINBOW/TWO CYCLISTS/ DOG/GORILLA AND BANANAS/CHAOTIC SITUATION / COUPLE/TORTOISE/GUNMAN (FALLEN)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1992</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photographs, black and white photographs, acrylic paint, Masonite</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>259</height_cm>
+        <width_cm>411</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>77</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title/>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1992</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photograph, black and white photograph, photocopy on Gandhi Ashram paper, acrylic wash, paper stickers, crayon, oil enamel on rubber, oil enamel on formica, mounted on Masonite</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>210</height_cm>
+        <width_cm>249</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>78</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>POTATOES, FACE (SMILING), GARBAGE CAN, LANDSCAPE, FOUR SHAPES * RED AND GREEN LINES</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1994</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Color photograph, black and white photograph, acrylic, oil pastel and pencil on paper</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>166</height_cm>
+        <width_cm>215</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>81</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>POINTING HAND, DESK, LIGHTS, AND OBSERVERS (COURTROOM)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1995</date>
+      <object_type>photographs</object_type>
+      <object_type_qid>Q125191</object_type_qid>
+      <materials>Black and white photographs, color photographs, acrylic, oil stick, pencil on paper</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>255</height_cm>
+        <width_cm>229</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>83</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>SUNNY DONUTS, FORMER SITE OF DUCK POND BAR</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1996</date>
+      <object_type>painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Acrylic and ink-jet on canvas</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>150</height_cm>
+        <width_cm>114</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>85</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>EARLE SCHEIB AUTO PAINTING</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1996</date>
+      <object_type>painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Acrylic and photoemulsion on canvas</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>150</height_cm>
+        <width_cm>114</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>86</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>3003 NATIONAL CITY BLVD.</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1996</date>
+      <object_type>painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Acrylic and photoemulsion on canvas</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>150</height_cm>
+        <width_cm>114</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>87</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Lourdes Restaurant, Pink Pig, Sunny Donuts</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1996</date>
+      <object_type>Acrylic and photoemulsion on canvas</object_type>
+      <object_type_qid/>
+      <materials>Acrylfarbe; Fotoemulsion</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>150</height_cm>
+        <width_cm>114</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Arrive (With Motives and Reasons)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1996</date>
+      <object_type>Color photographs, acrylic paint and crayon</object_type>
+      <object_type_qid/>
+      <materials>Farbfotografien; Acrylfarbe; Zeichenkreide</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>235</height_cm>
+        <width_cm>327</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Goya Series: There Isn't Time</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Inkjet Print and hand lettering on canvas</object_type>
+      <object_type_qid/>
+      <materials>Inkjet Print; handgeschriebener Text</materials>
+      <materials_qids>Q127418</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Goya Series: As Is</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Ink-jet print and hand lettering on canvas</object_type>
+      <object_type_qid/>
+      <materials>Inkjet Print; handgeschriebener Text</materials>
+      <materials_qids>Q127418</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Goya Series: So Much and More</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Inkjet Print and hand lettering on canvas</object_type>
+      <object_type_qid/>
+      <materials>Inkjet Print; handgeschriebener Text</materials>
+      <materials_qids>Q127418</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Goya Series: And</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Ink jet and synthetic polymer paint on canvas</object_type>
+      <object_type_qid/>
+      <materials>Inkjet; synthetische Polymerfarbe</materials>
+      <materials_qids>Q127418</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Goya Series: These 700 and 100</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997</date>
+      <object_type>Ink-jet print and hand lettering on canvas</object_type>
+      <object_type_qid/>
+      <materials>Inkjet Print; handgeschriebener Text</materials>
+      <materials_qids>Q127418</materials_qids>
+      <dimensions>
+        <height_cm>190</height_cm>
+        <width_cm>152</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Plant (Rotterdam #3)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997-98</date>
+      <object_type>Black and white photograph</object_type>
+      <object_type_qid/>
+      <materials>Schwarzweißfotografie</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>183</height_cm>
+        <width_cm>183</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Lamp (Rotterdam #3)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1997-98</date>
+      <object_type>Black and white photograph</object_type>
+      <object_type_qid/>
+      <materials>Schwarzweißfotografie</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm>183</height_cm>
+        <width_cm>183</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Elbow Series: Emu</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1999</date>
+      <object_type>Ink-jet on canvas, Folio D process on vinyl, hand lettering and acrylic paint</object_type>
+      <object_type_qid/>
+      <materials>Inkjet; handgeschriebener Text; Acrylfarbe</materials>
+      <materials_qids>Q127418</materials_qids>
+      <dimensions>
+        <height_cm>213.5</height_cm>
+        <width_cm>213.5</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>ELBOW SERIES: YAK</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1999</date>
+      <object_type>Painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint</materials>
+      <materials_qids>Q4259259; Q207849</materials_qids>
+      <dimensions>
+        <height_cm>213.5</height_cm>
+        <width_cm>213.5</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>57</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>ELBOW SERIES: AUK</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1999</date>
+      <object_type>Painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint</materials>
+      <materials_qids>Q4259259; Q207849</materials_qids>
+      <dimensions>
+        <height_cm>213.5</height_cm>
+        <width_cm>213.5</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>58</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>ELBOW SERIES: GNU</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1999</date>
+      <object_type>Painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint</materials>
+      <materials_qids>Q4259259; Q207849</materials_qids>
+      <dimensions>
+        <height_cm>213.5</height_cm>
+        <width_cm>213.5</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>59</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>TETRAD SERIES: REAL SHADOWS</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1989</date>
+      <object_type>Painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Digital printing; hand lettering; acrylic paint on canvas</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>239</height_cm>
+        <width_cm>239</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>60</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>TETRAD SERIES. ALL GETTING ON TOGETHER</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1999</date>
+      <object_type>Painting</object_type>
+      <object_type_qid>Q3305213</object_type_qid>
+      <materials>Digital printing; hand lettering; acrylic paint on canvas</materials>
+      <materials_qids>Q207849</materials_qids>
+      <dimensions>
+        <height_cm>239</height_cm>
+        <width_cm>239</width_cm>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number>61</catalog_number>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Teaching a Plant the Alphabet</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>color; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Taking a Slate: Ilene and David (#2)</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1974</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Isocephaly</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1968</date>
+      <object_type>Super-8 film</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Taking a Slate: David</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1974</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>How We Do Art Now</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1973</date>
+      <object_type>video loop</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>What to Leave Out</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1968</date>
+      <object_type>Super-8 film</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Cremation</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970</date>
+      <object_type>16 mm film</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>New York City Art History</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1971</date>
+      <object_type>Super-8 film</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>The Eye Does Not Naturally Pan</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972-73</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Folding Hat: Version 1</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Folding Hat</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Black-Out</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1971</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Black Painting</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Easel Painting</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972-73</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Black Curtain</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Life Drawing</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>black-and-white; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Time-Temperature</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972-73</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Walking Forward - Running Past</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972</date>
+      <object_type>Super-8 film loop (originally 16 mm)</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Proust</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1970s</date>
+      <object_type>film loop</object_type>
+      <object_type_qid/>
+      <materials>16 mm; color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Water to Wine to Water</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972-73</date>
+      <object_type>Super-8 film loop</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>The Hollywood Film</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972-73</date>
+      <object_type>Super-8 film loop</object_type>
+      <object_type_qid/>
+      <materials>color; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Police Drawing</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1971</date>
+      <object_type>black-and-white</object_type>
+      <object_type_qid/>
+      <materials>color; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Throwing Leaves Back at Tree</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1973</date>
+      <object_type>Super-8 film loop</object_type>
+      <object_type_qid/>
+      <materials>color; sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>The Italian Tape</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1974</date>
+      <object_type>black-and-white film loop</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Ice Cubes Sliding</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1974</date>
+      <object_type>Super-8 film loop</object_type>
+      <object_type_qid/>
+      <materials>color</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Inventory</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1972</date>
+      <object_type>black-and-white film loop</object_type>
+      <object_type_qid/>
+      <materials/>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+    <item>
+      <title>Two Colorful Melodies</title>
+      <creator>John Baldessari</creator>
+      <creator_qid>Q312793</creator_qid>
+      <date>1977</date>
+      <object_type>color film loop</object_type>
+      <object_type_qid/>
+      <materials>sound</materials>
+      <materials_qids/>
+      <dimensions>
+        <height_cm/>
+        <width_cm/>
+        <depth_cm/>
+      </dimensions>
+      <inventory_number/>
+      <catalog_number/>
+      <location>Sprengel Museum Hannover</location>
+      <exhibited_at>Sprengel Museum Hannover</exhibited_at>
+      <exhibited_at_qid>Q673907</exhibited_at_qid>
+      <notes/>
+    </item>
+  </items>
+</catalogue>

@@ -1,0 +1,102 @@
+<!-- catalogue-items.dtd
+     Document Type Definition for Exhibition Catalogue Items XML
+     Aligned with the Item-in-Exhibition Data Model (data-models/item-in-exhibition.csv)
+     and Wikidata / CIDOC CRM property set.
+
+     Based on the Baldessari at Sprengel Museum Hannover catalogue (scan-2).
+
+     Required fields : title, creator
+     Optional fields : all others (empty elements permitted)
+-->
+
+<!ELEMENT catalogue (meta, items)>
+
+<!-- Catalogue-level metadata -->
+<!ELEMENT meta (
+  exhibition_title,
+  venue,
+  venue_qid,
+  creator_name,
+  creator_qid,
+  source_file
+)>
+
+<!ELEMENT exhibition_title (#PCDATA)>
+<!ELEMENT venue            (#PCDATA)>
+<!-- Wikidata Q-identifier for the venue -->
+<!ELEMENT venue_qid        (#PCDATA)>
+<!-- Primary artist / creator name -->
+<!ELEMENT creator_name     (#PCDATA)>
+<!-- Wikidata Q-identifier for the primary creator -->
+<!ELEMENT creator_qid      (#PCDATA)>
+<!-- Filename of the source OCR catalogue -->
+<!ELEMENT source_file      (#PCDATA)>
+
+<!-- Item list -->
+<!ELEMENT items (item+)>
+
+<!ELEMENT item (
+  title,
+  creator,
+  creator_qid,
+  date,
+  object_type,
+  object_type_qid,
+  materials,
+  materials_qids,
+  dimensions,
+  inventory_number,
+  catalog_number,
+  location,
+  exhibited_at,
+  exhibited_at_qid,
+  notes
+)>
+
+<!-- Artwork / object title (Wikidata P1476 / CIDOC P102_has_title) -->
+<!ELEMENT title            (#PCDATA)>
+
+<!-- Creator / artist name (Wikidata P170 / CIDOC P14_carried_out_by) -->
+<!ELEMENT creator          (#PCDATA)>
+
+<!-- Wikidata Q-identifier for the creator -->
+<!ELEMENT creator_qid      (#PCDATA)>
+
+<!-- Date or date range of creation (Wikidata P571 / CIDOC P108_has_produced) -->
+<!ELEMENT date             (#PCDATA)>
+
+<!-- Object / artwork type label (Wikidata P31) -->
+<!ELEMENT object_type      (#PCDATA)>
+
+<!-- Wikidata Q-identifier for the object type -->
+<!ELEMENT object_type_qid  (#PCDATA)>
+
+<!-- Semicolon-separated list of materials (Wikidata P186 / CIDOC P45_consists_of) -->
+<!ELEMENT materials        (#PCDATA)>
+
+<!-- Semicolon-separated Wikidata Q-identifiers for materials -->
+<!ELEMENT materials_qids   (#PCDATA)>
+
+<!-- Physical dimensions container (Wikidata P2048/P2049/P2610 / CIDOC P43_has_dimension) -->
+<!ELEMENT dimensions (height_cm, width_cm, depth_cm)>
+<!ELEMENT height_cm        (#PCDATA)>
+<!ELEMENT width_cm         (#PCDATA)>
+<!ELEMENT depth_cm         (#PCDATA)>
+
+<!-- Museum inventory number (Wikidata P217 / CIDOC P1_is_identified_by E42) -->
+<!ELEMENT inventory_number (#PCDATA)>
+
+<!-- Exhibition / catalogue number (Wikidata P528 / CIDOC P1_is_identified_by E42) -->
+<!ELEMENT catalog_number   (#PCDATA)>
+
+<!-- Current or catalogue location label (Wikidata P276) -->
+<!ELEMENT location         (#PCDATA)>
+
+<!-- Venue where the item was exhibited (Wikidata P1431 / CIDOC E7_Activity) -->
+<!ELEMENT exhibited_at     (#PCDATA)>
+
+<!-- Wikidata Q-identifier for the exhibition venue -->
+<!ELEMENT exhibited_at_qid (#PCDATA)>
+
+<!-- Free-text notes, including collection ownership statements -->
+<!ELEMENT notes            (#PCDATA)>

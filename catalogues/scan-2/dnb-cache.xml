@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/"><version>1.1</version><numberOfRecords>1</numberOfRecords><records><record><recordSchema>MARC21-xml</recordSchema><recordPacking>xml</recordPacking><recordData><record xmlns="http://www.loc.gov/MARC21/slim" type="Bibliographic">
+    <leader>00000pam a2200000 c 4500</leader>
+    <controlfield tag="001">957409494</controlfield>
+    <controlfield tag="003">DE-101</controlfield>
+    <controlfield tag="005">20171203074329.0</controlfield>
+    <controlfield tag="007">tu</controlfield>
+    <controlfield tag="008">990906s1999    gw ||||| |||| 00||||ger  </controlfield>
+    <datafield tag="015" ind1=" " ind2=" ">
+      <subfield code="a">00,A06,1774</subfield>
+      <subfield code="z">99,N40,0581</subfield>
+      <subfield code="2">dnb</subfield>
+    </datafield>
+    <datafield tag="016" ind1="7" ind2=" ">
+      <subfield code="2">DE-101</subfield>
+      <subfield code="a">957409494</subfield>
+    </datafield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="a">9783883753966</subfield>
+      <subfield code="c">Pp. : DM 48.00 (freier Pr.), sfr 48.00 (freier Pr.), S 350.00 (freier Pr.)</subfield>
+      <subfield code="9">978-3-88375-396-6</subfield>
+    </datafield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="a">3883753963</subfield>
+      <subfield code="c">Pp. : DM 48.00 (freier Pr.), sfr 48.00 (freier Pr.), S 350.00 (freier Pr.)</subfield>
+      <subfield code="9">3-88375-396-3</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(DE-599)DNB957409494</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)231843447</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">1140</subfield>
+      <subfield code="b">ger</subfield>
+      <subfield code="c">DE-101</subfield>
+      <subfield code="d">9999</subfield>
+    </datafield>
+    <datafield tag="041" ind1=" " ind2=" ">
+      <subfield code="a">ger</subfield>
+      <subfield code="a">eng</subfield>
+    </datafield>
+    <datafield tag="043" ind1=" " ind2=" ">
+      <subfield code="c">XD-US</subfield>
+    </datafield>
+    <datafield tag="044" ind1=" " ind2=" ">
+      <subfield code="c">XA-DE</subfield>
+    </datafield>
+    <datafield tag="084" ind1=" " ind2=" ">
+      <subfield code="a">47</subfield>
+      <subfield code="a">46</subfield>
+      <subfield code="a">770</subfield>
+      <subfield code="q">DE-101</subfield>
+      <subfield code="2">sdnb</subfield>
+    </datafield>
+    <datafield tag="084" ind1=" " ind2=" ">
+      <subfield code="a">13.5p</subfield>
+      <subfield code="q">DE-101</subfield>
+      <subfield code="2">sswd</subfield>
+    </datafield>
+    <datafield tag="090" ind1=" " ind2=" ">
+      <subfield code="a">b</subfield>
+    </datafield>
+    <datafield tag="245" ind1="0" ind2="0">
+      <subfield code="a">Baldessari</subfield>
+      <subfield code="b">while something is happening here, something else is happening there ; works 1988 - 1999 ; Spectrum - Internationaler Preis für Fotografie der Stiftung Niedersachsen ; [Sprengel-Museum Hannover, 26.9.1999 - 2.1.2000 und Staatliche Kunstsammlungen Dresden, Gemäldegalerie Neue Meister, 15.1. - 2.4.2000]</subfield>
+      <subfield code="c">mit Texten von Meg Cranston, Diedrich Diederichsen und Thomas Weski. [Übers. John Brogden ; Michael Stoeber]</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Köln</subfield>
+      <subfield code="b">König</subfield>
+      <subfield code="c">1999</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">123 S.</subfield>
+      <subfield code="b">zahlr. Ill.</subfield>
+      <subfield code="c">29 cm</subfield>
+    </datafield>
+    <datafield tag="336" ind1=" " ind2=" ">
+      <subfield code="a">Text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield tag="336" ind1=" " ind2=" ">
+      <subfield code="a">unbewegtes Bild</subfield>
+      <subfield code="b">sti</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield tag="337" ind1=" " ind2=" ">
+      <subfield code="a">ohne Hilfsmittel zu benutzen</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield tag="338" ind1=" " ind2=" ">
+      <subfield code="a">Band</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+      <subfield code="a">Text dt. und engl.</subfield>
+    </datafield>
+    <datafield tag="600" ind1="1" ind2="7">
+      <subfield code="0">(DE-588)118506153</subfield>
+      <subfield code="0">https://d-nb.info/gnd/118506153</subfield>
+      <subfield code="0">(DE-101)118506153</subfield>
+      <subfield code="a">Baldessari, John</subfield>
+      <subfield code="d">1931-2020</subfield>
+      <subfield code="9">rswk-swf</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="7">
+      <subfield code="0">(DE-588)4045895-7</subfield>
+      <subfield code="0">https://d-nb.info/gnd/4045895-7</subfield>
+      <subfield code="0">(DE-101)040458954</subfield>
+      <subfield code="a">Fotografie</subfield>
+      <subfield code="9">rswk-swf</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="655" ind1=" " ind2="7">
+      <subfield code="0">(DE-588)4135467-9</subfield>
+      <subfield code="0">https://d-nb.info/gnd/4135467-9</subfield>
+      <subfield code="0">(DE-101)041354672</subfield>
+      <subfield code="a">Ausstellungskatalog</subfield>
+      <subfield code="y">1999</subfield>
+      <subfield code="z">Hannover</subfield>
+      <subfield code="2">gnd-content</subfield>
+    </datafield>
+    <datafield tag="655" ind1=" " ind2="7">
+      <subfield code="a">Ausstellung</subfield>
+      <subfield code="z">Hannover &lt;1999></subfield>
+      <subfield code="9">rswk-swf</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="689" ind1="0" ind2="0">
+      <subfield code="0">(DE-588)118506153</subfield>
+      <subfield code="0">https://d-nb.info/gnd/118506153</subfield>
+      <subfield code="0">(DE-101)118506153</subfield>
+      <subfield code="D">p</subfield>
+      <subfield code="a">Baldessari, John</subfield>
+      <subfield code="d">1931-2020</subfield>
+    </datafield>
+    <datafield tag="689" ind1="0" ind2="1">
+      <subfield code="0">(DE-588)4045895-7</subfield>
+      <subfield code="0">https://d-nb.info/gnd/4045895-7</subfield>
+      <subfield code="0">(DE-101)040458954</subfield>
+      <subfield code="D">s</subfield>
+      <subfield code="a">Fotografie</subfield>
+    </datafield>
+    <datafield tag="689" ind1="0" ind2="2">
+      <subfield code="A">f</subfield>
+      <subfield code="a">Ausstellung</subfield>
+    </datafield>
+    <datafield tag="689" ind1="0" ind2="3">
+      <subfield code="A">g</subfield>
+      <subfield code="a">Hannover &lt;1999></subfield>
+    </datafield>
+    <datafield tag="689" ind1="0" ind2=" ">
+      <subfield code="5">DE-101</subfield>
+      <subfield code="5">DE-101</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+      <subfield code="0">(DE-588)118506153</subfield>
+      <subfield code="0">https://d-nb.info/gnd/118506153</subfield>
+      <subfield code="0">(DE-101)118506153</subfield>
+      <subfield code="a">Baldessari, John</subfield>
+      <subfield code="d">1931-2020</subfield>
+      <subfield code="e">Illustrator</subfield>
+      <subfield code="4">ill</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+      <subfield code="0">(DE-588)119555522</subfield>
+      <subfield code="0">https://d-nb.info/gnd/119555522</subfield>
+      <subfield code="0">(DE-101)119555522</subfield>
+      <subfield code="a">Cranston, Meg</subfield>
+      <subfield code="d">1960-</subfield>
+      <subfield code="e">Mitwirkender</subfield>
+      <subfield code="4">ctb</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+      <subfield code="0">(DE-588)130448001</subfield>
+      <subfield code="0">https://d-nb.info/gnd/130448001</subfield>
+      <subfield code="0">(DE-101)130448001</subfield>
+      <subfield code="a">Diederichsen, Diedrich</subfield>
+      <subfield code="d">1957-</subfield>
+      <subfield code="e">Mitwirkender</subfield>
+      <subfield code="4">ctb</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+      <subfield code="0">(DE-588)119093022</subfield>
+      <subfield code="0">https://d-nb.info/gnd/119093022</subfield>
+      <subfield code="0">(DE-101)119093022</subfield>
+      <subfield code="a">Weski, Thomas</subfield>
+      <subfield code="d">1953-</subfield>
+      <subfield code="e">Mitwirkender</subfield>
+      <subfield code="4">ctb</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+      <subfield code="8">1\p</subfield>
+      <subfield code="a">Brogden, John</subfield>
+      <subfield code="e">Übersetzer</subfield>
+      <subfield code="4">trl</subfield>
+    </datafield>
+    <datafield tag="710" ind1="2" ind2=" ">
+      <subfield code="0">(DE-588)2083948-0</subfield>
+      <subfield code="0">https://d-nb.info/gnd/2083948-0</subfield>
+      <subfield code="0">(DE-101)007332122</subfield>
+      <subfield code="a">Sprengel Museum Hannover</subfield>
+      <subfield code="e">Herausgebendes Organ</subfield>
+      <subfield code="4">isb</subfield>
+      <subfield code="2">gnd</subfield>
+    </datafield>
+    <datafield tag="850" ind1=" " ind2=" ">
+      <subfield code="a">DE-101a</subfield>
+      <subfield code="a">DE-101b</subfield>
+    </datafield>
+    <datafield tag="883" ind1="2" ind2=" ">
+      <subfield code="8">1\p</subfield>
+      <subfield code="a">dnb</subfield>
+      <subfield code="d">20200614</subfield>
+      <subfield code="q">DE-101</subfield>
+      <subfield code="u">https://d-nb.info/provenance/plan#dnb</subfield>
+    </datafield>
+    <datafield tag="925" ind1="r" ind2=" ">
+      <subfield code="a">ra</subfield>
+    </datafield>
+  </record></recordData><recordPosition>1</recordPosition></record></records><echoedSearchRetrieveRequest><version>1.1</version><query>idn=957409494</query><xQuery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><recordSchema>MARC21-xml</recordSchema></echoedSearchRetrieveRequest></searchRetrieveResponse>

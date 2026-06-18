@@ -18,9 +18,9 @@ author:
 
 ---
 
-**Motivation:** A fundamental art history methodology is based on Johann Joachim Winckelmann methodology from the 18C which is to taxonimise artworks, famously detailed in his 1764 masterpiece Geschichte der Kunst des Alterthums ("History of the Art of Antiquity"). 
+**Motivation:** A fundamental art history methodology is based on Johann Joachim Winckelmann cataloguing practice from the 18C which is to taxonimise artworks, famously detailed in his 1764 masterpiece Geschichte der Kunst des Alterthums ("History of the Art of Antiquity"). 
 
-Unfortunately current curating does not release open FAIR Data about items in an exhibition that easily allows this art history practice and instead either keeps in siloed private databases or in limited print only exhibition catalogues.
+Unfortunately current curating does not release open FAIR Data about items in an exhibition that easily allows this art history practice and instead either keeps the records in siloed private databases or in limited print only exhibition catalogues.
 
 The project looks to put in place a modern data science driven cataloguing practice that would facilitate Winckelmann's methodoloy.
 

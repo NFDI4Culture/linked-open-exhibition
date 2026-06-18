@@ -1,6 +1,27 @@
+title: "Linked Open Exhibitions"
+subtitle: "A Curator's Playbook"
+date: 2026-06-18
+date-format: "MMMM DD, YYYY"
+author:
+  - name: "Simon Worthington"
+    orcid: "0000-0002-8579-9717"  
+    email: "simon.worthington@tib.eu"
+    affiliations:
+      - id: "inst1"
+        name: "HsH"
+        city: "Hannover"
+        country: "Germany"
+      - id: "inst2"
+        name: "TIB"
+        city: "Hannover"
+        country: "Germany"
+abstract: |
+  Catalogue exhibition contents using Linked Open Data and AI LLM assistants. 
+keywords: [Data Science, GLAM, Open Science]
+
 project:
   type: website
-  title: "Linked Open Exhibition"
+  title: "Linked Open Exhibitions"
   output-dir: docs
   pre-render: _pre_render.py
 
@@ -51,7 +72,7 @@ website:
         aria-label: GitHub
 
   page-footer:
-    left: "CC BY-SA 4.0 — Authors"
+    left: "CC BY-SA 4.0"
     right: "Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: [{{< var git >}}](https://github.com/NFDI4Culture/linked-open-exhibition/commit/{{< var git >}})"
   repo-url: https://github.com/NFDI4Culture/linked-open-exhibition
   repo-actions: [edit, issue]

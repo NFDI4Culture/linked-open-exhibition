@@ -62,10 +62,10 @@ print(f"Loaded {len(items)} catalogue entries")
 
 ```{python}
 #| label: cards
-#| output: asis
 
 # Group items by object type for display
 from collections import Counter
+from IPython.display import HTML
 type_counts = Counter(i["object_type"] or "unclassified" for i in items)
 
 def wd_badge(qid, label, colour="secondary"):
@@ -111,7 +111,7 @@ for item in items:
 """
 
 cards_html += "</div>\n"
-print(cards_html)
+HTML(cards_html)
 ```
 
 ---

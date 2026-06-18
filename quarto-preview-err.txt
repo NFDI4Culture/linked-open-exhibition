@@ -1,0 +1,58 @@
+Preparing to preview
+_pre_render.py
+
+[1/1] about.qmd
+
+Watching files for changes
+Browse at http://localhost:5052/about.html
+
+pandoc 
+  to: html
+  output-file: about.html
+  standalone: true
+  title-prefix: Linked Open Exhibition
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  css:
+    - styles.css
+  toc: true
+  
+metadata
+  document-css: false
+  link-citations: true
+  lang: en
+  title: About
+  subtitle: 'Linked Open Exhibitions: '
+  date: '2026-06-18'
+  date-format: 'MMMM D, YYYY HH:mm'
+  author:
+    - name: Simon Worthington
+      orcid: 0000-0002-8579-9717
+      email: simon.worthington@tib.eu
+      affiliations:
+        - id: inst1
+          name: HsH
+          city: Hannover
+          country: Germany
+        - id: inst2
+          name: TIB
+          city: Hannover
+          country: Germany
+    - name: Simon Worthington
+      orcid: 0000-0002-8579-9717
+      url: 'https://orcid.org/0000-0002-8579-9717'
+      affiliation: Hochschule Hannover; TIB — Leibniz Information Centre for Science and Technology
+    - name: Chloë Farr
+      orcid: 0009-0007-1146-6745
+      url: 'https://orcid.org/0009-0007-1146-6745'
+      affiliation: 'University of Victoria: Victoria, British Columbia, CA'
+  abstract: |
+    Catalogue exhibition contents using Linked Open Data and AI LLM assistants. 
+  keywords:
+    - Data Science
+    - GLAM
+    - Open Science
+  theme: cosmo
+  

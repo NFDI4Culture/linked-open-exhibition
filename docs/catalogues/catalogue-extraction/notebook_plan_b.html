@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Worthington">
+<meta name="keywords" content="Data Science, GLAM, Open Science">
+
+<title>Plan B — hOCR Chunked Reading + Combined Segmentation &amp; Extraction – Linked Open Exhibition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
+        <li>
+    <a class="dropdown-item" href="../../data-models/artist-datamodel.html">
+ <span class="dropdown-text">Artist Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-models/exhibition-datamodel.html">
+ <span class="dropdown-text">Exhibition Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-models/dnb-catalogue-datamodel.html">
+ <span class="dropdown-text">DNB Catalogue Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-models/item-in-exhibition-datamodel.html">
+ <span class="dropdown-text">Item in Exhibition Data Model</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Documentation/glossary-de.html"> 
+<span class="menu-text">Glossar (DE)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Documentation/orcid-guide.html"> 
+<span class="menu-text">ORCID Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NFDI4Culture/linked-open-exhibition"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#install-dependencies" id="toc-install-dependencies" class="nav-link active" data-scroll-target="#install-dependencies">Install Dependencies</a></li>
+  <li><a href="#pdf-page-images" id="toc-pdf-page-images" class="nav-link" data-scroll-target="#pdf-page-images">PDF → Page Images</a></li>
+  <li><a href="#run-tesseract-ocr" id="toc-run-tesseract-ocr" class="nav-link" data-scroll-target="#run-tesseract-ocr">Run Tesseract OCR</a></li>
+  <li><a href="#step-0-ocr-quality-gate" id="toc-step-0-ocr-quality-gate" class="nav-link" data-scroll-target="#step-0-ocr-quality-gate">Step 0 — OCR Quality Gate</a></li>
+  <li><a href="#step-1-reconstruct-reading-order-from-hocr" id="toc-step-1-reconstruct-reading-order-from-hocr" class="nav-link" data-scroll-target="#step-1-reconstruct-reading-order-from-hocr">Step 1 — Reconstruct Reading Order from hOCR</a></li>
+  <li><a href="#step-2-chunk-the-document" id="toc-step-2-chunk-the-document" class="nav-link" data-scroll-target="#step-2-chunk-the-document">Step 2 — Chunk the Document</a></li>
+  <li><a href="#step-3-combined-segmentation-extraction-via-ollama" id="toc-step-3-combined-segmentation-extraction-via-ollama" class="nav-link" data-scroll-target="#step-3-combined-segmentation-extraction-via-ollama">Step 3 — Combined Segmentation + Extraction via Ollama</a></li>
+  <li><a href="#step-4-deduplicate" id="toc-step-4-deduplicate" class="nav-link" data-scroll-target="#step-4-deduplicate">Step 4 — Deduplicate</a></li>
+  <li><a href="#step-5-entity-resolution" id="toc-step-5-entity-resolution" class="nav-link" data-scroll-target="#step-5-entity-resolution">Step 5 — Entity Resolution</a></li>
+  <li><a href="#step-6-write-outputs" id="toc-step-6-write-outputs" class="nav-link" data-scroll-target="#step-6-write-outputs">Step 6 — Write Outputs</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/catalogue-extraction/notebook_plan_b.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Plan B — hOCR Chunked Reading + Combined Segmentation &amp; Extraction</h1>
+<p class="subtitle lead">A Curator’s Playbook</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Simon Worthington <a href="mailto:simon.worthington@tib.eu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-8579-9717" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            HsH
+          </p>
+        <p class="affiliation">
+            TIB
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 18, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Catalogue exhibition contents using Linked Open Data and AI LLM assistants.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Data Science, GLAM, Open Science</p>
+  </div>
+</div>
+
+</header>
+
+
+<p>Uses the hOCR output (HTML with embedded word coordinates) to reconstruct reading order, then feeds document chunks to a text LLM via Ollama that handles <strong>both segmentation and extraction in one pass</strong>. Simpler pipeline, trades spatial precision for flexibility.</p>
+<p><strong>Full pipeline:</strong> 1. Install system dependencies (Tesseract, aspell, poppler-utils) 2. Convert PDF to page PNGs via <code>pdftoppm</code> 3. Run Tesseract OCR → <code>.txt</code> (plain text) + <code>.hocr</code> (HTML with bounding boxes) 4. OCR quality gate (aspell word validity check) 5. Reconstruct reading order from hOCR bounding boxes 6. Chunk the document (~800 tokens, 100-token overlap) 7. Combined segmentation + extraction via <code>ollama run</code> 8. Deduplicate by <code>(title, catalog_number)</code> 9. Local entity resolution 10. Write QuickStatements-compatible CSV + human-readable CSV</p>
+<div id="b002" class="cell" data-tags="[&quot;parameters&quot;]">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Parameters ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set these before running. All other paths are derived from pdf_file + output_dir.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pdf_file       <span class="op">=</span> <span class="st">"baldessari-sprengel.pdf"</span>   <span class="co"># input PDF</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tesseract_lang <span class="op">=</span> <span class="st">"eng+deu"</span>                   <span class="co"># Tesseract language(s)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pdf_dpi        <span class="op">=</span> <span class="dv">300</span>                         <span class="co"># resolution for PDF → PNG conversion</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>output_dir     <span class="op">=</span> <span class="st">"."</span>                         <span class="co"># directory for all outputs</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ollama_model   <span class="op">=</span> <span class="st">"qwen2.5:14b"</span>              <span class="co"># Ollama model for extraction</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>chunk_size     <span class="op">=</span> <span class="dv">800</span>                         <span class="co"># target words per chunk</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>overlap        <span class="op">=</span> <span class="dv">100</span>                         <span class="co"># overlap words between chunks</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="install-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="install-dependencies">Install Dependencies</h2>
+<p>Installs <code>tesseract-ocr</code>, <code>poppler-utils</code> (for <code>pdftoppm</code>), and <code>aspell</code> via apt if not already present. On HF Spaces these can also be listed in <code>packages.txt</code>.</p>
+<div id="b004" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apt_install(<span class="op">*</span>packages):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    subprocess.run(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"apt-get"</span>, <span class="st">"install"</span>, <span class="st">"-y"</span>, <span class="st">"--no-install-recommends"</span>] <span class="op">+</span> <span class="bu">list</span>(packages),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        check<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>checks <span class="op">=</span> [</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"pdftoppm"</span>,  [<span class="st">"poppler-utils"</span>]),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"tesseract"</span>, [<span class="st">"tesseract-ocr"</span>, <span class="st">"tesseract-ocr-eng"</span>, <span class="st">"tesseract-ocr-deu"</span>]),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"aspell"</span>,    [<span class="st">"aspell"</span>, <span class="st">"aspell-en"</span>, <span class="st">"aspell-de"</span>]),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>missing_pkgs <span class="op">=</span> []</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> binary, pkgs <span class="kw">in</span> checks:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> shutil.which(binary):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>binary<span class="sc">}</span><span class="ss">: OK"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>binary<span class="sc">}</span><span class="ss">: missing — will install </span><span class="sc">{</span>pkgs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        missing_pkgs.extend(pkgs)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> missing_pkgs:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Installing: </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(missing_pkgs)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    apt_install(<span class="op">*</span>missing_pkgs)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Installation complete."</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Python dependencies</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    subprocess.run([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"install"</span>, <span class="st">"beautifulsoup4"</span>, <span class="st">"lxml"</span>], check<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> lxml  <span class="co"># noqa: F401</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    subprocess.run([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"install"</span>, <span class="st">"lxml"</span>], check<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cmd <span class="kw">in</span> [<span class="st">"tesseract --version"</span>, <span class="st">"pdftoppm -v"</span>, <span class="st">"aspell --version"</span>]:</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> subprocess.run(cmd.split(), capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    first_line <span class="op">=</span> (r.stdout <span class="kw">or</span> r.stderr).splitlines()[<span class="dv">0</span>] <span class="cf">if</span> (r.stdout <span class="kw">or</span> r.stderr) <span class="cf">else</span> <span class="st">""</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(first_line)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b005" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> difflib</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO, <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(levelname)s</span><span class="st">: </span><span class="sc">%(message)s</span><span class="st">"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> logging.getLogger(<span class="va">__name__</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Derive all paths from parameters</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>pdf_path  <span class="op">=</span> Path(pdf_file)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>stem      <span class="op">=</span> pdf_path.stem</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>_out      <span class="op">=</span> Path(output_dir)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>_out.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>PAGES_DIR <span class="op">=</span> _out <span class="op">/</span> <span class="ss">f"</span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">_pages"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>FILELIST  <span class="op">=</span> PAGES_DIR <span class="op">/</span> <span class="st">"filelist.txt"</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>TXT_FILE  <span class="op">=</span> _out <span class="op">/</span> <span class="ss">f"</span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">.txt"</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>HOCR_FILE <span class="op">=</span> _out <span class="op">/</span> <span class="ss">f"</span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">.hocr"</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>OUT_CSV   <span class="op">=</span> _out <span class="op">/</span> <span class="st">"output-plan-b.csv"</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>OUT_READ  <span class="op">=</span> _out <span class="op">/</span> <span class="st">"output-plan-b-readable.csv"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>FAIL_LOG  <span class="op">=</span> _out <span class="op">/</span> <span class="st">"output-plan-b-failures.txt"</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"PDF        : </span><span class="sc">{</span>pdf_path<span class="sc">}</span><span class="ss">  (exists: </span><span class="sc">{</span>pdf_path<span class="sc">.</span>exists()<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pages dir  : </span><span class="sc">{</span>PAGES_DIR<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"OCR text   : </span><span class="sc">{</span>TXT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"hOCR       : </span><span class="sc">{</span>HOCR_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Output dir : </span><span class="sc">{</span>_out<span class="sc">.</span>resolve()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Entity resolution lookup tables ─────────────────────────────────────────</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>CREATOR_QIDS <span class="op">=</span> {</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"John Baldessari"</span>: <span class="st">"Q312793"</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Baldessari"</span>: <span class="st">"Q312793"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>OBJECT_TYPE_QIDS <span class="op">=</span> {</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"painting"</span>: <span class="st">"Q3305213"</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"photograph"</span>: <span class="st">"Q125191"</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gelatin silver print"</span>: <span class="st">"Q3286805"</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"video"</span>: <span class="st">"Q34508"</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"drawing"</span>: <span class="st">"Q93184"</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"print"</span>: <span class="st">"Q11060274"</span>,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"collage"</span>: <span class="st">"Q170571"</span>,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mixed media"</span>: <span class="st">"Q1902763"</span>,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>MATERIAL_QIDS <span class="op">=</span> {</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"acrylic"</span>: <span class="st">"Q207849"</span>,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"oil"</span>: <span class="st">"Q296955"</span>,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"canvas"</span>: <span class="st">"Q4259259"</span>,</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gelatin silver"</span>: <span class="st">"Q3286805"</span>,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"photograph"</span>: <span class="st">"Q125191"</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ink"</span>: <span class="st">"Q127418"</span>,</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pencil"</span>: <span class="st">"Q14674"</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    <span class="st">"paper"</span>: <span class="st">"Q11472"</span>,</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pdf-page-images" class="level2">
+<h2 class="anchored" data-anchor-id="pdf-page-images">PDF → Page Images</h2>
+<p>Converts each PDF page to a PNG at the specified DPI using <code>pdftoppm</code>. Skip this cell if the images already exist.</p>
+<div id="b007" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PAGES_DIR.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>existing <span class="op">=</span> <span class="bu">sorted</span>(PAGES_DIR.glob(<span class="st">"page-*.png"</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> existing:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(existing)<span class="sc">}</span><span class="ss"> existing page images — skipping conversion."</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Delete </span><span class="sc">{</span>PAGES_DIR<span class="sc">}</span><span class="ss"> to re-run from scratch."</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Converting </span><span class="sc">{</span>pdf_path<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> to PNG at </span><span class="sc">{</span>pdf_dpi<span class="sc">}</span><span class="ss"> DPI..."</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> subprocess.run(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"pdftoppm"</span>, <span class="st">"-r"</span>, <span class="bu">str</span>(pdf_dpi), <span class="st">"-png"</span>, <span class="bu">str</span>(pdf_path), <span class="bu">str</span>(PAGES_DIR <span class="op">/</span> <span class="st">"page"</span>)],</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result.returncode <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"pdftoppm stderr: </span><span class="sc">{</span>result<span class="sc">.</span>stderr<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"pdftoppm failed"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    existing <span class="op">=</span> <span class="bu">sorted</span>(PAGES_DIR.glob(<span class="st">"page-*.png"</span>))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Created </span><span class="sc">{</span><span class="bu">len</span>(existing)<span class="sc">}</span><span class="ss"> page images."</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>page_numbers <span class="op">=</span> <span class="bu">sorted</span>(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">int</span>(re.search(<span class="vs">r"page-(\d+)\.png"</span>, p.name).group(<span class="dv">1</span>))</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> existing</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pages: </span><span class="sc">{</span>page_numbers[<span class="dv">0</span>]<span class="sc">:02d}</span><span class="ss"> to </span><span class="sc">{</span>page_numbers[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:02d}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-tesseract-ocr" class="level2">
+<h2 class="anchored" data-anchor-id="run-tesseract-ocr">Run Tesseract OCR</h2>
+<p>Builds a filelist from the page PNGs and runs Tesseract once to produce both plain text (<code>.txt</code>) and hOCR (<code>.hocr</code>). Skip this cell if the OCR output files already exist.</p>
+<div id="b009" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> TXT_FILE.exists() <span class="kw">and</span> HOCR_FILE.exists():</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"OCR output already exists — skipping Tesseract."</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>TXT_FILE<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>TXT_FILE<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="sc">:,}</span><span class="ss"> bytes"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>HOCR_FILE<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>HOCR_FILE<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="sc">:,}</span><span class="ss"> bytes"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Delete these files to re-run OCR."</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    FILELIST.write_text(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(<span class="bu">str</span>(PAGES_DIR <span class="op">/</span> <span class="ss">f"page-</span><span class="sc">{</span>n<span class="sc">:02d}</span><span class="ss">.png"</span>) <span class="cf">for</span> n <span class="kw">in</span> page_numbers),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        encoding<span class="op">=</span><span class="st">"utf-8"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Filelist written: </span><span class="sc">{</span><span class="bu">len</span>(page_numbers)<span class="sc">}</span><span class="ss"> pages"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    output_base <span class="op">=</span> <span class="bu">str</span>(_out <span class="op">/</span> stem)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Running: tesseract </span><span class="sc">{</span>FILELIST<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss"> -l </span><span class="sc">{</span>tesseract_lang<span class="sc">}</span><span class="ss"> txt hocr"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> subprocess.run(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"tesseract"</span>, <span class="bu">str</span>(FILELIST), output_base, <span class="st">"-l"</span>, tesseract_lang, <span class="st">"txt"</span>, <span class="st">"hocr"</span>],</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result.stderr:</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Tesseract stderr:</span><span class="ch">\n</span><span class="sc">{</span>result<span class="sc">.</span>stderr[:<span class="dv">500</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result.returncode <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> TXT_FILE.exists():</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"Tesseract failed — see stderr above"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> [TXT_FILE, HOCR_FILE]:</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> f.exists():</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>f<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="sc">:,}</span><span class="ss"> bytes"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: NOT CREATED"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-0-ocr-quality-gate" class="level2">
+<h2 class="anchored" data-anchor-id="step-0-ocr-quality-gate">Step 0 — OCR Quality Gate</h2>
+<p>Score the Tesseract output using aspell (English + German union). Threshold <code>&gt;= 0.80</code> for Plan B — the LLM heals minor OCR errors in context, so a lower threshold is acceptable.</p>
+<div id="b011" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step0_quality_gate():</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 0: OCR Quality Gate ==="</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> TXT_FILE.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>, errors<span class="op">=</span><span class="st">"replace"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> re.findall(<span class="vs">r"[A-Za-z\u00c4\u00d6\u00dc\u00e4\u00f6\u00fc\u00df'-]+"</span>, text)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    total_words <span class="op">=</span> <span class="bu">len</span>(words)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> total_words <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"WARN: no words found in txt file"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.0</span>, <span class="dv">0</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    word_input <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(words).encode(<span class="st">"utf-8"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    unknown_en: <span class="bu">set</span> <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    unknown_de: <span class="bu">set</span> <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> lang, container <span class="kw">in</span> [(<span class="st">"en"</span>, unknown_en), (<span class="st">"de"</span>, unknown_de)]:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> subprocess.run(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                [<span class="st">"aspell"</span>, <span class="st">"list"</span>, <span class="ss">f"--lang=</span><span class="sc">{</span>lang<span class="sc">}</span><span class="ss">"</span>],</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                <span class="bu">input</span><span class="op">=</span>word_input,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                capture_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                timeout<span class="op">=</span><span class="dv">120</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> result.returncode <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> w <span class="kw">in</span> result.stdout.decode(<span class="st">"utf-8"</span>, errors<span class="op">=</span><span class="st">"replace"</span>).splitlines():</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                    w <span class="op">=</span> w.strip()</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> w:</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                        container.add(w)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> (subprocess.TimeoutExpired, <span class="pp">FileNotFoundError</span>) <span class="im">as</span> e:</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            log.warning(<span class="st">"aspell </span><span class="sc">%s</span><span class="st"> failed: </span><span class="sc">%s</span><span class="st">"</span>, lang, e)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    unknown_words  <span class="op">=</span> unknown_en <span class="op">&amp;</span> unknown_de</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    validity_ratio <span class="op">=</span> (total_words <span class="op">-</span> <span class="bu">len</span>(unknown_words)) <span class="op">/</span> total_words</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Total words:    </span><span class="sc">{</span>total_words<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Unknown (en):   </span><span class="sc">{</span><span class="bu">len</span>(unknown_en)<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Unknown (de):   </span><span class="sc">{</span><span class="bu">len</span>(unknown_de)<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Unknown (both): </span><span class="sc">{</span><span class="bu">len</span>(unknown_words)<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Validity ratio: </span><span class="sc">{</span>validity_ratio<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    gate <span class="op">=</span> <span class="st">"PASS"</span> <span class="cf">if</span> validity_ratio <span class="op">&gt;=</span> <span class="fl">0.80</span> <span class="cf">else</span> <span class="st">"FAIL"</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"OCR Quality Gate: </span><span class="sc">{</span>gate<span class="sc">}</span><span class="ss">  (threshold 0.80 for Plan B)"</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> validity_ratio, total_words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b012" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>validity_ratio, total_words <span class="op">=</span> step0_quality_gate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-1-reconstruct-reading-order-from-hocr" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-reconstruct-reading-order-from-hocr">Step 1 — Reconstruct Reading Order from hOCR</h2>
+<p>Parse hOCR with BeautifulSoup, sort lines by y-coordinate per page, and insert paragraph breaks where the vertical gap between lines exceeds 20px.</p>
+<div id="b014" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_bbox(title_str):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> re.search(<span class="vs">r"bbox\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)"</span>, title_str <span class="kw">or</span> <span class="st">""</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">tuple</span>(<span class="bu">int</span>(m.group(i)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="cf">if</span> m <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step1_reconstruct_hocr():</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 1: Reconstruct reading order from hOCR ==="</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    raw  <span class="op">=</span> HOCR_FILE.read_bytes()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> BeautifulSoup(raw, <span class="st">"lxml"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    pages <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"ocr_page"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(pages)<span class="sc">}</span><span class="ss"> pages"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    all_chunks <span class="op">=</span> []</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> page_idx, page <span class="kw">in</span> <span class="bu">enumerate</span>(pages, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        page_lines <span class="op">=</span> []</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line_span <span class="kw">in</span> page.find_all(<span class="st">"span"</span>, class_<span class="op">=</span><span class="st">"ocr_line"</span>):</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            bbox <span class="op">=</span> parse_bbox(line_span.get(<span class="st">"title"</span>, <span class="st">""</span>))</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> bbox <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>            words <span class="op">=</span> [</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                w.get_text(<span class="st">" "</span>, strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> w <span class="kw">in</span> line_span.find_all(<span class="st">"span"</span>, class_<span class="op">=</span><span class="st">"ocrx_word"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> w.get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>            line_text <span class="op">=</span> <span class="st">" "</span>.join(words).strip()</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> line_text:</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>                page_lines.append((bbox[<span class="dv">1</span>], bbox[<span class="dv">3</span>], line_text))</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        page_lines.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">0</span>])</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        parts <span class="op">=</span> [<span class="ss">f"--- PAGE </span><span class="sc">{</span>page_idx<span class="sc">}</span><span class="ss"> ---"</span>]</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        prev_y1 <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> y0, y1, line_text <span class="kw">in</span> page_lines:</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> prev_y1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> y0 <span class="op">-</span> prev_y1 <span class="op">&gt;</span> <span class="dv">20</span>:</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>                parts.append(<span class="st">""</span>)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>            parts.append(line_text)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>            prev_y1 <span class="op">=</span> y1</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        all_chunks.append(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(parts))</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    full_text <span class="op">=</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>.join(all_chunks)</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Reconstructed text length: </span><span class="sc">{</span><span class="bu">len</span>(full_text)<span class="sc">:,}</span><span class="ss"> chars"</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> full_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b015" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>full_text <span class="op">=</span> step1_reconstruct_hocr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-chunk-the-document" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-chunk-the-document">Step 2 — Chunk the Document</h2>
+<p>Split into overlapping word-count chunks so entries that straddle paragraph breaks are not lost.</p>
+<div id="b017" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step2_chunk(full_text, chunk_size<span class="op">=</span>chunk_size, overlap<span class="op">=</span>overlap):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 2: Chunking document ==="</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    paragraphs <span class="op">=</span> re.split(<span class="vs">r"\n{2,}"</span>, full_text)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    chunks <span class="op">=</span> []</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    current_words <span class="op">=</span> []</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    current_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> para <span class="kw">in</span> paragraphs:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        para <span class="op">=</span> para.strip()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> para:</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        para_words <span class="op">=</span> para.split()</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> current_count <span class="op">+</span> <span class="bu">len</span>(para_words) <span class="op">&gt;</span> chunk_size <span class="kw">and</span> current_count <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            chunks.append(<span class="st">" "</span>.join(current_words).strip())</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            current_words <span class="op">=</span> current_words[<span class="op">-</span>overlap:] <span class="op">+</span> para_words</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>            current_words.extend(para_words)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        current_count <span class="op">=</span> <span class="bu">len</span>(current_words)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> current_words:</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        chunks.append(<span class="st">" "</span>.join(current_words).strip())</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Total chunks: </span><span class="sc">{</span><span class="bu">len</span>(chunks)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> chunks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b018" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>chunks     <span class="op">=</span> step2_chunk(full_text)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>num_chunks <span class="op">=</span> <span class="bu">len</span>(chunks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3-combined-segmentation-extraction-via-ollama" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-combined-segmentation-extraction-via-ollama">Step 3 — Combined Segmentation + Extraction via Ollama</h2>
+<p>Each chunk is sent to the LLM with a single prompt that both finds catalog entries and extracts structured fields. Returns a JSON array per chunk.</p>
+<div id="b020" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>PROMPT <span class="op">=</span> (</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"You are processing text from an exhibition catalog for John Baldessari at "</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sprengel Museum Hannover. Find any artwork catalog entries in this text — "</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"these are structured entries listing an artwork with its title, date, "</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"materials, and/or dimensions. Ignore essay prose and biographical text. "</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"For each catalog entry found, extract the fields listed below. Return ONLY "</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"a JSON array of objects (one per artwork). If no catalog entries are found, "</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"return an empty array []. Fields for each object: title (string), creator "</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"(string, default 'John Baldessari'), date (string, year or range), "</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"object_type (string), materials (array of strings), height_cm (number or null), "</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"width_cm (number or null), depth_cm (number or null), inventory_number "</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"(string or null), catalog_number (string or null). Do NOT invent values. "</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Use null for missing fields."</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_json_array(text):</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.strip()</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        obj <span class="op">=</span> json.loads(text)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(obj, <span class="bu">list</span>): <span class="cf">return</span> obj</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> json.JSONDecodeError:</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> text.find(<span class="st">"["</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> start <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        depth <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(start, <span class="bu">len</span>(text)):</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> text[idx] <span class="op">==</span> <span class="st">"["</span>: depth <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> text[idx] <span class="op">==</span> <span class="st">"]"</span>:</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>                depth <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> depth <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">try</span>:</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>                        obj <span class="op">=</span> json.loads(text[start : idx <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> <span class="bu">isinstance</span>(obj, <span class="bu">list</span>): <span class="cf">return</span> obj</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">except</span> json.JSONDecodeError:</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">pass</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_ollama(chunk_text, chunk_idx, total):</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Chunk </span><span class="sc">{</span>chunk_idx<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>total<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(chunk_text.split())<span class="sc">}</span><span class="ss"> words)..."</span>, end<span class="op">=</span><span class="st">" "</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> subprocess.run(</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"ollama"</span>, <span class="st">"run"</span>, ollama_model, PROMPT],</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>            <span class="bu">input</span><span class="op">=</span>chunk_text.encode(<span class="st">"utf-8"</span>),</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>            capture_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>            timeout<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> result.stdout.decode(<span class="st">"utf-8"</span>, errors<span class="op">=</span><span class="st">"replace"</span>).strip()</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>        stderr <span class="op">=</span> result.stderr.decode(<span class="st">"utf-8"</span>, errors<span class="op">=</span><span class="st">"replace"</span>).strip()</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> subprocess.TimeoutExpired:</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"TIMEOUT"</span>)</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(FAIL_LOG, <span class="st">"a"</span>) <span class="im">as</span> f:</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"Chunk </span><span class="sc">{</span>chunk_idx<span class="sc">}</span><span class="ss">: timeout</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"ERROR: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(FAIL_LOG, <span class="st">"a"</span>) <span class="im">as</span> f:</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"Chunk </span><span class="sc">{</span>chunk_idx<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>    records <span class="op">=</span> extract_json_array(output)</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> records <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"PARSE FAIL (len=</span><span class="sc">{</span><span class="bu">len</span>(output)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(FAIL_LOG, <span class="st">"a"</span>) <span class="im">as</span> f:</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"=== Chunk </span><span class="sc">{</span>chunk_idx<span class="sc">}</span><span class="ss"> parse failure ===</span><span class="ch">\n</span><span class="ss">STDERR: </span><span class="sc">{</span>stderr<span class="sc">}</span><span class="ch">\n</span><span class="ss">OUTPUT:</span><span class="ch">\n</span><span class="sc">{</span>output<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">"</span>)</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>    records <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> records <span class="cf">if</span> <span class="bu">isinstance</span>(r, <span class="bu">dict</span>)]</span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"found </span><span class="sc">{</span><span class="bu">len</span>(records)<span class="sc">}</span><span class="ss"> records"</span>)</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> records</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step3_extract(chunks):</span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 3: Extraction via Ollama ==="</span>)</span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>    FAIL_LOG.write_text(<span class="st">""</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>    all_records <span class="op">=</span> []</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx, chunk <span class="kw">in</span> <span class="bu">enumerate</span>(chunks, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>        all_records.extend(run_ollama(chunk, idx, <span class="bu">len</span>(chunks)))</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Raw records found: </span><span class="sc">{</span><span class="bu">len</span>(all_records)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> all_records</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b021" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>raw_records <span class="op">=</span> step3_extract(chunks)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>raw_count   <span class="op">=</span> <span class="bu">len</span>(raw_records)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-4-deduplicate" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-deduplicate">Step 4 — Deduplicate</h2>
+<p>Entries appearing in multiple chunks (due to overlap) are merged, preferring the record with more non-null fields.</p>
+<div id="b023" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> non_null_count(rec):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> v <span class="kw">in</span> rec.values() <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> v <span class="op">!=</span> <span class="st">""</span> <span class="kw">and</span> v <span class="op">!=</span> [])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step4_deduplicate(records):</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 4: Deduplication ==="</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    seen <span class="op">=</span> {}</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> rec <span class="kw">in</span> records:</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> (rec.get(<span class="st">"title"</span>) <span class="kw">or</span> <span class="st">""</span>).strip().lower()</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        cat   <span class="op">=</span> (rec.get(<span class="st">"catalog_number"</span>) <span class="kw">or</span> <span class="st">""</span>).strip().lower()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        key   <span class="op">=</span> (title, cat)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> seen <span class="kw">or</span> non_null_count(rec) <span class="op">&gt;</span> non_null_count(seen[key]):</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>            seen[key] <span class="op">=</span> rec</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    by_title <span class="op">=</span> {}</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> rec <span class="kw">in</span> seen.values():</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> (rec.get(<span class="st">"title"</span>) <span class="kw">or</span> <span class="st">""</span>).strip().lower()</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        cat   <span class="op">=</span> rec.get(<span class="st">"catalog_number"</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> cat <span class="kw">or</span> title <span class="kw">not</span> <span class="kw">in</span> by_title <span class="kw">or</span> non_null_count(rec) <span class="op">&gt;</span> non_null_count(by_title[title]):</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            by_title[title] <span class="op">=</span> rec</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="bu">list</span>(by_title.values())</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"After dedup: </span><span class="sc">{</span><span class="bu">len</span>(result)<span class="sc">}</span><span class="ss"> records (from </span><span class="sc">{</span><span class="bu">len</span>(records)<span class="sc">}</span><span class="ss"> raw)"</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b024" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>deduped <span class="op">=</span> step4_deduplicate(raw_records)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-5-entity-resolution" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-entity-resolution">Step 5 — Entity Resolution</h2>
+<p>Fuzzy-match creator names, material terms, and object types to Wikidata Q-IDs using <code>difflib</code>. No external APIs.</p>
+<div id="b026" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> resolve_qid(value, lookup_dict):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> value: <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="kw">in</span> lookup_dict: <span class="cf">return</span> lookup_dict[value]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    val_lower <span class="op">=</span> value.lower()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> lookup_dict.items():</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> k.lower() <span class="op">==</span> val_lower: <span class="cf">return</span> v</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    matches <span class="op">=</span> difflib.get_close_matches(value, lookup_dict.keys(), n<span class="op">=</span><span class="dv">1</span>, cutoff<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> lookup_dict[matches[<span class="dv">0</span>]] <span class="cf">if</span> matches <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step5_resolve(records):</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 5: Entity resolution ==="</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> rec <span class="kw">in</span> records:</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        creator <span class="op">=</span> rec.get(<span class="st">"creator"</span>) <span class="kw">or</span> <span class="st">"John Baldessari"</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        rec[<span class="st">"creator"</span>] <span class="op">=</span> creator</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        rec[<span class="st">"creator_qid"</span>] <span class="op">=</span> resolve_qid(creator, CREATOR_QIDS) <span class="kw">or</span> <span class="st">"Q312793"</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        rec[<span class="st">"object_type_qid"</span>] <span class="op">=</span> resolve_qid(rec.get(<span class="st">"object_type"</span>) <span class="kw">or</span> <span class="st">""</span>, OBJECT_TYPE_QIDS)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        mats <span class="op">=</span> rec.get(<span class="st">"materials"</span>) <span class="kw">or</span> []</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(mats, <span class="bu">str</span>):</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>            mats <span class="op">=</span> [m.strip() <span class="cf">for</span> m <span class="kw">in</span> re.split(<span class="vs">r"[,;/]"</span>, mats) <span class="cf">if</span> m.strip()]</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        mat_qids <span class="op">=</span> []</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> m <span class="kw">in</span> mats:</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>            qid <span class="op">=</span> resolve_qid(m, MATERIAL_QIDS)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> qid:</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>                qid <span class="op">=</span> <span class="bu">next</span>((v <span class="cf">for</span> k, v <span class="kw">in</span> MATERIAL_QIDS.items()</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">if</span> k.lower() <span class="kw">in</span> m.lower() <span class="kw">or</span> m.lower() <span class="kw">in</span> k.lower()), <span class="va">None</span>)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>            mat_qids.append(qid)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>        rec[<span class="st">"materials"</span>]     <span class="op">=</span> mats</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>        rec[<span class="st">"materials_qids"</span>] <span class="op">=</span> mat_qids</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> records</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b027" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>resolved <span class="op">=</span> step5_resolve(deduped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-6-write-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-write-outputs">Step 6 — Write Outputs</h2>
+<p>Writes two CSVs: - <code>output-plan-b.csv</code> — QuickStatements-compatible (Wikidata P-number headers) - <code>output-plan-b-readable.csv</code> — human-readable field name headers</p>
+<div id="b029" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_date_qs(date_str):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> date_str: <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> re.search(<span class="vs">r"\b(\d</span><span class="sc">{4}</span><span class="vs">)\b"</span>, <span class="bu">str</span>(date_str))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"+</span><span class="sc">{</span>m<span class="sc">.</span>group(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">-00-00T00:00:00Z/9"</span> <span class="cf">if</span> m <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step6_write_csv(records):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=== Step 6: Writing CSV outputs ==="</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    qs_cols <span class="op">=</span> [<span class="st">"qid"</span>, <span class="st">"P31"</span>, <span class="st">"P1476"</span>, <span class="st">"P170"</span>, <span class="st">"P571"</span>, <span class="st">"P276"</span>, <span class="st">"P195"</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"P186"</span>, <span class="st">"P2048"</span>, <span class="st">"P2049"</span>, <span class="st">"P2610"</span>, <span class="st">"P217"</span>, <span class="st">"P528"</span>, <span class="st">"P1431"</span>]</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(OUT_CSV, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        writer <span class="op">=</span> csv.DictWriter(f, fieldnames<span class="op">=</span>qs_cols)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        writer.writeheader()</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> rec <span class="kw">in</span> records:</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>            mat_qids  <span class="op">=</span> rec.get(<span class="st">"materials_qids"</span>) <span class="kw">or</span> []</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>            first_mat <span class="op">=</span> mat_qids[<span class="dv">0</span>] <span class="cf">if</span> mat_qids <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>            title     <span class="op">=</span> rec.get(<span class="st">"title"</span>) <span class="kw">or</span> <span class="st">""</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            writer.writerow({</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                <span class="st">"qid"</span>:   <span class="st">"CREATE"</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P31"</span>:   rec.get(<span class="st">"object_type_qid"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P1476"</span>: <span class="ss">f'"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"@en'</span> <span class="cf">if</span> title <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P170"</span>:  rec.get(<span class="st">"creator_qid"</span>) <span class="kw">or</span> <span class="st">"Q312793"</span>,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P571"</span>:  format_date_qs(rec.get(<span class="st">"date"</span>)) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P276"</span>:  <span class="st">"Q673907"</span>,</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P195"</span>:  <span class="st">"Q673907"</span>,</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P186"</span>:  first_mat <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P2048"</span>: rec.get(<span class="st">"height_cm"</span>) <span class="cf">if</span> rec.get(<span class="st">"height_cm"</span>) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P2049"</span>: rec.get(<span class="st">"width_cm"</span>)  <span class="cf">if</span> rec.get(<span class="st">"width_cm"</span>)  <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P2610"</span>: rec.get(<span class="st">"depth_cm"</span>)  <span class="cf">if</span> rec.get(<span class="st">"depth_cm"</span>)  <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P217"</span>:  rec.get(<span class="st">"inventory_number"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P528"</span>:  rec.get(<span class="st">"catalog_number"</span>)   <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">"P1431"</span>: <span class="st">"Q138573075"</span>,</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Wrote </span><span class="sc">{</span>OUT_CSV<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>OUT_CSV<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="sc">:,}</span><span class="ss"> bytes, </span><span class="sc">{</span><span class="bu">len</span>(records)<span class="sc">}</span><span class="ss"> rows)"</span>)</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    read_cols <span class="op">=</span> [<span class="st">"title"</span>, <span class="st">"creator"</span>, <span class="st">"creator_qid"</span>, <span class="st">"date"</span>, <span class="st">"object_type"</span>,</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"object_type_qid"</span>, <span class="st">"materials"</span>, <span class="st">"materials_qids"</span>,</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"height_cm"</span>, <span class="st">"width_cm"</span>, <span class="st">"depth_cm"</span>,</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"inventory_number"</span>, <span class="st">"catalog_number"</span>,</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"location"</span>, <span class="st">"exhibited_at"</span>, <span class="st">"notes"</span>]</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(OUT_READ, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>        writer <span class="op">=</span> csv.DictWriter(f, fieldnames<span class="op">=</span>read_cols, extrasaction<span class="op">=</span><span class="st">"ignore"</span>)</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>        writer.writeheader()</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> rec <span class="kw">in</span> records:</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>            mats     <span class="op">=</span> rec.get(<span class="st">"materials"</span>) <span class="kw">or</span> []</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>            mat_qids <span class="op">=</span> rec.get(<span class="st">"materials_qids"</span>) <span class="kw">or</span> []</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>            writer.writerow({</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>                <span class="st">"title"</span>:           rec.get(<span class="st">"title"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>                <span class="st">"creator"</span>:         rec.get(<span class="st">"creator"</span>) <span class="kw">or</span> <span class="st">"John Baldessari"</span>,</span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>                <span class="st">"creator_qid"</span>:     rec.get(<span class="st">"creator_qid"</span>) <span class="kw">or</span> <span class="st">"Q312793"</span>,</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>                <span class="st">"date"</span>:            rec.get(<span class="st">"date"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>                <span class="st">"object_type"</span>:     rec.get(<span class="st">"object_type"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>                <span class="st">"object_type_qid"</span>: rec.get(<span class="st">"object_type_qid"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>                <span class="st">"materials"</span>:       <span class="st">"; "</span>.join(<span class="bu">str</span>(m) <span class="cf">for</span> m <span class="kw">in</span> mats),</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>                <span class="st">"materials_qids"</span>:  <span class="st">"; "</span>.join(<span class="bu">str</span>(q) <span class="cf">for</span> q <span class="kw">in</span> mat_qids <span class="cf">if</span> q),</span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>                <span class="st">"height_cm"</span>:       rec.get(<span class="st">"height_cm"</span>) <span class="cf">if</span> rec.get(<span class="st">"height_cm"</span>) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>                <span class="st">"width_cm"</span>:        rec.get(<span class="st">"width_cm"</span>)  <span class="cf">if</span> rec.get(<span class="st">"width_cm"</span>)  <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>                <span class="st">"depth_cm"</span>:        rec.get(<span class="st">"depth_cm"</span>)  <span class="cf">if</span> rec.get(<span class="st">"depth_cm"</span>)  <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span>,</span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>                <span class="st">"inventory_number"</span>: rec.get(<span class="st">"inventory_number"</span>) <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>                <span class="st">"catalog_number"</span>:   rec.get(<span class="st">"catalog_number"</span>)   <span class="kw">or</span> <span class="st">""</span>,</span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>                <span class="st">"location"</span>:        <span class="st">"Sprengel Museum Hannover"</span>,</span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>                <span class="st">"exhibited_at"</span>:    <span class="st">"Q673907"</span>,</span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>                <span class="st">"notes"</span>:           <span class="st">""</span>,</span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Wrote </span><span class="sc">{</span>OUT_READ<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>OUT_READ<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="sc">:,}</span><span class="ss"> bytes, </span><span class="sc">{</span><span class="bu">len</span>(records)<span class="sc">}</span><span class="ss"> rows)"</span>)</span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>step6_write_csv(resolved)</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Final report ─────────────────────────────────────────────────────────────</span></span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"FINAL REPORT"</span>)</span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"OCR validity ratio:         </span><span class="sc">{</span>validity_ratio<span class="sc">:.4f}</span><span class="ss"> (</span><span class="sc">{</span><span class="st">'PASS'</span> <span class="cf">if</span> validity_ratio <span class="op">&gt;=</span> <span class="fl">0.80</span> <span class="cf">else</span> <span class="st">'FAIL'</span><span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chunks processed:           </span><span class="sc">{</span>num_chunks<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Raw records (before dedup): </span><span class="sc">{</span>raw_count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Records after dedup:        </span><span class="sc">{</span><span class="bu">len</span>(resolved)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> [OUT_CSV, OUT_READ, FAIL_LOG]:</span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> f.exists():</span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>f<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="sc">:,}</span><span class="ss"> bytes"</span>)</span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/catalogue-extraction/notebook_plan_b.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/4.0e84">4.0e84</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -15,6 +15,13 @@ author:
         name: "TIB"
         city: "Hannover"
         country: "Germany"
+  - name: Chloë Farr
+    orcid: 0009-0007-1146-6745
+    affiliations:
+      - id: "inst3"
+        name: "University of Victoria"
+        city: "Victoria, British Columbia"
+        country: "Canada"
 abstract: |
   Catalogue exhibition contents using Linked Open Data and AI LLM assistants. 
 keywords: [Data Science, GLAM, Open Science]

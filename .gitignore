@@ -4,6 +4,10 @@
 # PDF input files — source docs not for public distribution
 scans/
 
+# Ignore all PDFs in the repository, including generated searchable copies and local source files
+**/*.pdf
+*.pdf
+
 # OCR source transcripts
 catalogues/scan-2/baldessari-sprengel.hocr
 catalogues/scan-2/baldessari-sprengel.txt
@@ -12,8 +16,10 @@ output/ocr/
 
 # Page image directories created by pdftoppm when running notebooks locally
 *_pages/
-   
 
 
 
 
+
+
+**/*.quarto_ipynb

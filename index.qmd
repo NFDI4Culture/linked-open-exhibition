@@ -9,6 +9,27 @@ This site presents a prototype pipeline for publishing art exhibition data as **
 
 **Goal:** Retrieve exhibition catalogue records from the Deutsche Nationalbibliothek (DNB), structure them using an open data model, upload them to a Wikibase knowledge base, and publish the results as a Quarto website — all reproducibly and with full documentation.
 
+## OA Week 2026 prototype
+
+ - [John Baldessari](https://nfdi4culture.github.io/John-Baldessari-Exhibition-Catalogue/) — featured in the OA Week 2026 prototype exhibition
+ - [Accompanying slides](https://nfdi4culture.github.io/loe-slides-oaweek2026/#/title-slide) - OA Week 2026  
+
+---
+
+Catalogue of works by the artists John Baldessari shown in an art exhibition at the Sprengel Museum Hannover 26.9.1999 - 2.1.2000. The purpose of the prototype is to demonstrate how to catalogue artworks in an exhibition as Linked Open Data on Wikidata. In this instance an OCR scan is transfered to Wikidata and then ouput as a computationally reproducible Quarto publication. 
+
+Exhibition title: 'while something is happening here, something else is happening there ; works 1988 - 1999' ; Spectrum - Internationaler Preis für Fotografie der Stiftung Niedersachsen 
+
+Location: 
+
+Sprengel-Museum Hannover, 26.9.1999 - 2.1.2000.
+
+Staatliche Kunstsammlungen Dresden, Gemäldegalerie Neue Meister, 15.1. - 2.4.2000. 
+
+Sprengel Museum website: [https://www.sprengel-museum.de/ausstellungen/archiv](https://www.sprengel-museum.de/ausstellungen/archiv)
+
+Exhibition information (DNB publication record) is included for reference. [https://d-nb.info/957409494](https://d-nb.info/957409494) ISBN [978-3-88375-396-6](https://www.tib.eu/de/suchen/id/gwlb:302796398?cHash=d9b2700b8cf3934df61d65f43f2e6278).
+
 ## The pipeline
 
 ```

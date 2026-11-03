@@ -1,4 +1,8 @@
 <!-- catalogue-items.dtd
+     NOTE: Superseded in design by data-models/wikibase-model.json (artwork and exhibition-item
+     model, version 0.1-provisional). A new DTD for the intermediary XML format will be derived
+     from that model; this file is kept for the existing catalogue-items.xml.
+
      Document Type Definition for Exhibition Catalogue Items XML
      Aligned with the Item-in-Exhibition Data Model (data-models/item-in-exhibition.csv)
      and Wikidata / CIDOC CRM property set.

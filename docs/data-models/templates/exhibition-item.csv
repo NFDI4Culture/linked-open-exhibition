@@ -1,0 +1,4 @@
+item_id,artwork_id,exhibition_id,catalogue_number,catalogue_page,title_as_exhibited,notes
+ITM001,ART001,EXH001,,14,,
+ITM002,ART002,EXH001,,14; 51,,
+ITM003,ART003,EXH001,,17,,

@@ -1,0 +1,39 @@
+term_id,term_type,label_en,label_de,aat_id,wikidata_qid
+MAT001,material,inkjet,Tintenstrahldruck,,Q130443678
+MAT002,material,canvas,Leinwand,,Q4259259
+MAT003,material,acrylic paint,Acrylfarbe,,Q207849
+TYP001,object_type,print,Druck,,Q11060274
+TYP002,object_type,mixed media,Mischtechnik,,Q1902763
+PLC001,place,Sprengel Museum Hannover,Sprengel Museum Hannover,,Q510144
+TYP003,object_type,painting,Gemälde,,Q3305213
+MAT004,material,photoemulsion,Fotoemulsion,,
+TYP004,object_type,photograph,Fotografie,,Q125191
+MAT005,material,black-and-white photograph,Schwarzweißfotografie,,
+TYP005,object_type,wallpaper,Tapete,,Q191529
+MAT006,material,wallpaper,Tapete,,Q191529
+TYP006,object_type,illustration,Illustration,,Q178659
+MAT007,material,color photograph,Farbfotografie,,
+MAT008,material,metallic paper,Metallpapier,,
+MAT009,material,oil stain,Ölfleck,,
+MAT010,material,gelatin silver print,Silbergelatineabzug,,Q64029133
+MAT011,material,aluminium,Aluminium,,
+MAT012,material,vinyl paint,Vinylfarbe,,Q2135874
+MAT013,material,oil tint,Öltönung,,
+MAT014,material,Masonite,Masonit,,
+MAT015,material,crayon,Kreide,,
+MAT016,material,photocopy,Fotokopie,,
+MAT017,material,Gandhi Ashram paper,Gandhi-Ashram-Papier,,
+MAT018,material,paper stickers,Papieraufkleber,,
+MAT019,material,oil enamel,Ölemail,,
+MAT020,material,rubber,Gummi,,
+MAT021,material,Formica,Formica,,
+MAT022,material,oil pastel,Ölpastell,,
+MAT023,material,pencil,Bleistift,,
+MAT024,material,paper,Papier,,
+MAT025,material,oil stick,Ölstift,,Q7081466
+MAT026,material,hand lettering,Handbeschriftung,,
+MAT027,material,Folio D process,Folio-D-Verfahren,,
+MAT028,material,vinyl,Vinyl,,
+MAT029,material,digital printing,Digitaldruck,,
+TYP007,object_type,film,Film,,Q11424
+TYP008,object_type,video,Video,,Q34508

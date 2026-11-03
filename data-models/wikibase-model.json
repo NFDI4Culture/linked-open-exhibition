@@ -1,0 +1,569 @@
+{
+  "model": "linked-open-exhibition artwork and exhibition-item model",
+  "version": "0.1-provisional",
+  "language_defaults": {
+    "label_languages": ["en", "de"],
+    "title_language": "mul"
+  },
+  "namespaces": {
+    "wikidata": "http://www.wikidata.org/entity/",
+    "cidoc": "http://www.cidoc-crm.org/cidoc-crm/",
+    "linked_art": "https://linked.art/ns/terms/",
+    "lido": "http://www.lido-schema.org/"
+  },
+  "classes": [
+    {
+      "key": "artwork",
+      "label_en": "artwork",
+      "label_de": "Kunstwerk",
+      "description_en": "A human-made object created as a work of art.",
+      "equivalents": {
+        "wikidata": "Q838948",
+        "cidoc": "E22_Human-Made_Object",
+        "linked_art": "HumanMadeObject",
+        "lido": "lido:category = Man-made object"
+      }
+    },
+    {
+      "key": "person",
+      "label_en": "person",
+      "label_de": "Person",
+      "description_en": "A human being, for example an artist.",
+      "equivalents": {
+        "wikidata": "Q5",
+        "cidoc": "E21_Person",
+        "linked_art": "Person",
+        "lido": "lido:actorType = person"
+      }
+    },
+    {
+      "key": "exhibition",
+      "label_en": "exhibition",
+      "label_de": "Ausstellung",
+      "description_en": "A temporary presentation of artworks at a venue.",
+      "equivalents": {
+        "wikidata": "Q464980",
+        "cidoc": "E7_Activity",
+        "linked_art": "Activity",
+        "lido": "lido:eventType = Exhibition (lido00045)"
+      }
+    },
+    {
+      "key": "exhibition_item",
+      "label_en": "exhibition item",
+      "label_de": "Ausstellungsobjekt",
+      "description_en": "The showing of one artwork in one exhibition, with catalogue-specific details.",
+      "equivalents": {
+        "wikidata": null,
+        "cidoc": "E7_Activity (part of the exhibition, P16_used_specific_object)",
+        "linked_art": "Activity (part_of exhibition, used_specific_object)",
+        "lido": "lido:eventObject within the exhibition event"
+      }
+    },
+    {
+      "key": "material",
+      "label_en": "material",
+      "label_de": "Material",
+      "description_en": "A material an artwork is made from.",
+      "equivalents": {
+        "wikidata": "Q214609",
+        "cidoc": "E57_Material",
+        "linked_art": "Material",
+        "lido": "lido:termMaterialsTech"
+      }
+    },
+    {
+      "key": "object_type",
+      "label_en": "object type",
+      "label_de": "Objekttyp",
+      "description_en": "A type of object such as painting, drawing, print, sculpture.",
+      "equivalents": {
+        "wikidata": "Q151885",
+        "cidoc": "E55_Type",
+        "linked_art": "Type",
+        "lido": "lido:objectWorkType"
+      }
+    },
+    {
+      "key": "place",
+      "label_en": "place",
+      "label_de": "Ort",
+      "description_en": "A museum, venue or other place where artworks are held or shown.",
+      "equivalents": {
+        "wikidata": "Q17334923",
+        "cidoc": "E53_Place",
+        "linked_art": "Place",
+        "lido": "lido:placeID"
+      }
+    }
+  ],
+  "properties": [
+    {
+      "key": "equivalent_property",
+      "label_en": "equivalent property",
+      "label_de": "äquivalente Eigenschaft",
+      "description_en": "URL of an equivalent property or class in another schema (Wikidata, CIDOC CRM, Linked Art, LIDO).",
+      "datatype": "url",
+      "used_on": ["property", "class"],
+      "equivalents": {}
+    },
+    {
+      "key": "local_id",
+      "label_en": "local ID",
+      "label_de": "lokale ID",
+      "description_en": "Identifier of the record in the source CSV files, used to make loads repeatable.",
+      "datatype": "external-id",
+      "used_on": ["artwork", "person", "exhibition", "exhibition_item", "material", "object_type", "place"],
+      "equivalents": {
+        "cidoc": "P1_is_identified_by (E42_Identifier)",
+        "linked_art": "identified_by (Identifier)",
+        "lido": "lido:lidoRecID"
+      }
+    },
+    {
+      "key": "instance_of",
+      "label_en": "Type",
+      "label_de": "Instanz von (Haupt-)",
+      "description_en": "Main class of the artwork, usually a work of art or specific type of object.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork", "person", "exhibition", "exhibition_item", "material", "object_type", "place"],
+      "equivalents": {
+        "wikidata": "P31",
+        "cidoc": "P2_has_type",
+        "linked_art": "classified_as",
+        "lido": "lido:category / lido:objectWorkType"
+      }
+    },
+    {
+      "key": "object_type",
+      "label_en": "Artwork type",
+      "label_de": "Objekttyp (Art des Kunstwerks)",
+      "description_en": "More specific type of the artwork, such as painting, print, sculpture, or installation.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P31 (narrower instance of)",
+        "cidoc": "P2_has_type (E55_Type)",
+        "linked_art": "classified_as",
+        "lido": "lido:objectWorkType"
+      }
+    },
+    {
+      "key": "title",
+      "label_en": "Title",
+      "label_de": "Titel",
+      "description_en": "Title of the artwork or exhibition.",
+      "datatype": "monolingualtext",
+      "used_on": ["artwork", "exhibition"],
+      "equivalents": {
+        "wikidata": "P1476",
+        "cidoc": "P102_has_title (E35_Title)",
+        "linked_art": "identified_by (Name, classified_as title)",
+        "lido": "lido:titleWrap/lido:titleSet/lido:appellationValue"
+      }
+    },
+    {
+      "key": "creator",
+      "label_en": "Creator",
+      "label_de": "Urheber/in",
+      "description_en": "Person who made the artwork.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P170",
+        "cidoc": "P108i_was_produced_by > E12_Production > P14_carried_out_by",
+        "linked_art": "produced_by.carried_out_by",
+        "lido": "lido:eventSet (Production)/lido:eventActor"
+      }
+    },
+    {
+      "key": "inception",
+      "label_en": "Date of creation",
+      "label_de": "Entstehungsdatum",
+      "description_en": "Date the artwork was created.",
+      "datatype": "time",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P571",
+        "cidoc": "P108i_was_produced_by > E12_Production > P4_has_time-span",
+        "linked_art": "produced_by.timespan",
+        "lido": "lido:eventSet (Production)/lido:eventDate"
+      }
+    },
+    {
+      "key": "main_subject",
+      "label_en": "Subject",
+      "label_de": "Hauptthema",
+      "description_en": "Main subject or motif represented in the artwork.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P921",
+        "cidoc": "P129_is_about (E1_CRM_Entity)",
+        "linked_art": "subject_of",
+        "lido": "lido:subjectWrap/lido:subjectSet/lido:subject"
+      }
+    },
+    {
+      "key": "materials",
+      "label_en": "Materials",
+      "label_de": "Materialien",
+      "description_en": "Material or materials used to make the artwork.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P186",
+        "cidoc": "P45_consists_of (E57_Material)",
+        "linked_art": "made_of",
+        "lido": "lido:eventMaterialsTech/lido:materialsTech"
+      }
+    },
+    {
+      "key": "made_from_material",
+      "label_en": "Material",
+      "label_de": "Material",
+      "description_en": "Material the artwork is made from.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P186",
+        "cidoc": "P45_consists_of (E57_Material)",
+        "linked_art": "made_of",
+        "lido": "lido:eventMaterialsTech/lido:materialsTech"
+      }
+    },
+    {
+      "key": "height",
+      "label_en": "Height",
+      "label_de": "Höhe",
+      "description_en": "Height in centimetres.",
+      "datatype": "quantity",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P2048",
+        "cidoc": "P43_has_dimension (E54_Dimension, type height)",
+        "linked_art": "dimension (classified_as height)",
+        "lido": "lido:objectMeasurementsSet (measurementType height)"
+      }
+    },
+    {
+      "key": "width",
+      "label_en": "Width",
+      "label_de": "Breite",
+      "description_en": "Width in centimetres.",
+      "datatype": "quantity",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P2049",
+        "cidoc": "P43_has_dimension (E54_Dimension, type width)",
+        "linked_art": "dimension (classified_as width)",
+        "lido": "lido:objectMeasurementsSet (measurementType width)"
+      }
+    },
+    {
+      "key": "depth",
+      "label_en": "Depth",
+      "label_de": "Tiefe",
+      "description_en": "Depth in centimetres.",
+      "datatype": "quantity",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P5524",
+        "cidoc": "P43_has_dimension (E54_Dimension, type depth)",
+        "linked_art": "dimension (classified_as depth)",
+        "lido": "lido:objectMeasurementsSet (measurementType depth)"
+      }
+    },
+    {
+      "key": "inventory_number",
+      "label_en": "Inventory no.",
+      "label_de": "Inventarnummer",
+      "description_en": "Identifier of the physical object in a collection.",
+      "datatype": "string",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P217",
+        "cidoc": "P1_is_identified_by (E42_Identifier, type inventory number)",
+        "linked_art": "identified_by (Identifier, classified_as inventory number)",
+        "lido": "lido:repositorySet/lido:workID"
+      }
+    },
+    {
+      "key": "catalog_code",
+      "label_en": "Catalogue no.",
+      "label_de": "Katalogcode",
+      "description_en": "Catalogue code or accession code associated with the artwork.",
+      "datatype": "string",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P528",
+        "cidoc": "P1_is_identified_by (E42_Identifier)",
+        "linked_art": "identified_by (Identifier)",
+        "lido": "lido:workID"
+      }
+    },
+    {
+      "key": "location",
+      "label_en": "location",
+      "label_de": "Standort",
+      "description_en": "Current location (collection or venue) of the artwork, or venue of an exhibition.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork", "exhibition"],
+      "equivalents": {
+        "wikidata": "P276",
+        "cidoc": "P55_has_current_location (E53_Place)",
+        "linked_art": "current_location",
+        "lido": "lido:repositorySet/lido:repositoryLocation"
+      }
+    },
+    {
+      "key": "image_url",
+      "label_en": "Image",
+      "label_de": "Bild",
+      "description_en": "URL of an image of the artwork.",
+      "datatype": "url",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P6500",
+        "cidoc": "P138i_has_representation (E36_Visual_Item)",
+        "linked_art": "representation (VisualItem, digitally_shown_by)",
+        "lido": "lido:resourceWrap/lido:resourceSet/lido:resourceRepresentation/lido:linkResource"
+      }
+    },
+    {
+      "key": "part_of_series",
+      "label_en": "Series",
+      "label_de": "Teile einer Serie",
+      "description_en": "Series or related group to which the artwork belongs.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P179",
+        "cidoc": "P108_has_produced (E65_Creation)",
+        "linked_art": "part_of_series",
+        "lido": "lido:relatedWorkSet/lido:relatedWork"
+      }
+    },
+    {
+      "key": "depicts",
+      "label_en": "Depicted motif",
+      "label_de": "Darstellt",
+      "description_en": "Subject or motif depicted in the artwork.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P180",
+        "cidoc": "P129_is_about",
+        "linked_art": "depicts",
+        "lido": "lido:subjectWrap/lido:subjectSet/lido:subject"
+      }
+    },
+    {
+      "key": "iconclass",
+      "label_en": "Iconclass",
+      "label_de": "stellt Iconclass-Notation dar",
+      "description_en": "Iconclass notation for a subject depicted in the artwork.",
+      "datatype": "external-id",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P1257",
+        "cidoc": "P62_depicts (E55_Type, Iconclass concept)",
+        "linked_art": "shows.represents (Type)",
+        "lido": "lido:subjectWrap/lido:subjectSet/lido:subject/lido:subjectConcept/lido:conceptID"
+      }
+    },
+    {
+      "key": "exhibited_at",
+      "label_en": "Exhibited at",
+      "label_de": "Ausgestellt in",
+      "description_en": "Exhibition in which the artwork was shown; persisted on the exhibition-item relationship to keep the association normalized.",
+      "datatype": "wikibase-item",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "wikidata": "P608",
+        "cidoc": "P9i_forms_part_of (E7_Activity)",
+        "linked_art": "part_of / shown_at",
+        "lido": "lido:eventSet/lido:event"
+      }
+    },
+    {
+      "key": "current_owner",
+      "label_en": "Owner",
+      "label_de": "Aktueller Eigentümer",
+      "description_en": "Current owner or holder of the artwork.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P127",
+        "cidoc": "P50_has_current_keeper",
+        "linked_art": "current_owner",
+        "lido": "lido:repositorySet/lido:repositoryName"
+      }
+    },
+    {
+      "key": "commons_category",
+      "label_en": "Commons category",
+      "label_de": "Commons-Kategorie",
+      "description_en": "Wikimedia Commons category that documents or illustrates the artwork.",
+      "datatype": "url",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P373",
+        "cidoc": "P138i_has_representation",
+        "linked_art": "related",
+        "lido": "lido:resourceWrap/lido:resourceSet"
+      }
+    },
+    {
+      "key": "wikidata_qid",
+      "label_en": "Wikidata item",
+      "label_de": "Wikidata-QID",
+      "description_en": "Identifier of the matching Wikidata item.",
+      "datatype": "external-id",
+      "used_on": ["artwork", "person", "exhibition", "material", "object_type", "place"],
+      "equivalents": {
+        "cidoc": "P1_is_identified_by (E42_Identifier) or owl:sameAs",
+        "linked_art": "equivalent",
+        "lido": "lido:objectID / lido:actorID / lido:conceptID (type wikidata)"
+      }
+    },
+    {
+      "key": "gnd_id",
+      "label_en": "GND ID",
+      "label_de": "GND-ID",
+      "description_en": "Identifier in the Gemeinsame Normdatei.",
+      "datatype": "external-id",
+      "used_on": ["person"],
+      "equivalents": {
+        "wikidata": "P227",
+        "cidoc": "P1_is_identified_by (E42_Identifier)",
+        "linked_art": "equivalent / identified_by",
+        "lido": "lido:actorID (type GND)"
+      }
+    },
+    {
+      "key": "aat_id",
+      "label_en": "AAT ID",
+      "label_de": "AAT-ID",
+      "description_en": "Identifier in the Getty Art & Architecture Thesaurus.",
+      "datatype": "external-id",
+      "used_on": ["material", "object_type"],
+      "equivalents": {
+        "wikidata": "P1014",
+        "cidoc": "P1_is_identified_by (E42_Identifier)",
+        "linked_art": "equivalent",
+        "lido": "lido:conceptID (type AAT)"
+      }
+    },
+    {
+      "key": "start_date",
+      "label_en": "Start date",
+      "label_de": "Beginn",
+      "description_en": "Date the exhibition opened.",
+      "datatype": "time",
+      "used_on": ["exhibition"],
+      "equivalents": {
+        "wikidata": "P580",
+        "cidoc": "P4_has_time-span > P82a_begin_of_the_begin",
+        "linked_art": "timespan.begin_of_the_begin",
+        "lido": "lido:eventDate/lido:date/lido:earliestDate"
+      }
+    },
+    {
+      "key": "end_date",
+      "label_en": "End date",
+      "label_de": "Ende",
+      "description_en": "Date the exhibition closed.",
+      "datatype": "time",
+      "used_on": ["exhibition"],
+      "equivalents": {
+        "wikidata": "P582",
+        "cidoc": "P4_has_time-span > P82b_end_of_the_end",
+        "linked_art": "timespan.end_of_the_end",
+        "lido": "lido:eventDate/lido:date/lido:latestDate"
+      }
+    },
+    {
+      "key": "exhibition",
+      "label_en": "Exhibition",
+      "label_de": "in Ausstellung",
+      "description_en": "Exhibition that an exhibition item belongs to.",
+      "datatype": "wikibase-item",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "wikidata": "P608",
+        "cidoc": "P9i_forms_part_of (E7_Activity)",
+        "linked_art": "part_of",
+        "lido": "lido:eventSet/lido:event (Exhibition)"
+      }
+    },
+    {
+      "key": "exhibited_artwork",
+      "label_en": "Artwork in exhibition",
+      "label_de": "ausgestelltes Kunstwerk",
+      "description_en": "Artwork shown in the exhibition item.",
+      "datatype": "wikibase-item",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "wikidata": "P608 (inverse, stated on the artwork)",
+        "cidoc": "P16_used_specific_object",
+        "linked_art": "used_specific_object",
+        "lido": "lido:eventObject/lido:object"
+      }
+    },
+    {
+      "key": "catalogue_number",
+      "label_en": "Catalogue number",
+      "label_de": "Katalognummer",
+      "description_en": "Number of the item in the exhibition catalogue.",
+      "datatype": "string",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "wikidata": "P528",
+        "cidoc": "P1_is_identified_by (E42_Identifier, type catalogue number)",
+        "linked_art": "identified_by (Identifier, classified_as catalogue number)",
+        "lido": "lido:workID (type catalogue number)"
+      }
+    },
+    {
+      "key": "catalogue_page",
+      "label_en": "Page(s)",
+      "label_de": "Seite(n)",
+      "description_en": "Page(s) of the exhibition catalogue on which the item is listed or reproduced.",
+      "datatype": "string",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "wikidata": "P304",
+        "cidoc": "P3_has_note (E62_String, catalogue page)",
+        "linked_art": "referred_to_by (LinguisticObject, classified_as page)",
+        "lido": "lido:relatedWorkSet/lido:relatedWork"
+      }
+    },
+    {
+      "key": "title_as_exhibited",
+      "label_en": "title as exhibited",
+      "label_de": "Titel in der Ausstellung",
+      "description_en": "Title under which the artwork was shown, if different from its current title.",
+      "datatype": "string",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "cidoc": "P1_is_identified_by (E35_Title) on the showing",
+        "linked_art": "identified_by (Name) on the part activity",
+        "lido": "lido:titleSet (type exhibited as)"
+      }
+    },
+    {
+      "key": "note",
+      "label_en": "note",
+      "label_de": "Anmerkung",
+      "description_en": "Free-text note.",
+      "datatype": "string",
+      "used_on": ["exhibition_item"],
+      "equivalents": {
+        "cidoc": "P3_has_note",
+        "linked_art": "referred_to_by (LinguisticObject)",
+        "lido": "lido:descriptiveNoteValue"
+      }
+    }
+  ]
+}

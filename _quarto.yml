@@ -59,6 +59,8 @@ website:
             text: Exhibition Data Model
           - href: data-models/dnb-catalogue-datamodel.qmd
             text: DNB Catalogue Data Model
+          - href: data-models/artwork-datamodel.qmd
+            text: Artwork Data Model
           - href: data-models/item-in-exhibition-datamodel.qmd
             text: Item in Exhibition Data Model
       - href: about.qmd

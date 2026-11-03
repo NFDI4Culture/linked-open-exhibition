@@ -210,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#er-diagram" id="toc-er-diagram" class="nav-link" data-scroll-target="#er-diagram">ER Diagram</a></li>
-  <li><a href="#why-a-separate-exhibition-item" id="toc-why-a-separate-exhibition-item" class="nav-link" data-scroll-target="#why-a-separate-exhibition-item">Why a separate exhibition item?</a></li>
+  <li><a href="#why-qualifiers-instead-of-a-separate-item" id="toc-why-qualifiers-instead-of-a-separate-item" class="nav-link" data-scroll-target="#why-qualifiers-instead-of-a-separate-item">Why qualifiers instead of a separate item?</a></li>
   <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a></li>
   <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">Properties</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
@@ -265,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 2, 2026 00:00</p>
+      <p class="date">November 3, 2026 00:00</p>
     </div>
   </div>
   
@@ -291,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>An <strong>exhibition item</strong> records that one artwork was shown in one exhibition, together with the details that only the exhibition catalogue knows: catalogue number, catalogue page and the title as printed. It is the association between the <a href="../data-models/artwork-datamodel.html">Artwork</a> model and the exhibition model.</p>
+<p>An artwork is linked to an exhibition with an <strong><code>Exhibited at</code></strong> statement on the artwork. The details that only the exhibition catalogue knows (catalogue number, catalogue page, the title as printed, a note) are added to that statement as qualifiers. There is no separate exhibition item. The model is the association between the <a href="../data-models/artwork-datamodel.html">Artwork</a> model and the exhibition model.</p>
 <p>The model is defined in <a href="wikibase-model.json">wikibase-model.json</a>. The tables below are generated from it.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -315,8 +315,8 @@ Note
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">erDiagram
-    EXHIBITION ||--o{ EXHIBITION_ITEM : "includes"
-    ARTWORK ||--o{ EXHIBITION_ITEM : "is shown as"
+    EXHIBITION ||--o{ EXHIBITED_AT : "is referenced by"
+    ARTWORK ||--o{ EXHIBITED_AT : "has statement"
     PLACE |o--o{ EXHIBITION : "held at"
     PERSON ||--o{ ARTWORK : "creates"
 
@@ -328,14 +328,13 @@ Note
         string venue_id FK
         string wikidata_qid
     }
-    EXHIBITION_ITEM {
-        string item_id PK
+    EXHIBITED_AT {
         string artwork_id FK
         string exhibition_id FK
-        string catalogue_number
-        string catalogue_page
-        string title_as_exhibited
-        string notes
+        string catalogue_number "qualifier"
+        string catalogue_page "qualifier"
+        string title_as_exhibited "qualifier"
+        string notes "qualifier"
     }
     ARTWORK {
         string artwork_id PK
@@ -358,9 +357,9 @@ Note
 </div>
 <p><code>ARTWORK</code> is shown with key fields only; see <a href="../data-models/artwork-datamodel.html">Artwork Data Model</a> for the full entity.</p>
 </section>
-<section id="why-a-separate-exhibition-item" class="level2">
-<h2 class="anchored" data-anchor-id="why-a-separate-exhibition-item">Why a separate exhibition item?</h2>
-<p>A statement “artwork X was in exhibition Y” cannot hold catalogue number, page or the title as printed without qualifiers. An item of its own keeps these values together, works for artworks that appear in several exhibitions, and maps directly to CIDOC CRM (an activity that used a specific object).</p>
+<section id="why-qualifiers-instead-of-a-separate-item" class="level2">
+<h2 class="anchored" data-anchor-id="why-qualifiers-instead-of-a-separate-item">Why qualifiers instead of a separate item?</h2>
+<p>The catalogue details belong to one artwork in one exhibition. Qualifiers on the <code>Exhibited at</code> statement keep them next to the statement, work for artworks that appear in several exhibitions (one statement per exhibition), and follow the usual Wikidata pattern for exhibition history (P608).</p>
 </section>
 <section id="classes" class="level2">
 <h2 class="anchored" data-anchor-id="classes">Classes</h2>
@@ -383,14 +382,6 @@ Note
 <td>E7_Activity</td>
 <td>Activity</td>
 <td>lido:eventType = Exhibition (lido00045)</td>
-</tr>
-<tr class="even">
-<td><strong>exhibition_item</strong></td>
-<td>exhibition item / Ausstellungsobjekt</td>
-<td></td>
-<td>E7_Activity (part of the exhibition, P16_used_specific_object)</td>
-<td>Activity (part_of exhibition, used_specific_object)</td>
-<td>lido:eventObject within the exhibition event</td>
 </tr>
 </tbody>
 </table>
@@ -445,7 +436,7 @@ Note
 <td><strong>exhibited_at</strong></td>
 <td>Exhibited at / Ausgestellt in</td>
 <td>wikibase-item</td>
-<td>exhibition_item</td>
+<td></td>
 <td>P608</td>
 <td>P9i_forms_part_of (E7_Activity)</td>
 <td>part_of / shown_at</td>
@@ -453,7 +444,7 @@ Note
 </tr>
 <tr class="even">
 <td><strong>start_date</strong></td>
-<td>start date / Beginn</td>
+<td>Start date / Beginn</td>
 <td>time</td>
 <td>exhibition</td>
 <td>P580</td>
@@ -463,7 +454,7 @@ Note
 </tr>
 <tr class="odd">
 <td><strong>end_date</strong></td>
-<td>end date / Ende</td>
+<td>End date / Ende</td>
 <td>time</td>
 <td>exhibition</td>
 <td>P582</td>
@@ -472,30 +463,10 @@ Note
 <td>lido:eventDate/lido:date/lido:latestDate</td>
 </tr>
 <tr class="even">
-<td><strong>exhibition</strong></td>
-<td>in exhibition / in Ausstellung</td>
-<td>wikibase-item</td>
-<td>exhibition_item</td>
-<td>P608</td>
-<td>P9i_forms_part_of (E7_Activity)</td>
-<td>part_of</td>
-<td>lido:eventSet/lido:event (Exhibition)</td>
-</tr>
-<tr class="odd">
-<td><strong>exhibited_artwork</strong></td>
-<td>exhibited artwork / ausgestelltes Kunstwerk</td>
-<td>wikibase-item</td>
-<td>exhibition_item</td>
-<td>P608 (inverse, stated on the artwork)</td>
-<td>P16_used_specific_object</td>
-<td>used_specific_object</td>
-<td>lido:eventObject/lido:object</td>
-</tr>
-<tr class="even">
 <td><strong>catalogue_number</strong></td>
-<td>catalogue code / Katalognummer</td>
+<td>Catalogue number / Katalognummer</td>
 <td>string</td>
-<td>exhibition_item</td>
+<td>qualifier</td>
 <td>P528</td>
 <td>P1_is_identified_by (E42_Identifier, type catalogue number)</td>
 <td>identified_by (Identifier, classified_as catalogue number)</td>
@@ -503,9 +474,9 @@ Note
 </tr>
 <tr class="odd">
 <td><strong>catalogue_page</strong></td>
-<td>page(s) / Seite(n)</td>
+<td>Page(s) / Seite(n)</td>
 <td>string</td>
-<td>exhibition_item</td>
+<td>qualifier</td>
 <td>P304</td>
 <td>P3_has_note (E62_String, catalogue page)</td>
 <td>referred_to_by (LinguisticObject, classified_as page)</td>
@@ -515,7 +486,7 @@ Note
 <td><strong>title_as_exhibited</strong></td>
 <td>title as exhibited / Titel in der Ausstellung</td>
 <td>string</td>
-<td>exhibition_item</td>
+<td>qualifier</td>
 <td></td>
 <td>P1_is_identified_by (E35_Title) on the showing</td>
 <td>identified_by (Name) on the part activity</td>
@@ -525,11 +496,61 @@ Note
 <td><strong>note</strong></td>
 <td>note / Anmerkung</td>
 <td>string</td>
-<td>exhibition_item</td>
+<td>qualifier</td>
 <td></td>
 <td>P3_has_note</td>
 <td>referred_to_by (LinguisticObject)</td>
 <td>lido:descriptiveNoteValue</td>
+</tr>
+<tr class="even">
+<td><strong>exhibition_catalogue</strong></td>
+<td>Exhibition catalogue / Ausstellungskatalog</td>
+<td>wikibase-item</td>
+<td>exhibition</td>
+<td>P1343</td>
+<td>P70i_is_documented_in</td>
+<td>subject_of</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>scan_page</strong></td>
+<td>Scan page / Scanseite</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, scan page)</td>
+<td>part_of (Canvas)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>scan_region</strong></td>
+<td>Scan region / Scanbereich</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, region)</td>
+<td>FragmentSelector</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>extraction_method</strong></td>
+<td>Extraction method / Extraktionsmethode</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, method)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>review_status</strong></td>
+<td>Review status / Prüfstatus</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, review status)</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -537,29 +558,21 @@ Note
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>Baldessari catalogue (Sprengel Museum Hannover), item <code>ITM002</code>:</p>
+<p>Baldessari catalogue (Sprengel Museum Hannover), artwork <code>ART002</code>:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Field</th>
+<th>Statement</th>
 <th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>item_id</code></td>
-<td>ITM002</td>
-</tr>
-<tr class="even">
-<td><code>artwork_id</code></td>
-<td>ART002 (THESE TOO, 1997, print)</td>
-</tr>
-<tr class="odd">
-<td><code>exhibition_id</code></td>
+<td><code>Exhibited at</code></td>
 <td>EXH001 (John Baldessari, Sprengel Museum Hannover)</td>
 </tr>
 <tr class="even">
-<td><code>catalogue_page</code></td>
+<td>qualifier <code>Page(s)</code></td>
 <td>14; 51</td>
 </tr>
 </tbody>
@@ -621,7 +634,7 @@ Note
 </section>
 <section id="csv-template" class="level2">
 <h2 class="anchored" data-anchor-id="csv-template">CSV template</h2>
-<p><a href="templates/exhibition-item.csv">templates/exhibition-item.csv</a> holds the exhibition items, and <a href="templates/exhibition.csv">templates/exhibition.csv</a> the exhibitions. Both use <code>local ID</code> values for repeatable loads.</p>
+<p><a href="templates/exhibition-item.csv">templates/exhibition-item.csv</a> lists which artwork was shown in which exhibition, and <a href="templates/exhibition.csv">templates/exhibition.csv</a> holds the exhibitions. The loader turns each row of <code>exhibition-item.csv</code> into an <code>Exhibited at</code> statement on the artwork, with the catalogue columns as qualifiers.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -640,7 +653,7 @@ Note
 </tr>
 <tr class="even">
 <td><code>exhibition-item.csv</code></td>
-<td><code>item_id, artwork_id, exhibition_id, catalogue_number, catalogue_page, title_as_exhibited, notes</code></td>
+<td><code>artwork_id, exhibition_id, catalogue_number, catalogue_page, title_as_exhibited, notes</code></td>
 </tr>
 </tbody>
 </table>
@@ -649,6 +662,642 @@ Note
 </section>
 
 </main> <!-- /main -->
+<!--
+
+  Full screen view for Mermaid diagrams, included on every page by _quarto.yml
+
+  (format.html.include-after-body). Adds a "Full screen view" link above each diagram.
+
+  The link is a normal URL (#diagram-1, #diagram-2, ...), so a view can be bookmarked or shared.
+
+  In the view: drag to pan, mouse wheel or pinch to zoom, buttons and keys for the rest.
+
+-->
+
+<style>
+
+  .mmd-bar { text-align: right; margin: 0 0 0.25rem; font-size: 0.85rem; }
+
+  #mmd-overlay {
+
+    position: fixed; inset: 0; z-index: 2000; display: flex; flex-direction: column;
+
+    background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #212529);
+
+  }
+
+  #mmd-overlay .mmd-top {
+
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+
+    padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  #mmd-overlay .mmd-title { flex: 1 1 10rem; font-weight: 600; }
+
+  #mmd-overlay .mmd-count { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+  #mmd-overlay button {
+
+    font: inherit; padding: 0.2rem 0.6rem; cursor: pointer; color: inherit;
+
+    background: transparent; border: 1px solid rgba(128, 128, 128, 0.6); border-radius: 4px;
+
+  }
+
+  #mmd-overlay button:hover:not(:disabled) { background: rgba(128, 128, 128, 0.15); }
+
+  #mmd-overlay button:disabled { opacity: 0.4; cursor: default; }
+
+  #mmd-overlay .mmd-stage { flex: 1; position: relative; overflow: hidden; cursor: grab; touch-action: none; }
+
+  #mmd-overlay .mmd-stage.mmd-drag { cursor: grabbing; }
+
+  #mmd-overlay .mmd-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+
+  #mmd-overlay .mmd-canvas svg { display: block; max-width: none; }
+
+  #mmd-overlay .mmd-hint {
+
+    padding: 0.25rem 0.75rem; font-size: 0.8rem; opacity: 0.7;
+
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  @media print { .mmd-bar, #mmd-overlay { display: none !important; } }
+
+</style>
+
+<script>
+
+(function () {
+
+  "use strict";
+
+  // Quarto replaces each pre.mermaid with its rendered svg, so count the diagrams up front.
+
+  var expected = document.querySelectorAll("pre.mermaid").length;
+
+  if (!expected) return;
+
+
+
+  var HASH = /^#diagram-(\d+)$/;
+
+  var overlay = null, stage = null, canvas = null, titleEl = null, countEl = null;
+
+  var prevBtn = null, nextBtn = null, closeBtn = null;
+
+  var index = -1, scale = 1, tx = 0, ty = 0, natW = 1, natH = 1;
+
+  var pushed = false, savedOverflow = "", opener = null;
+
+
+
+  function diagrams() {
+
+    return Array.prototype.filter.call(document.querySelectorAll('svg[id^="mermaid-"]'), function (s) {
+
+      return !s.closest("#mmd-overlay");
+
+    });
+
+  }
+
+  function idFor(i) { return "diagram-" + (i + 1); }
+
+
+
+  function headingFor(svg, i) {
+
+    var section = svg.closest("section");
+
+    var h = section && section.querySelector("h1, h2, h3, h4");
+
+    var text = h ? h.textContent.replace(/\s+/g, " ").trim() : "";
+
+    return text || "Diagram " + (i + 1);
+
+  }
+
+
+
+  // --- link above each diagram -------------------------------------------------------
+
+  function decorate() {
+
+    var all = diagrams(), done = 0;
+
+    all.forEach(function (svg, i) {
+
+      if (svg.dataset.mmdBar) { done++; return; }
+
+      svg.dataset.mmdBar = "1";
+
+      done++;
+
+      var bar = document.createElement("div");
+
+      bar.className = "mmd-bar";
+
+      var a = document.createElement("a");
+
+      a.href = "#" + idFor(i);
+
+      a.textContent = "Full screen view";
+
+      a.title = "Open the diagram full screen with pan and zoom";
+
+      a.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        opener = a;
+
+        history.pushState(null, "", "#" + idFor(i));
+
+        pushed = true;
+
+        openAt(i, true);
+
+      });
+
+      bar.appendChild(a);
+
+      var host = svg.closest("figure") || svg.parentNode;
+
+      host.parentNode.insertBefore(bar, host);
+
+    });
+
+    return all.length >= expected && done === all.length;
+
+  }
+
+
+
+  // --- overlay -----------------------------------------------------------------------
+
+  function button(label, title, onClick) {
+
+    var b = document.createElement("button");
+
+    b.type = "button";
+
+    b.textContent = label;
+
+    b.title = title;
+
+    b.setAttribute("aria-label", title);
+
+    b.addEventListener("click", onClick);
+
+    return b;
+
+  }
+
+
+
+  function build() {
+
+    overlay = document.createElement("div");
+
+    overlay.id = "mmd-overlay";
+
+    overlay.setAttribute("role", "dialog");
+
+    overlay.setAttribute("aria-modal", "true");
+
+    overlay.setAttribute("aria-label", "Diagram full screen view");
+
+
+
+    var top = document.createElement("div");
+
+    top.className = "mmd-top";
+
+    prevBtn = button("Previous", "Previous diagram ([ or Page Up)", function () { go(-1); });
+
+    nextBtn = button("Next", "Next diagram (] or Page Down)", function () { go(1); });
+
+    countEl = document.createElement("span");
+
+    countEl.className = "mmd-count";
+
+    titleEl = document.createElement("span");
+
+    titleEl.className = "mmd-title";
+
+    closeBtn = button("Close", "Close (Esc)", close);
+
+    top.appendChild(prevBtn);
+
+    top.appendChild(nextBtn);
+
+    top.appendChild(countEl);
+
+    top.appendChild(titleEl);
+
+    top.appendChild(button("\u2212", "Zoom out (-)", function () { zoomBy(1 / 1.25); }));
+
+    top.appendChild(button("+", "Zoom in (+)", function () { zoomBy(1.25); }));
+
+    top.appendChild(button("Fit", "Fit to screen (0)", fit));
+
+    top.appendChild(button("100%", "Actual size (1)", actual));
+
+    top.appendChild(closeBtn);
+
+
+
+    stage = document.createElement("div");
+
+    stage.className = "mmd-stage";
+
+    canvas = document.createElement("div");
+
+    canvas.className = "mmd-canvas";
+
+    stage.appendChild(canvas);
+
+
+
+    var hint = document.createElement("div");
+
+    hint.className = "mmd-hint";
+
+    hint.textContent = "Drag to pan. Mouse wheel or pinch to zoom. Arrow keys pan, + and - zoom, 0 fits, 1 is actual size, [ and ] switch diagram, Esc closes.";
+
+
+
+    overlay.appendChild(top);
+
+    overlay.appendChild(stage);
+
+    overlay.appendChild(hint);
+
+    document.body.appendChild(overlay);
+
+
+
+    stage.addEventListener("wheel", function (e) {
+
+      e.preventDefault();
+
+      var r = stage.getBoundingClientRect();
+
+      zoomAt(Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+
+    }, { passive: false });
+
+
+
+    var pts = {};
+
+    stage.addEventListener("pointerdown", function (e) {
+
+      stage.setPointerCapture(e.pointerId);
+
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+
+      stage.classList.add("mmd-drag");
+
+    });
+
+    stage.addEventListener("pointermove", function (e) {
+
+      var p = pts[e.pointerId];
+
+      if (!p) return;
+
+      var ids = Object.keys(pts);
+
+      if (ids.length === 2) {
+
+        var o = pts[ids[0] === String(e.pointerId) ? ids[1] : ids[0]];
+
+        var before = Math.hypot(p.x - o.x, p.y - o.y) || 1;
+
+        var after = Math.hypot(e.clientX - o.x, e.clientY - o.y) || 1;
+
+        var r = stage.getBoundingClientRect();
+
+        zoomAt(after / before, (e.clientX + o.x) / 2 - r.left, (e.clientY + o.y) / 2 - r.top);
+
+      } else {
+
+        tx += e.clientX - p.x;
+
+        ty += e.clientY - p.y;
+
+        apply();
+
+      }
+
+      p.x = e.clientX;
+
+      p.y = e.clientY;
+
+    });
+
+    function release(e) {
+
+      delete pts[e.pointerId];
+
+      if (!Object.keys(pts).length) stage.classList.remove("mmd-drag");
+
+    }
+
+    stage.addEventListener("pointerup", release);
+
+    stage.addEventListener("pointercancel", release);
+
+    stage.addEventListener("dblclick", fit);
+
+
+
+    document.addEventListener("keydown", onKey);
+
+    savedOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = "hidden";
+
+  }
+
+
+
+  function apply() {
+
+    canvas.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+
+  }
+
+
+
+  function zoomAt(factor, cx, cy) {
+
+    var s = Math.min(Math.max(scale * factor, 0.05), 12);
+
+    tx = cx - (cx - tx) * (s / scale);
+
+    ty = cy - (cy - ty) * (s / scale);
+
+    scale = s;
+
+    apply();
+
+  }
+
+
+
+  function zoomBy(factor) {
+
+    var r = stage.getBoundingClientRect();
+
+    zoomAt(factor, r.width / 2, r.height / 2);
+
+  }
+
+
+
+  function fit() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = Math.min(r.width / natW, r.height / natH, 3) * 0.96;
+
+    tx = (r.width - natW * scale) / 2;
+
+    ty = (r.height - natH * scale) / 2;
+
+    apply();
+
+  }
+
+
+
+  function actual() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = 1;
+
+    tx = (r.width - natW) / 2;
+
+    ty = (r.height - natH) / 2;
+
+    apply();
+
+  }
+
+
+
+  function openAt(i, requestFullscreen) {
+
+    var all = diagrams();
+
+    var svg = all[i];
+
+    if (!svg) return;
+
+    if (overlay && index === i) return;
+
+    if (!overlay) build();
+
+    index = i;
+
+
+
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+
+    var box = svg.getBoundingClientRect();
+
+    natW = (vb && vb.width) || box.width || 800;
+
+    natH = (vb && vb.height) || box.height || 600;
+
+    var clone = svg.cloneNode(true);
+
+    clone.removeAttribute("height");
+
+    clone.style.maxWidth = "none";
+
+    clone.style.maxHeight = "none";
+
+    clone.setAttribute("width", natW);
+
+    clone.setAttribute("height", natH);
+
+    canvas.textContent = "";
+
+    canvas.appendChild(clone);
+
+
+
+    titleEl.textContent = headingFor(svg, i);
+
+    countEl.textContent = (i + 1) + " / " + all.length;
+
+    prevBtn.disabled = i === 0;
+
+    nextBtn.disabled = i === all.length - 1;
+
+    prevBtn.hidden = nextBtn.hidden = all.length < 2;
+
+    fit();
+
+    closeBtn.focus();
+
+
+
+    if (requestFullscreen && overlay.requestFullscreen && !document.fullscreenElement) {
+
+      overlay.requestFullscreen().then(fit, function () {});
+
+    }
+
+  }
+
+
+
+  function go(step) {
+
+    var next = index + step;
+
+    if (next < 0 || next >= diagrams().length) return;
+
+    history.replaceState(null, "", "#" + idFor(next));
+
+    openAt(next, false);
+
+  }
+
+
+
+  function close() {
+
+    if (!overlay) return;
+
+    document.removeEventListener("keydown", onKey);
+
+    overlay.remove();
+
+    overlay = stage = canvas = null;
+
+    index = -1;
+
+    document.documentElement.style.overflow = savedOverflow;
+
+    if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+
+    if (HASH.test(location.hash)) {
+
+      if (pushed) { pushed = false; history.back(); }
+
+      else history.replaceState(null, "", location.pathname + location.search);
+
+    }
+
+    if (opener) opener.focus();
+
+  }
+
+
+
+  function onKey(e) {
+
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    var r = stage.getBoundingClientRect(), handled = true;
+
+    switch (e.key) {
+
+      case "Escape": close(); break;
+
+      case "+": case "=": zoomBy(1.25); break;
+
+      case "-": case "_": zoomBy(1 / 1.25); break;
+
+      case "0": fit(); break;
+
+      case "1": actual(); break;
+
+      case "ArrowLeft": tx += 60; apply(); break;
+
+      case "ArrowRight": tx -= 60; apply(); break;
+
+      case "ArrowUp": ty += 60; apply(); break;
+
+      case "ArrowDown": ty -= 60; apply(); break;
+
+      case "[": case "PageUp": go(-1); break;
+
+      case "]": case "PageDown": go(1); break;
+
+      default: handled = false;
+
+    }
+
+    if (handled) e.preventDefault();
+
+  }
+
+
+
+  function fromHash() {
+
+    var m = HASH.exec(location.hash);
+
+    if (m) openAt(Number(m[1]) - 1, false);
+
+    else if (overlay) { pushed = false; close(); }
+
+  }
+
+  window.addEventListener("popstate", fromHash);
+
+  window.addEventListener("hashchange", fromHash);
+
+
+
+  // Mermaid renders after load. Add the links as each diagram appears, and open the view
+
+  // straight away if the URL points to one.
+
+  var scheduled = false, initial = false;
+
+  var observer = new MutationObserver(function () {
+
+    if (scheduled) return;
+
+    scheduled = true;
+
+    requestAnimationFrame(function () {
+
+      scheduled = false;
+
+      if (decorate()) {
+
+        observer.disconnect();
+
+        if (!initial) { initial = true; fromHash(); }
+
+      }
+
+    });
+
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  if (decorate()) { observer.disconnect(); initial = true; fromHash(); }
+
+})();
+
+</script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1059,7 +1708,7 @@ Note
       &nbsp;
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/item-in-exhibition-datamodel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/9bd2aaa">9bd2aaa</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/ef226ce">ef226ce</a></p>
 </div>
   </div>
 </footer>

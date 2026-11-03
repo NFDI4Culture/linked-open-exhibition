@@ -1,0 +1,1315 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE loe SYSTEM "linked-open-exhibition.dtd">
+<loe model="linked-open-exhibition artwork and exhibition model" version="0.1-provisional">
+  <artwork id="ART001" wikibase="Q50" source="artwork.csv:2">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Duck Pond Bar, National City, California</title>
+    <creator ref="PER001"/>
+    <inception>1967</inception>
+    <date_text>1967</date_text>
+    <object_type_text>Acrylic and photoemulsion on canvas</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">152</height>
+    <width unit="cm">170</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART002" wikibase="Q51" source="artwork.csv:3">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">The Former Site Of Duck Pond Bar, 3003 National City Blvd., National City California</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>Acrylic and photoemulsion on canvas</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART003" wikibase="Q52" source="artwork.csv:4">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Size /Shape (Destiny)</title>
+    <creator ref="PER001"/>
+    <inception>1988-89</inception>
+    <date_text>1988-89</date_text>
+    <object_type_text>Photography</object_type_text>
+    <materials_text>Black and white photographs</materials_text>
+    <made_from_material ref="MAT005"/>
+    <height unit="cm">198</height>
+    <width unit="cm">259</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART004" wikibase="Q53" source="artwork.csv:5">
+    <instance_of ref="TYP005"/>
+    <title xml:lang="mul">Potato And Lightbulb</title>
+    <creator ref="PER001"/>
+    <inception>1997-98</inception>
+    <date_text>1997-98</date_text>
+    <object_type_text>wallpaper</object_type_text>
+    <materials_text>wallpaper</materials_text>
+    <made_from_material ref="MAT006"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART005" wikibase="Q54" source="artwork.csv:6">
+    <instance_of ref="TYP005"/>
+    <title xml:lang="mul">Pretzel And Ear</title>
+    <creator ref="PER001"/>
+    <inception>1997-98</inception>
+    <date_text>1997-98</date_text>
+    <object_type_text>wallpaper</object_type_text>
+    <materials_text>wallpaper</materials_text>
+    <made_from_material ref="MAT006"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART006" wikibase="Q55" source="artwork.csv:7">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Goya Series: Strange</title>
+    <creator ref="PER001"/>
+    <inception>1997</inception>
+    <date_text>1997</date_text>
+    <object_type_text>Ink jet on canvas</object_type_text>
+    <materials_text>Ink jet on canvas</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">190</height>
+    <width unit="cm">152</width>
+    <exhibited_at ref="EXH001">
+      <catalogue_page>14</catalogue_page>
+    </exhibited_at>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART007" wikibase="Q56" source="artwork.csv:8">
+    <title xml:lang="mul">Goya Series: These Too</title>
+    <creator ref="PER001"/>
+    <inception>1978</inception>
+    <date_text>1978</date_text>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART008" wikibase="Q57" source="artwork.csv:9">
+    <instance_of ref="TYP006"/>
+    <title xml:lang="mul">The Life and Opinions of Tristan Shandy, Gentleman</title>
+    <creator ref="PER002"/>
+    <inception>1978</inception>
+    <date_text>1978</date_text>
+    <object_type_text>Illustration</object_type_text>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART009" wikibase="Q58" source="artwork.csv:10">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Box (Blind Fate and Culture)</title>
+    <creator ref="PER001"/>
+    <inception>1987</inception>
+    <date_text>1987</date_text>
+    <object_type_text>photograph</object_type_text>
+    <materials_text>Black and white photographs, acrylic</materials_text>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT003"/>
+    <height unit="cm">122</height>
+    <width unit="cm">122</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART010" wikibase="Q59" source="artwork.csv:11">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Team</title>
+    <creator ref="PER001"/>
+    <inception>1987</inception>
+    <date_text>1987</date_text>
+    <object_type_text>photograph</object_type_text>
+    <materials_text>Color and black and white photographs, acrylic, metallic paper</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT008"/>
+    <height unit="cm">156</height>
+    <width unit="cm">225</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART011" wikibase="Q60" source="artwork.csv:12">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Hands/Feet</title>
+    <creator ref="PER001"/>
+    <inception>1988</inception>
+    <date_text>1988</date_text>
+    <object_type_text>photograph</object_type_text>
+    <materials_text>Black and white photographs</materials_text>
+    <made_from_material ref="MAT005"/>
+    <height unit="cm">244</height>
+    <width unit="cm">267</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART012" wikibase="Q61" source="artwork.csv:13">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Six Ways To Pronounce Fiddles Tick (For L. Sterne)</title>
+    <creator ref="PER001"/>
+    <inception>1988</inception>
+    <date_text>1988</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Oil stain on gelatin silver photographs mounted on aluminium</materials_text>
+    <made_from_material ref="MAT009"/>
+    <made_from_material ref="MAT010"/>
+    <made_from_material ref="MAT011"/>
+    <height unit="cm">305</height>
+    <width unit="cm">406</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART013" wikibase="Q62" source="artwork.csv:14">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Man Running/Men Carrying Box</title>
+    <creator ref="PER001"/>
+    <inception>1988-90</inception>
+    <date_text>1988-90</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Black and white photographs, vinyl paint, oil tint</materials_text>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT012"/>
+    <made_from_material ref="MAT013"/>
+    <height unit="cm">123</height>
+    <width unit="cm">268</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART014" wikibase="Q63" source="artwork.csv:15">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Three Active Persons / With Standing Person</title>
+    <creator ref="PER001"/>
+    <inception>1990</inception>
+    <date_text>1990</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photographs, vinyl paint</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT012"/>
+    <height unit="cm">234</height>
+    <width unit="cm">147</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART015" wikibase="Q64" source="artwork.csv:16">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Two Voided Books</title>
+    <creator ref="PER001"/>
+    <inception>1990</inception>
+    <date_text>1990</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Black and white photographs, vinyl paint</materials_text>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT012"/>
+    <height unit="cm">157</height>
+    <width unit="cm">245</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART016" wikibase="Q65" source="artwork.csv:17">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Telephone (For Kafka)</title>
+    <creator ref="PER001"/>
+    <inception>1991</inception>
+    <date_text>1991</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photograph, black and white photograph, vinyl paint</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT012"/>
+    <height unit="cm">243</height>
+    <width unit="cm">488</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART017" wikibase="Q66" source="artwork.csv:18">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Four Fabrics (Patterned): Two Glasses/ Passers-By</title>
+    <creator ref="PER001"/>
+    <inception>1992</inception>
+    <date_text>1992</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photographs, black and white photographs, oil tint, Masonite</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT013"/>
+    <made_from_material ref="MAT014"/>
+    <height unit="cm">250</height>
+    <width unit="cm">219</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART018" wikibase="Q67" source="artwork.csv:19">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">The Phone Call: Faceless Man (Orange) With Glasses / Entanglement Of Worms</title>
+    <creator ref="PER001"/>
+    <inception>1992</inception>
+    <date_text>1992</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photographs, acrylic paint, crayon</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT015"/>
+    <height unit="cm">203</height>
+    <width unit="cm">119</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART019" wikibase="Q68" source="artwork.csv:20">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Flying Saucer: Rainbow/Two Cyclists/ Dog/Gorilla And Bananas/Chaotic Situation / Couple/Tortoise/Gunman (Fallen)</title>
+    <creator ref="PER001"/>
+    <inception>1992</inception>
+    <date_text>1992</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photographs, black and white photographs, acrylic paint, Masonite</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT014"/>
+    <height unit="cm">259</height>
+    <width unit="cm">411</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART020" wikibase="Q69" source="artwork.csv:21">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Man With Handlebar Mustache/ Two Branches (With Black Intrusion)</title>
+    <creator ref="PER001"/>
+    <inception>1992</inception>
+    <date_text>1992</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photograph, black and white photograph, photocopy on Gandhi Ashram paper, acrylic wash, paper stickers, crayon, oil enamel on rubber, oil enamel on formica, mounted on Masonite</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT016"/>
+    <made_from_material ref="MAT017"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT018"/>
+    <made_from_material ref="MAT015"/>
+    <made_from_material ref="MAT019"/>
+    <made_from_material ref="MAT020"/>
+    <made_from_material ref="MAT021"/>
+    <made_from_material ref="MAT014"/>
+    <height unit="cm">210</height>
+    <width unit="cm">249</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART021" wikibase="Q70" source="artwork.csv:22">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Potatoes, Face (Smiling), Garbage Can, Landscape, Four Shapes + Red And Green Lines</title>
+    <creator ref="PER001"/>
+    <inception>1994</inception>
+    <date_text>1994</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photograph, black and white photograph, acrylic, oil pastel and pencil on paper</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT022"/>
+    <made_from_material ref="MAT023"/>
+    <made_from_material ref="MAT024"/>
+    <height unit="cm">166</height>
+    <width unit="cm">215</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART022" wikibase="Q71" source="artwork.csv:23">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Pointing Hand, Desk, Lights, And Observers (Courtroom)</title>
+    <creator ref="PER001"/>
+    <inception>1995</inception>
+    <date_text>1995</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Black and white photographs, color photographs, acrylic, oil stick, pencil on paper</materials_text>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT025"/>
+    <made_from_material ref="MAT023"/>
+    <made_from_material ref="MAT024"/>
+    <height unit="cm">255</height>
+    <width unit="cm">229</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART023" wikibase="Q72" source="artwork.csv:24">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Three Running Figures (One Splashed). Trash Cans, And Poles (With Large Blue Shape)</title>
+    <creator ref="PER001"/>
+    <inception>1995</inception>
+    <date_text>1995</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Black and white photographs, color photographs, acrylic, oil stick, pencil on paper</materials_text>
+    <made_from_material ref="MAT005"/>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT025"/>
+    <made_from_material ref="MAT023"/>
+    <made_from_material ref="MAT024"/>
+    <height unit="cm">193</height>
+    <width unit="cm">106</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART024" wikibase="Q73" source="artwork.csv:25">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Sunny Donuts, 724 Highland Avenue, National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and ink-jet on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART025" wikibase="Q74" source="artwork.csv:26">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Former Site Of Duck Pond Bar, 3003 National City Blvd., National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART026" wikibase="Q75" source="artwork.csv:27">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Earl Scheib Auto Painting, 111 National City Blvd., National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART027" wikibase="Q76" source="artwork.csv:28">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">1121 East Second Street, National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART028" wikibase="Q77" source="artwork.csv:29">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Lourdes Restaurant, 1125 National City Blvd., National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART029" wikibase="Q78" source="artwork.csv:30">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Pink Pig, Highland Ave., National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART030" wikibase="Q79" source="artwork.csv:31">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Star Theater, 4762 Ridgeway Drive, Lincoln Acres, National City, Calif.</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>painting</object_type_text>
+    <materials_text>Acrylic and photoemulsion on canvas</materials_text>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT004"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">150</height>
+    <width unit="cm">114</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART031" wikibase="Q80" source="artwork.csv:32">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Arrive (With Motives And Reasons)</title>
+    <creator ref="PER001"/>
+    <inception>1996</inception>
+    <date_text>1996</date_text>
+    <object_type_text>photographs</object_type_text>
+    <materials_text>Color photographs, acrylic paint, crayon</materials_text>
+    <made_from_material ref="MAT007"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT015"/>
+    <height unit="cm">235</height>
+    <width unit="cm">327</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART032" wikibase="Q81" source="artwork.csv:33">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Goya Series: There Isn't Time</title>
+    <creator ref="PER001"/>
+    <inception>1997</inception>
+    <date_text>1997</date_text>
+    <object_type_text>Ink-jet print and hand lettering on canvas</object_type_text>
+    <materials_text>Ink-jet print and hand lettering on canvas</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">190</height>
+    <width unit="cm">152</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART033" wikibase="Q82" source="artwork.csv:34">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Goya Series: As Is</title>
+    <creator ref="PER001"/>
+    <inception>1997</inception>
+    <date_text>1997</date_text>
+    <object_type_text>Ink-jet print and hand lettering on canvas</object_type_text>
+    <materials_text>Ink-jet print and hand lettering on canvas</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">190</height>
+    <width unit="cm">152</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART034" wikibase="Q83" source="artwork.csv:35">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Goya Series: So Much And More</title>
+    <creator ref="PER001"/>
+    <inception>1997</inception>
+    <date_text>1997</date_text>
+    <object_type_text>Inkjet Print and hand lettering on canvas</object_type_text>
+    <materials_text>Ink-jet print and hand lettering on canvas</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">190</height>
+    <width unit="cm">152</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART035" wikibase="Q84" source="artwork.csv:36">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Goya Series: And</title>
+    <creator ref="PER001"/>
+    <inception>1997</inception>
+    <date_text>1997</date_text>
+    <object_type_text>Ink jet and synthetic polymer paint on canvas</object_type_text>
+    <materials_text>Ink-jet print and hand lettering on canvas</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">190</height>
+    <width unit="cm">152</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART036" wikibase="Q85" source="artwork.csv:37">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Goya Series: These Too</title>
+    <creator ref="PER001"/>
+    <inception>1997</inception>
+    <date_text>1997</date_text>
+    <object_type_text>Ink-jet print and hand lettering on canvas</object_type_text>
+    <materials_text>Ink-jet print and hand lettering on canvas</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">190</height>
+    <width unit="cm">152</width>
+    <exhibited_at ref="EXH001">
+      <catalogue_page>14; 51</catalogue_page>
+    </exhibited_at>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART037" wikibase="Q86" source="artwork.csv:38">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Plant (Rotterdam #3)</title>
+    <creator ref="PER001"/>
+    <inception>1997-98</inception>
+    <date_text>1997-98</date_text>
+    <object_type_text>photograph</object_type_text>
+    <materials_text>Black and white photograph</materials_text>
+    <made_from_material ref="MAT005"/>
+    <height unit="cm">183</height>
+    <width unit="cm">183</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART038" wikibase="Q88" source="artwork.csv:39">
+    <instance_of ref="TYP004"/>
+    <title xml:lang="mul">Lamp (Rotterdam #3)</title>
+    <creator ref="PER001"/>
+    <inception>1997-98</inception>
+    <date_text>1997-98</date_text>
+    <object_type_text>photograph</object_type_text>
+    <materials_text>Black and white photograph</materials_text>
+    <made_from_material ref="MAT005"/>
+    <height unit="cm">183</height>
+    <width unit="cm">183</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART039" wikibase="Q89" source="artwork.csv:40">
+    <title xml:lang="mul">Installation photograph of Lamp</title>
+    <creator ref="PER001"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART040" wikibase="Q90" source="artwork.csv:41">
+    <title xml:lang="mul">Installation photograph of Plant</title>
+    <creator ref="PER001"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART041" wikibase="Q91" source="artwork.csv:42">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Elbow Series: Emu</title>
+    <creator ref="PER001"/>
+    <inception>1999</inception>
+    <date_text>1999</date_text>
+    <object_type_text>Painting</object_type_text>
+    <materials_text>Ink-jet on canvas, Folio D process on vinyl, hand lettering and acrylic paint</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT002"/>
+    <made_from_material ref="MAT027"/>
+    <made_from_material ref="MAT028"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT003"/>
+    <height unit="cm">213.5</height>
+    <width unit="cm">213.5</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART042" wikibase="Q92" source="artwork.csv:43">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Elbow Series: Yak</title>
+    <creator ref="PER001"/>
+    <inception>1999</inception>
+    <date_text>1999</date_text>
+    <object_type_text>Painting</object_type_text>
+    <materials_text>Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT002"/>
+    <made_from_material ref="MAT027"/>
+    <made_from_material ref="MAT028"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT003"/>
+    <height unit="cm">213.5</height>
+    <width unit="cm">213.5</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART043" wikibase="Q93" source="artwork.csv:44">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Elbow Series: Auk</title>
+    <creator ref="PER001"/>
+    <inception>1999</inception>
+    <date_text>1999</date_text>
+    <object_type_text>Painting</object_type_text>
+    <materials_text>Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT002"/>
+    <made_from_material ref="MAT027"/>
+    <made_from_material ref="MAT028"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT003"/>
+    <height unit="cm">213.5</height>
+    <width unit="cm">213.5</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART044" wikibase="Q94" source="artwork.csv:45">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Elbow Series: Gnu</title>
+    <creator ref="PER001"/>
+    <inception>1999</inception>
+    <date_text>1999</date_text>
+    <object_type_text>Painting</object_type_text>
+    <materials_text>Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint</materials_text>
+    <made_from_material ref="MAT001"/>
+    <made_from_material ref="MAT002"/>
+    <made_from_material ref="MAT027"/>
+    <made_from_material ref="MAT028"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT003"/>
+    <height unit="cm">213.5</height>
+    <width unit="cm">213.5</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART045" wikibase="Q95" source="artwork.csv:46">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Tetrad Series: Real Shadows</title>
+    <creator ref="PER001"/>
+    <inception>1989</inception>
+    <date_text>1989</date_text>
+    <object_type_text>Painting</object_type_text>
+    <materials_text>Digital printing; hand lettering; acrylic paint on canvas</materials_text>
+    <made_from_material ref="MAT029"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">239</height>
+    <width unit="cm">239</width>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART046" wikibase="Q96" source="artwork.csv:47">
+    <instance_of ref="TYP003"/>
+    <title xml:lang="mul">Tetrad Series. All Getting On Together</title>
+    <creator ref="PER001"/>
+    <inception>1999</inception>
+    <date_text>1999</date_text>
+    <object_type_text>Painting</object_type_text>
+    <materials_text>Digital printing; hand lettering; acrylic paint on canvas</materials_text>
+    <made_from_material ref="MAT029"/>
+    <made_from_material ref="MAT026"/>
+    <made_from_material ref="MAT003"/>
+    <made_from_material ref="MAT002"/>
+    <height unit="cm">239</height>
+    <width unit="cm">239</width>
+    <exhibited_at ref="EXH001">
+      <catalogue_page>17</catalogue_page>
+    </exhibited_at>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART047" wikibase="Q97" source="artwork.csv:48">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Teaching A Plant The Alphabet</title>
+    <creator ref="PER001"/>
+    <inception>1972</inception>
+    <date_text>1972</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>color; sound</materials_text>
+    <made_from_material ref="MAT030"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART048" wikibase="Q98" source="artwork.csv:49">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Taking A Slate: Ilene And David (#2)</title>
+    <creator ref="PER001"/>
+    <inception>1974</inception>
+    <date_text>1974</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART049" wikibase="Q99" source="artwork.csv:50">
+    <instance_of ref="TYP008"/>
+    <title xml:lang="mul">Isocephaly</title>
+    <creator ref="PER001"/>
+    <inception>1968</inception>
+    <date_text>1968</date_text>
+    <object_type_text>Super-8 film</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART050" wikibase="Q100" source="artwork.csv:51">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Taking A Slate: David</title>
+    <creator ref="PER001"/>
+    <inception>1974</inception>
+    <date_text>1974</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART051" wikibase="Q101" source="artwork.csv:52">
+    <instance_of ref="TYP009"/>
+    <title xml:lang="mul">How We Do Art Now</title>
+    <creator ref="PER001"/>
+    <inception>1973</inception>
+    <date_text>1973</date_text>
+    <object_type_text>video loop</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART052" wikibase="Q102" source="artwork.csv:53">
+    <instance_of ref="TYP008"/>
+    <title xml:lang="mul">What To Leave Out</title>
+    <creator ref="PER001"/>
+    <inception>1968</inception>
+    <date_text>1968</date_text>
+    <object_type_text>Super-8 film</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART053" wikibase="Q103" source="artwork.csv:54">
+    <instance_of ref="TYP010"/>
+    <title xml:lang="mul">Cremation</title>
+    <creator ref="PER001"/>
+    <inception>1970</inception>
+    <date_text>1970</date_text>
+    <object_type_text>16 mm film</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART054" wikibase="Q104" source="artwork.csv:55">
+    <instance_of ref="TYP008"/>
+    <title xml:lang="mul">New York City Art History</title>
+    <creator ref="PER001"/>
+    <inception>1971</inception>
+    <date_text>1971</date_text>
+    <object_type_text>Super-8 film</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART055" wikibase="Q105" source="artwork.csv:56">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">The Eye Does Not Naturally Pan</title>
+    <creator ref="PER001"/>
+    <inception>1972-73</inception>
+    <date_text>1972-73</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART056" wikibase="Q106" source="artwork.csv:57">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Folding Hat: Version 1</title>
+    <creator ref="PER001"/>
+    <inception>1970</inception>
+    <date_text>1970</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART057" wikibase="Q107" source="artwork.csv:58">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Folding Hat</title>
+    <creator ref="PER001"/>
+    <inception>1970</inception>
+    <date_text>1970</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART058" wikibase="Q108" source="artwork.csv:59">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Black-Out</title>
+    <creator ref="PER001"/>
+    <inception>1971</inception>
+    <date_text>1971</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART059" wikibase="Q109" source="artwork.csv:60">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Black Painting</title>
+    <creator ref="PER001"/>
+    <inception>1970</inception>
+    <date_text>1970</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART060" wikibase="Q110" source="artwork.csv:61">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Easel Painting</title>
+    <creator ref="PER001"/>
+    <inception>1972-73</inception>
+    <date_text>1972-73</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART061" wikibase="Q111" source="artwork.csv:62">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Black Curtain</title>
+    <creator ref="PER001"/>
+    <inception>1970</inception>
+    <date_text>1970</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART062" wikibase="Q112" source="artwork.csv:63">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Life Drawing</title>
+    <creator ref="PER001"/>
+    <inception>1970</inception>
+    <date_text>1970</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>black-and-white; sound</materials_text>
+    <made_from_material ref="MAT032"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART063" wikibase="Q113" source="artwork.csv:64">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Time-Temperature</title>
+    <creator ref="PER001"/>
+    <inception>1972-73</inception>
+    <date_text>1972-73</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART064" wikibase="Q114" source="artwork.csv:65">
+    <instance_of ref="TYP007"/>
+    <title xml:lang="mul">Walking Forward Running Past</title>
+    <creator ref="PER001"/>
+    <inception>1972</inception>
+    <date_text>1972</date_text>
+    <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART065" wikibase="Q115" source="artwork.csv:66">
+    <instance_of ref="TYP011"/>
+    <title xml:lang="mul">Proust</title>
+    <creator ref="PER001"/>
+    <inception>1970s</inception>
+    <date_text>1970s</date_text>
+    <object_type_text>film loop</object_type_text>
+    <materials_text>16 mm; color</materials_text>
+    <made_from_material ref="MAT033"/>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART066" wikibase="Q116" source="artwork.csv:67">
+    <instance_of ref="TYP012"/>
+    <title xml:lang="mul">Water To Wine To Water</title>
+    <creator ref="PER001"/>
+    <inception>1972-73</inception>
+    <date_text>1972-73</date_text>
+    <object_type_text>Super-8 film loop</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART067" wikibase="Q117" source="artwork.csv:68">
+    <instance_of ref="TYP012"/>
+    <title xml:lang="mul">The Hollywood Film</title>
+    <creator ref="PER001"/>
+    <inception>1972-73</inception>
+    <date_text>1972-73</date_text>
+    <object_type_text>Super-8 film loop</object_type_text>
+    <materials_text>color; sound</materials_text>
+    <made_from_material ref="MAT030"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART068" wikibase="Q118" source="artwork.csv:69">
+    <title xml:lang="mul">Police Drawing</title>
+    <creator ref="PER001"/>
+    <inception>1971</inception>
+    <date_text>1971</date_text>
+    <object_type_text>black-and-white</object_type_text>
+    <materials_text>color; sound</materials_text>
+    <made_from_material ref="MAT030"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART069" wikibase="Q119" source="artwork.csv:70">
+    <instance_of ref="TYP012"/>
+    <title xml:lang="mul">Throwing Leaves Back At Tree</title>
+    <creator ref="PER001"/>
+    <inception>1973</inception>
+    <date_text>1973</date_text>
+    <object_type_text>Super-8 film loop</object_type_text>
+    <materials_text>color; sound</materials_text>
+    <made_from_material ref="MAT030"/>
+    <made_from_material ref="MAT031"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART070" wikibase="Q120" source="artwork.csv:71">
+    <instance_of ref="TYP011"/>
+    <title xml:lang="mul">The Italian Tape</title>
+    <creator ref="PER001"/>
+    <inception>1974</inception>
+    <date_text>1974</date_text>
+    <object_type_text>black-and-white film loop</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART071" wikibase="Q121" source="artwork.csv:72">
+    <instance_of ref="TYP012"/>
+    <title xml:lang="mul">Ice Cubes Sliding</title>
+    <creator ref="PER001"/>
+    <inception>1974</inception>
+    <date_text>1974</date_text>
+    <object_type_text>Super-8 film loop</object_type_text>
+    <materials_text>color</materials_text>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART072" wikibase="Q122" source="artwork.csv:73">
+    <instance_of ref="TYP011"/>
+    <title xml:lang="mul">Inventory</title>
+    <creator ref="PER001"/>
+    <inception>1972</inception>
+    <date_text>1972</date_text>
+    <object_type_text>black-and-white film loop</object_type_text>
+    <made_from_material ref="MAT032"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <artwork id="ART073" wikibase="Q123" source="artwork.csv:74">
+    <instance_of ref="TYP011"/>
+    <title xml:lang="mul">Two Colorful Melodies</title>
+    <creator ref="PER001"/>
+    <inception>1977</inception>
+    <date_text>1977</date_text>
+    <object_type_text>color film loop</object_type_text>
+    <materials_text>sound</materials_text>
+    <made_from_material ref="MAT031"/>
+    <made_from_material ref="MAT030"/>
+    <exhibited_at ref="EXH001"/>
+    <appears_in_catalogue ref="CAT001"/>
+  </artwork>
+  <person id="PER001" wikibase="Q47" source="person.csv:2">
+    <label xml:lang="en">John Baldessari</label>
+    <label xml:lang="de">John Baldessari</label>
+    <wikidata_qid>Q683378</wikidata_qid>
+    <gnd_id>118506153</gnd_id>
+  </person>
+  <person id="PER002" wikibase="Q48" source="person.csv:3">
+    <label xml:lang="en">Laurence Sterne</label>
+    <label xml:lang="de">Laurence Sterne</label>
+    <wikidata_qid>Q218960</wikidata_qid>
+    <gnd_id>11861794X</gnd_id>
+  </person>
+  <person id="PER003" wikibase="Q208" source="person.csv:4">
+    <label xml:lang="en">Meg Cranston</label>
+    <label xml:lang="de">Meg Cranston</label>
+    <gnd_id>119555522</gnd_id>
+  </person>
+  <person id="PER004" wikibase="Q209" source="person.csv:5">
+    <label xml:lang="en">Diedrich Diederichsen</label>
+    <label xml:lang="de">Diedrich Diederichsen</label>
+    <gnd_id>130448001</gnd_id>
+  </person>
+  <person id="PER005" wikibase="Q210" source="person.csv:6">
+    <label xml:lang="en">Thomas Weski</label>
+    <label xml:lang="de">Thomas Weski</label>
+    <gnd_id>119093022</gnd_id>
+  </person>
+  <exhibition id="EXH001" wikibase="Q49" source="exhibition.csv:2">
+    <title xml:lang="mul">while something is happening here, something else is happening there : works 1988 - 1999</title>
+    <location ref="PLC001"/>
+    <wikidata_qid>Q141747732</wikidata_qid>
+    <start_date>1999-09-26</start_date>
+    <end_date>2000-01-02</end_date>
+    <exhibition_catalogue ref="CAT001"/>
+  </exhibition>
+  <catalogue id="CAT001" wikibase="Q211" source="catalogue.csv:2">
+    <title xml:lang="mul">Baldessari</title>
+    <subtitle>while something is happening here, something else is happening there ; works 1988 - 1999 ; Spectrum - Internationaler Preis für Fotografie der Stiftung Niedersachsen ; [Sprengel-Museum Hannover, 26.9.1999 - 2.1.2000 und Staatliche Kunstsammlungen Dresden, Gemäldegalerie Neue Meister, 15.1. - 2.4.2000]</subtitle>
+    <author ref="PER003"/>
+    <author ref="PER004"/>
+    <author ref="PER005"/>
+    <publisher ref="ORG001"/>
+    <publication_date>1999</publication_date>
+    <isbn13>978-3-88375-396-6</isbn13>
+    <dnb_edition_id>957409494</dnb_edition_id>
+    <described_at_url>https://d-nb.info/957409494</described_at_url>
+    <catalogue_of ref="EXH001"/>
+  </catalogue>
+  <organization id="ORG001" wikibase="Q207" source="term.csv:48">
+    <label xml:lang="en">König</label>
+    <label xml:lang="de">König</label>
+  </organization>
+  <material id="MAT001" wikibase="Q9" source="term.csv:2">
+    <label xml:lang="en">inkjet</label>
+    <label xml:lang="de">Tintenstrahldruck</label>
+    <wikidata_qid>Q130443678</wikidata_qid>
+  </material>
+  <material id="MAT002" wikibase="Q10" source="term.csv:3">
+    <label xml:lang="en">canvas</label>
+    <label xml:lang="de">Leinwand</label>
+    <wikidata_qid>Q4259259</wikidata_qid>
+  </material>
+  <material id="MAT003" wikibase="Q11" source="term.csv:4">
+    <label xml:lang="en">acrylic paint</label>
+    <label xml:lang="de">Acrylfarbe</label>
+    <wikidata_qid>Q207849</wikidata_qid>
+  </material>
+  <material id="MAT004" wikibase="Q16" source="term.csv:9">
+    <label xml:lang="en">photoemulsion</label>
+    <label xml:lang="de">Fotoemulsion</label>
+  </material>
+  <material id="MAT005" wikibase="Q18" source="term.csv:11">
+    <label xml:lang="en">black-and-white photograph</label>
+    <label xml:lang="de">Schwarzweißfotografie</label>
+  </material>
+  <material id="MAT006" wikibase="Q20" source="term.csv:13">
+    <label xml:lang="en">wallpaper</label>
+    <label xml:lang="de">Tapete</label>
+    <wikidata_qid>Q191529</wikidata_qid>
+  </material>
+  <material id="MAT007" wikibase="Q22" source="term.csv:15">
+    <label xml:lang="en">color photograph</label>
+    <label xml:lang="de">Farbfotografie</label>
+  </material>
+  <material id="MAT008" wikibase="Q23" source="term.csv:16">
+    <label xml:lang="en">metallic paper</label>
+    <label xml:lang="de">Metallpapier</label>
+  </material>
+  <material id="MAT009" wikibase="Q24" source="term.csv:17">
+    <label xml:lang="en">oil stain</label>
+    <label xml:lang="de">Ölfleck</label>
+  </material>
+  <material id="MAT010" wikibase="Q25" source="term.csv:18">
+    <label xml:lang="en">gelatin silver print</label>
+    <label xml:lang="de">Silbergelatineabzug</label>
+    <wikidata_qid>Q64029133</wikidata_qid>
+  </material>
+  <material id="MAT011" wikibase="Q26" source="term.csv:19">
+    <label xml:lang="en">aluminium</label>
+    <label xml:lang="de">Aluminium</label>
+  </material>
+  <material id="MAT012" wikibase="Q27" source="term.csv:20">
+    <label xml:lang="en">vinyl paint</label>
+    <label xml:lang="de">Vinylfarbe</label>
+    <wikidata_qid>Q2135874</wikidata_qid>
+  </material>
+  <material id="MAT013" wikibase="Q28" source="term.csv:21">
+    <label xml:lang="en">oil tint</label>
+    <label xml:lang="de">Öltönung</label>
+  </material>
+  <material id="MAT014" wikibase="Q29" source="term.csv:22">
+    <label xml:lang="en">Masonite</label>
+    <label xml:lang="de">Masonit</label>
+  </material>
+  <material id="MAT015" wikibase="Q30" source="term.csv:23">
+    <label xml:lang="en">crayon</label>
+    <label xml:lang="de">Kreide</label>
+  </material>
+  <material id="MAT016" wikibase="Q31" source="term.csv:24">
+    <label xml:lang="en">photocopy</label>
+    <label xml:lang="de">Fotokopie</label>
+  </material>
+  <material id="MAT017" wikibase="Q32" source="term.csv:25">
+    <label xml:lang="en">Gandhi Ashram paper</label>
+    <label xml:lang="de">Gandhi-Ashram-Papier</label>
+  </material>
+  <material id="MAT018" wikibase="Q33" source="term.csv:26">
+    <label xml:lang="en">paper stickers</label>
+    <label xml:lang="de">Papieraufkleber</label>
+  </material>
+  <material id="MAT019" wikibase="Q34" source="term.csv:27">
+    <label xml:lang="en">oil enamel</label>
+    <label xml:lang="de">Ölemail</label>
+  </material>
+  <material id="MAT020" wikibase="Q35" source="term.csv:28">
+    <label xml:lang="en">rubber</label>
+    <label xml:lang="de">Gummi</label>
+  </material>
+  <material id="MAT021" wikibase="Q36" source="term.csv:29">
+    <label xml:lang="en">Formica</label>
+    <label xml:lang="de">Formica</label>
+  </material>
+  <material id="MAT022" wikibase="Q37" source="term.csv:30">
+    <label xml:lang="en">oil pastel</label>
+    <label xml:lang="de">Ölpastell</label>
+  </material>
+  <material id="MAT023" wikibase="Q38" source="term.csv:31">
+    <label xml:lang="en">pencil</label>
+    <label xml:lang="de">Bleistift</label>
+  </material>
+  <material id="MAT024" wikibase="Q39" source="term.csv:32">
+    <label xml:lang="en">paper</label>
+    <label xml:lang="de">Papier</label>
+  </material>
+  <material id="MAT025" wikibase="Q40" source="term.csv:33">
+    <label xml:lang="en">oil stick</label>
+    <label xml:lang="de">Ölstift</label>
+    <wikidata_qid>Q7081466</wikidata_qid>
+  </material>
+  <material id="MAT026" wikibase="Q41" source="term.csv:34">
+    <label xml:lang="en">hand lettering</label>
+    <label xml:lang="de">Handbeschriftung</label>
+  </material>
+  <material id="MAT027" wikibase="Q42" source="term.csv:35">
+    <label xml:lang="en">Folio D process</label>
+    <label xml:lang="de">Folio-D-Verfahren</label>
+  </material>
+  <material id="MAT028" wikibase="Q43" source="term.csv:36">
+    <label xml:lang="en">vinyl</label>
+    <label xml:lang="de">Vinyl</label>
+  </material>
+  <material id="MAT029" wikibase="Q44" source="term.csv:37">
+    <label xml:lang="en">digital printing</label>
+    <label xml:lang="de">Digitaldruck</label>
+  </material>
+  <material id="MAT030" wikibase="Q197" source="term.csv:39">
+    <label xml:lang="en">color</label>
+    <label xml:lang="de">Farbe</label>
+  </material>
+  <material id="MAT031" wikibase="Q198" source="term.csv:40">
+    <label xml:lang="en">sound</label>
+    <label xml:lang="de">Ton</label>
+  </material>
+  <material id="MAT032" wikibase="Q199" source="term.csv:41">
+    <label xml:lang="en">black-and-white</label>
+    <label xml:lang="de">Schwarzweiß</label>
+  </material>
+  <material id="MAT033" wikibase="Q203" source="term.csv:46">
+    <label xml:lang="en">16 mm</label>
+    <label xml:lang="de">16 mm</label>
+  </material>
+  <object_type id="TYP001" wikibase="Q12" source="term.csv:5">
+    <label xml:lang="en">print</label>
+    <label xml:lang="de">Druck</label>
+    <wikidata_qid>Q11060274</wikidata_qid>
+  </object_type>
+  <object_type id="TYP002" wikibase="Q13" source="term.csv:6">
+    <label xml:lang="en">mixed media</label>
+    <label xml:lang="de">Mischtechnik</label>
+    <wikidata_qid>Q1902763</wikidata_qid>
+  </object_type>
+  <object_type id="TYP003" wikibase="Q15" source="term.csv:8">
+    <label xml:lang="en">painting</label>
+    <label xml:lang="de">Gemälde</label>
+    <wikidata_qid>Q3305213</wikidata_qid>
+  </object_type>
+  <object_type id="TYP004" wikibase="Q17" source="term.csv:10">
+    <label xml:lang="en">photograph</label>
+    <label xml:lang="de">Fotografie</label>
+    <wikidata_qid>Q125191</wikidata_qid>
+  </object_type>
+  <object_type id="TYP005" wikibase="Q19" source="term.csv:12">
+    <label xml:lang="en">wallpaper</label>
+    <label xml:lang="de">Tapete</label>
+    <wikidata_qid>Q191529</wikidata_qid>
+  </object_type>
+  <object_type id="TYP006" wikibase="Q21" source="term.csv:14">
+    <label xml:lang="en">illustration</label>
+    <label xml:lang="de">Illustration</label>
+    <wikidata_qid>Q178659</wikidata_qid>
+  </object_type>
+  <object_type id="TYP007" wikibase="Q45" source="term.csv:38">
+    <label xml:lang="en">Super-8 film loop (originally 16 mm)</label>
+    <label xml:lang="de">Super-8-Filmloop (ursprünglich 16 mm)</label>
+  </object_type>
+  <object_type id="TYP008" wikibase="Q46" source="term.csv:42">
+    <label xml:lang="en">Super-8 film</label>
+    <label xml:lang="de">Super-8-Film</label>
+  </object_type>
+  <object_type id="TYP009" wikibase="Q200" source="term.csv:43">
+    <label xml:lang="en">video loop</label>
+    <label xml:lang="de">Videoloop</label>
+  </object_type>
+  <object_type id="TYP010" wikibase="Q201" source="term.csv:44">
+    <label xml:lang="en">16 mm film</label>
+    <label xml:lang="de">16-mm-Film</label>
+  </object_type>
+  <object_type id="TYP011" wikibase="Q202" source="term.csv:45">
+    <label xml:lang="en">film loop</label>
+    <label xml:lang="de">Filmloop</label>
+  </object_type>
+  <object_type id="TYP012" wikibase="Q204" source="term.csv:47">
+    <label xml:lang="en">Super-8 film loop</label>
+    <label xml:lang="de">Super-8-Filmloop</label>
+  </object_type>
+  <place id="PLC001" wikibase="Q14" source="term.csv:7">
+    <label xml:lang="en">Sprengel Museum Hannover</label>
+    <label xml:lang="de">Sprengel Museum Hannover</label>
+    <wikidata_qid>Q510144</wikidata_qid>
+  </place>
+</loe>

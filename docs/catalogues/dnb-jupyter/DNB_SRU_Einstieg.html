@@ -183,6 +183,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">DNB Catalogue Data Model</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../data-models/artwork-datamodel.html">
+ <span class="dropdown-text">Artwork Data Model</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../data-models/item-in-exhibition-datamodel.html">
  <span class="dropdown-text">Item in Exhibition Data Model</span></a>
   </li>  
@@ -442,6 +446,642 @@ Cell <span class="ansi-green-fg ansi-bold">In[1], line 2</span>
 </section>
 
 </main> <!-- /main -->
+<!--
+
+  Full screen view for Mermaid diagrams, included on every page by _quarto.yml
+
+  (format.html.include-after-body). Adds a "Full screen view" link above each diagram.
+
+  The link is a normal URL (#diagram-1, #diagram-2, ...), so a view can be bookmarked or shared.
+
+  In the view: drag to pan, mouse wheel or pinch to zoom, buttons and keys for the rest.
+
+-->
+
+<style>
+
+  .mmd-bar { text-align: right; margin: 0 0 0.25rem; font-size: 0.85rem; }
+
+  #mmd-overlay {
+
+    position: fixed; inset: 0; z-index: 2000; display: flex; flex-direction: column;
+
+    background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #212529);
+
+  }
+
+  #mmd-overlay .mmd-top {
+
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+
+    padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  #mmd-overlay .mmd-title { flex: 1 1 10rem; font-weight: 600; }
+
+  #mmd-overlay .mmd-count { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+  #mmd-overlay button {
+
+    font: inherit; padding: 0.2rem 0.6rem; cursor: pointer; color: inherit;
+
+    background: transparent; border: 1px solid rgba(128, 128, 128, 0.6); border-radius: 4px;
+
+  }
+
+  #mmd-overlay button:hover:not(:disabled) { background: rgba(128, 128, 128, 0.15); }
+
+  #mmd-overlay button:disabled { opacity: 0.4; cursor: default; }
+
+  #mmd-overlay .mmd-stage { flex: 1; position: relative; overflow: hidden; cursor: grab; touch-action: none; }
+
+  #mmd-overlay .mmd-stage.mmd-drag { cursor: grabbing; }
+
+  #mmd-overlay .mmd-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+
+  #mmd-overlay .mmd-canvas svg { display: block; max-width: none; }
+
+  #mmd-overlay .mmd-hint {
+
+    padding: 0.25rem 0.75rem; font-size: 0.8rem; opacity: 0.7;
+
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  @media print { .mmd-bar, #mmd-overlay { display: none !important; } }
+
+</style>
+
+<script>
+
+(function () {
+
+  "use strict";
+
+  // Quarto replaces each pre.mermaid with its rendered svg, so count the diagrams up front.
+
+  var expected = document.querySelectorAll("pre.mermaid").length;
+
+  if (!expected) return;
+
+
+
+  var HASH = /^#diagram-(\d+)$/;
+
+  var overlay = null, stage = null, canvas = null, titleEl = null, countEl = null;
+
+  var prevBtn = null, nextBtn = null, closeBtn = null;
+
+  var index = -1, scale = 1, tx = 0, ty = 0, natW = 1, natH = 1;
+
+  var pushed = false, savedOverflow = "", opener = null;
+
+
+
+  function diagrams() {
+
+    return Array.prototype.filter.call(document.querySelectorAll('svg[id^="mermaid-"]'), function (s) {
+
+      return !s.closest("#mmd-overlay");
+
+    });
+
+  }
+
+  function idFor(i) { return "diagram-" + (i + 1); }
+
+
+
+  function headingFor(svg, i) {
+
+    var section = svg.closest("section");
+
+    var h = section && section.querySelector("h1, h2, h3, h4");
+
+    var text = h ? h.textContent.replace(/\s+/g, " ").trim() : "";
+
+    return text || "Diagram " + (i + 1);
+
+  }
+
+
+
+  // --- link above each diagram -------------------------------------------------------
+
+  function decorate() {
+
+    var all = diagrams(), done = 0;
+
+    all.forEach(function (svg, i) {
+
+      if (svg.dataset.mmdBar) { done++; return; }
+
+      svg.dataset.mmdBar = "1";
+
+      done++;
+
+      var bar = document.createElement("div");
+
+      bar.className = "mmd-bar";
+
+      var a = document.createElement("a");
+
+      a.href = "#" + idFor(i);
+
+      a.textContent = "Full screen view";
+
+      a.title = "Open the diagram full screen with pan and zoom";
+
+      a.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        opener = a;
+
+        history.pushState(null, "", "#" + idFor(i));
+
+        pushed = true;
+
+        openAt(i, true);
+
+      });
+
+      bar.appendChild(a);
+
+      var host = svg.closest("figure") || svg.parentNode;
+
+      host.parentNode.insertBefore(bar, host);
+
+    });
+
+    return all.length >= expected && done === all.length;
+
+  }
+
+
+
+  // --- overlay -----------------------------------------------------------------------
+
+  function button(label, title, onClick) {
+
+    var b = document.createElement("button");
+
+    b.type = "button";
+
+    b.textContent = label;
+
+    b.title = title;
+
+    b.setAttribute("aria-label", title);
+
+    b.addEventListener("click", onClick);
+
+    return b;
+
+  }
+
+
+
+  function build() {
+
+    overlay = document.createElement("div");
+
+    overlay.id = "mmd-overlay";
+
+    overlay.setAttribute("role", "dialog");
+
+    overlay.setAttribute("aria-modal", "true");
+
+    overlay.setAttribute("aria-label", "Diagram full screen view");
+
+
+
+    var top = document.createElement("div");
+
+    top.className = "mmd-top";
+
+    prevBtn = button("Previous", "Previous diagram ([ or Page Up)", function () { go(-1); });
+
+    nextBtn = button("Next", "Next diagram (] or Page Down)", function () { go(1); });
+
+    countEl = document.createElement("span");
+
+    countEl.className = "mmd-count";
+
+    titleEl = document.createElement("span");
+
+    titleEl.className = "mmd-title";
+
+    closeBtn = button("Close", "Close (Esc)", close);
+
+    top.appendChild(prevBtn);
+
+    top.appendChild(nextBtn);
+
+    top.appendChild(countEl);
+
+    top.appendChild(titleEl);
+
+    top.appendChild(button("\u2212", "Zoom out (-)", function () { zoomBy(1 / 1.25); }));
+
+    top.appendChild(button("+", "Zoom in (+)", function () { zoomBy(1.25); }));
+
+    top.appendChild(button("Fit", "Fit to screen (0)", fit));
+
+    top.appendChild(button("100%", "Actual size (1)", actual));
+
+    top.appendChild(closeBtn);
+
+
+
+    stage = document.createElement("div");
+
+    stage.className = "mmd-stage";
+
+    canvas = document.createElement("div");
+
+    canvas.className = "mmd-canvas";
+
+    stage.appendChild(canvas);
+
+
+
+    var hint = document.createElement("div");
+
+    hint.className = "mmd-hint";
+
+    hint.textContent = "Drag to pan. Mouse wheel or pinch to zoom. Arrow keys pan, + and - zoom, 0 fits, 1 is actual size, [ and ] switch diagram, Esc closes.";
+
+
+
+    overlay.appendChild(top);
+
+    overlay.appendChild(stage);
+
+    overlay.appendChild(hint);
+
+    document.body.appendChild(overlay);
+
+
+
+    stage.addEventListener("wheel", function (e) {
+
+      e.preventDefault();
+
+      var r = stage.getBoundingClientRect();
+
+      zoomAt(Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+
+    }, { passive: false });
+
+
+
+    var pts = {};
+
+    stage.addEventListener("pointerdown", function (e) {
+
+      stage.setPointerCapture(e.pointerId);
+
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+
+      stage.classList.add("mmd-drag");
+
+    });
+
+    stage.addEventListener("pointermove", function (e) {
+
+      var p = pts[e.pointerId];
+
+      if (!p) return;
+
+      var ids = Object.keys(pts);
+
+      if (ids.length === 2) {
+
+        var o = pts[ids[0] === String(e.pointerId) ? ids[1] : ids[0]];
+
+        var before = Math.hypot(p.x - o.x, p.y - o.y) || 1;
+
+        var after = Math.hypot(e.clientX - o.x, e.clientY - o.y) || 1;
+
+        var r = stage.getBoundingClientRect();
+
+        zoomAt(after / before, (e.clientX + o.x) / 2 - r.left, (e.clientY + o.y) / 2 - r.top);
+
+      } else {
+
+        tx += e.clientX - p.x;
+
+        ty += e.clientY - p.y;
+
+        apply();
+
+      }
+
+      p.x = e.clientX;
+
+      p.y = e.clientY;
+
+    });
+
+    function release(e) {
+
+      delete pts[e.pointerId];
+
+      if (!Object.keys(pts).length) stage.classList.remove("mmd-drag");
+
+    }
+
+    stage.addEventListener("pointerup", release);
+
+    stage.addEventListener("pointercancel", release);
+
+    stage.addEventListener("dblclick", fit);
+
+
+
+    document.addEventListener("keydown", onKey);
+
+    savedOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = "hidden";
+
+  }
+
+
+
+  function apply() {
+
+    canvas.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+
+  }
+
+
+
+  function zoomAt(factor, cx, cy) {
+
+    var s = Math.min(Math.max(scale * factor, 0.05), 12);
+
+    tx = cx - (cx - tx) * (s / scale);
+
+    ty = cy - (cy - ty) * (s / scale);
+
+    scale = s;
+
+    apply();
+
+  }
+
+
+
+  function zoomBy(factor) {
+
+    var r = stage.getBoundingClientRect();
+
+    zoomAt(factor, r.width / 2, r.height / 2);
+
+  }
+
+
+
+  function fit() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = Math.min(r.width / natW, r.height / natH, 3) * 0.96;
+
+    tx = (r.width - natW * scale) / 2;
+
+    ty = (r.height - natH * scale) / 2;
+
+    apply();
+
+  }
+
+
+
+  function actual() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = 1;
+
+    tx = (r.width - natW) / 2;
+
+    ty = (r.height - natH) / 2;
+
+    apply();
+
+  }
+
+
+
+  function openAt(i, requestFullscreen) {
+
+    var all = diagrams();
+
+    var svg = all[i];
+
+    if (!svg) return;
+
+    if (overlay && index === i) return;
+
+    if (!overlay) build();
+
+    index = i;
+
+
+
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+
+    var box = svg.getBoundingClientRect();
+
+    natW = (vb && vb.width) || box.width || 800;
+
+    natH = (vb && vb.height) || box.height || 600;
+
+    var clone = svg.cloneNode(true);
+
+    clone.removeAttribute("height");
+
+    clone.style.maxWidth = "none";
+
+    clone.style.maxHeight = "none";
+
+    clone.setAttribute("width", natW);
+
+    clone.setAttribute("height", natH);
+
+    canvas.textContent = "";
+
+    canvas.appendChild(clone);
+
+
+
+    titleEl.textContent = headingFor(svg, i);
+
+    countEl.textContent = (i + 1) + " / " + all.length;
+
+    prevBtn.disabled = i === 0;
+
+    nextBtn.disabled = i === all.length - 1;
+
+    prevBtn.hidden = nextBtn.hidden = all.length < 2;
+
+    fit();
+
+    closeBtn.focus();
+
+
+
+    if (requestFullscreen && overlay.requestFullscreen && !document.fullscreenElement) {
+
+      overlay.requestFullscreen().then(fit, function () {});
+
+    }
+
+  }
+
+
+
+  function go(step) {
+
+    var next = index + step;
+
+    if (next < 0 || next >= diagrams().length) return;
+
+    history.replaceState(null, "", "#" + idFor(next));
+
+    openAt(next, false);
+
+  }
+
+
+
+  function close() {
+
+    if (!overlay) return;
+
+    document.removeEventListener("keydown", onKey);
+
+    overlay.remove();
+
+    overlay = stage = canvas = null;
+
+    index = -1;
+
+    document.documentElement.style.overflow = savedOverflow;
+
+    if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+
+    if (HASH.test(location.hash)) {
+
+      if (pushed) { pushed = false; history.back(); }
+
+      else history.replaceState(null, "", location.pathname + location.search);
+
+    }
+
+    if (opener) opener.focus();
+
+  }
+
+
+
+  function onKey(e) {
+
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    var r = stage.getBoundingClientRect(), handled = true;
+
+    switch (e.key) {
+
+      case "Escape": close(); break;
+
+      case "+": case "=": zoomBy(1.25); break;
+
+      case "-": case "_": zoomBy(1 / 1.25); break;
+
+      case "0": fit(); break;
+
+      case "1": actual(); break;
+
+      case "ArrowLeft": tx += 60; apply(); break;
+
+      case "ArrowRight": tx -= 60; apply(); break;
+
+      case "ArrowUp": ty += 60; apply(); break;
+
+      case "ArrowDown": ty -= 60; apply(); break;
+
+      case "[": case "PageUp": go(-1); break;
+
+      case "]": case "PageDown": go(1); break;
+
+      default: handled = false;
+
+    }
+
+    if (handled) e.preventDefault();
+
+  }
+
+
+
+  function fromHash() {
+
+    var m = HASH.exec(location.hash);
+
+    if (m) openAt(Number(m[1]) - 1, false);
+
+    else if (overlay) { pushed = false; close(); }
+
+  }
+
+  window.addEventListener("popstate", fromHash);
+
+  window.addEventListener("hashchange", fromHash);
+
+
+
+  // Mermaid renders after load. Add the links as each diagram appears, and open the view
+
+  // straight away if the URL points to one.
+
+  var scheduled = false, initial = false;
+
+  var observer = new MutationObserver(function () {
+
+    if (scheduled) return;
+
+    scheduled = true;
+
+    requestAnimationFrame(function () {
+
+      scheduled = false;
+
+      if (decorate()) {
+
+        observer.disconnect();
+
+        if (!initial) { initial = true; fromHash(); }
+
+      }
+
+    });
+
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  if (decorate()) { observer.disconnect(); initial = true; fromHash(); }
+
+})();
+
+</script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -852,7 +1492,7 @@ Cell <span class="ansi-green-fg ansi-bold">In[1], line 2</span>
       &nbsp;
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/dnb-jupyter/DNB_SRU_Einstieg.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/9bd2aaa">9bd2aaa</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/ef226ce">ef226ce</a></p>
 </div>
   </div>
 </footer>

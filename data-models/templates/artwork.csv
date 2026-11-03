@@ -1,74 +1,74 @@
-artwork_id,title,object_type_id,creator_id,date_created,material_ids,height_cm,width_cm,depth_cm,inventory_number,current_location_id,image_url,iconclass_notations,wikidata_qid
-ART001,"Duck Pond Bar, National City, California",TYP003,PER001,1967,MAT003; MAT004; MAT002,152,170,,,,,,
-ART002,"The Former Site Of Duck Pond Bar, 3003 National City Blvd., National City California",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART003,Size /Shape (Destiny),TYP004,PER001,1988-89,MAT005,198,259,,,,,,
-ART004,Potato And Lightbulb,TYP005,PER001,1997-98,MAT006,,,,,,,,
-ART005,Pretzel And Ear,TYP005,PER001,1997-98,MAT006,,,,,,,,
-ART006,Goya Series: Strange,TYP003,PER001,1997,MAT001; MAT002,190,152,,,,,,
-ART007,Goya Series: These Too,,PER001,1978,,,,,,,,,
-ART008,"The Life and Opinions of Tristan Shandy, Gentleman",TYP006,PER002,1978,,,,,,,,,
-ART009,Box (Blind Fate and Culture),TYP004,PER001,1987,MAT005; MAT003,122,122,,,,,,
-ART010,Team,TYP004,PER001,1987,MAT007; MAT005; MAT003; MAT008,156,225,,,,,,
-ART011,Hands/Feet,TYP004,PER001,1988,MAT005,244,267,,,,,,
-ART012,Six Ways To Pronounce Fiddles Tick (For L. Sterne),TYP004,PER001,1988,MAT009; MAT010; MAT011,305,406,,,,,,
-ART013,Man Running/Men Carrying Box,TYP004,PER001,1988-90,MAT005; MAT012; MAT013,123,268,,,,,,
-ART014,Three Active Persons / With Standing Person,TYP004,PER001,1990,MAT007; MAT012,234,147,,,,,,
-ART015,Two Voided Books,TYP004,PER001,1990,MAT005; MAT012,157,245,,,,,,
-ART016,Telephone (For Kafka),TYP004,PER001,1991,MAT007; MAT005; MAT012,243,488,,,,,,
-ART017,Four Fabrics (Patterned): Two Glasses/ Passers-By,TYP004,PER001,1992,MAT007; MAT005; MAT013; MAT014,250,219,,,,,,
-ART018,The Phone Call: Faceless Man (Orange) With Glasses / Entanglement Of Worms,TYP004,PER001,1992,MAT007; MAT003; MAT015,203,119,,,,,,
-ART019,Flying Saucer: Rainbow/Two Cyclists/ Dog/Gorilla And Bananas/Chaotic Situation / Couple/Tortoise/Gunman (Fallen),TYP004,PER001,1992,MAT007; MAT005; MAT003; MAT014,259,411,,,,,,
-ART020,Man With Handlebar Mustache/ Two Branches (With Black Intrusion),TYP004,PER001,1992,MAT007; MAT005; MAT016; MAT017; MAT003; MAT018; MAT015; MAT019; MAT020; MAT021; MAT014,210,249,,,,,,
-ART021,"Potatoes, Face (Smiling), Garbage Can, Landscape, Four Shapes + Red And Green Lines",TYP004,PER001,1994,MAT007; MAT005; MAT003; MAT022; MAT023; MAT024,166,215,,,,,,
-ART022,"Pointing Hand, Desk, Lights, And Observers (Courtroom)",TYP004,PER001,1995,MAT005; MAT007; MAT003; MAT025; MAT023; MAT024,255,229,,,,,,
-ART023,"Three Running Figures (One Splashed). Trash Cans, And Poles (With Large Blue Shape)",TYP004,PER001,1995,MAT005; MAT007; MAT003; MAT025; MAT023; MAT024,193,106,,,,,,
-ART024,"Sunny Donuts, 724 Highland Avenue, National City, Calif.",TYP003,PER001,1996,MAT003; MAT001; MAT002,150,114,,,,,,
-ART025,"Former Site Of Duck Pond Bar, 3003 National City Blvd., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART026,"Earl Scheib Auto Painting, 111 National City Blvd., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART027,"1121 East Second Street, National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART028,"Lourdes Restaurant, 1125 National City Blvd., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART029,"Pink Pig, Highland Ave., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART030,"Star Theater, 4762 Ridgeway Drive, Lincoln Acres, National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,
-ART031,Arrive (With Motives And Reasons),TYP004,PER001,1996,MAT007; MAT003; MAT015,235,327,,,,,,
-ART032,Goya Series: There Isn't Time,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,
-ART033,Goya Series: As Is,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,
-ART034,Goya Series: So Much And More,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,
-ART035,Goya Series: And,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,
-ART036,Goya Series: These Too,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,
-ART037,Plant (Rotterdam #3),TYP004,PER001,1997-98,MAT005,183,183,,,,,,
-ART038,Lamp (Rotterdam #3),TYP004,PER001,1997-98,MAT005,183,183,,,,,,
-ART039,Installation photograph of Lamp,,PER001,,,,,,,,,,
-ART040,Installation photograph of Plant,,PER001,,,,,,,,,,
-ART041,Elbow Series: Emu,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,
-ART042,Elbow Series: Yak,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,
-ART043,Elbow Series: Auk,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,
-ART044,Elbow Series: Gnu,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,
-ART045,Tetrad Series: Real Shadows,TYP003,PER001,1989,MAT029; MAT026; MAT003; MAT002,239,239,,,,,,
-ART046,Tetrad Series. All Getting On Together,TYP003,PER001,1999,MAT029; MAT026; MAT003; MAT002,239,239,,,,,,
-ART047,Teaching A Plant The Alphabet,TYP007,PER001,1972,MAT030; MAT031,,,,,,,,
-ART048,Taking A Slate: Ilene And David (#2),TYP007,PER001,1974,MAT032; MAT031,,,,,,,,
-ART049,Isocephaly,TYP008,PER001,1968,MAT030,,,,,,,,
-ART050,Taking A Slate: David,TYP007,PER001,1974,MAT032; MAT031,,,,,,,,
-ART051,How We Do Art Now,TYP009,PER001,1973,MAT032; MAT031,,,,,,,,
-ART052,What To Leave Out,TYP008,PER001,1968,MAT030,,,,,,,,
-ART053,Cremation,TYP010,PER001,1970,MAT032; MAT031,,,,,,,,
-ART054,New York City Art History,TYP008,PER001,1971,MAT030,,,,,,,,
-ART055,The Eye Does Not Naturally Pan,TYP007,PER001,1972-73,MAT032; MAT031,,,,,,,,
-ART056,Folding Hat: Version 1,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,
-ART057,Folding Hat,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,
-ART058,Black-Out,TYP007,PER001,1971,MAT032; MAT031,,,,,,,,
-ART059,Black Painting,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,
-ART060,Easel Painting,TYP007,PER001,1972-73,MAT030,,,,,,,,
-ART061,Black Curtain,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,
-ART062,Life Drawing,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,
-ART063,Time-Temperature,TYP007,PER001,1972-73,MAT030,,,,,,,,
-ART064,Walking Forward Running Past,TYP007,PER001,1972,MAT030,,,,,,,,
-ART065,Proust,TYP011,PER001,1970s,MAT033; MAT030,,,,,,,,
-ART066,Water To Wine To Water,TYP012,PER001,1972-73,MAT030,,,,,,,,
-ART067,The Hollywood Film,TYP012,PER001,1972-73,MAT030; MAT031,,,,,,,,
-ART068,Police Drawing,,PER001,1971,MAT030; MAT031,,,,,,,,
-ART069,Throwing Leaves Back At Tree,TYP012,PER001,1973,MAT030; MAT031,,,,,,,,
-ART070,The Italian Tape,TYP011,PER001,1974,MAT030,,,,,,,,
-ART071,Ice Cubes Sliding,TYP012,PER001,1974,MAT030,,,,,,,,
-ART072,Inventory,TYP011,PER001,1972,MAT032,,,,,,,,
-ART073,Two Colorful Melodies,TYP011,PER001,1977,MAT031; MAT030,,,,,,,,
+artwork_id,title,object_type_id,creator_id,date_created,material_ids,height_cm,width_cm,depth_cm,inventory_number,current_location_id,image_url,iconclass_notations,wikidata_qid,date_text,object_type_text,materials_text
+ART001,"Duck Pond Bar, National City, California",TYP003,PER001,1967,MAT003; MAT004; MAT002,152,170,,,,,,,1967,Acrylic and photoemulsion on canvas,Acrylic and photoemulsion on canvas
+ART002,"The Former Site Of Duck Pond Bar, 3003 National City Blvd., National City California",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,Acrylic and photoemulsion on canvas,Acrylic and photoemulsion on canvas
+ART003,Size /Shape (Destiny),TYP004,PER001,1988-89,MAT005,198,259,,,,,,,1988-89,Photography,Black and white photographs
+ART004,Potato And Lightbulb,TYP005,PER001,1997-98,MAT006,,,,,,,,,1997-98,wallpaper,wallpaper
+ART005,Pretzel And Ear,TYP005,PER001,1997-98,MAT006,,,,,,,,,1997-98,wallpaper,wallpaper
+ART006,Goya Series: Strange,TYP003,PER001,1997,MAT001; MAT002,190,152,,,,,,,1997,Ink jet on canvas,Ink jet on canvas
+ART007,Goya Series: These Too,,PER001,1978,,,,,,,,,,1978,,
+ART008,"The Life and Opinions of Tristan Shandy, Gentleman",TYP006,PER002,1978,,,,,,,,,,1978,Illustration,
+ART009,Box (Blind Fate and Culture),TYP004,PER001,1987,MAT005; MAT003,122,122,,,,,,,1987,photograph,"Black and white photographs, acrylic"
+ART010,Team,TYP004,PER001,1987,MAT007; MAT005; MAT003; MAT008,156,225,,,,,,,1987,photograph,"Color and black and white photographs, acrylic, metallic paper"
+ART011,Hands/Feet,TYP004,PER001,1988,MAT005,244,267,,,,,,,1988,photograph,Black and white photographs
+ART012,Six Ways To Pronounce Fiddles Tick (For L. Sterne),TYP004,PER001,1988,MAT009; MAT010; MAT011,305,406,,,,,,,1988,photographs,Oil stain on gelatin silver photographs mounted on aluminium
+ART013,Man Running/Men Carrying Box,TYP004,PER001,1988-90,MAT005; MAT012; MAT013,123,268,,,,,,,1988-90,photographs,"Black and white photographs, vinyl paint, oil tint"
+ART014,Three Active Persons / With Standing Person,TYP004,PER001,1990,MAT007; MAT012,234,147,,,,,,,1990,photographs,"Color photographs, vinyl paint"
+ART015,Two Voided Books,TYP004,PER001,1990,MAT005; MAT012,157,245,,,,,,,1990,photographs,"Black and white photographs, vinyl paint"
+ART016,Telephone (For Kafka),TYP004,PER001,1991,MAT007; MAT005; MAT012,243,488,,,,,,,1991,photographs,"Color photograph, black and white photograph, vinyl paint"
+ART017,Four Fabrics (Patterned): Two Glasses/ Passers-By,TYP004,PER001,1992,MAT007; MAT005; MAT013; MAT014,250,219,,,,,,,1992,photographs,"Color photographs, black and white photographs, oil tint, Masonite"
+ART018,The Phone Call: Faceless Man (Orange) With Glasses / Entanglement Of Worms,TYP004,PER001,1992,MAT007; MAT003; MAT015,203,119,,,,,,,1992,photographs,"Color photographs, acrylic paint, crayon"
+ART019,Flying Saucer: Rainbow/Two Cyclists/ Dog/Gorilla And Bananas/Chaotic Situation / Couple/Tortoise/Gunman (Fallen),TYP004,PER001,1992,MAT007; MAT005; MAT003; MAT014,259,411,,,,,,,1992,photographs,"Color photographs, black and white photographs, acrylic paint, Masonite"
+ART020,Man With Handlebar Mustache/ Two Branches (With Black Intrusion),TYP004,PER001,1992,MAT007; MAT005; MAT016; MAT017; MAT003; MAT018; MAT015; MAT019; MAT020; MAT021; MAT014,210,249,,,,,,,1992,photographs,"Color photograph, black and white photograph, photocopy on Gandhi Ashram paper, acrylic wash, paper stickers, crayon, oil enamel on rubber, oil enamel on formica, mounted on Masonite"
+ART021,"Potatoes, Face (Smiling), Garbage Can, Landscape, Four Shapes + Red And Green Lines",TYP004,PER001,1994,MAT007; MAT005; MAT003; MAT022; MAT023; MAT024,166,215,,,,,,,1994,photographs,"Color photograph, black and white photograph, acrylic, oil pastel and pencil on paper"
+ART022,"Pointing Hand, Desk, Lights, And Observers (Courtroom)",TYP004,PER001,1995,MAT005; MAT007; MAT003; MAT025; MAT023; MAT024,255,229,,,,,,,1995,photographs,"Black and white photographs, color photographs, acrylic, oil stick, pencil on paper"
+ART023,"Three Running Figures (One Splashed). Trash Cans, And Poles (With Large Blue Shape)",TYP004,PER001,1995,MAT005; MAT007; MAT003; MAT025; MAT023; MAT024,193,106,,,,,,,1995,photographs,"Black and white photographs, color photographs, acrylic, oil stick, pencil on paper"
+ART024,"Sunny Donuts, 724 Highland Avenue, National City, Calif.",TYP003,PER001,1996,MAT003; MAT001; MAT002,150,114,,,,,,,1996,painting,Acrylic and ink-jet on canvas
+ART025,"Former Site Of Duck Pond Bar, 3003 National City Blvd., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,painting,Acrylic and photoemulsion on canvas
+ART026,"Earl Scheib Auto Painting, 111 National City Blvd., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,painting,Acrylic and photoemulsion on canvas
+ART027,"1121 East Second Street, National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,painting,Acrylic and photoemulsion on canvas
+ART028,"Lourdes Restaurant, 1125 National City Blvd., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,painting,Acrylic and photoemulsion on canvas
+ART029,"Pink Pig, Highland Ave., National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,painting,Acrylic and photoemulsion on canvas
+ART030,"Star Theater, 4762 Ridgeway Drive, Lincoln Acres, National City, Calif.",TYP003,PER001,1996,MAT003; MAT004; MAT002,150,114,,,,,,,1996,painting,Acrylic and photoemulsion on canvas
+ART031,Arrive (With Motives And Reasons),TYP004,PER001,1996,MAT007; MAT003; MAT015,235,327,,,,,,,1996,photographs,"Color photographs, acrylic paint, crayon"
+ART032,Goya Series: There Isn't Time,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,,1997,Ink-jet print and hand lettering on canvas,Ink-jet print and hand lettering on canvas
+ART033,Goya Series: As Is,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,,1997,Ink-jet print and hand lettering on canvas,Ink-jet print and hand lettering on canvas
+ART034,Goya Series: So Much And More,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,,1997,Inkjet Print and hand lettering on canvas,Ink-jet print and hand lettering on canvas
+ART035,Goya Series: And,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,,1997,Ink jet and synthetic polymer paint on canvas,Ink-jet print and hand lettering on canvas
+ART036,Goya Series: These Too,TYP003,PER001,1997,MAT001; MAT026; MAT002,190,152,,,,,,,1997,Ink-jet print and hand lettering on canvas,Ink-jet print and hand lettering on canvas
+ART037,Plant (Rotterdam #3),TYP004,PER001,1997-98,MAT005,183,183,,,,,,,1997-98,photograph,Black and white photograph
+ART038,Lamp (Rotterdam #3),TYP004,PER001,1997-98,MAT005,183,183,,,,,,,1997-98,photograph,Black and white photograph
+ART039,Installation photograph of Lamp,,PER001,,,,,,,,,,,,,
+ART040,Installation photograph of Plant,,PER001,,,,,,,,,,,,,
+ART041,Elbow Series: Emu,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,,1999,Painting,"Ink-jet on canvas, Folio D process on vinyl, hand lettering and acrylic paint"
+ART042,Elbow Series: Yak,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,,1999,Painting,Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint
+ART043,Elbow Series: Auk,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,,1999,Painting,Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint
+ART044,Elbow Series: Gnu,TYP003,PER001,1999,MAT001; MAT002; MAT027; MAT028; MAT026; MAT003,213.5,213.5,,,,,,,1999,Painting,Ink-jet on canvas; Folio D process on vinyl; hand lettering and acrylic paint
+ART045,Tetrad Series: Real Shadows,TYP003,PER001,1989,MAT029; MAT026; MAT003; MAT002,239,239,,,,,,,1989,Painting,Digital printing; hand lettering; acrylic paint on canvas
+ART046,Tetrad Series. All Getting On Together,TYP003,PER001,1999,MAT029; MAT026; MAT003; MAT002,239,239,,,,,,,1999,Painting,Digital printing; hand lettering; acrylic paint on canvas
+ART047,Teaching A Plant The Alphabet,TYP007,PER001,1972,MAT030; MAT031,,,,,,,,,1972,Super-8 film loop (originally 16 mm),color; sound
+ART048,Taking A Slate: Ilene And David (#2),TYP007,PER001,1974,MAT032; MAT031,,,,,,,,,1974,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART049,Isocephaly,TYP008,PER001,1968,MAT030,,,,,,,,,1968,Super-8 film,color
+ART050,Taking A Slate: David,TYP007,PER001,1974,MAT032; MAT031,,,,,,,,,1974,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART051,How We Do Art Now,TYP009,PER001,1973,MAT032; MAT031,,,,,,,,,1973,video loop,black-and-white; sound
+ART052,What To Leave Out,TYP008,PER001,1968,MAT030,,,,,,,,,1968,Super-8 film,color
+ART053,Cremation,TYP010,PER001,1970,MAT032; MAT031,,,,,,,,,1970,16 mm film,black-and-white; sound
+ART054,New York City Art History,TYP008,PER001,1971,MAT030,,,,,,,,,1971,Super-8 film,color
+ART055,The Eye Does Not Naturally Pan,TYP007,PER001,1972-73,MAT032; MAT031,,,,,,,,,1972-73,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART056,Folding Hat: Version 1,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,,1970,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART057,Folding Hat,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,,1970,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART058,Black-Out,TYP007,PER001,1971,MAT032; MAT031,,,,,,,,,1971,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART059,Black Painting,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,,1970,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART060,Easel Painting,TYP007,PER001,1972-73,MAT030,,,,,,,,,1972-73,Super-8 film loop (originally 16 mm),color
+ART061,Black Curtain,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,,1970,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART062,Life Drawing,TYP007,PER001,1970,MAT032; MAT031,,,,,,,,,1970,Super-8 film loop (originally 16 mm),black-and-white; sound
+ART063,Time-Temperature,TYP007,PER001,1972-73,MAT030,,,,,,,,,1972-73,Super-8 film loop (originally 16 mm),color
+ART064,Walking Forward Running Past,TYP007,PER001,1972,MAT030,,,,,,,,,1972,Super-8 film loop (originally 16 mm),color
+ART065,Proust,TYP011,PER001,1970s,MAT033; MAT030,,,,,,,,,1970s,film loop,16 mm; color
+ART066,Water To Wine To Water,TYP012,PER001,1972-73,MAT030,,,,,,,,,1972-73,Super-8 film loop,color
+ART067,The Hollywood Film,TYP012,PER001,1972-73,MAT030; MAT031,,,,,,,,,1972-73,Super-8 film loop,color; sound
+ART068,Police Drawing,,PER001,1971,MAT030; MAT031,,,,,,,,,1971,black-and-white,color; sound
+ART069,Throwing Leaves Back At Tree,TYP012,PER001,1973,MAT030; MAT031,,,,,,,,,1973,Super-8 film loop,color; sound
+ART070,The Italian Tape,TYP011,PER001,1974,MAT030,,,,,,,,,1974,black-and-white film loop,color
+ART071,Ice Cubes Sliding,TYP012,PER001,1974,MAT030,,,,,,,,,1974,Super-8 film loop,color
+ART072,Inventory,TYP011,PER001,1972,MAT032,,,,,,,,,1972,black-and-white film loop,
+ART073,Two Colorful Melodies,TYP011,PER001,1977,MAT031; MAT030,,,,,,,,,1977,color film loop,sound

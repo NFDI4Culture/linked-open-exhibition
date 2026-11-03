@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Worthington">
+<meta name="author" content="Chloë Farr">
+<meta name="keywords" content="Data Science, GLAM, Open Science">
+
+<title>Linked Open Exhibitions – Linked Open Exhibition</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
+        <li>
+    <a class="dropdown-item" href="../data-models/artist-datamodel.html">
+ <span class="dropdown-text">Artist Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/exhibition-datamodel.html">
+ <span class="dropdown-text">Exhibition Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/dnb-catalogue-datamodel.html">
+ <span class="dropdown-text">DNB Catalogue Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/artwork-datamodel.html">
+ <span class="dropdown-text">Artwork Data Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-models/item-in-exhibition-datamodel.html">
+ <span class="dropdown-text">Item in Exhibition Data Model</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary-de.html"> 
+<span class="menu-text">Glossar (DE)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/orcid-guide.html"> 
+<span class="menu-text">ORCID Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NFDI4Culture/linked-open-exhibition"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#artwork-model-review" id="toc-artwork-model-review" class="nav-link active" data-scroll-target="#artwork-model-review">Artwork model review</a>
+  <ul class="collapse">
+  <li><a href="#main-review-table" id="toc-main-review-table" class="nav-link" data-scroll-target="#main-review-table">Main review table</a></li>
+  <li><a href="#example-needs-review-list" id="toc-example-needs-review-list" class="nav-link" data-scroll-target="#example-needs-review-list">Example needs-review list</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/artwork-model-review.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Linked Open Exhibitions</h1>
+<p class="subtitle lead">A Curator’s Playbook</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Simon Worthington <a href="mailto:simon.worthington@tib.eu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-8579-9717" class="quarto-title-author-orcid" aria-label="ORCID profile for Simon Worthington"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            HsH
+          </p>
+        <p class="affiliation">
+            TIB
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Chloë Farr <a href="https://orcid.org/0009-0007-1146-6745" class="quarto-title-author-orcid" aria-label="ORCID profile for Chloë Farr"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Victoria
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 18, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Catalogue exhibition contents using Linked Open Data and AI LLM assistants.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Data Science, GLAM, Open Science</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="artwork-model-review" class="level1">
+<h1>Artwork model review</h1>
+<section id="main-review-table" class="level2">
+<h2 class="anchored" data-anchor-id="main-review-table">Main review table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>key</th>
+<th>label_en</th>
+<th>label_de</th>
+<th>datatype</th>
+<th>wikidata</th>
+<th>cidoc</th>
+<th>linked_art</th>
+<th>lido</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>local_id</td>
+<td>local ID</td>
+<td>lokale ID</td>
+<td>external-id</td>
+<td></td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>identified_by (Identifier)</td>
+<td>lido:lidoRecID</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>instance_of</td>
+<td>Instance of (main)</td>
+<td>Instanz von (Haupt-)</td>
+<td>wikibase-item</td>
+<td>P31</td>
+<td>P2_has_type</td>
+<td>classified_as</td>
+<td>lido:category / lido:objectWorkType</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>object_type</td>
+<td>Object type (type of artwork)</td>
+<td>Objekttyp (Art des Kunstwerks)</td>
+<td>wikibase-item</td>
+<td>P31 (narrower instance of); suggested Wikidata type property</td>
+<td>P2_has_type (E55_Type)</td>
+<td>classified_as</td>
+<td>lido:objectWorkType</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>title</td>
+<td>Title</td>
+<td>Titel</td>
+<td>monolingualtext</td>
+<td>P1476</td>
+<td>P102_has_title (E35_Title)</td>
+<td>identified_by (Name, classified_as title)</td>
+<td>lido:titleWrap/lido:titleSet/lido:appellationValue</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>creator</td>
+<td>Creator</td>
+<td>Urheber/in</td>
+<td>wikibase-item</td>
+<td>P170</td>
+<td>P108i_was_produced_by &gt; E12_Production &gt; P14_carried_out_by</td>
+<td>produced_by.carried_out_by</td>
+<td>lido:eventSet (Production)/lido:eventActor</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>inception</td>
+<td>Date of creation</td>
+<td>Entstehungsdatum</td>
+<td>time</td>
+<td>P571</td>
+<td>P108i_was_produced_by &gt; E12_Production &gt; P4_has_time-span</td>
+<td>produced_by.timespan</td>
+<td>lido:eventSet (Production)/lido:eventDate</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>main_subject</td>
+<td>Main Subject</td>
+<td>Hauptthema</td>
+<td>wikibase-item</td>
+<td>P921, with mapping to other vocabularies optional</td>
+<td>P129_is_about (E1_CRM_Entity)</td>
+<td>subject_of</td>
+<td>lido:subjectWrap/lido:subjectSet/lido:subject</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>materials</td>
+<td>Materials</td>
+<td>Materialien</td>
+<td>wikibase-item</td>
+<td>P186</td>
+<td>P45_consists_of (E57_Material)</td>
+<td>made_of</td>
+<td>lido:eventMaterialsTech/lido:materialsTech</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>made_from_material</td>
+<td>made from material</td>
+<td>Material</td>
+<td>wikibase-item</td>
+<td>P186</td>
+<td>P45_consists_of (E57_Material)</td>
+<td>made_of</td>
+<td>lido:eventMaterialsTech/lido:materialsTech</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>height</td>
+<td>height</td>
+<td>Höhe</td>
+<td>quantity</td>
+<td>P2048</td>
+<td>P43_has_dimension (E54_Dimension, type height)</td>
+<td>dimension (classified_as height)</td>
+<td>lido:objectMeasurementsSet (measurementType height)</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>width</td>
+<td>width</td>
+<td>Breite</td>
+<td>quantity</td>
+<td>P2049</td>
+<td>P43_has_dimension (E54_Dimension, type width)</td>
+<td>dimension (classified_as width)</td>
+<td>lido:objectMeasurementsSet (measurementType width)</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>depth</td>
+<td>depth</td>
+<td>Tiefe</td>
+<td>quantity</td>
+<td>P5524</td>
+<td>P43_has_dimension (E54_Dimension, type depth)</td>
+<td>dimension (classified_as depth)</td>
+<td>lido:objectMeasurementsSet (measurementType depth)</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>inventory_number</td>
+<td>Inventory Number</td>
+<td>Inventarnummer</td>
+<td>string</td>
+<td>P217</td>
+<td>P1_is_identified_by (E42_Identifier, type inventory number)</td>
+<td>identified_by (Identifier, classified_as inventory number)</td>
+<td>lido:repositorySet/lido:workID</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>catalog_code</td>
+<td>Catalog Code</td>
+<td>Katalognummer</td>
+<td>string</td>
+<td>P528</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>identified_by (Identifier)</td>
+<td>lido:workID</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>location</td>
+<td>location</td>
+<td>Standort</td>
+<td>wikibase-item</td>
+<td>P276</td>
+<td>P55_has_current_location (E53_Place)</td>
+<td>current_location</td>
+<td>lido:repositorySet/lido:repositoryLocation</td>
+<td>review</td>
+</tr>
+<tr class="even">
+<td>image_url</td>
+<td>Image</td>
+<td>Bild</td>
+<td>url</td>
+<td>P6500 (Commons URL)</td>
+<td>P138i_has_representation (E36_Visual_Item)</td>
+<td>representation (VisualItem, digitally_shown_by)</td>
+<td>lido:resourceWrap/lido:resourceSet/lido:resourceRepresentation/lido:linkResource</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>part_of_series</td>
+<td>Part of Series</td>
+<td>Teile einer Serie</td>
+<td>wikibase-item</td>
+<td>P179</td>
+<td>P108_has_produced (E65_Creation)</td>
+<td>part_of_series</td>
+<td>lido:relatedWorkSet/lido:relatedWork</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>depicts</td>
+<td>Depicts</td>
+<td>Darstellt</td>
+<td>wikibase-item</td>
+<td>P180</td>
+<td>P129_is_about</td>
+<td>depicts</td>
+<td>lido:subjectWrap/lido:subjectSet/lido:subject</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>iconclass</td>
+<td>depicts Iconclass notation</td>
+<td>stellt Iconclass-Notation dar</td>
+<td>external-id</td>
+<td>P1257, mapped alongside Wikidata subject vocabularies</td>
+<td>P62_depicts (E55_Type, Iconclass concept)</td>
+<td>shows.represents (Type)</td>
+<td>lido:subjectWrap/lido:subjectSet/lido:subject/lido:subjectConcept/lido:conceptID</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>current_owner</td>
+<td>Current Owner</td>
+<td>Aktueller Eigentümer</td>
+<td>wikibase-item</td>
+<td>P127; can be person, institution, or organization</td>
+<td>P50_has_current_keeper</td>
+<td>current_owner</td>
+<td>lido:repositorySet/lido:repositoryName</td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>commons_category</td>
+<td>Commons category</td>
+<td>Commons-Kategorie</td>
+<td>url</td>
+<td>P373</td>
+<td>P138i_has_representation</td>
+<td>related</td>
+<td>lido:resourceWrap/lido:resourceSet</td>
+<td>ok</td>
+</tr>
+<tr class="even">
+<td>wikidata_qid</td>
+<td>Wikidata QID</td>
+<td>Wikidata-QID</td>
+<td>external-id</td>
+<td></td>
+<td>P1_is_identified_by (E42_Identifier) or owl:sameAs</td>
+<td>equivalent</td>
+<td>lido:objectID / lido:actorID / lido:conceptID (type wikidata)</td>
+<td>ok</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-needs-review-list" class="level2">
+<h2 class="anchored" data-anchor-id="example-needs-review-list">Example needs-review list</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>issue</th>
+<th>example</th>
+<th>why it needs review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>subject vocab</td>
+<td>Main Subject / Depicts / Iconclass</td>
+<td>primary subject vocabulary is Wikidata, with cross-mapping to other vocabularies such as Iconclass and Getty where needed</td>
+</tr>
+<tr class="even">
+<td>material mapping</td>
+<td>Materials / made from material</td>
+<td>material field is confirmed as valid; multiple material statements are handled as one field in the source CSV</td>
+</tr>
+<tr class="odd">
+<td>image handling</td>
+<td>Image</td>
+<td>confirmed as a direct URL from Commons, not a separate image entity</td>
+</tr>
+<tr class="even">
+<td>object type</td>
+<td>Object type (type of artwork)</td>
+<td>use a Wikidata-backed type property for painting, sculpture, print, etc., while keeping the instance-of concept distinct</td>
+</tr>
+<tr class="odd">
+<td>current ownership</td>
+<td>Current Owner</td>
+<td>ownership may be a person, institution, or organization; the exact target item type can vary</td>
+</tr>
+<tr class="even">
+<td>location</td>
+<td>location</td>
+<td>confirm whether this is current collection location or exhibition venue</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>Review decisions confirmed: Materials is the canonical field; the image is a Commons URL; subject vocab is primarily Wikidata with optional mapping to other vocabularies; artwork type uses a Wikidata-backed property; ownership can be represented by different entity types.</p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<!--
+
+  Full screen view for Mermaid diagrams, included on every page by _quarto.yml
+
+  (format.html.include-after-body). Adds a "Full screen view" link above each diagram.
+
+  The link is a normal URL (#diagram-1, #diagram-2, ...), so a view can be bookmarked or shared.
+
+  In the view: drag to pan, mouse wheel or pinch to zoom, buttons and keys for the rest.
+
+-->
+
+<style>
+
+  .mmd-bar { text-align: right; margin: 0 0 0.25rem; font-size: 0.85rem; }
+
+  #mmd-overlay {
+
+    position: fixed; inset: 0; z-index: 2000; display: flex; flex-direction: column;
+
+    background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #212529);
+
+  }
+
+  #mmd-overlay .mmd-top {
+
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+
+    padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  #mmd-overlay .mmd-title { flex: 1 1 10rem; font-weight: 600; }
+
+  #mmd-overlay .mmd-count { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+  #mmd-overlay button {
+
+    font: inherit; padding: 0.2rem 0.6rem; cursor: pointer; color: inherit;
+
+    background: transparent; border: 1px solid rgba(128, 128, 128, 0.6); border-radius: 4px;
+
+  }
+
+  #mmd-overlay button:hover:not(:disabled) { background: rgba(128, 128, 128, 0.15); }
+
+  #mmd-overlay button:disabled { opacity: 0.4; cursor: default; }
+
+  #mmd-overlay .mmd-stage { flex: 1; position: relative; overflow: hidden; cursor: grab; touch-action: none; }
+
+  #mmd-overlay .mmd-stage.mmd-drag { cursor: grabbing; }
+
+  #mmd-overlay .mmd-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+
+  #mmd-overlay .mmd-canvas svg { display: block; max-width: none; }
+
+  #mmd-overlay .mmd-hint {
+
+    padding: 0.25rem 0.75rem; font-size: 0.8rem; opacity: 0.7;
+
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  @media print { .mmd-bar, #mmd-overlay { display: none !important; } }
+
+</style>
+
+<script>
+
+(function () {
+
+  "use strict";
+
+  // Quarto replaces each pre.mermaid with its rendered svg, so count the diagrams up front.
+
+  var expected = document.querySelectorAll("pre.mermaid").length;
+
+  if (!expected) return;
+
+
+
+  var HASH = /^#diagram-(\d+)$/;
+
+  var overlay = null, stage = null, canvas = null, titleEl = null, countEl = null;
+
+  var prevBtn = null, nextBtn = null, closeBtn = null;
+
+  var index = -1, scale = 1, tx = 0, ty = 0, natW = 1, natH = 1;
+
+  var pushed = false, savedOverflow = "", opener = null;
+
+
+
+  function diagrams() {
+
+    return Array.prototype.filter.call(document.querySelectorAll('svg[id^="mermaid-"]'), function (s) {
+
+      return !s.closest("#mmd-overlay");
+
+    });
+
+  }
+
+  function idFor(i) { return "diagram-" + (i + 1); }
+
+
+
+  function headingFor(svg, i) {
+
+    var section = svg.closest("section");
+
+    var h = section && section.querySelector("h1, h2, h3, h4");
+
+    var text = h ? h.textContent.replace(/\s+/g, " ").trim() : "";
+
+    return text || "Diagram " + (i + 1);
+
+  }
+
+
+
+  // --- link above each diagram -------------------------------------------------------
+
+  function decorate() {
+
+    var all = diagrams(), done = 0;
+
+    all.forEach(function (svg, i) {
+
+      if (svg.dataset.mmdBar) { done++; return; }
+
+      svg.dataset.mmdBar = "1";
+
+      done++;
+
+      var bar = document.createElement("div");
+
+      bar.className = "mmd-bar";
+
+      var a = document.createElement("a");
+
+      a.href = "#" + idFor(i);
+
+      a.textContent = "Full screen view";
+
+      a.title = "Open the diagram full screen with pan and zoom";
+
+      a.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        opener = a;
+
+        history.pushState(null, "", "#" + idFor(i));
+
+        pushed = true;
+
+        openAt(i, true);
+
+      });
+
+      bar.appendChild(a);
+
+      var host = svg.closest("figure") || svg.parentNode;
+
+      host.parentNode.insertBefore(bar, host);
+
+    });
+
+    return all.length >= expected && done === all.length;
+
+  }
+
+
+
+  // --- overlay -----------------------------------------------------------------------
+
+  function button(label, title, onClick) {
+
+    var b = document.createElement("button");
+
+    b.type = "button";
+
+    b.textContent = label;
+
+    b.title = title;
+
+    b.setAttribute("aria-label", title);
+
+    b.addEventListener("click", onClick);
+
+    return b;
+
+  }
+
+
+
+  function build() {
+
+    overlay = document.createElement("div");
+
+    overlay.id = "mmd-overlay";
+
+    overlay.setAttribute("role", "dialog");
+
+    overlay.setAttribute("aria-modal", "true");
+
+    overlay.setAttribute("aria-label", "Diagram full screen view");
+
+
+
+    var top = document.createElement("div");
+
+    top.className = "mmd-top";
+
+    prevBtn = button("Previous", "Previous diagram ([ or Page Up)", function () { go(-1); });
+
+    nextBtn = button("Next", "Next diagram (] or Page Down)", function () { go(1); });
+
+    countEl = document.createElement("span");
+
+    countEl.className = "mmd-count";
+
+    titleEl = document.createElement("span");
+
+    titleEl.className = "mmd-title";
+
+    closeBtn = button("Close", "Close (Esc)", close);
+
+    top.appendChild(prevBtn);
+
+    top.appendChild(nextBtn);
+
+    top.appendChild(countEl);
+
+    top.appendChild(titleEl);
+
+    top.appendChild(button("\u2212", "Zoom out (-)", function () { zoomBy(1 / 1.25); }));
+
+    top.appendChild(button("+", "Zoom in (+)", function () { zoomBy(1.25); }));
+
+    top.appendChild(button("Fit", "Fit to screen (0)", fit));
+
+    top.appendChild(button("100%", "Actual size (1)", actual));
+
+    top.appendChild(closeBtn);
+
+
+
+    stage = document.createElement("div");
+
+    stage.className = "mmd-stage";
+
+    canvas = document.createElement("div");
+
+    canvas.className = "mmd-canvas";
+
+    stage.appendChild(canvas);
+
+
+
+    var hint = document.createElement("div");
+
+    hint.className = "mmd-hint";
+
+    hint.textContent = "Drag to pan. Mouse wheel or pinch to zoom. Arrow keys pan, + and - zoom, 0 fits, 1 is actual size, [ and ] switch diagram, Esc closes.";
+
+
+
+    overlay.appendChild(top);
+
+    overlay.appendChild(stage);
+
+    overlay.appendChild(hint);
+
+    document.body.appendChild(overlay);
+
+
+
+    stage.addEventListener("wheel", function (e) {
+
+      e.preventDefault();
+
+      var r = stage.getBoundingClientRect();
+
+      zoomAt(Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+
+    }, { passive: false });
+
+
+
+    var pts = {};
+
+    stage.addEventListener("pointerdown", function (e) {
+
+      stage.setPointerCapture(e.pointerId);
+
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+
+      stage.classList.add("mmd-drag");
+
+    });
+
+    stage.addEventListener("pointermove", function (e) {
+
+      var p = pts[e.pointerId];
+
+      if (!p) return;
+
+      var ids = Object.keys(pts);
+
+      if (ids.length === 2) {
+
+        var o = pts[ids[0] === String(e.pointerId) ? ids[1] : ids[0]];
+
+        var before = Math.hypot(p.x - o.x, p.y - o.y) || 1;
+
+        var after = Math.hypot(e.clientX - o.x, e.clientY - o.y) || 1;
+
+        var r = stage.getBoundingClientRect();
+
+        zoomAt(after / before, (e.clientX + o.x) / 2 - r.left, (e.clientY + o.y) / 2 - r.top);
+
+      } else {
+
+        tx += e.clientX - p.x;
+
+        ty += e.clientY - p.y;
+
+        apply();
+
+      }
+
+      p.x = e.clientX;
+
+      p.y = e.clientY;
+
+    });
+
+    function release(e) {
+
+      delete pts[e.pointerId];
+
+      if (!Object.keys(pts).length) stage.classList.remove("mmd-drag");
+
+    }
+
+    stage.addEventListener("pointerup", release);
+
+    stage.addEventListener("pointercancel", release);
+
+    stage.addEventListener("dblclick", fit);
+
+
+
+    document.addEventListener("keydown", onKey);
+
+    savedOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = "hidden";
+
+  }
+
+
+
+  function apply() {
+
+    canvas.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+
+  }
+
+
+
+  function zoomAt(factor, cx, cy) {
+
+    var s = Math.min(Math.max(scale * factor, 0.05), 12);
+
+    tx = cx - (cx - tx) * (s / scale);
+
+    ty = cy - (cy - ty) * (s / scale);
+
+    scale = s;
+
+    apply();
+
+  }
+
+
+
+  function zoomBy(factor) {
+
+    var r = stage.getBoundingClientRect();
+
+    zoomAt(factor, r.width / 2, r.height / 2);
+
+  }
+
+
+
+  function fit() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = Math.min(r.width / natW, r.height / natH, 3) * 0.96;
+
+    tx = (r.width - natW * scale) / 2;
+
+    ty = (r.height - natH * scale) / 2;
+
+    apply();
+
+  }
+
+
+
+  function actual() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = 1;
+
+    tx = (r.width - natW) / 2;
+
+    ty = (r.height - natH) / 2;
+
+    apply();
+
+  }
+
+
+
+  function openAt(i, requestFullscreen) {
+
+    var all = diagrams();
+
+    var svg = all[i];
+
+    if (!svg) return;
+
+    if (overlay && index === i) return;
+
+    if (!overlay) build();
+
+    index = i;
+
+
+
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+
+    var box = svg.getBoundingClientRect();
+
+    natW = (vb && vb.width) || box.width || 800;
+
+    natH = (vb && vb.height) || box.height || 600;
+
+    var clone = svg.cloneNode(true);
+
+    clone.removeAttribute("height");
+
+    clone.style.maxWidth = "none";
+
+    clone.style.maxHeight = "none";
+
+    clone.setAttribute("width", natW);
+
+    clone.setAttribute("height", natH);
+
+    canvas.textContent = "";
+
+    canvas.appendChild(clone);
+
+
+
+    titleEl.textContent = headingFor(svg, i);
+
+    countEl.textContent = (i + 1) + " / " + all.length;
+
+    prevBtn.disabled = i === 0;
+
+    nextBtn.disabled = i === all.length - 1;
+
+    prevBtn.hidden = nextBtn.hidden = all.length < 2;
+
+    fit();
+
+    closeBtn.focus();
+
+
+
+    if (requestFullscreen && overlay.requestFullscreen && !document.fullscreenElement) {
+
+      overlay.requestFullscreen().then(fit, function () {});
+
+    }
+
+  }
+
+
+
+  function go(step) {
+
+    var next = index + step;
+
+    if (next < 0 || next >= diagrams().length) return;
+
+    history.replaceState(null, "", "#" + idFor(next));
+
+    openAt(next, false);
+
+  }
+
+
+
+  function close() {
+
+    if (!overlay) return;
+
+    document.removeEventListener("keydown", onKey);
+
+    overlay.remove();
+
+    overlay = stage = canvas = null;
+
+    index = -1;
+
+    document.documentElement.style.overflow = savedOverflow;
+
+    if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+
+    if (HASH.test(location.hash)) {
+
+      if (pushed) { pushed = false; history.back(); }
+
+      else history.replaceState(null, "", location.pathname + location.search);
+
+    }
+
+    if (opener) opener.focus();
+
+  }
+
+
+
+  function onKey(e) {
+
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    var r = stage.getBoundingClientRect(), handled = true;
+
+    switch (e.key) {
+
+      case "Escape": close(); break;
+
+      case "+": case "=": zoomBy(1.25); break;
+
+      case "-": case "_": zoomBy(1 / 1.25); break;
+
+      case "0": fit(); break;
+
+      case "1": actual(); break;
+
+      case "ArrowLeft": tx += 60; apply(); break;
+
+      case "ArrowRight": tx -= 60; apply(); break;
+
+      case "ArrowUp": ty += 60; apply(); break;
+
+      case "ArrowDown": ty -= 60; apply(); break;
+
+      case "[": case "PageUp": go(-1); break;
+
+      case "]": case "PageDown": go(1); break;
+
+      default: handled = false;
+
+    }
+
+    if (handled) e.preventDefault();
+
+  }
+
+
+
+  function fromHash() {
+
+    var m = HASH.exec(location.hash);
+
+    if (m) openAt(Number(m[1]) - 1, false);
+
+    else if (overlay) { pushed = false; close(); }
+
+  }
+
+  window.addEventListener("popstate", fromHash);
+
+  window.addEventListener("hashchange", fromHash);
+
+
+
+  // Mermaid renders after load. Add the links as each diagram appears, and open the view
+
+  // straight away if the URL points to one.
+
+  var scheduled = false, initial = false;
+
+  var observer = new MutationObserver(function () {
+
+    if (scheduled) return;
+
+    scheduled = true;
+
+    requestAnimationFrame(function () {
+
+      scheduled = false;
+
+      if (decorate()) {
+
+        observer.disconnect();
+
+        if (!initial) { initial = true; fromHash(); }
+
+      }
+
+    });
+
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  if (decorate()) { observer.disconnect(); initial = true; fromHash(); }
+
+})();
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/artwork-model-review.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/ef226ce">ef226ce</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -76,7 +76,7 @@ erDiagram
 
 The authoritative artwork source is the attached CSV artifact and its field names are the ones used below. Multi-valued fields, where present, follow the same `;`-separated pattern used in the source data.
 
-`Exhibited at` is represented on the exhibition-item relationship rather than as a direct attribute of the artwork entity, even though the import CSV still contains the column for catalogue loading.
+`Exhibited at` is an artwork statement with the exhibition as value. Catalogue number, page, title as exhibited and a note are qualifiers of that statement; see [Item in Exhibition Data Model](item-in-exhibition-datamodel.qmd).
 
 ## Classes
 

@@ -2,7 +2,7 @@
 
 Reads  : baldessari-artwork.csv (artwork_id, title, creator, date, object_type, materials, height_cm, width_cm)
          term.csv / person.csv (existing curated rows are kept as they are)
-Writes : artwork.csv, term.csv, person.csv, exhibition-item.csv in the same folder.
+Writes : artwork.csv, term.csv, person.csv, exhibition-item.csv, catalogue.csv in the same folder.
 
 Free-text object types and materials are normalised to shared terms (see OBJECT_TYPES and MATERIAL_ALIASES).
 Film/video details are kept: specific film types are object types, colour / black-and-white / sound / 16 mm
@@ -90,7 +90,28 @@ MATERIAL_ALIASES = {
     "color": "color", "black-and-white": "black-and-white", "sound": "sound", "16 mm": "16 mm",
 }
 
-PERSONS = {"John Baldessari": ("Q683378", "118506153"), "Laurence Sterne": ("", "")}
+PERSONS = {
+    "John Baldessari": ("Q683378", "118506153"),
+    "Laurence Sterne": ("Q218960", "11861794X"),
+    # authors of the texts in the catalogue (GND from the DNB record 957409494)
+    "Meg Cranston": ("", "119555522"),
+    "Diedrich Diederichsen": ("", "130448001"),
+    "Thomas Weski": ("", "119093022"),
+}
+
+# the exhibition catalogue (DNB record 957409494) and its publisher
+ORGANIZATIONS = [("ORG001", "König", "König")]
+CATALOGUE_HEADER = ["catalogue_id", "title", "subtitle", "author_ids", "publisher_id", "publication_date",
+                    "isbn13", "dnb_edition_id", "described_at_url", "image_url", "exhibition_id", "wikidata_qid"]
+CATALOGUE_ROWS = [[
+    "CAT001", "Baldessari",
+    "while something is happening here, something else is happening there ; works 1988 - 1999 ; "
+    "Spectrum - Internationaler Preis für Fotografie der Stiftung Niedersachsen ; "
+    "[Sprengel-Museum Hannover, 26.9.1999 - 2.1.2000 und Staatliche Kunstsammlungen Dresden, "
+    "Gemäldegalerie Neue Meister, 15.1. - 2.4.2000]",
+    "PER003; PER004; PER005", "ORG001", "1999", "978-3-88375-396-6", "957409494",
+    "https://d-nb.info/957409494", "", EXHIBITION_ID, "",
+]]
 
 # catalogue pages already recorded in the earlier 3-row sample, keyed by (title, date)
 KNOWN_PAGES = {
@@ -204,20 +225,24 @@ def main():
         date = r["date"].strip()
         person = "PER001" if r["creator"] == "John Baldessari" else "PER002"
         artworks.append([aid, title, ot_id, person, date, "; ".join(mat_ids),
-                         r["height_cm"], r["width_cm"], "", "", "", "", "", ""])
-        items.append([f"ITM{aid[3:]}", aid, EXHIBITION_ID, "", KNOWN_PAGES.get((title, date), ""), "", ""])
+                         r["height_cm"], r["width_cm"], "", "", "", "", "", "",
+                         r["date"].strip(), r["object_type"].strip(), r["materials"].strip()])
+        items.append([aid, EXHIBITION_ID, "", KNOWN_PAGES.get((title, date), ""), "", ""])
 
     write(TEMPLATES / "artwork.csv",
           ["artwork_id", "title", "object_type_id", "creator_id", "date_created", "material_ids",
            "height_cm", "width_cm", "depth_cm", "inventory_number", "current_location_id",
-           "image_url", "iconclass_notations", "wikidata_qid"], artworks)
+           "image_url", "iconclass_notations", "wikidata_qid",
+           "date_text", "object_type_text", "materials_text"], artworks)
     write(TEMPLATES / "exhibition-item.csv",
-          ["item_id", "artwork_id", "exhibition_id", "catalogue_number", "catalogue_page",
+          ["artwork_id", "exhibition_id", "catalogue_number", "catalogue_page",
            "title_as_exhibited", "notes"], items)
     write(TEMPLATES / "term.csv", ["term_id", "term_type", "label_en", "label_de", "aat_id", "wikidata_qid"],
-          [[t["term_id"], t["term_type"], t["label_en"], t["label_de"], t["aat_id"], t["wikidata_qid"]] for t in terms])
+          [[t["term_id"], t["term_type"], t["label_en"], t["label_de"], t["aat_id"], t["wikidata_qid"]] for t in terms]
+          + [[oid, "organization", en, de, "", ""] for oid, en, de in ORGANIZATIONS])
     write(TEMPLATES / "person.csv", ["person_id", "name", "wikidata_qid", "gnd_id"],
           [[f"PER{i:03d}", n, q, g] for i, (n, (q, g)) in enumerate(PERSONS.items(), 1)])
+    write(TEMPLATES / "catalogue.csv", CATALOGUE_HEADER, CATALOGUE_ROWS)
 
     print(f"{len(artworks)} artworks, {len(items)} exhibition items, {len(terms)} terms, {len(PERSONS)} persons")
     for p in problems:

@@ -1,5 +1,5 @@
 {
-  "model": "linked-open-exhibition artwork and exhibition-item model",
+  "model": "linked-open-exhibition artwork and exhibition model",
   "version": "0.1-provisional",
   "language_defaults": {
     "label_languages": ["en", "de"],
@@ -49,15 +49,26 @@
       }
     },
     {
-      "key": "exhibition_item",
-      "label_en": "exhibition item",
-      "label_de": "Ausstellungsobjekt",
-      "description_en": "The showing of one artwork in one exhibition, with catalogue-specific details.",
+      "key": "catalogue",
+      "label_en": "catalogue",
+      "label_de": "Katalog",
+      "description_en": "A published catalogue, for example the book that accompanies an exhibition.",
       "equivalents": {
-        "wikidata": null,
-        "cidoc": "E7_Activity (part of the exhibition, P16_used_specific_object)",
-        "linked_art": "Activity (part_of exhibition, used_specific_object)",
-        "lido": "lido:eventObject within the exhibition event"
+        "wikidata": "Q2352616",
+        "cidoc": "E31_Document",
+        "linked_art": "LinguisticObject"
+      }
+    },
+    {
+      "key": "organization",
+      "label_en": "organization",
+      "label_de": "Organisation",
+      "description_en": "A publisher, museum or other institution.",
+      "equivalents": {
+        "wikidata": "Q43229",
+        "cidoc": "E74_Group",
+        "linked_art": "Group",
+        "lido": "lido:actorType = corporation"
       }
     },
     {
@@ -113,7 +124,7 @@
       "label_de": "lokale ID",
       "description_en": "Identifier of the record in the source CSV files, used to make loads repeatable.",
       "datatype": "external-id",
-      "used_on": ["artwork", "person", "exhibition", "exhibition_item", "material", "object_type", "place"],
+      "used_on": ["artwork", "person", "exhibition", "catalogue", "organization", "material", "object_type", "place"],
       "equivalents": {
         "cidoc": "P1_is_identified_by (E42_Identifier)",
         "linked_art": "identified_by (Identifier)",
@@ -122,11 +133,11 @@
     },
     {
       "key": "instance_of",
-      "label_en": "Instance of (main)",
+      "label_en": "Type",
       "label_de": "Instanz von (Haupt-)",
       "description_en": "Main class of the artwork, usually a work of art or specific type of object.",
       "datatype": "wikibase-item",
-      "used_on": ["artwork", "person", "exhibition", "exhibition_item", "material", "object_type", "place"],
+      "used_on": ["artwork", "person", "exhibition", "catalogue", "organization", "material", "object_type", "place"],
       "equivalents": {
         "wikidata": "P31",
         "cidoc": "P2_has_type",
@@ -136,7 +147,7 @@
     },
     {
       "key": "object_type",
-      "label_en": "Object type (type of artwork)",
+      "label_en": "Artwork type",
       "label_de": "Objekttyp (Art des Kunstwerks)",
       "description_en": "More specific type of the artwork, such as painting, print, sculpture, or installation.",
       "datatype": "wikibase-item",
@@ -152,9 +163,9 @@
       "key": "title",
       "label_en": "Title",
       "label_de": "Titel",
-      "description_en": "Title of the artwork or exhibition.",
+      "description_en": "Title of the artwork, exhibition or catalogue.",
       "datatype": "monolingualtext",
-      "used_on": ["artwork", "exhibition"],
+      "used_on": ["artwork", "exhibition", "catalogue"],
       "equivalents": {
         "wikidata": "P1476",
         "cidoc": "P102_has_title (E35_Title)",
@@ -178,7 +189,7 @@
     },
     {
       "key": "inception",
-      "label_en": "Inception",
+      "label_en": "Date of creation",
       "label_de": "Entstehungsdatum",
       "description_en": "Date the artwork was created.",
       "datatype": "time",
@@ -191,8 +202,47 @@
       }
     },
     {
+      "key": "date_text",
+      "label_en": "Date of creation (as stated)",
+      "label_de": "Entstehungsdatum (Angabe)",
+      "description_en": "Date of creation exactly as given in the source, for example 1972-73 or 1970s.",
+      "datatype": "string",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "cidoc": "P3_has_note",
+        "linked_art": "referred_to_by",
+        "lido": "lido:eventDate/lido:displayDate"
+      }
+    },
+    {
+      "key": "object_type_text",
+      "label_en": "Object type (as stated)",
+      "label_de": "Objekttyp (Angabe)",
+      "description_en": "Object type exactly as given in the source, for example Super-8 film loop (originally 16 mm).",
+      "datatype": "string",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "cidoc": "P3_has_note",
+        "linked_art": "referred_to_by",
+        "lido": "lido:objectWorkType/lido:term"
+      }
+    },
+    {
+      "key": "materials_text",
+      "label_en": "Materials (as stated)",
+      "label_de": "Material (Angabe)",
+      "description_en": "Materials and technique exactly as given in the source, for example Ink-jet on canvas; hand lettering and acrylic paint.",
+      "datatype": "string",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "cidoc": "P3_has_note",
+        "linked_art": "referred_to_by",
+        "lido": "lido:eventMaterialsTech/lido:displayMaterialsTech"
+      }
+    },
+    {
       "key": "main_subject",
-      "label_en": "Main Subject",
+      "label_en": "Subject",
       "label_de": "Hauptthema",
       "description_en": "Main subject or motif represented in the artwork.",
       "datatype": "wikibase-item",
@@ -220,7 +270,7 @@
     },
     {
       "key": "made_from_material",
-      "label_en": "made from material",
+      "label_en": "Material",
       "label_de": "Material",
       "description_en": "Material the artwork is made from.",
       "datatype": "wikibase-item",
@@ -234,7 +284,7 @@
     },
     {
       "key": "height",
-      "label_en": "height",
+      "label_en": "Height",
       "label_de": "Höhe",
       "description_en": "Height in centimetres.",
       "datatype": "quantity",
@@ -248,7 +298,7 @@
     },
     {
       "key": "width",
-      "label_en": "width",
+      "label_en": "Width",
       "label_de": "Breite",
       "description_en": "Width in centimetres.",
       "datatype": "quantity",
@@ -262,7 +312,7 @@
     },
     {
       "key": "depth",
-      "label_en": "depth",
+      "label_en": "Depth",
       "label_de": "Tiefe",
       "description_en": "Depth in centimetres.",
       "datatype": "quantity",
@@ -276,7 +326,7 @@
     },
     {
       "key": "inventory_number",
-      "label_en": "Inventory Number",
+      "label_en": "Inventory no.",
       "label_de": "Inventarnummer",
       "description_en": "Identifier of the physical object in a collection.",
       "datatype": "string",
@@ -290,8 +340,8 @@
     },
     {
       "key": "catalog_code",
-      "label_en": "Catalog Code",
-      "label_de": "Katalognummer",
+      "label_en": "Catalogue no.",
+      "label_de": "Katalogcode",
       "description_en": "Catalogue code or accession code associated with the artwork.",
       "datatype": "string",
       "used_on": ["artwork"],
@@ -320,9 +370,9 @@
       "key": "image_url",
       "label_en": "Image",
       "label_de": "Bild",
-      "description_en": "URL of an image of the artwork.",
+      "description_en": "URL of an image of the artwork or the catalogue cover.",
       "datatype": "url",
-      "used_on": ["artwork"],
+      "used_on": ["artwork", "catalogue"],
       "equivalents": {
         "wikidata": "P6500",
         "cidoc": "P138i_has_representation (E36_Visual_Item)",
@@ -332,7 +382,7 @@
     },
     {
       "key": "part_of_series",
-      "label_en": "Part of Series",
+      "label_en": "Series",
       "label_de": "Teile einer Serie",
       "description_en": "Series or related group to which the artwork belongs.",
       "datatype": "wikibase-item",
@@ -346,7 +396,7 @@
     },
     {
       "key": "depicts",
-      "label_en": "Depicts",
+      "label_en": "Depicted motif",
       "label_de": "Darstellt",
       "description_en": "Subject or motif depicted in the artwork.",
       "datatype": "wikibase-item",
@@ -360,7 +410,7 @@
     },
     {
       "key": "iconclass",
-      "label_en": "depicts Iconclass notation",
+      "label_en": "Iconclass",
       "label_de": "stellt Iconclass-Notation dar",
       "description_en": "Iconclass notation for a subject depicted in the artwork.",
       "datatype": "external-id",
@@ -376,9 +426,9 @@
       "key": "exhibited_at",
       "label_en": "Exhibited at",
       "label_de": "Ausgestellt in",
-      "description_en": "Exhibition in which the artwork was shown; persisted on the exhibition-item relationship to keep the association normalized.",
+      "description_en": "Exhibition in which the artwork was shown. Catalogue details are added as qualifiers.",
       "datatype": "wikibase-item",
-      "used_on": ["exhibition_item"],
+      "used_on": ["artwork"],
       "equivalents": {
         "wikidata": "P608",
         "cidoc": "P9i_forms_part_of (E7_Activity)",
@@ -388,7 +438,7 @@
     },
     {
       "key": "current_owner",
-      "label_en": "Current Owner",
+      "label_en": "Owner",
       "label_de": "Aktueller Eigentümer",
       "description_en": "Current owner or holder of the artwork.",
       "datatype": "wikibase-item",
@@ -416,11 +466,11 @@
     },
     {
       "key": "wikidata_qid",
-      "label_en": "Wikidata QID",
+      "label_en": "Wikidata item",
       "label_de": "Wikidata-QID",
       "description_en": "Identifier of the matching Wikidata item.",
       "datatype": "external-id",
-      "used_on": ["artwork", "person", "exhibition", "material", "object_type", "place"],
+      "used_on": ["artwork", "person", "exhibition", "catalogue", "organization", "material", "object_type", "place"],
       "equivalents": {
         "cidoc": "P1_is_identified_by (E42_Identifier) or owl:sameAs",
         "linked_art": "equivalent",
@@ -457,7 +507,7 @@
     },
     {
       "key": "start_date",
-      "label_en": "start date",
+      "label_en": "Start date",
       "label_de": "Beginn",
       "description_en": "Date the exhibition opened.",
       "datatype": "time",
@@ -471,7 +521,7 @@
     },
     {
       "key": "end_date",
-      "label_en": "end date",
+      "label_en": "End date",
       "label_de": "Ende",
       "description_en": "Date the exhibition closed.",
       "datatype": "time",
@@ -484,40 +534,12 @@
       }
     },
     {
-      "key": "exhibition",
-      "label_en": "in exhibition",
-      "label_de": "in Ausstellung",
-      "description_en": "Exhibition that an exhibition item belongs to.",
-      "datatype": "wikibase-item",
-      "used_on": ["exhibition_item"],
-      "equivalents": {
-        "wikidata": "P608",
-        "cidoc": "P9i_forms_part_of (E7_Activity)",
-        "linked_art": "part_of",
-        "lido": "lido:eventSet/lido:event (Exhibition)"
-      }
-    },
-    {
-      "key": "exhibited_artwork",
-      "label_en": "exhibited artwork",
-      "label_de": "ausgestelltes Kunstwerk",
-      "description_en": "Artwork shown in the exhibition item.",
-      "datatype": "wikibase-item",
-      "used_on": ["exhibition_item"],
-      "equivalents": {
-        "wikidata": "P608 (inverse, stated on the artwork)",
-        "cidoc": "P16_used_specific_object",
-        "linked_art": "used_specific_object",
-        "lido": "lido:eventObject/lido:object"
-      }
-    },
-    {
       "key": "catalogue_number",
-      "label_en": "catalogue code",
+      "label_en": "Catalogue number",
       "label_de": "Katalognummer",
-      "description_en": "Number of the item in the exhibition catalogue.",
+      "description_en": "Number of the item in the exhibition catalogue. Qualifier of 'Exhibited at'.",
       "datatype": "string",
-      "used_on": ["exhibition_item"],
+      "used_on": ["qualifier"],
       "equivalents": {
         "wikidata": "P528",
         "cidoc": "P1_is_identified_by (E42_Identifier, type catalogue number)",
@@ -527,11 +549,11 @@
     },
     {
       "key": "catalogue_page",
-      "label_en": "page(s)",
+      "label_en": "Page(s)",
       "label_de": "Seite(n)",
-      "description_en": "Page(s) of the exhibition catalogue on which the item is listed or reproduced.",
+      "description_en": "Page(s) of the exhibition catalogue on which the item is listed or reproduced. Qualifier of 'Exhibited at'.",
       "datatype": "string",
-      "used_on": ["exhibition_item"],
+      "used_on": ["qualifier"],
       "equivalents": {
         "wikidata": "P304",
         "cidoc": "P3_has_note (E62_String, catalogue page)",
@@ -543,9 +565,9 @@
       "key": "title_as_exhibited",
       "label_en": "title as exhibited",
       "label_de": "Titel in der Ausstellung",
-      "description_en": "Title under which the artwork was shown, if different from its current title.",
+      "description_en": "Title under which the artwork was shown, if different from its current title. Qualifier of 'Exhibited at'.",
       "datatype": "string",
-      "used_on": ["exhibition_item"],
+      "used_on": ["qualifier"],
       "equivalents": {
         "cidoc": "P1_is_identified_by (E35_Title) on the showing",
         "linked_art": "identified_by (Name) on the part activity",
@@ -556,13 +578,183 @@
       "key": "note",
       "label_en": "note",
       "label_de": "Anmerkung",
-      "description_en": "Free-text note.",
+      "description_en": "Free-text note. Qualifier of 'Exhibited at' and 'Appears in catalogue'.",
       "datatype": "string",
-      "used_on": ["exhibition_item"],
+      "used_on": ["qualifier"],
       "equivalents": {
         "cidoc": "P3_has_note",
         "linked_art": "referred_to_by (LinguisticObject)",
         "lido": "lido:descriptiveNoteValue"
+      }
+    },
+    {
+      "key": "subtitle",
+      "label_en": "Subtitle",
+      "label_de": "Untertitel",
+      "description_en": "Subtitle of the catalogue as printed.",
+      "datatype": "string",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P1680",
+        "cidoc": "P102_has_title (E35_Title)"
+      }
+    },
+    {
+      "key": "author",
+      "label_en": "Author",
+      "label_de": "Autor",
+      "description_en": "Person who wrote texts in the catalogue.",
+      "datatype": "wikibase-item",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P50",
+        "cidoc": "E39_Actor",
+        "linked_art": "created_by"
+      }
+    },
+    {
+      "key": "publisher",
+      "label_en": "Publisher",
+      "label_de": "Verleger",
+      "description_en": "Publishing house or institution that published the catalogue.",
+      "datatype": "wikibase-item",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P123",
+        "cidoc": "E39_Actor"
+      }
+    },
+    {
+      "key": "publication_date",
+      "label_en": "Publication date",
+      "label_de": "Erscheinungsdatum",
+      "description_en": "Year or date when the catalogue was published.",
+      "datatype": "time",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P577",
+        "cidoc": "E52_Time-Span"
+      }
+    },
+    {
+      "key": "isbn13",
+      "label_en": "ISBN-13",
+      "label_de": "ISBN-13",
+      "description_en": "13-digit International Standard Book Number.",
+      "datatype": "external-id",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P212",
+        "cidoc": "E42_Identifier"
+      }
+    },
+    {
+      "key": "dnb_edition_id",
+      "label_en": "DNB edition ID",
+      "label_de": "DNB-Nummer",
+      "description_en": "Identifier (IDN) of the catalogue record in the German National Library.",
+      "datatype": "external-id",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P1292",
+        "cidoc": "E42_Identifier"
+      }
+    },
+    {
+      "key": "described_at_url",
+      "label_en": "Described at URL",
+      "label_de": "Beschrieben unter URL",
+      "description_en": "Web page that describes the catalogue, for example its record in the German National Library.",
+      "datatype": "url",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P973",
+        "cidoc": "E42_Identifier"
+      }
+    },
+    {
+      "key": "catalogue_of",
+      "label_en": "Catalogue of",
+      "label_de": "Katalog zu",
+      "description_en": "Exhibition that the catalogue documents. Inverse of 'Exhibition catalogue'.",
+      "datatype": "wikibase-item",
+      "used_on": ["catalogue"],
+      "equivalents": {
+        "wikidata": "P921",
+        "cidoc": "P70_documents",
+        "linked_art": "about"
+      }
+    },
+    {
+      "key": "exhibition_catalogue",
+      "label_en": "Exhibition catalogue",
+      "label_de": "Ausstellungskatalog",
+      "description_en": "Catalogue that documents the exhibition. Inverse of 'Catalogue of'.",
+      "datatype": "wikibase-item",
+      "used_on": ["exhibition"],
+      "equivalents": {
+        "wikidata": "P1343",
+        "cidoc": "P70i_is_documented_in",
+        "linked_art": "subject_of"
+      }
+    },
+    {
+      "key": "appears_in_catalogue",
+      "label_en": "Appears in catalogue",
+      "label_de": "Kommt im Katalog vor",
+      "description_en": "Catalogue in which the artwork appears, for example the catalogue the record was taken from. Optional qualifiers give the scan page and region so that the extraction can be reviewed.",
+      "datatype": "wikibase-item",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P1343",
+        "cidoc": "P70i_is_documented_in",
+        "linked_art": "referred_to_by"
+      }
+    },
+    {
+      "key": "scan_page",
+      "label_en": "Scan page",
+      "label_de": "Scanseite",
+      "description_en": "Sequence number of the scanned page (first scan page = 1) on which the artwork was found. Not the printed page number. Qualifier of 'Appears in catalogue'.",
+      "datatype": "string",
+      "used_on": ["qualifier"],
+      "equivalents": {
+        "cidoc": "P3_has_note (E62_String, scan page)",
+        "linked_art": "part_of (Canvas)"
+      }
+    },
+    {
+      "key": "scan_region",
+      "label_en": "Scan region",
+      "label_de": "Scanbereich",
+      "description_en": "Rectangle on the scanned page where the entry is, as a W3C Media Fragment, for example xywh=percent:10,20,40,8 (x, y, width, height in percent of the page). Qualifier of 'Appears in catalogue'.",
+      "datatype": "string",
+      "used_on": ["qualifier"],
+      "equivalents": {
+        "cidoc": "P3_has_note (E62_String, region)",
+        "linked_art": "FragmentSelector"
+      }
+    },
+    {
+      "key": "extraction_method",
+      "label_en": "Extraction method",
+      "label_de": "Extraktionsmethode",
+      "description_en": "How the entry was found, for example 'plan-c qwen3-vl:8b', 'plan-b hocr' or 'manual'. Qualifier of 'Appears in catalogue'.",
+      "datatype": "string",
+      "used_on": ["qualifier"],
+      "equivalents": {
+        "cidoc": "P3_has_note (E62_String, method)"
+      }
+    },
+    {
+      "key": "review_status",
+      "label_en": "Review status",
+      "label_de": "Prüfstatus",
+      "description_en": "Result of the manual check: unreviewed, confirmed, corrected or rejected. Qualifier of 'Appears in catalogue'.",
+      "datatype": "string",
+      "used_on": ["qualifier"],
+      "equivalents": {
+        "cidoc": "P3_has_note (E62_String, review status)"
       }
     }
   ]

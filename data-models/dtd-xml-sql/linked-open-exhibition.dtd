@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- linked-open-exhibition artwork and exhibition model, version 0.1-provisional. Generated from data-models/wikibase-model.json by build.py. Do not edit by hand. -->
+<!-- Every item is an element named after its class. The ID attribute is the local ID of the CSV files. Item-valued properties are empty elements with a ref attribute (IDREF), so a reference to a missing ID is a validation error. Other values are element text. -->
+<!-- A DTD cannot say which class a ref must point to; the SQLite triggers check that. -->
+
+<!ENTITY % entities "artwork | person | exhibition | catalogue | organization | material | object_type | place">
+<!ELEMENT loe (%entities;)*>
+<!ATTLIST loe
+  model   CDATA #REQUIRED
+  version CDATA #REQUIRED>
+
+<!-- Label of an item in one language (people and terms). -->
+<!ELEMENT label (#PCDATA)>
+<!ATTLIST label xml:lang NMTOKEN #REQUIRED>
+
+<!-- artwork / Kunstwerk: A human-made object created as a work of art. (wikidata: Q838948; cidoc: E22_Human-Made_Object; linked_art: HumanMadeObject; lido: lido:category = Man-made object) -->
+<!ELEMENT artwork (label*,
+    instance_of*,
+    artwork_type*,
+    title+,
+    creator*,
+    inception?,
+    date_text?,
+    object_type_text?,
+    materials_text?,
+    main_subject*,
+    materials*,
+    made_from_material*,
+    height?,
+    width?,
+    depth?,
+    inventory_number?,
+    catalog_code*,
+    location?,
+    image_url?,
+    part_of_series*,
+    depicts*,
+    iconclass*,
+    exhibited_at*,
+    current_owner*,
+    commons_category?,
+    wikidata_qid?,
+    appears_in_catalogue*)>
+<!ATTLIST artwork
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- person / Person: A human being, for example an artist. (wikidata: Q5; cidoc: E21_Person; linked_art: Person; lido: lido:actorType = person) -->
+<!ELEMENT person (label+,
+    instance_of*,
+    wikidata_qid?,
+    gnd_id?)>
+<!ATTLIST person
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- exhibition / Ausstellung: A temporary presentation of artworks at a venue. (wikidata: Q464980; cidoc: E7_Activity; linked_art: Activity; lido: lido:eventType = Exhibition (lido00045)) -->
+<!ELEMENT exhibition (label*,
+    instance_of*,
+    title+,
+    location?,
+    wikidata_qid?,
+    start_date?,
+    end_date?,
+    exhibition_catalogue*)>
+<!ATTLIST exhibition
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- catalogue / Katalog: A published catalogue, for example the book that accompanies an exhibition. (wikidata: Q2352616; cidoc: E31_Document; linked_art: LinguisticObject) -->
+<!ELEMENT catalogue (label*,
+    instance_of*,
+    title+,
+    image_url?,
+    wikidata_qid?,
+    subtitle?,
+    author*,
+    publisher?,
+    publication_date?,
+    isbn13?,
+    dnb_edition_id?,
+    described_at_url?,
+    catalogue_of?)>
+<!ATTLIST catalogue
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- organization / Organisation: A publisher, museum or other institution. (wikidata: Q43229; cidoc: E74_Group; linked_art: Group; lido: lido:actorType = corporation) -->
+<!ELEMENT organization (label+,
+    instance_of*,
+    wikidata_qid?)>
+<!ATTLIST organization
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- material / Material: A material an artwork is made from. (wikidata: Q214609; cidoc: E57_Material; linked_art: Material; lido: lido:termMaterialsTech) -->
+<!ELEMENT material (label+,
+    instance_of*,
+    wikidata_qid?,
+    aat_id?)>
+<!ATTLIST material
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- object type / Objekttyp: A type of object such as painting, drawing, print, sculpture. (wikidata: Q151885; cidoc: E55_Type; linked_art: Type; lido: lido:objectWorkType) -->
+<!ELEMENT object_type (label+,
+    instance_of*,
+    wikidata_qid?,
+    aat_id?)>
+<!ATTLIST object_type
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- place / Ort: A museum, venue or other place where artworks are held or shown. (wikidata: Q17334923; cidoc: E53_Place; linked_art: Place; lido: lido:placeID) -->
+<!ELEMENT place (label+,
+    instance_of*,
+    wikidata_qid?)>
+<!ATTLIST place
+  id       ID       #REQUIRED
+  wikibase NMTOKEN  #IMPLIED
+  source   CDATA    #IMPLIED>
+
+<!-- Properties. Qualifiers are child elements of the statement they qualify. -->
+
+<!-- Type / Instanz von (Haupt-) [wikibase-item] key=instance_of, used on: artwork, person, exhibition, catalogue, organization, material, object_type, place. Main class of the artwork, usually a work of art or specific type of object. (wikidata: P31; cidoc: P2_has_type; linked_art: classified_as; lido: lido:category / lido:objectWorkType) -->
+<!ELEMENT instance_of EMPTY>
+<!ATTLIST instance_of ref IDREF #REQUIRED>
+
+<!-- Artwork type / Objekttyp (Art des Kunstwerks) [wikibase-item] key=object_type, used on: artwork. More specific type of the artwork, such as painting, print, sculpture, or installation. (wikidata: P31 (narrower instance of); cidoc: P2_has_type (E55_Type); linked_art: classified_as; lido: lido:objectWorkType) -->
+<!ELEMENT artwork_type EMPTY>
+<!ATTLIST artwork_type ref IDREF #REQUIRED>
+
+<!-- Title / Titel [monolingualtext] key=title, used on: artwork, exhibition, catalogue. Title of the artwork, exhibition or catalogue. (wikidata: P1476; cidoc: P102_has_title (E35_Title); linked_art: identified_by (Name, classified_as title); lido: lido:titleWrap/lido:titleSet/lido:appellationValue) -->
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST title xml:lang NMTOKEN "mul">
+
+<!-- Creator / Urheber/in [wikibase-item] key=creator, used on: artwork. Person who made the artwork. (wikidata: P170; cidoc: P108i_was_produced_by > E12_Production > P14_carried_out_by; linked_art: produced_by.carried_out_by; lido: lido:eventSet (Production)/lido:eventActor) -->
+<!ELEMENT creator EMPTY>
+<!ATTLIST creator ref IDREF #REQUIRED>
+
+<!-- Date of creation / Entstehungsdatum [time] key=inception, used on: artwork. Date the artwork was created. (wikidata: P571; cidoc: P108i_was_produced_by > E12_Production > P4_has_time-span; linked_art: produced_by.timespan; lido: lido:eventSet (Production)/lido:eventDate) -->
+<!ELEMENT inception (#PCDATA)>
+
+<!-- Date of creation (as stated) / Entstehungsdatum (Angabe) [string] key=date_text, used on: artwork. Date of creation exactly as given in the source, for example 1972-73 or 1970s. (cidoc: P3_has_note; linked_art: referred_to_by; lido: lido:eventDate/lido:displayDate) -->
+<!ELEMENT date_text (#PCDATA)>
+
+<!-- Object type (as stated) / Objekttyp (Angabe) [string] key=object_type_text, used on: artwork. Object type exactly as given in the source, for example Super-8 film loop (originally 16 mm). (cidoc: P3_has_note; linked_art: referred_to_by; lido: lido:objectWorkType/lido:term) -->
+<!ELEMENT object_type_text (#PCDATA)>
+
+<!-- Materials (as stated) / Material (Angabe) [string] key=materials_text, used on: artwork. Materials and technique exactly as given in the source, for example Ink-jet on canvas; hand lettering and acrylic paint. (cidoc: P3_has_note; linked_art: referred_to_by; lido: lido:eventMaterialsTech/lido:displayMaterialsTech) -->
+<!ELEMENT materials_text (#PCDATA)>
+
+<!-- Subject / Hauptthema [wikibase-item] key=main_subject, used on: artwork. Main subject or motif represented in the artwork. (wikidata: P921; cidoc: P129_is_about (E1_CRM_Entity); linked_art: subject_of; lido: lido:subjectWrap/lido:subjectSet/lido:subject) -->
+<!ELEMENT main_subject EMPTY>
+<!ATTLIST main_subject ref IDREF #REQUIRED>
+
+<!-- Materials / Materialien [wikibase-item] key=materials, used on: artwork. Material or materials used to make the artwork. (wikidata: P186; cidoc: P45_consists_of (E57_Material); linked_art: made_of; lido: lido:eventMaterialsTech/lido:materialsTech) -->
+<!ELEMENT materials EMPTY>
+<!ATTLIST materials ref IDREF #REQUIRED>
+
+<!-- Material / Material [wikibase-item] key=made_from_material, used on: artwork. Material the artwork is made from. (wikidata: P186; cidoc: P45_consists_of (E57_Material); linked_art: made_of; lido: lido:eventMaterialsTech/lido:materialsTech) -->
+<!ELEMENT made_from_material EMPTY>
+<!ATTLIST made_from_material ref IDREF #REQUIRED>
+
+<!-- Height / Höhe [quantity] key=height, used on: artwork. Height in centimetres. (wikidata: P2048; cidoc: P43_has_dimension (E54_Dimension, type height); linked_art: dimension (classified_as height); lido: lido:objectMeasurementsSet (measurementType height)) -->
+<!ELEMENT height (#PCDATA)>
+<!ATTLIST height unit (cm) "cm">
+
+<!-- Width / Breite [quantity] key=width, used on: artwork. Width in centimetres. (wikidata: P2049; cidoc: P43_has_dimension (E54_Dimension, type width); linked_art: dimension (classified_as width); lido: lido:objectMeasurementsSet (measurementType width)) -->
+<!ELEMENT width (#PCDATA)>
+<!ATTLIST width unit (cm) "cm">
+
+<!-- Depth / Tiefe [quantity] key=depth, used on: artwork. Depth in centimetres. (wikidata: P5524; cidoc: P43_has_dimension (E54_Dimension, type depth); linked_art: dimension (classified_as depth); lido: lido:objectMeasurementsSet (measurementType depth)) -->
+<!ELEMENT depth (#PCDATA)>
+<!ATTLIST depth unit (cm) "cm">
+
+<!-- Inventory no. / Inventarnummer [string] key=inventory_number, used on: artwork. Identifier of the physical object in a collection. (wikidata: P217; cidoc: P1_is_identified_by (E42_Identifier, type inventory number); linked_art: identified_by (Identifier, classified_as inventory number); lido: lido:repositorySet/lido:workID) -->
+<!ELEMENT inventory_number (#PCDATA)>
+
+<!-- Catalogue no. / Katalogcode [string] key=catalog_code, used on: artwork. Catalogue code or accession code associated with the artwork. (wikidata: P528; cidoc: P1_is_identified_by (E42_Identifier); linked_art: identified_by (Identifier); lido: lido:workID) -->
+<!ELEMENT catalog_code (#PCDATA)>
+
+<!-- location / Standort [wikibase-item] key=location, used on: artwork, exhibition. Current location (collection or venue) of the artwork, or venue of an exhibition. (wikidata: P276; cidoc: P55_has_current_location (E53_Place); linked_art: current_location; lido: lido:repositorySet/lido:repositoryLocation) -->
+<!ELEMENT location EMPTY>
+<!ATTLIST location ref IDREF #REQUIRED>
+
+<!-- Image / Bild [url] key=image_url, used on: artwork, catalogue. URL of an image of the artwork or the catalogue cover. (wikidata: P6500; cidoc: P138i_has_representation (E36_Visual_Item); linked_art: representation (VisualItem, digitally_shown_by); lido: lido:resourceWrap/lido:resourceSet/lido:resourceRepresentation/lido:linkResource) -->
+<!ELEMENT image_url (#PCDATA)>
+
+<!-- Series / Teile einer Serie [wikibase-item] key=part_of_series, used on: artwork. Series or related group to which the artwork belongs. (wikidata: P179; cidoc: P108_has_produced (E65_Creation); linked_art: part_of_series; lido: lido:relatedWorkSet/lido:relatedWork) -->
+<!ELEMENT part_of_series EMPTY>
+<!ATTLIST part_of_series ref IDREF #REQUIRED>
+
+<!-- Depicted motif / Darstellt [wikibase-item] key=depicts, used on: artwork. Subject or motif depicted in the artwork. (wikidata: P180; cidoc: P129_is_about; linked_art: depicts; lido: lido:subjectWrap/lido:subjectSet/lido:subject) -->
+<!ELEMENT depicts EMPTY>
+<!ATTLIST depicts ref IDREF #REQUIRED>
+
+<!-- Iconclass / stellt Iconclass-Notation dar [external-id] key=iconclass, used on: artwork. Iconclass notation for a subject depicted in the artwork. (wikidata: P1257; cidoc: P62_depicts (E55_Type, Iconclass concept); linked_art: shows.represents (Type); lido: lido:subjectWrap/lido:subjectSet/lido:subject/lido:subjectConcept/lido:conceptID) -->
+<!ELEMENT iconclass (#PCDATA)>
+
+<!-- Exhibited at / Ausgestellt in [wikibase-item] key=exhibited_at, used on: artwork. Exhibition in which the artwork was shown. Catalogue details are added as qualifiers. (wikidata: P608; cidoc: P9i_forms_part_of (E7_Activity); linked_art: part_of / shown_at; lido: lido:eventSet/lido:event) -->
+<!ELEMENT exhibited_at (catalogue_number?, catalogue_page?, title_as_exhibited?, note?)>
+<!ATTLIST exhibited_at ref IDREF #REQUIRED>
+
+<!-- Owner / Aktueller Eigentümer [wikibase-item] key=current_owner, used on: artwork. Current owner or holder of the artwork. (wikidata: P127; cidoc: P50_has_current_keeper; linked_art: current_owner; lido: lido:repositorySet/lido:repositoryName) -->
+<!ELEMENT current_owner EMPTY>
+<!ATTLIST current_owner ref IDREF #REQUIRED>
+
+<!-- Commons category / Commons-Kategorie [url] key=commons_category, used on: artwork. Wikimedia Commons category that documents or illustrates the artwork. (wikidata: P373; cidoc: P138i_has_representation; linked_art: related; lido: lido:resourceWrap/lido:resourceSet) -->
+<!ELEMENT commons_category (#PCDATA)>
+
+<!-- Wikidata item / Wikidata-QID [external-id] key=wikidata_qid, used on: artwork, person, exhibition, catalogue, organization, material, object_type, place. Identifier of the matching Wikidata item. (cidoc: P1_is_identified_by (E42_Identifier) or owl:sameAs; linked_art: equivalent; lido: lido:objectID / lido:actorID / lido:conceptID (type wikidata)) -->
+<!ELEMENT wikidata_qid (#PCDATA)>
+
+<!-- GND ID / GND-ID [external-id] key=gnd_id, used on: person. Identifier in the Gemeinsame Normdatei. (wikidata: P227; cidoc: P1_is_identified_by (E42_Identifier); linked_art: equivalent / identified_by; lido: lido:actorID (type GND)) -->
+<!ELEMENT gnd_id (#PCDATA)>
+
+<!-- AAT ID / AAT-ID [external-id] key=aat_id, used on: material, object_type. Identifier in the Getty Art & Architecture Thesaurus. (wikidata: P1014; cidoc: P1_is_identified_by (E42_Identifier); linked_art: equivalent; lido: lido:conceptID (type AAT)) -->
+<!ELEMENT aat_id (#PCDATA)>
+
+<!-- Start date / Beginn [time] key=start_date, used on: exhibition. Date the exhibition opened. (wikidata: P580; cidoc: P4_has_time-span > P82a_begin_of_the_begin; linked_art: timespan.begin_of_the_begin; lido: lido:eventDate/lido:date/lido:earliestDate) -->
+<!ELEMENT start_date (#PCDATA)>
+
+<!-- End date / Ende [time] key=end_date, used on: exhibition. Date the exhibition closed. (wikidata: P582; cidoc: P4_has_time-span > P82b_end_of_the_end; linked_art: timespan.end_of_the_end; lido: lido:eventDate/lido:date/lido:latestDate) -->
+<!ELEMENT end_date (#PCDATA)>
+
+<!-- Catalogue number / Katalognummer [string] key=catalogue_number, used on: qualifier. Number of the item in the exhibition catalogue. Qualifier of 'Exhibited at'. (wikidata: P528; cidoc: P1_is_identified_by (E42_Identifier, type catalogue number); linked_art: identified_by (Identifier, classified_as catalogue number); lido: lido:workID (type catalogue number)) -->
+<!ELEMENT catalogue_number (#PCDATA)>
+
+<!-- Page(s) / Seite(n) [string] key=catalogue_page, used on: qualifier. Page(s) of the exhibition catalogue on which the item is listed or reproduced. Qualifier of 'Exhibited at'. (wikidata: P304; cidoc: P3_has_note (E62_String, catalogue page); linked_art: referred_to_by (LinguisticObject, classified_as page); lido: lido:relatedWorkSet/lido:relatedWork) -->
+<!ELEMENT catalogue_page (#PCDATA)>
+
+<!-- title as exhibited / Titel in der Ausstellung [string] key=title_as_exhibited, used on: qualifier. Title under which the artwork was shown, if different from its current title. Qualifier of 'Exhibited at'. (cidoc: P1_is_identified_by (E35_Title) on the showing; linked_art: identified_by (Name) on the part activity; lido: lido:titleSet (type exhibited as)) -->
+<!ELEMENT title_as_exhibited (#PCDATA)>
+
+<!-- note / Anmerkung [string] key=note, used on: qualifier. Free-text note. Qualifier of 'Exhibited at' and 'Appears in catalogue'. (cidoc: P3_has_note; linked_art: referred_to_by (LinguisticObject); lido: lido:descriptiveNoteValue) -->
+<!ELEMENT note (#PCDATA)>
+
+<!-- Subtitle / Untertitel [string] key=subtitle, used on: catalogue. Subtitle of the catalogue as printed. (wikidata: P1680; cidoc: P102_has_title (E35_Title)) -->
+<!ELEMENT subtitle (#PCDATA)>
+
+<!-- Author / Autor [wikibase-item] key=author, used on: catalogue. Person who wrote texts in the catalogue. (wikidata: P50; cidoc: E39_Actor; linked_art: created_by) -->
+<!ELEMENT author EMPTY>
+<!ATTLIST author ref IDREF #REQUIRED>
+
+<!-- Publisher / Verleger [wikibase-item] key=publisher, used on: catalogue. Publishing house or institution that published the catalogue. (wikidata: P123; cidoc: E39_Actor) -->
+<!ELEMENT publisher EMPTY>
+<!ATTLIST publisher ref IDREF #REQUIRED>
+
+<!-- Publication date / Erscheinungsdatum [time] key=publication_date, used on: catalogue. Year or date when the catalogue was published. (wikidata: P577; cidoc: E52_Time-Span) -->
+<!ELEMENT publication_date (#PCDATA)>
+
+<!-- ISBN-13 / ISBN-13 [external-id] key=isbn13, used on: catalogue. 13-digit International Standard Book Number. (wikidata: P212; cidoc: E42_Identifier) -->
+<!ELEMENT isbn13 (#PCDATA)>
+
+<!-- DNB edition ID / DNB-Nummer [external-id] key=dnb_edition_id, used on: catalogue. Identifier (IDN) of the catalogue record in the German National Library. (wikidata: P1292; cidoc: E42_Identifier) -->
+<!ELEMENT dnb_edition_id (#PCDATA)>
+
+<!-- Described at URL / Beschrieben unter URL [url] key=described_at_url, used on: catalogue. Web page that describes the catalogue, for example its record in the German National Library. (wikidata: P973; cidoc: E42_Identifier) -->
+<!ELEMENT described_at_url (#PCDATA)>
+
+<!-- Catalogue of / Katalog zu [wikibase-item] key=catalogue_of, used on: catalogue. Exhibition that the catalogue documents. Inverse of 'Exhibition catalogue'. (wikidata: P921; cidoc: P70_documents; linked_art: about) -->
+<!ELEMENT catalogue_of EMPTY>
+<!ATTLIST catalogue_of ref IDREF #REQUIRED>
+
+<!-- Exhibition catalogue / Ausstellungskatalog [wikibase-item] key=exhibition_catalogue, used on: exhibition. Catalogue that documents the exhibition. Inverse of 'Catalogue of'. (wikidata: P1343; cidoc: P70i_is_documented_in; linked_art: subject_of) -->
+<!ELEMENT exhibition_catalogue EMPTY>
+<!ATTLIST exhibition_catalogue ref IDREF #REQUIRED>
+
+<!-- Appears in catalogue / Kommt im Katalog vor [wikibase-item] key=appears_in_catalogue, used on: artwork. Catalogue in which the artwork appears, for example the catalogue the record was taken from. Optional qualifiers give the scan page and region so that the extraction can be reviewed. (wikidata: P1343; cidoc: P70i_is_documented_in; linked_art: referred_to_by) -->
+<!ELEMENT appears_in_catalogue (note?, scan_page?, scan_region?, extraction_method?, review_status?)>
+<!ATTLIST appears_in_catalogue ref IDREF #REQUIRED>
+
+<!-- Scan page / Scanseite [string] key=scan_page, used on: qualifier. Sequence number of the scanned page (first scan page = 1) on which the artwork was found. Not the printed page number. Qualifier of 'Appears in catalogue'. (cidoc: P3_has_note (E62_String, scan page); linked_art: part_of (Canvas)) -->
+<!ELEMENT scan_page (#PCDATA)>
+
+<!-- Scan region / Scanbereich [string] key=scan_region, used on: qualifier. Rectangle on the scanned page where the entry is, as a W3C Media Fragment, for example xywh=percent:10,20,40,8 (x, y, width, height in percent of the page). Qualifier of 'Appears in catalogue'. (cidoc: P3_has_note (E62_String, region); linked_art: FragmentSelector) -->
+<!ELEMENT scan_region (#PCDATA)>
+
+<!-- Extraction method / Extraktionsmethode [string] key=extraction_method, used on: qualifier. How the entry was found, for example 'plan-c qwen3-vl:8b', 'plan-b hocr' or 'manual'. Qualifier of 'Appears in catalogue'. (cidoc: P3_has_note (E62_String, method)) -->
+<!ELEMENT extraction_method (#PCDATA)>
+
+<!-- Review status / Prüfstatus [string] key=review_status, used on: qualifier. Result of the manual check: unreviewed, confirmed, corrected or rejected. Qualifier of 'Appears in catalogue'. (cidoc: P3_has_note (E62_String, review status)) -->
+<!ELEMENT review_status (#PCDATA)>

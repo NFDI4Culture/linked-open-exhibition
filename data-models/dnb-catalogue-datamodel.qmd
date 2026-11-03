@@ -234,6 +234,48 @@ This data model provides a standardized schema for describing exhibition catalog
 
 ---
 
+## Implementation in the local Wikibase
+
+The fields above are loaded from `data-models/templates/catalogue.csv` (one row per catalogue) by the notebook `catalogues/wikibase-artwork-load.ipynb`. The model definition is in `data-models/wikibase-model.json` (class `catalogue`; the Wikibase property for each field is listed there).
+
+| CSV column | Wikibase property (model key) | Remarks |
+|---|---|---|
+| `catalogue_id` | local ID (`local_id`) | for example `CAT001` |
+| (class) | Type (`instance_of`) | the class item `catalogue`, equivalent to Wikidata Q2352616 |
+| `title` | Title (`title`) | monolingual text |
+| `subtitle` | Subtitle (`subtitle`) | string, as printed |
+| `author_ids` | Author (`author`) | `;`-separated IDs from `person.csv`, one statement each |
+| `publisher_id` | Publisher (`publisher`) | ID from `term.csv` with `term_type` `organization` |
+| `publication_date` | Publication date (`publication_date`) | `YYYY` or `YYYY-MM-DD` |
+| `isbn13` | ISBN-13 (`isbn13`) | checked for a valid check digit |
+| `dnb_edition_id` | DNB edition ID (`dnb_edition_id`) | Wikidata P1292; used instead of GND, because the DNB gives books an IDN, not a GND ID |
+| `described_at_url` | Described at URL (`described_at_url`) | for example `https://d-nb.info/957409494` |
+| `image_url` | Image (`image_url`) | cover image URL (optional) |
+| `exhibition_id` | Catalogue of (`catalogue_of`) | links the catalogue to its exhibition from `exhibition.csv`; the exhibition gets the inverse statement Exhibition catalogue (`exhibition_catalogue`) |
+| `wikidata_qid` | Wikidata item (`wikidata_qid`) | optional |
+
+The first entry, `CAT001`, is the catalogue of the exhibition `EXH001` ("while something is happening here, something else is happening there"), DNB record [957409494](https://d-nb.info/957409494). The artworks point to the same exhibition with `Exhibited at`, so the exhibition item connects the artworks and the catalogue.
+
+### Which catalogue an artwork appears in, and where
+
+Each artwork records the catalogue it appears in with an `Appears in catalogue` statement. For the Baldessari artworks this is `CAT001`, because that is the catalogue the records were taken from. The statements come from `data-models/templates/scan-location.csv`, one row per artwork and catalogue (and per page, once pages are known). The columns after `catalogue_id` are optional. When they are filled in, they let a reviewer check the extraction against the scan. An artwork on several pages has several rows. The loader turns each row into a statement on the artwork (pointing to the catalogue item) with the other columns as qualifiers.
+
+| CSV column | Wikibase property (model key) | Remarks |
+|---|---|---|
+| `artwork_id` | the artwork item | ID from `artwork.csv` |
+| `catalogue_id` | Appears in catalogue (`appears_in_catalogue`) | ID from `catalogue.csv` |
+| `scan_page` | Scan page (`scan_page`) | optional. Position of the page in the scan, first page = 1. This is not the printed page number, which stays in `catalogue_page` of `exhibition-item.csv`; the two usually differ by an offset |
+| `scan_region` | Scan region (`scan_region`) | optional, see below |
+| `extraction_method` | Extraction method (`extraction_method`) | for example `plan-c qwen3-vl:8b`, `plan-b hocr`, `manual` |
+| `review_status` | Review status (`review_status`) | `unreviewed`, `confirmed`, `corrected` or `rejected` |
+| `notes` | note (`note`) | optional comment from the reviewer |
+
+**Region format.** `scan_region` uses the W3C Media Fragments syntax `xywh=percent:x,y,width,height`, for example `xywh=percent:10,20,40,8`. Percent values refer to the page size, so they stay valid for any image resolution. `xywh=pixel:x,y,width,height` is also accepted. The same syntax is used by IIIF and the Web Annotation model, so the regions can later be shown on a viewer without conversion. The corners from hOCR (`bbox x0 y0 x1 y1`) or ALTO (`HPOS`, `VPOS`, `WIDTH`, `HEIGHT`) have to be converted to x, y, width, height first.
+
+The rows in `scan-location.csv` currently only link every artwork to `CAT001`. Pages, regions, extraction method and review status will be added when the extraction data (plan B) is ready.
+
+---
+
 ## Best Practices for Catalogue Records
 
 1. **Use Wikidata Items**: Always link to existing Wikidata items for authors (P50), publishers (P123), and organizations to enable cross-institutional discovery.

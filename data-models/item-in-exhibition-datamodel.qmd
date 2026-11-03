@@ -10,7 +10,7 @@ execute:
 
 ## Overview
 
-An **exhibition item** records that one artwork was shown in one exhibition, together with the details that only the exhibition catalogue knows: catalogue number, catalogue page and the title as printed. It is the association between the [Artwork](artwork-datamodel.qmd) model and the exhibition model.
+An artwork is linked to an exhibition with an **`Exhibited at`** statement on the artwork. The details that only the exhibition catalogue knows (catalogue number, catalogue page, the title as printed, a note) are added to that statement as qualifiers. There is no separate exhibition item. The model is the association between the [Artwork](artwork-datamodel.qmd) model and the exhibition model.
 
 The model is defined in [wikibase-model.json](wikibase-model.json). The tables below are generated from it.
 
@@ -22,8 +22,8 @@ The field list is **provisional** (version 0.1).
 
 ```{mermaid}
 erDiagram
-    EXHIBITION ||--o{ EXHIBITION_ITEM : "includes"
-    ARTWORK ||--o{ EXHIBITION_ITEM : "is shown as"
+    EXHIBITION ||--o{ EXHIBITED_AT : "is referenced by"
+    ARTWORK ||--o{ EXHIBITED_AT : "has statement"
     PLACE |o--o{ EXHIBITION : "held at"
     PERSON ||--o{ ARTWORK : "creates"
 
@@ -35,14 +35,13 @@ erDiagram
         string venue_id FK
         string wikidata_qid
     }
-    EXHIBITION_ITEM {
-        string item_id PK
+    EXHIBITED_AT {
         string artwork_id FK
         string exhibition_id FK
-        string catalogue_number
-        string catalogue_page
-        string title_as_exhibited
-        string notes
+        string catalogue_number "qualifier"
+        string catalogue_page "qualifier"
+        string title_as_exhibited "qualifier"
+        string notes "qualifier"
     }
     ARTWORK {
         string artwork_id PK
@@ -61,9 +60,9 @@ erDiagram
 
 `ARTWORK` is shown with key fields only; see [Artwork Data Model](artwork-datamodel.qmd) for the full entity.
 
-## Why a separate exhibition item?
+## Why qualifiers instead of a separate item?
 
-A statement "artwork X was in exhibition Y" cannot hold catalogue number, page or the title as printed without qualifiers. An item of its own keeps these values together, works for artworks that appear in several exhibitions, and maps directly to CIDOC CRM (an activity that used a specific object).
+The catalogue details belong to one artwork in one exhibition. Qualifiers on the `Exhibited at` statement keep them next to the statement, work for artworks that appear in several exhibitions (one statement per exhibition), and follow the usual Wikidata pattern for exhibition history (P608).
 
 ## Classes
 
@@ -81,7 +80,7 @@ def cell(v):
 print("| Class | Label (EN / DE) | Wikidata | CIDOC CRM | Linked Art | LIDO |")
 print("|---|---|---|---|---|---|")
 for c in model["classes"]:
-    if c["key"] not in {"exhibition", "exhibition_item"}:
+    if c["key"] not in {"exhibition"}:
         continue
     e = c["equivalents"]
     wd = e.get("wikidata")
@@ -93,12 +92,14 @@ for c in model["classes"]:
 
 ```{python}
 #| output: asis
-USES = {"exhibition", "exhibition_item"}
+USES = {"exhibition", "qualifier"}
+
+EXTRA = {"exhibited_at"}
 
 print("| Property | Label (EN / DE) | Wikibase datatype | Used on | Wikidata | CIDOC CRM | Linked Art | LIDO |")
 print("|---|---|---|---|---|---|---|---|")
 for p in model["properties"]:
-    if not (set(p["used_on"]) & USES) or p["key"] in {"local_id", "instance_of", "wikidata_qid"}:
+    if not (set(p["used_on"]) & USES or p["key"] in EXTRA) or p["key"] in {"local_id", "instance_of", "wikidata_qid"}:
         continue
     e = p["equivalents"]
     print("| " + " | ".join([
@@ -117,14 +118,12 @@ for p in model["properties"]:
 
 ## Example
 
-Baldessari catalogue (Sprengel Museum Hannover), item `ITM002`:
+Baldessari catalogue (Sprengel Museum Hannover), artwork `ART002`:
 
-| Field | Value |
+| Statement | Value |
 |---|---|
-| `item_id` | ITM002 |
-| `artwork_id` | ART002 (THESE TOO, 1997, print) |
-| `exhibition_id` | EXH001 (John Baldessari, Sprengel Museum Hannover) |
-| `catalogue_page` | 14; 51 |
+| `Exhibited at` | EXH001 (John Baldessari, Sprengel Museum Hannover) |
+| qualifier `Page(s)` | 14; 51 |
 
 ## Corrections to the earlier draft
 
@@ -140,9 +139,9 @@ Baldessari catalogue (Sprengel Museum Hannover), item `ITM002`:
 
 ## CSV template
 
-[templates/exhibition-item.csv](templates/exhibition-item.csv) holds the exhibition items, and [templates/exhibition.csv](templates/exhibition.csv) the exhibitions. Both use `local ID` values for repeatable loads.
+[templates/exhibition-item.csv](templates/exhibition-item.csv) lists which artwork was shown in which exhibition, and [templates/exhibition.csv](templates/exhibition.csv) holds the exhibitions. The loader turns each row of `exhibition-item.csv` into an `Exhibited at` statement on the artwork, with the catalogue columns as qualifiers.
 
 | File | Columns |
 |---|---|
 | `exhibition.csv` | `exhibition_id, title, start_date, end_date, venue_id, wikidata_qid` |
-| `exhibition-item.csv` | `item_id, artwork_id, exhibition_id, catalogue_number, catalogue_page, title_as_exhibited, notes` |
+| `exhibition-item.csv` | `artwork_id, exhibition_id, catalogue_number, catalogue_page, title_as_exhibited, notes` |

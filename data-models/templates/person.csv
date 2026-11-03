@@ -1,3 +1,6 @@
 person_id,name,wikidata_qid,gnd_id
 PER001,John Baldessari,Q683378,118506153
-PER002,Laurence Sterne,,
+PER002,Laurence Sterne,Q218960,11861794X
+PER003,Meg Cranston,,119555522
+PER004,Diedrich Diederichsen,,130448001
+PER005,Thomas Weski,,119093022

@@ -191,6 +191,34 @@
       }
     },
     {
+      "key": "earliest_date",
+      "label_en": "Earliest date of creation",
+      "label_de": "Frühestes Entstehungsdatum",
+      "description_en": "Earliest possible date of creation, used when the artwork is dated to a range such as 1972-73.",
+      "datatype": "time",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P1319",
+        "cidoc": "P82a_begin_of_the_begin",
+        "linked_art": "timespan.begin_of_the_begin",
+        "lido": "lido:eventDate/lido:date/lido:earliestDate"
+      }
+    },
+    {
+      "key": "latest_date",
+      "label_en": "Latest date of creation",
+      "label_de": "Spätestes Entstehungsdatum",
+      "description_en": "Latest possible date of creation, used when the artwork is dated to a range such as 1972-73.",
+      "datatype": "time",
+      "used_on": ["artwork"],
+      "equivalents": {
+        "wikidata": "P1326",
+        "cidoc": "P82b_end_of_the_end",
+        "linked_art": "timespan.end_of_the_end",
+        "lido": "lido:eventDate/lido:date/lido:latestDate"
+      }
+    },
+    {
       "key": "main_subject",
       "label_en": "Subject",
       "label_de": "Hauptthema",

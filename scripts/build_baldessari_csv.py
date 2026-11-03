@@ -5,7 +5,8 @@ Reads  : baldessari-artwork.csv (artwork_id, title, creator, date, object_type, 
 Writes : artwork.csv, term.csv, person.csv, exhibition-item.csv in the same folder.
 
 Free-text object types and materials are normalised to shared terms (see OBJECT_TYPES and MATERIAL_ALIASES).
-Film/video attributes (colour, sound, 16 mm) have no property in the model and are dropped.
+Film/video details are kept: specific film types are object types, colour / black-and-white / sound / 16 mm
+are material terms. Dates such as 1972-73 and 1970s are loaded as they are (see the notebook).
 """
 import csv
 import re
@@ -21,8 +22,12 @@ VENUE_ID = "PLC001"
 OBJECT_TYPES = {
     "painting": ("painting", "Gemälde", "Q3305213"),
     "photograph": ("photograph", "Fotografie", "Q125191"),
-    "film": ("film", "Film", "Q11424"),
-    "video": ("video", "Video", "Q34508"),
+    "super-8 film loop (originally 16 mm)": ("Super-8 film loop (originally 16 mm)", "Super-8-Filmloop (ursprünglich 16 mm)", ""),
+    "super-8 film loop": ("Super-8 film loop", "Super-8-Filmloop", ""),
+    "super-8 film": ("Super-8 film", "Super-8-Film", ""),
+    "16 mm film": ("16 mm film", "16-mm-Film", ""),
+    "film loop": ("film loop", "Filmloop", ""),
+    "video loop": ("video loop", "Videoloop", ""),
     "wallpaper": ("wallpaper", "Tapete", "Q191529"),
     "illustration": ("illustration", "Illustration", "Q178659"),
 }
@@ -58,8 +63,13 @@ MATERIALS = {
     "formica": ("Formica", "Formica", ""),
     "Folio D process": ("Folio D process", "Folio-D-Verfahren", ""),
     "wallpaper": ("wallpaper", "Tapete", "Q191529"),
+    "color": ("color", "Farbe", ""),
+    "black-and-white": ("black-and-white", "Schwarzweiß", ""),
+    "sound": ("sound", "Ton", ""),
+    "16 mm": ("16 mm", "16 mm", ""),
 }
-SKIP = {"16 mm", "color", "black-and-white", "sound"}
+# term.csv rows that were curated by hand; every other row is regenerated
+BASE_TERM_IDS = {"MAT001", "MAT002", "MAT003", "TYP001", "TYP002", "PLC001"}
 
 MATERIAL_ALIASES = {
     "acrylic": "acrylic paint", "acrylic paint": "acrylic paint", "acrylic wash": "acrylic paint",
@@ -77,6 +87,7 @@ MATERIAL_ALIASES = {
     "paper stickers": "paper stickers", "photocopy": "photocopy", "masonite": "Masonite",
     "aluminium": "aluminium", "rubber": "rubber", "formica": "formica",
     "folio d process": "Folio D process", "wallpaper": "wallpaper",
+    "color": "color", "black-and-white": "black-and-white", "sound": "sound", "16 mm": "16 mm",
 }
 
 PERSONS = {"John Baldessari": ("Q683378", "118506153"), "Laurence Sterne": ("", "")}
@@ -97,13 +108,23 @@ def object_type(raw):
         return "painting"
     if "photograph" in s:
         return "photograph"
-    if "video" in s:
-        return "video"
-    if "film" in s or s == "black-and-white":
-        return "film"
-    if s in ("wallpaper", "illustration"):
+    if s in OBJECT_TYPES:
         return s
+    if s in ("black-and-white film loop", "color film loop"):
+        return "film loop"
+    if s == "black-and-white":  # colour descriptor in the type column (ART068): no usable type
+        return ""
     raise ValueError(f"unmapped object type: {raw!r}")
+
+
+def type_attributes(raw):
+    """Colour descriptor hidden in the object type, e.g. 'color film loop'."""
+    s = raw.lower()
+    if s.startswith("color "):
+        return ["color"]
+    if s.startswith("black-and-white "):
+        return ["black-and-white"]
+    return []
 
 
 def material_atoms(raw):
@@ -114,7 +135,7 @@ def material_atoms(raw):
     atoms = []
     for part in re.split(r"\s*[;,]\s*|\s+on\s+|\s+and\s+", s):
         part = part.strip()
-        if part and part not in SKIP:
+        if part:
             atoms.append(part)
     out = []
     for a in atoms:
@@ -143,7 +164,7 @@ def main():
 
     # --- terms: keep existing curated rows, then add what is missing
     existing = [{k: v.strip() for k, v in r.items()} for r in read(TEMPLATES / "term.csv")]
-    terms = list(existing)
+    terms = [t for t in existing if t["term_id"] in BASE_TERM_IDS]
     by_key = {(t["term_type"], t["label_en"].lower()): t["term_id"] for t in terms}
     counters = {"material": 0, "object_type": 0, "place": 0}
     prefix = {"material": "MAT", "object_type": "TYP", "place": "PLC"}
@@ -170,12 +191,17 @@ def main():
         except ValueError as e:
             problems.append(f"{aid}: {e}")
             continue
+        colour = {"color", "black-and-white"}
+        for extra in type_attributes(r["object_type"]):
+            if not colour & set(atoms):
+                atoms.append(extra)
+            elif extra not in atoms:
+                problems.append(f"{aid}: object type '{r['object_type']}' conflicts with materials '{r['materials']}', kept materials")
+        if r["object_type"].lower() == "black-and-white":
+            problems.append(f"{aid}: object type 'black-and-white' is a colour value, object type left empty")
         ot_id = term_id("object_type", *OBJECT_TYPES[ot]) if ot else ""
         mat_ids = [term_id("material", *MATERIALS[a]) for a in atoms]
         date = r["date"].strip()
-        if re.fullmatch(r"\d{4}s", date):
-            problems.append(f"{aid}: date '{date}' (decade) not loadable, left empty")
-            date = ""
         person = "PER001" if r["creator"] == "John Baldessari" else "PER002"
         artworks.append([aid, title, ot_id, person, date, "; ".join(mat_ids),
                          r["height_cm"], r["width_cm"], "", "", "", "", "", ""])

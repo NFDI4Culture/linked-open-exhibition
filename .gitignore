@@ -25,3 +25,8 @@ output/ocr/
 **/*.quarto_ipynb
 
 .env.local
+
+# Python virtual environment, caches, and Gradio local files
+.venv/
+__pycache__/
+.gradio/

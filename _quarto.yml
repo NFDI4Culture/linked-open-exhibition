@@ -51,18 +51,8 @@ website:
             text: "Baldessari — Sprengel Museum"
       - href: data-analysis.qmd
         text: Data Analysis
-      - text: "Data Models"
-        menu:
-          - href: data-models/artist-datamodel.qmd
-            text: Artist Data Model
-          - href: data-models/exhibition-datamodel.qmd
-            text: Exhibition Data Model
-          - href: data-models/dnb-catalogue-datamodel.qmd
-            text: DNB Catalogue Data Model
-          - href: data-models/artwork-datamodel.qmd
-            text: Artwork Data Model
-          - href: data-models/item-in-exhibition-datamodel.qmd
-            text: Item in Exhibition Data Model
+      - href: data-models/data-models.qmd
+        text: Data Models
       - href: about.qmd
         text: About
       - href: PLAN.qmd

@@ -1,4 +1,4 @@
-"""Build the Wikibase load CSVs from data-models/templates/baldessari-artwork.csv.
+"""Build the Wikibase load CSVs from data-models/import/baldessari-artwork.csv.
 
 Reads  : baldessari-artwork.csv (artwork_id, title, creator, date, object_type, materials, height_cm, width_cm)
          term.csv / person.csv (existing curated rows are kept as they are)
@@ -13,7 +13,7 @@ import re
 import sys
 from pathlib import Path
 
-TEMPLATES = Path(__file__).resolve().parent.parent / "data-models" / "templates"
+TEMPLATES = Path(__file__).resolve().parent.parent / "data-models" / "import"
 SOURCE = TEMPLATES / "baldessari-artwork.csv"
 EXHIBITION_ID = "EXH001"
 VENUE_ID = "PLC001"

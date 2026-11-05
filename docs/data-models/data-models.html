@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Worthington">
+<meta name="author" content="Chloë Farr">
+<meta name="keywords" content="Data Science, GLAM, Open Science">
+<meta name="description" content="Entity-relationship model for artworks, exhibitions, artists and catalogues, mapped to Wikidata, CIDOC CRM, Linked Art and LIDO, and loaded into Wikibase">
+
+<title>Data Models – Linked Open Exhibition</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Linked Open Exhibition</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exhibitions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exhibitions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exhibitions">    
+        <li>
+    <a class="dropdown-item" href="../exhibitions.html">
+ <span class="dropdown-text">Wikibase Catalogue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exhibitions-list.html">
+ <span class="dropdown-text">Exhibition Listing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../exhibitions-timeline.html">
+ <span class="dropdown-text">Exhibition Timeline</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../catalogue-baldessari.html">
+ <span class="dropdown-text">Baldessari — Sprengel Museum</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../data-models/data-models.html" aria-current="page"> 
+<span class="menu-text">Data Models</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../PLAN.html"> 
+<span class="menu-text">Plan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/glossary-de.html"> 
+<span class="menu-text">Glossar (DE)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/orcid-guide.html"> 
+<span class="menu-text">ORCID Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation/protocol.html"> 
+<span class="menu-text">Protocol</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NFDI4Culture/linked-open-exhibition"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#er-diagram" id="toc-er-diagram" class="nav-link" data-scroll-target="#er-diagram">ER Diagram</a></li>
+  <li><a href="#shared-properties" id="toc-shared-properties" class="nav-link" data-scroll-target="#shared-properties">Properties for every class</a></li>
+  <li><a href="#artwork" id="toc-artwork" class="nav-link" data-scroll-target="#artwork">Artwork</a>
+  <ul class="collapse">
+  <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a></li>
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">Properties</a></li>
+  <li><a href="#controlled-vocabularies" id="toc-controlled-vocabularies" class="nav-link" data-scroll-target="#controlled-vocabularies">Controlled vocabularies</a></li>
+  <li><a href="#dimensions" id="toc-dimensions" class="nav-link" data-scroll-target="#dimensions">Dimensions</a></li>
+  <li><a href="#terms-materials-object-types-places-organizations" id="toc-terms-materials-object-types-places-organizations" class="nav-link" data-scroll-target="#terms-materials-object-types-places-organizations">Terms: materials, object types, places, organizations</a></li>
+  <li><a href="#csv-source-fields" id="toc-csv-source-fields" class="nav-link" data-scroll-target="#csv-source-fields">CSV source fields</a></li>
+  </ul></li>
+  <li><a href="#item-in-exhibition" id="toc-item-in-exhibition" class="nav-link" data-scroll-target="#item-in-exhibition">Item in Exhibition</a>
+  <ul class="collapse">
+  <li><a href="#why-qualifiers-instead-of-a-separate-item" id="toc-why-qualifiers-instead-of-a-separate-item" class="nav-link" data-scroll-target="#why-qualifiers-instead-of-a-separate-item">Why qualifiers instead of a separate item?</a></li>
+  <li><a href="#properties-1" id="toc-properties-1" class="nav-link" data-scroll-target="#properties-1">Properties</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#csv-template" id="toc-csv-template" class="nav-link" data-scroll-target="#csv-template">CSV template</a></li>
+  <li><a href="#corrections-to-the-earlier-draft" id="toc-corrections-to-the-earlier-draft" class="nav-link" data-scroll-target="#corrections-to-the-earlier-draft">Corrections to the earlier draft</a></li>
+  </ul></li>
+  <li><a href="#exhibition" id="toc-exhibition" class="nav-link" data-scroll-target="#exhibition">Exhibition</a>
+  <ul class="collapse">
+  <li><a href="#class" id="toc-class" class="nav-link" data-scroll-target="#class">Class</a></li>
+  <li><a href="#properties-2" id="toc-properties-2" class="nav-link" data-scroll-target="#properties-2">Properties</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  <li><a href="#csv-source-fields-1" id="toc-csv-source-fields-1" class="nav-link" data-scroll-target="#csv-source-fields-1">CSV source fields</a></li>
+  <li><a href="#not-yet-modelled" id="toc-not-yet-modelled" class="nav-link" data-scroll-target="#not-yet-modelled">Not yet modelled</a></li>
+  </ul></li>
+  <li><a href="#artist" id="toc-artist" class="nav-link" data-scroll-target="#artist">Artist</a>
+  <ul class="collapse">
+  <li><a href="#class-1" id="toc-class-1" class="nav-link" data-scroll-target="#class-1">Class</a></li>
+  <li><a href="#properties-3" id="toc-properties-3" class="nav-link" data-scroll-target="#properties-3">Properties</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
+  <li><a href="#csv-source-fields-2" id="toc-csv-source-fields-2" class="nav-link" data-scroll-target="#csv-source-fields-2">CSV source fields</a></li>
+  <li><a href="#not-yet-modelled-1" id="toc-not-yet-modelled-1" class="nav-link" data-scroll-target="#not-yet-modelled-1">Not yet modelled</a></li>
+  </ul></li>
+  <li><a href="#catalogue" id="toc-catalogue" class="nav-link" data-scroll-target="#catalogue">Catalogue</a>
+  <ul class="collapse">
+  <li><a href="#classes-1" id="toc-classes-1" class="nav-link" data-scroll-target="#classes-1">Classes</a></li>
+  <li><a href="#properties-4" id="toc-properties-4" class="nav-link" data-scroll-target="#properties-4">Properties</a></li>
+  <li><a href="#csv-source-fields-3" id="toc-csv-source-fields-3" class="nav-link" data-scroll-target="#csv-source-fields-3">CSV source fields</a></li>
+  <li><a href="#which-catalogue-an-artwork-appears-in-and-where" id="toc-which-catalogue-an-artwork-appears-in-and-where" class="nav-link" data-scroll-target="#which-catalogue-an-artwork-appears-in-and-where">Which catalogue an artwork appears in, and where</a></li>
+  <li><a href="#best-practices-for-catalogue-records" id="toc-best-practices-for-catalogue-records" class="nav-link" data-scroll-target="#best-practices-for-catalogue-records">Best practices for catalogue records</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">Related standards and references</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/data-models.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Models</h1>
+<p class="subtitle lead">Linked Open Exhibition</p>
+</div>
+
+<div>
+  <div class="description">
+    Entity-relationship model for artworks, exhibitions, artists and catalogues, mapped to Wikidata, CIDOC CRM, Linked Art and LIDO, and loaded into Wikibase
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Simon Worthington <a href="mailto:simon.worthington@tib.eu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-8579-9717" class="quarto-title-author-orcid" aria-label="ORCID profile for Simon Worthington"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            HsH
+          </p>
+        <p class="affiliation">
+            TIB
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Chloë Farr <a href="https://orcid.org/0009-0007-1146-6745" class="quarto-title-author-orcid" aria-label="ORCID profile for Chloë Farr"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Victoria
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 5, 2026 00:00</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Catalogue exhibition contents using Linked Open Data and AI LLM assistants.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Data Science, GLAM, Open Science</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This page describes all entities of the Linked Open Exhibition model in one place:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Entity</th>
+<th>CSV template</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#artwork">Artwork</a></td>
+<td>artwork (with its terms: material, object type, place)</td>
+<td><code>templates/artwork.csv</code>, <code>templates/term.csv</code></td>
+</tr>
+<tr class="even">
+<td><a href="#item-in-exhibition">Item in Exhibition</a></td>
+<td>the <code>Exhibited at</code> statement of an artwork</td>
+<td><code>templates/exhibition-item.csv</code></td>
+</tr>
+<tr class="odd">
+<td><a href="#exhibition">Exhibition</a></td>
+<td>exhibition</td>
+<td><code>templates/exhibition.csv</code></td>
+</tr>
+<tr class="even">
+<td><a href="#artist">Artist</a></td>
+<td>person (artist, author)</td>
+<td><code>templates/person.csv</code></td>
+</tr>
+<tr class="odd">
+<td><a href="#catalogue">Catalogue</a></td>
+<td>exhibition catalogue (book), publisher</td>
+<td><code>templates/catalogue.csv</code>, <code>templates/scan-location.csv</code></td>
+</tr>
+</tbody>
+</table>
+<p>The single source of truth is <a href="wikibase-model.json">wikibase-model.json</a>. The class and property tables on this page are generated from it, and the same file drives the creation of Wikibase properties and class items (see <code>catalogues/wikibase-artwork-load.ipynb</code>). The CSV-to-property tables describe what the load notebook does with each template column.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The field list is <strong>provisional</strong> (version 0.1). Properties are mapped to four schemas: Wikidata, CIDOC CRM 7.1.3, Linked Art and LIDO. Iconclass and AAT are used as controlled vocabularies for subjects and terms. The earlier Wikibase4Research column is no longer part of the model.</p>
+</div>
+</div>
+</section>
+<section id="er-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="er-diagram">ER Diagram</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    PERSON ||--o{ ARTWORK : "creates"
+    OBJECT_TYPE ||--o{ ARTWORK : "classifies"
+    MATERIAL }o--o{ ARTWORK : "made from"
+    PLACE |o--o{ ARTWORK : "current location"
+    PLACE |o--o{ EXHIBITION : "held at"
+    ARTWORK ||--o{ EXHIBITED_AT : "has statement"
+    EXHIBITION ||--o{ EXHIBITED_AT : "is referenced by"
+    ARTWORK ||--o{ APPEARS_IN : "has statement"
+    CATALOGUE ||--o{ APPEARS_IN : "is referenced by"
+    EXHIBITION |o--o{ CATALOGUE : "documented in"
+    PERSON }o--o{ CATALOGUE : "author"
+    ORGANIZATION |o--o{ CATALOGUE : "publishes"
+
+    ARTWORK {
+        string local_id PK
+        string instance_of
+        string object_type
+        string title
+        string creator
+        date inception
+        string date_text
+        string object_type_text
+        string materials_text
+        string main_subject
+        string made_from_material
+        string inventory_number
+        string catalog_code
+        string location
+        decimal width
+        decimal height
+        decimal depth
+        string part_of_series
+        string depicts
+        string iconclass
+        url image_url
+        string current_owner
+        string commons_category
+        string wikidata_qid
+    }
+    EXHIBITED_AT {
+        string artwork_id FK
+        string exhibition_id FK
+        string catalogue_number "qualifier"
+        string catalogue_page "qualifier"
+        string title_as_exhibited "qualifier"
+        string note "qualifier"
+    }
+    APPEARS_IN {
+        string artwork_id FK
+        string catalogue_id FK
+        string scan_page "qualifier"
+        string scan_region "qualifier"
+        string extraction_method "qualifier"
+        string review_status "qualifier"
+        string note "qualifier"
+    }
+    EXHIBITION {
+        string exhibition_id PK
+        string title
+        date start_date
+        date end_date
+        string venue_id FK
+        string wikidata_qid
+    }
+    CATALOGUE {
+        string catalogue_id PK
+        string title
+        string subtitle
+        string publication_date
+        string isbn13
+        string dnb_edition_id
+        url described_at_url
+        url image_url
+        string exhibition_id FK
+        string wikidata_qid
+    }
+    PERSON {
+        string person_id PK
+        string name
+        string wikidata_qid
+        string gnd_id
+    }
+    ORGANIZATION {
+        string term_id PK
+        string label_en
+        string label_de
+        string wikidata_qid
+    }
+    MATERIAL {
+        string term_id PK
+        string label_en
+        string label_de
+        string aat_id
+        string wikidata_qid
+    }
+    OBJECT_TYPE {
+        string term_id PK
+        string label_en
+        string label_de
+        string aat_id
+        string wikidata_qid
+    }
+    PLACE {
+        string term_id PK
+        string label_en
+        string label_de
+        string wikidata_qid
+    }
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><code>EXHIBITED_AT</code> and <code>APPEARS_IN</code> are not items of their own. They are statements on the artwork whose value is the exhibition or catalogue, with the other columns as qualifiers. Multi-valued fields in the CSV files use <code>;</code> as separator.</p>
+</section>
+<section id="shared-properties" class="level2">
+<h2 class="anchored" data-anchor-id="shared-properties">Properties for every class</h2>
+<p>These properties apply to all classes. They are not repeated in the sections below.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>local_id</strong></td>
+<td>local ID / lokale ID</td>
+<td>external-id</td>
+<td>artwork, person, exhibition, catalogue, organization, material, object_type, place</td>
+<td></td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>identified_by (Identifier)</td>
+<td>lido:lidoRecID</td>
+</tr>
+<tr class="even">
+<td><strong>instance_of</strong></td>
+<td>Type / Instanz von (Haupt-)</td>
+<td>wikibase-item</td>
+<td>artwork, person, exhibition, catalogue, organization, material, object_type, place</td>
+<td>P31</td>
+<td>P2_has_type</td>
+<td>classified_as</td>
+<td>lido:category / lido:objectWorkType</td>
+</tr>
+<tr class="odd">
+<td><strong>wikidata_qid</strong></td>
+<td>Wikidata item / Wikidata-QID</td>
+<td>external-id</td>
+<td>artwork, person, exhibition, catalogue, organization, material, object_type, place</td>
+<td></td>
+<td>P1_is_identified_by (E42_Identifier) or owl:sameAs</td>
+<td>equivalent</td>
+<td>lido:objectID / lido:actorID / lido:conceptID (type wikidata)</td>
+</tr>
+<tr class="even">
+<td><strong>equivalent_property</strong></td>
+<td>equivalent property / äquivalente Eigenschaft</td>
+<td>url</td>
+<td>property, class</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>local_id</code> is the ID from the CSV files (for example <code>ART001</code>, <code>EXH001</code>) and makes loads repeatable. IDs are unique across all files.</p>
+</section>
+<section id="artwork" class="level2">
+<h2 class="anchored" data-anchor-id="artwork">Artwork</h2>
+<p>An artwork is a human-made object created as a work of art. Persons, materials, object types and places are separate items that the artwork points to.</p>
+<section id="classes" class="level3">
+<h3 class="anchored" data-anchor-id="classes">Classes</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Label (EN / DE)</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>artwork</strong></td>
+<td>artwork / Kunstwerk</td>
+<td><a href="http://www.wikidata.org/entity/Q838948">Q838948</a></td>
+<td>E22_Human-Made_Object</td>
+<td>HumanMadeObject</td>
+<td>lido:category = Man-made object</td>
+</tr>
+<tr class="even">
+<td><strong>person</strong></td>
+<td>person / Person</td>
+<td><a href="http://www.wikidata.org/entity/Q5">Q5</a></td>
+<td>E21_Person</td>
+<td>Person</td>
+<td>lido:actorType = person</td>
+</tr>
+<tr class="odd">
+<td><strong>material</strong></td>
+<td>material / Material</td>
+<td><a href="http://www.wikidata.org/entity/Q214609">Q214609</a></td>
+<td>E57_Material</td>
+<td>Material</td>
+<td>lido:termMaterialsTech</td>
+</tr>
+<tr class="even">
+<td><strong>object_type</strong></td>
+<td>object type / Objekttyp</td>
+<td><a href="http://www.wikidata.org/entity/Q151885">Q151885</a></td>
+<td>E55_Type</td>
+<td>Type</td>
+<td>lido:objectWorkType</td>
+</tr>
+<tr class="odd">
+<td><strong>place</strong></td>
+<td>place / Ort</td>
+<td><a href="http://www.wikidata.org/entity/Q17334923">Q17334923</a></td>
+<td>E53_Place</td>
+<td>Place</td>
+<td>lido:placeID</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties" class="level3">
+<h3 class="anchored" data-anchor-id="properties">Properties</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>object_type</strong></td>
+<td>Artwork type / Objekttyp (Art des Kunstwerks)</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P31 (narrower instance of)</td>
+<td>P2_has_type (E55_Type)</td>
+<td>classified_as</td>
+<td>lido:objectWorkType</td>
+</tr>
+<tr class="even">
+<td><strong>title</strong></td>
+<td>Title / Titel</td>
+<td>monolingualtext</td>
+<td>artwork, exhibition, catalogue</td>
+<td>P1476</td>
+<td>P102_has_title (E35_Title)</td>
+<td>identified_by (Name, classified_as title)</td>
+<td>lido:titleWrap/lido:titleSet/lido:appellationValue</td>
+</tr>
+<tr class="odd">
+<td><strong>creator</strong></td>
+<td>Creator / Urheber/in</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P170</td>
+<td>P108i_was_produced_by &gt; E12_Production &gt; P14_carried_out_by</td>
+<td>produced_by.carried_out_by</td>
+<td>lido:eventSet (Production)/lido:eventActor</td>
+</tr>
+<tr class="even">
+<td><strong>inception</strong></td>
+<td>Date of creation / Entstehungsdatum</td>
+<td>time</td>
+<td>artwork</td>
+<td>P571</td>
+<td>P108i_was_produced_by &gt; E12_Production &gt; P4_has_time-span</td>
+<td>produced_by.timespan</td>
+<td>lido:eventSet (Production)/lido:eventDate</td>
+</tr>
+<tr class="odd">
+<td><strong>date_text</strong></td>
+<td>Date of creation (as stated) / Entstehungsdatum (Angabe)</td>
+<td>string</td>
+<td>artwork</td>
+<td></td>
+<td>P3_has_note</td>
+<td>referred_to_by</td>
+<td>lido:eventDate/lido:displayDate</td>
+</tr>
+<tr class="even">
+<td><strong>object_type_text</strong></td>
+<td>Object type (as stated) / Objekttyp (Angabe)</td>
+<td>string</td>
+<td>artwork</td>
+<td></td>
+<td>P3_has_note</td>
+<td>referred_to_by</td>
+<td>lido:objectWorkType/lido:term</td>
+</tr>
+<tr class="odd">
+<td><strong>materials_text</strong></td>
+<td>Materials (as stated) / Material (Angabe)</td>
+<td>string</td>
+<td>artwork</td>
+<td></td>
+<td>P3_has_note</td>
+<td>referred_to_by</td>
+<td>lido:eventMaterialsTech/lido:displayMaterialsTech</td>
+</tr>
+<tr class="even">
+<td><strong>main_subject</strong></td>
+<td>Subject / Hauptthema</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P921</td>
+<td>P129_is_about (E1_CRM_Entity)</td>
+<td>subject_of</td>
+<td>lido:subjectWrap/lido:subjectSet/lido:subject</td>
+</tr>
+<tr class="odd">
+<td><strong>materials</strong></td>
+<td>Materials / Materialien</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P186</td>
+<td>P45_consists_of (E57_Material)</td>
+<td>made_of</td>
+<td>lido:eventMaterialsTech/lido:materialsTech</td>
+</tr>
+<tr class="even">
+<td><strong>made_from_material</strong></td>
+<td>Material / Material</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P186</td>
+<td>P45_consists_of (E57_Material)</td>
+<td>made_of</td>
+<td>lido:eventMaterialsTech/lido:materialsTech</td>
+</tr>
+<tr class="odd">
+<td><strong>height</strong></td>
+<td>Height / Höhe</td>
+<td>quantity</td>
+<td>artwork</td>
+<td>P2048</td>
+<td>P43_has_dimension (E54_Dimension, type height)</td>
+<td>dimension (classified_as height)</td>
+<td>lido:objectMeasurementsSet (measurementType height)</td>
+</tr>
+<tr class="even">
+<td><strong>width</strong></td>
+<td>Width / Breite</td>
+<td>quantity</td>
+<td>artwork</td>
+<td>P2049</td>
+<td>P43_has_dimension (E54_Dimension, type width)</td>
+<td>dimension (classified_as width)</td>
+<td>lido:objectMeasurementsSet (measurementType width)</td>
+</tr>
+<tr class="odd">
+<td><strong>depth</strong></td>
+<td>Depth / Tiefe</td>
+<td>quantity</td>
+<td>artwork</td>
+<td>P5524</td>
+<td>P43_has_dimension (E54_Dimension, type depth)</td>
+<td>dimension (classified_as depth)</td>
+<td>lido:objectMeasurementsSet (measurementType depth)</td>
+</tr>
+<tr class="even">
+<td><strong>inventory_number</strong></td>
+<td>Inventory no. / Inventarnummer</td>
+<td>string</td>
+<td>artwork</td>
+<td>P217</td>
+<td>P1_is_identified_by (E42_Identifier, type inventory number)</td>
+<td>identified_by (Identifier, classified_as inventory number)</td>
+<td>lido:repositorySet/lido:workID</td>
+</tr>
+<tr class="odd">
+<td><strong>catalog_code</strong></td>
+<td>Catalogue no. / Katalogcode</td>
+<td>string</td>
+<td>artwork</td>
+<td>P528</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>identified_by (Identifier)</td>
+<td>lido:workID</td>
+</tr>
+<tr class="even">
+<td><strong>location</strong></td>
+<td>location / Standort</td>
+<td>wikibase-item</td>
+<td>artwork, exhibition</td>
+<td>P276</td>
+<td>P55_has_current_location (E53_Place)</td>
+<td>current_location</td>
+<td>lido:repositorySet/lido:repositoryLocation</td>
+</tr>
+<tr class="odd">
+<td><strong>image_url</strong></td>
+<td>Image / Bild</td>
+<td>url</td>
+<td>artwork, catalogue</td>
+<td>P6500</td>
+<td>P138i_has_representation (E36_Visual_Item)</td>
+<td>representation (VisualItem, digitally_shown_by)</td>
+<td>lido:resourceWrap/lido:resourceSet/lido:resourceRepresentation/lido:linkResource</td>
+</tr>
+<tr class="even">
+<td><strong>part_of_series</strong></td>
+<td>Series / Teile einer Serie</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P179</td>
+<td>P108_has_produced (E65_Creation)</td>
+<td>part_of_series</td>
+<td>lido:relatedWorkSet/lido:relatedWork</td>
+</tr>
+<tr class="odd">
+<td><strong>depicts</strong></td>
+<td>Depicted motif / Darstellt</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P180</td>
+<td>P129_is_about</td>
+<td>depicts</td>
+<td>lido:subjectWrap/lido:subjectSet/lido:subject</td>
+</tr>
+<tr class="even">
+<td><strong>iconclass</strong></td>
+<td>Iconclass / stellt Iconclass-Notation dar</td>
+<td>external-id</td>
+<td>artwork</td>
+<td>P1257</td>
+<td>P62_depicts (E55_Type, Iconclass concept)</td>
+<td>shows.represents (Type)</td>
+<td>lido:subjectWrap/lido:subjectSet/lido:subject/lido:subjectConcept/lido:conceptID</td>
+</tr>
+<tr class="odd">
+<td><strong>exhibited_at</strong></td>
+<td>Exhibited at / Ausgestellt in</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P608</td>
+<td>P9i_forms_part_of (E7_Activity)</td>
+<td>part_of / shown_at</td>
+<td>lido:eventSet/lido:event</td>
+</tr>
+<tr class="even">
+<td><strong>current_owner</strong></td>
+<td>Owner / Aktueller Eigentümer</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P127</td>
+<td>P50_has_current_keeper</td>
+<td>current_owner</td>
+<td>lido:repositorySet/lido:repositoryName</td>
+</tr>
+<tr class="odd">
+<td><strong>commons_category</strong></td>
+<td>Commons category / Commons-Kategorie</td>
+<td>url</td>
+<td>artwork</td>
+<td>P373</td>
+<td>P138i_has_representation</td>
+<td>related</td>
+<td>lido:resourceWrap/lido:resourceSet</td>
+</tr>
+<tr class="even">
+<td><strong>appears_in_catalogue</strong></td>
+<td>Appears in catalogue / Kommt im Katalog vor</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P1343</td>
+<td>P70i_is_documented_in</td>
+<td>referred_to_by</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="controlled-vocabularies" class="level3">
+<h3 class="anchored" data-anchor-id="controlled-vocabularies">Controlled vocabularies</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Vocabulary</th>
+<th>Used for</th>
+<th>Stored as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Iconclass</td>
+<td>Subject of an artwork (<code>iconclass</code>)</td>
+<td>External identifier, notation such as <code>71H7</code></td>
+</tr>
+<tr class="even">
+<td>AAT (Getty)</td>
+<td>Materials and object types (<code>aat_id</code>)</td>
+<td>External identifier, numeric ID</td>
+</tr>
+<tr class="odd">
+<td>GND</td>
+<td>Persons (<code>gnd_id</code>)</td>
+<td>External identifier</td>
+</tr>
+<tr class="even">
+<td>Wikidata</td>
+<td>Cross-reference for all entity types (<code>wikidata_qid</code>)</td>
+<td>External identifier</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dimensions" class="level3">
+<h3 class="anchored" data-anchor-id="dimensions">Dimensions</h3>
+<p>Height, width and depth are stored as Wikibase <code>quantity</code> values in centimetres. The unit is a local item “centimetre” created by the load notebook, which links to Wikidata unit Q174728 through the equivalent-property mechanism.</p>
+</section>
+<section id="terms-materials-object-types-places-organizations" class="level3">
+<h3 class="anchored" data-anchor-id="terms-materials-object-types-places-organizations">Terms: materials, object types, places, organizations</h3>
+<p>Materials, object types, places and organizations are items of their own. They are listed in <a href="templates/term.csv">templates/term.csv</a>, one row per term.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>term_id</code></td>
+<td>local ID (<code>local_id</code>)</td>
+<td>for example <code>MAT001</code></td>
+</tr>
+<tr class="even">
+<td><code>term_type</code></td>
+<td>Type (<code>instance_of</code>)</td>
+<td><code>material</code>, <code>object_type</code>, <code>place</code> or <code>organization</code>; the class item of that name</td>
+</tr>
+<tr class="odd">
+<td><code>label_en</code>, <code>label_de</code></td>
+<td>item label</td>
+<td>German label falls back to the English one</td>
+</tr>
+<tr class="even">
+<td><code>aat_id</code></td>
+<td>AAT ID (<code>aat_id</code>)</td>
+<td>optional, for materials and object types</td>
+</tr>
+<tr class="odd">
+<td><code>wikidata_qid</code></td>
+<td>Wikidata item (<code>wikidata_qid</code>)</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv-source-fields" class="level3">
+<h3 class="anchored" data-anchor-id="csv-source-fields">CSV source fields</h3>
+<p>The artworks are loaded from <a href="templates/artwork.csv">templates/artwork.csv</a>, one row per artwork. Persons and terms are referenced by ID from <a href="templates/person.csv">templates/person.csv</a> and <a href="templates/term.csv">templates/term.csv</a>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>artwork_id</code></td>
+<td>local ID (<code>local_id</code>)</td>
+<td>Yes</td>
+<td>for example <code>ART001</code></td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>Title (<code>title</code>)</td>
+<td>Yes</td>
+<td>monolingual text, language <code>mul</code></td>
+</tr>
+<tr class="odd">
+<td><code>object_type_id</code></td>
+<td>Type (<code>instance_of</code>)</td>
+<td>Yes</td>
+<td>ID from <code>term.csv</code> with <code>term_type</code> <code>object_type</code>; the loader adds it as a second <code>Type</code> statement next to the class <code>artwork</code>, and does not use the separate <code>object_type</code> property</td>
+</tr>
+<tr class="even">
+<td><code>creator_id</code></td>
+<td>Creator (<code>creator</code>)</td>
+<td>Yes</td>
+<td>ID from <code>person.csv</code></td>
+</tr>
+<tr class="odd">
+<td><code>date_created</code></td>
+<td>Date of creation (<code>inception</code>)</td>
+<td>Yes</td>
+<td><code>YYYY</code>, <code>YYYY-MM</code> or <code>YYYY-MM-DD</code>; a range such as <code>1997-98</code> is loaded with its start year and a warning</td>
+</tr>
+<tr class="even">
+<td><code>material_ids</code></td>
+<td>Material (<code>made_from_material</code>)</td>
+<td>Yes</td>
+<td><code>;</code>-separated IDs from <code>term.csv</code> with <code>term_type</code> <code>material</code>, one statement each</td>
+</tr>
+<tr class="odd">
+<td><code>height_cm</code></td>
+<td>Height (<code>height</code>)</td>
+<td>Yes</td>
+<td>centimetres</td>
+</tr>
+<tr class="even">
+<td><code>width_cm</code></td>
+<td>Width (<code>width</code>)</td>
+<td>Yes</td>
+<td>centimetres</td>
+</tr>
+<tr class="odd">
+<td><code>depth_cm</code></td>
+<td>Depth (<code>depth</code>)</td>
+<td>No</td>
+<td>centimetres</td>
+</tr>
+<tr class="even">
+<td><code>inventory_number</code></td>
+<td>Inventory no. (<code>inventory_number</code>)</td>
+<td>No</td>
+<td>museum or collection ID</td>
+</tr>
+<tr class="odd">
+<td><code>current_location_id</code></td>
+<td>location (<code>location</code>)</td>
+<td>No</td>
+<td>ID from <code>term.csv</code> with <code>term_type</code> <code>place</code></td>
+</tr>
+<tr class="even">
+<td><code>image_url</code></td>
+<td>Image (<code>image_url</code>)</td>
+<td>No</td>
+<td>image URL</td>
+</tr>
+<tr class="odd">
+<td><code>iconclass_notations</code></td>
+<td>Iconclass (<code>iconclass</code>)</td>
+<td>No</td>
+<td><code>;</code>-separated notations</td>
+</tr>
+<tr class="even">
+<td><code>wikidata_qid</code></td>
+<td>Wikidata item (<code>wikidata_qid</code>)</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>date_text</code></td>
+<td>Date of creation (as stated) (<code>date_text</code>)</td>
+<td>No</td>
+<td>date exactly as printed in the source</td>
+</tr>
+<tr class="even">
+<td><code>object_type_text</code></td>
+<td>Object type (as stated) (<code>object_type_text</code>)</td>
+<td>No</td>
+<td>object type exactly as printed in the source</td>
+</tr>
+<tr class="odd">
+<td><code>materials_text</code></td>
+<td>Materials (as stated) (<code>materials_text</code>)</td>
+<td>No</td>
+<td>materials and technique exactly as printed in the source</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>*_text</code> fields keep the source wording, so a reviewer can compare it with the normalised statements.</p>
+<p>Fields in the model without a column in <code>artwork.csv</code> (<code>main_subject</code>, <code>depicts</code>, <code>part_of_series</code>, <code>catalog_code</code>, <code>current_owner</code>, <code>commons_category</code>) are defined in the Wikibase but not loaded yet. The link to an exhibition comes from <code>exhibition-item.csv</code> and the link to a catalogue from <code>scan-location.csv</code>.</p>
+</section>
+</section>
+<section id="item-in-exhibition" class="level2">
+<h2 class="anchored" data-anchor-id="item-in-exhibition">Item in Exhibition</h2>
+<p>An artwork is linked to an exhibition with an <strong><code>Exhibited at</code></strong> statement on the artwork. The details that only the exhibition catalogue knows (catalogue number, catalogue page, the title as printed, a note) are added to that statement as qualifiers. There is no separate exhibition item. The model is the association between the <a href="#artwork">Artwork</a> and <a href="#exhibition">Exhibition</a> models.</p>
+<section id="why-qualifiers-instead-of-a-separate-item" class="level3">
+<h3 class="anchored" data-anchor-id="why-qualifiers-instead-of-a-separate-item">Why qualifiers instead of a separate item?</h3>
+<p>The catalogue details belong to one artwork in one exhibition. Qualifiers on the <code>Exhibited at</code> statement keep them next to the statement, work for artworks that appear in several exhibitions (one statement per exhibition), and follow the usual Wikidata pattern for exhibition history (P608).</p>
+</section>
+<section id="properties-1" class="level3">
+<h3 class="anchored" data-anchor-id="properties-1">Properties</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>exhibited_at</strong></td>
+<td>Exhibited at / Ausgestellt in</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P608</td>
+<td>P9i_forms_part_of (E7_Activity)</td>
+<td>part_of / shown_at</td>
+<td>lido:eventSet/lido:event</td>
+</tr>
+<tr class="even">
+<td><strong>catalogue_number</strong></td>
+<td>Catalogue number / Katalognummer</td>
+<td>string</td>
+<td>qualifier</td>
+<td>P528</td>
+<td>P1_is_identified_by (E42_Identifier, type catalogue number)</td>
+<td>identified_by (Identifier, classified_as catalogue number)</td>
+<td>lido:workID (type catalogue number)</td>
+</tr>
+<tr class="odd">
+<td><strong>catalogue_page</strong></td>
+<td>Page(s) / Seite(n)</td>
+<td>string</td>
+<td>qualifier</td>
+<td>P304</td>
+<td>P3_has_note (E62_String, catalogue page)</td>
+<td>referred_to_by (LinguisticObject, classified_as page)</td>
+<td>lido:relatedWorkSet/lido:relatedWork</td>
+</tr>
+<tr class="even">
+<td><strong>title_as_exhibited</strong></td>
+<td>title as exhibited / Titel in der Ausstellung</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P1_is_identified_by (E35_Title) on the showing</td>
+<td>identified_by (Name) on the part activity</td>
+<td>lido:titleSet (type exhibited as)</td>
+</tr>
+<tr class="odd">
+<td><strong>note</strong></td>
+<td>note / Anmerkung</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note</td>
+<td>referred_to_by (LinguisticObject)</td>
+<td>lido:descriptiveNoteValue</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>Baldessari catalogue (Sprengel Museum Hannover), artwork <code>ART002</code>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Statement</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Exhibited at</code></td>
+<td>EXH001 (John Baldessari, Sprengel Museum Hannover)</td>
+</tr>
+<tr class="even">
+<td>qualifier <code>Page(s)</code></td>
+<td>14; 51</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv-template" class="level3">
+<h3 class="anchored" data-anchor-id="csv-template">CSV template</h3>
+<p><a href="templates/exhibition-item.csv">templates/exhibition-item.csv</a> lists which artwork was shown in which exhibition. The loader turns each row into an <code>Exhibited at</code> statement on the artwork, with the catalogue columns as qualifiers.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>artwork_id</code></td>
+<td>the artwork item</td>
+<td>ID from <code>artwork.csv</code></td>
+</tr>
+<tr class="even">
+<td><code>exhibition_id</code></td>
+<td>Exhibited at (<code>exhibited_at</code>)</td>
+<td>ID from <code>exhibition.csv</code></td>
+</tr>
+<tr class="odd">
+<td><code>catalogue_number</code></td>
+<td>Catalogue number (<code>catalogue_number</code>)</td>
+<td>qualifier</td>
+</tr>
+<tr class="even">
+<td><code>catalogue_page</code></td>
+<td>Page(s) (<code>catalogue_page</code>)</td>
+<td>qualifier</td>
+</tr>
+<tr class="odd">
+<td><code>title_as_exhibited</code></td>
+<td>Title as exhibited (<code>title_as_exhibited</code>)</td>
+<td>qualifier</td>
+</tr>
+<tr class="even">
+<td><code>notes</code></td>
+<td>note (<code>note</code>)</td>
+<td>qualifier</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="corrections-to-the-earlier-draft" class="level3">
+<h3 class="anchored" data-anchor-id="corrections-to-the-earlier-draft">Corrections to the earlier draft</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Earlier mapping</th>
+<th>Problem</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exhibited at: P1431</td>
+<td>P1431 is “executive producer”</td>
+<td>P608 “exhibition history”</td>
+</tr>
+<tr class="even">
+<td>Depth: P2610</td>
+<td>P2610 is “thickness”</td>
+<td>P5524 “depth”</td>
+</tr>
+<tr class="odd">
+<td>Acquisition: P1830, provenance: P2670</td>
+<td>Both properties have other meanings</td>
+<td>Removed from this model</td>
+</tr>
+<tr class="even">
+<td>Instance of: Q3305213</td>
+<td>Q3305213 is “painting”</td>
+<td>Q838948 “work of art” plus an object type item</td>
+</tr>
+<tr class="odd">
+<td>CIDOC location: P87</td>
+<td>P87 is “is identified by” for places</td>
+<td>P55 “has current location”</td>
+</tr>
+<tr class="even">
+<td>Series: P108</td>
+<td>P108 is “has produced”</td>
+<td>Removed from this model</td>
+</tr>
+<tr class="odd">
+<td>Wikibase4Research column</td>
+<td>Dropped from scope</td>
+<td>Linked Art and LIDO columns</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="exhibition" class="level2">
+<h2 class="anchored" data-anchor-id="exhibition">Exhibition</h2>
+<p>An exhibition is a temporary presentation of artworks at a venue. The artworks point to the exhibition with <code>Exhibited at</code>; the exhibition points to its catalogues with <code>Exhibition catalogue</code>.</p>
+<section id="class" class="level3">
+<h3 class="anchored" data-anchor-id="class">Class</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Label (EN / DE)</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>exhibition</strong></td>
+<td>exhibition / Ausstellung</td>
+<td><a href="http://www.wikidata.org/entity/Q464980">Q464980</a></td>
+<td>E7_Activity</td>
+<td>Activity</td>
+<td>lido:eventType = Exhibition (lido00045)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties-2" class="level3">
+<h3 class="anchored" data-anchor-id="properties-2">Properties</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>title</strong></td>
+<td>Title / Titel</td>
+<td>monolingualtext</td>
+<td>artwork, exhibition, catalogue</td>
+<td>P1476</td>
+<td>P102_has_title (E35_Title)</td>
+<td>identified_by (Name, classified_as title)</td>
+<td>lido:titleWrap/lido:titleSet/lido:appellationValue</td>
+</tr>
+<tr class="even">
+<td><strong>location</strong></td>
+<td>location / Standort</td>
+<td>wikibase-item</td>
+<td>artwork, exhibition</td>
+<td>P276</td>
+<td>P55_has_current_location (E53_Place)</td>
+<td>current_location</td>
+<td>lido:repositorySet/lido:repositoryLocation</td>
+</tr>
+<tr class="odd">
+<td><strong>start_date</strong></td>
+<td>Start date / Beginn</td>
+<td>time</td>
+<td>exhibition</td>
+<td>P580</td>
+<td>P4_has_time-span &gt; P82a_begin_of_the_begin</td>
+<td>timespan.begin_of_the_begin</td>
+<td>lido:eventDate/lido:date/lido:earliestDate</td>
+</tr>
+<tr class="even">
+<td><strong>end_date</strong></td>
+<td>End date / Ende</td>
+<td>time</td>
+<td>exhibition</td>
+<td>P582</td>
+<td>P4_has_time-span &gt; P82b_end_of_the_end</td>
+<td>timespan.end_of_the_end</td>
+<td>lido:eventDate/lido:date/lido:latestDate</td>
+</tr>
+<tr class="odd">
+<td><strong>exhibition_catalogue</strong></td>
+<td>Exhibition catalogue / Ausstellungskatalog</td>
+<td>wikibase-item</td>
+<td>exhibition</td>
+<td>P1343</td>
+<td>P70i_is_documented_in</td>
+<td>subject_of</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The shared properties <code>local_id</code>, <code>instance_of</code> and <code>wikidata_qid</code> are listed <a href="#shared-properties">above</a>.</p>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>Exhibition <code>EXH001</code> (Sprengel Museum Hannover, <a href="https://www.wikidata.org/wiki/Q141747732">Q141747732</a>):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Title</td>
+<td>BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999</td>
+</tr>
+<tr class="even">
+<td>Start date</td>
+<td>1999-09-26</td>
+</tr>
+<tr class="odd">
+<td>End date</td>
+<td>2000-01-02</td>
+</tr>
+<tr class="even">
+<td>location</td>
+<td><code>PLC001</code> (Sprengel Museum Hannover)</td>
+</tr>
+<tr class="odd">
+<td>Exhibition catalogue</td>
+<td><code>CAT001</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv-source-fields-1" class="level3">
+<h3 class="anchored" data-anchor-id="csv-source-fields-1">CSV source fields</h3>
+<p>The exhibitions are loaded from <a href="templates/exhibition.csv">templates/exhibition.csv</a>, one row per exhibition.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>exhibition_id</code></td>
+<td>local ID (<code>local_id</code>)</td>
+<td>Yes</td>
+<td>for example <code>EXH001</code></td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>Title (<code>title</code>)</td>
+<td>Yes</td>
+<td>monolingual text, language <code>mul</code>; also used as item label</td>
+</tr>
+<tr class="odd">
+<td><code>start_date</code></td>
+<td>Start date (<code>start_date</code>)</td>
+<td>No</td>
+<td><code>YYYY</code>, <code>YYYY-MM</code> or <code>YYYY-MM-DD</code></td>
+</tr>
+<tr class="even">
+<td><code>end_date</code></td>
+<td>End date (<code>end_date</code>)</td>
+<td>No</td>
+<td>same formats</td>
+</tr>
+<tr class="odd">
+<td><code>venue_id</code></td>
+<td>location (<code>location</code>)</td>
+<td>No</td>
+<td>ID from <code>term.csv</code> with <code>term_type</code> <code>place</code></td>
+</tr>
+<tr class="even">
+<td><code>wikidata_qid</code></td>
+<td>Wikidata item (<code>wikidata_qid</code>)</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>Exhibition catalogue</code> has no column here. The loader adds it from the <code>exhibition_id</code> column of <code>catalogue.csv</code>, after the catalogues are loaded.</p>
+</section>
+<section id="not-yet-modelled" class="level3">
+<h3 class="anchored" data-anchor-id="not-yet-modelled">Not yet modelled</h3>
+<p>The earlier draft of this page listed further Wikidata properties. They are not in <code>wikibase-model.json</code> and are not loaded. They can be added to the JSON file when needed, which then also adds them to the tables above.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Curator</td>
+<td>P1640</td>
+<td>P14_carried_out_by</td>
+</tr>
+<tr class="even">
+<td>Participant</td>
+<td>P710</td>
+<td>P11_had_participant</td>
+</tr>
+<tr class="odd">
+<td>Official website</td>
+<td>P856</td>
+<td>P1_is_identified_by</td>
+</tr>
+<tr class="even">
+<td>Organizer</td>
+<td>P664</td>
+<td>P14_carried_out_by</td>
+</tr>
+<tr class="odd">
+<td>Country</td>
+<td>P17</td>
+<td>P7_took_place_at</td>
+</tr>
+<tr class="even">
+<td>Language</td>
+<td>P407</td>
+<td>P72_has_language</td>
+</tr>
+<tr class="odd">
+<td>Theme</td>
+<td>P921</td>
+<td>P129_is_about</td>
+</tr>
+<tr class="even">
+<td>Sponsor</td>
+<td>P859</td>
+<td>none</td>
+</tr>
+<tr class="odd">
+<td>Number of visitors</td>
+<td>P1174</td>
+<td>none</td>
+</tr>
+<tr class="even">
+<td>Commons category</td>
+<td>P373</td>
+<td>P1_is_identified_by</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="artist" class="level2">
+<h2 class="anchored" data-anchor-id="artist">Artist</h2>
+<p>Artists, catalogue authors and other people are items of the class <code>person</code>. The class is deliberately small: a name (the item label) and identifiers. Biographical data stays in Wikidata and is reachable through <code>wikidata_qid</code>.</p>
+<section id="class-1" class="level3">
+<h3 class="anchored" data-anchor-id="class-1">Class</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Label (EN / DE)</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>person</strong></td>
+<td>person / Person</td>
+<td><a href="http://www.wikidata.org/entity/Q5">Q5</a></td>
+<td>E21_Person</td>
+<td>Person</td>
+<td>lido:actorType = person</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties-3" class="level3">
+<h3 class="anchored" data-anchor-id="properties-3">Properties</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>gnd_id</strong></td>
+<td>GND ID / GND-ID</td>
+<td>external-id</td>
+<td>person</td>
+<td>P227</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+<td>equivalent / identified_by</td>
+<td>lido:actorID (type GND)</td>
+</tr>
+</tbody>
+</table>
+<p>The shared properties <code>local_id</code>, <code>instance_of</code> and <code>wikidata_qid</code> are listed <a href="#shared-properties">above</a>. A person is used as <code>creator</code> of an artwork and as <code>author</code> of a catalogue.</p>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example</h3>
+<p>Person <code>PER001</code>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Label</td>
+<td>John Baldessari</td>
+</tr>
+<tr class="even">
+<td>Wikidata item</td>
+<td><a href="https://www.wikidata.org/wiki/Q683378">Q683378</a></td>
+</tr>
+<tr class="odd">
+<td>GND ID</td>
+<td>118506153</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv-source-fields-2" class="level3">
+<h3 class="anchored" data-anchor-id="csv-source-fields-2">CSV source fields</h3>
+<p>The persons are loaded from <a href="templates/person.csv">templates/person.csv</a>, one row per person.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>person_id</code></td>
+<td>local ID (<code>local_id</code>)</td>
+<td>for example <code>PER001</code></td>
+</tr>
+<tr class="even">
+<td><code>name</code></td>
+<td>item label</td>
+<td>used as English and German label</td>
+</tr>
+<tr class="odd">
+<td><code>wikidata_qid</code></td>
+<td>Wikidata item (<code>wikidata_qid</code>)</td>
+<td>optional</td>
+</tr>
+<tr class="even">
+<td><code>gnd_id</code></td>
+<td>GND ID (<code>gnd_id</code>)</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="not-yet-modelled-1" class="level3">
+<h3 class="anchored" data-anchor-id="not-yet-modelled-1">Not yet modelled</h3>
+<p>The earlier draft of this page listed biographical properties. They are not in <code>wikibase-model.json</code> and are not loaded; the Wikidata item is the place for them.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Given name</td>
+<td>P735</td>
+<td>P1_is_identified_by (E82_Appellation)</td>
+</tr>
+<tr class="even">
+<td>Family name</td>
+<td>P734</td>
+<td>P1_is_identified_by (E82_Appellation)</td>
+</tr>
+<tr class="odd">
+<td>Occupation</td>
+<td>P106</td>
+<td>P2_has_type (E55_Type)</td>
+</tr>
+<tr class="even">
+<td>Date of birth</td>
+<td>P569</td>
+<td>P82_at_some_time_within (E52_Time-Span)</td>
+</tr>
+<tr class="odd">
+<td>Date of death</td>
+<td>P570</td>
+<td>P82_at_some_time_within (E52_Time-Span)</td>
+</tr>
+<tr class="even">
+<td>Citizenship</td>
+<td>P27</td>
+<td>P2_has_type (E55_Type)</td>
+</tr>
+<tr class="odd">
+<td>Getty ULAN</td>
+<td>P245</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+</tr>
+<tr class="even">
+<td>VIAF</td>
+<td>P214</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+</tr>
+<tr class="odd">
+<td>ISNI</td>
+<td>P213</td>
+<td>P1_is_identified_by (E42_Identifier)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="catalogue" class="level2">
+<h2 class="anchored" data-anchor-id="catalogue">Catalogue</h2>
+<p>A catalogue is a published book, for example the one that accompanies an exhibition. Catalogues are also the source of the artwork records: each artwork records the catalogue it was taken from.</p>
+<section id="classes-1" class="level3">
+<h3 class="anchored" data-anchor-id="classes-1">Classes</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Label (EN / DE)</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>catalogue</strong></td>
+<td>catalogue / Katalog</td>
+<td><a href="http://www.wikidata.org/entity/Q2352616">Q2352616</a></td>
+<td>E31_Document</td>
+<td>LinguisticObject</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>organization</strong></td>
+<td>organization / Organisation</td>
+<td><a href="http://www.wikidata.org/entity/Q43229">Q43229</a></td>
+<td>E74_Group</td>
+<td>Group</td>
+<td>lido:actorType = corporation</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties-4" class="level3">
+<h3 class="anchored" data-anchor-id="properties-4">Properties</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>title</strong></td>
+<td>Title / Titel</td>
+<td>monolingualtext</td>
+<td>artwork, exhibition, catalogue</td>
+<td>P1476</td>
+<td>P102_has_title (E35_Title)</td>
+<td>identified_by (Name, classified_as title)</td>
+<td>lido:titleWrap/lido:titleSet/lido:appellationValue</td>
+</tr>
+<tr class="even">
+<td><strong>image_url</strong></td>
+<td>Image / Bild</td>
+<td>url</td>
+<td>artwork, catalogue</td>
+<td>P6500</td>
+<td>P138i_has_representation (E36_Visual_Item)</td>
+<td>representation (VisualItem, digitally_shown_by)</td>
+<td>lido:resourceWrap/lido:resourceSet/lido:resourceRepresentation/lido:linkResource</td>
+</tr>
+<tr class="odd">
+<td><strong>subtitle</strong></td>
+<td>Subtitle / Untertitel</td>
+<td>string</td>
+<td>catalogue</td>
+<td>P1680</td>
+<td>P102_has_title (E35_Title)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>author</strong></td>
+<td>Author / Autor</td>
+<td>wikibase-item</td>
+<td>catalogue</td>
+<td>P50</td>
+<td>E39_Actor</td>
+<td>created_by</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>publisher</strong></td>
+<td>Publisher / Verleger</td>
+<td>wikibase-item</td>
+<td>catalogue</td>
+<td>P123</td>
+<td>E39_Actor</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>publication_date</strong></td>
+<td>Publication date / Erscheinungsdatum</td>
+<td>time</td>
+<td>catalogue</td>
+<td>P577</td>
+<td>E52_Time-Span</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>isbn13</strong></td>
+<td>ISBN-13 / ISBN-13</td>
+<td>external-id</td>
+<td>catalogue</td>
+<td>P212</td>
+<td>E42_Identifier</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>dnb_edition_id</strong></td>
+<td>DNB edition ID / DNB-Nummer</td>
+<td>external-id</td>
+<td>catalogue</td>
+<td>P1292</td>
+<td>E42_Identifier</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>described_at_url</strong></td>
+<td>Described at URL / Beschrieben unter URL</td>
+<td>url</td>
+<td>catalogue</td>
+<td>P973</td>
+<td>E42_Identifier</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>catalogue_of</strong></td>
+<td>Catalogue of / Katalog zu</td>
+<td>wikibase-item</td>
+<td>catalogue</td>
+<td>P921</td>
+<td>P70_documents</td>
+<td>about</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The shared properties <code>local_id</code>, <code>instance_of</code> and <code>wikidata_qid</code> are listed <a href="#shared-properties">above</a>.</p>
+</section>
+<section id="csv-source-fields-3" class="level3">
+<h3 class="anchored" data-anchor-id="csv-source-fields-3">CSV source fields</h3>
+<p>The fields above are loaded from <a href="templates/catalogue.csv">templates/catalogue.csv</a> (one row per catalogue) by the notebook <code>catalogues/wikibase-artwork-load.ipynb</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>catalogue_id</code></td>
+<td>local ID (<code>local_id</code>)</td>
+<td>for example <code>CAT001</code></td>
+</tr>
+<tr class="even">
+<td>(class)</td>
+<td>Type (<code>instance_of</code>)</td>
+<td>the class item <code>catalogue</code>, equivalent to Wikidata Q2352616</td>
+</tr>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Title (<code>title</code>)</td>
+<td>monolingual text</td>
+</tr>
+<tr class="even">
+<td><code>subtitle</code></td>
+<td>Subtitle (<code>subtitle</code>)</td>
+<td>string, as printed</td>
+</tr>
+<tr class="odd">
+<td><code>author_ids</code></td>
+<td>Author (<code>author</code>)</td>
+<td><code>;</code>-separated IDs from <code>person.csv</code>, one statement each</td>
+</tr>
+<tr class="even">
+<td><code>publisher_id</code></td>
+<td>Publisher (<code>publisher</code>)</td>
+<td>ID from <code>term.csv</code> with <code>term_type</code> <code>organization</code></td>
+</tr>
+<tr class="odd">
+<td><code>publication_date</code></td>
+<td>Publication date (<code>publication_date</code>)</td>
+<td><code>YYYY</code> or <code>YYYY-MM-DD</code></td>
+</tr>
+<tr class="even">
+<td><code>isbn13</code></td>
+<td>ISBN-13 (<code>isbn13</code>)</td>
+<td>checked for a valid check digit</td>
+</tr>
+<tr class="odd">
+<td><code>dnb_edition_id</code></td>
+<td>DNB edition ID (<code>dnb_edition_id</code>)</td>
+<td>Wikidata P1292; used instead of GND, because the DNB gives books an IDN, not a GND ID</td>
+</tr>
+<tr class="even">
+<td><code>described_at_url</code></td>
+<td>Described at URL (<code>described_at_url</code>)</td>
+<td>for example <code>https://d-nb.info/957409494</code></td>
+</tr>
+<tr class="odd">
+<td><code>image_url</code></td>
+<td>Image (<code>image_url</code>)</td>
+<td>cover image URL (optional)</td>
+</tr>
+<tr class="even">
+<td><code>exhibition_id</code></td>
+<td>Catalogue of (<code>catalogue_of</code>)</td>
+<td>links the catalogue to its exhibition from <code>exhibition.csv</code>; the exhibition gets the inverse statement Exhibition catalogue (<code>exhibition_catalogue</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>wikidata_qid</code></td>
+<td>Wikidata item (<code>wikidata_qid</code>)</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<p>The first entry, <code>CAT001</code>, is the catalogue of the exhibition <code>EXH001</code> (“BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999”), DNB record <a href="https://d-nb.info/957409494">957409494</a>. The artworks point to the same exhibition with <code>Exhibited at</code>, so the exhibition item connects the artworks and the catalogue.</p>
+</section>
+<section id="which-catalogue-an-artwork-appears-in-and-where" class="level3">
+<h3 class="anchored" data-anchor-id="which-catalogue-an-artwork-appears-in-and-where">Which catalogue an artwork appears in, and where</h3>
+<p>Each artwork records the catalogue it appears in with an <code>Appears in catalogue</code> statement. For the Baldessari artworks this is <code>CAT001</code>, because that is the catalogue the records were taken from. The statements come from <a href="templates/scan-location.csv">templates/scan-location.csv</a>, one row per artwork and catalogue (and per page, once pages are known). The columns after <code>catalogue_id</code> are optional. When they are filled in, they let a reviewer check the extraction against the scan. An artwork on several pages has several rows. The loader turns each row into a statement on the artwork (pointing to the catalogue item) with the other columns as qualifiers.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Label (EN / DE)</th>
+<th>Wikibase datatype</th>
+<th>Used on</th>
+<th>Wikidata</th>
+<th>CIDOC CRM</th>
+<th>Linked Art</th>
+<th>LIDO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>appears_in_catalogue</strong></td>
+<td>Appears in catalogue / Kommt im Katalog vor</td>
+<td>wikibase-item</td>
+<td>artwork</td>
+<td>P1343</td>
+<td>P70i_is_documented_in</td>
+<td>referred_to_by</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>scan_page</strong></td>
+<td>Scan page / Scanseite</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, scan page)</td>
+<td>part_of (Canvas)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>scan_region</strong></td>
+<td>Scan region / Scanbereich</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, region)</td>
+<td>FragmentSelector</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>extraction_method</strong></td>
+<td>Extraction method / Extraktionsmethode</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, method)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>review_status</strong></td>
+<td>Review status / Prüfstatus</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note (E62_String, review status)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>note</strong></td>
+<td>note / Anmerkung</td>
+<td>string</td>
+<td>qualifier</td>
+<td></td>
+<td>P3_has_note</td>
+<td>referred_to_by (LinguisticObject)</td>
+<td>lido:descriptiveNoteValue</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CSV column</th>
+<th>Wikibase property (model key)</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>artwork_id</code></td>
+<td>the artwork item</td>
+<td>ID from <code>artwork.csv</code></td>
+</tr>
+<tr class="even">
+<td><code>catalogue_id</code></td>
+<td>Appears in catalogue (<code>appears_in_catalogue</code>)</td>
+<td>ID from <code>catalogue.csv</code></td>
+</tr>
+<tr class="odd">
+<td><code>scan_page</code></td>
+<td>Scan page (<code>scan_page</code>)</td>
+<td>optional. Position of the page in the scan, first page = 1. This is not the printed page number, which stays in <code>catalogue_page</code> of <code>exhibition-item.csv</code>; the two usually differ by an offset</td>
+</tr>
+<tr class="even">
+<td><code>scan_region</code></td>
+<td>Scan region (<code>scan_region</code>)</td>
+<td>optional, see below</td>
+</tr>
+<tr class="odd">
+<td><code>extraction_method</code></td>
+<td>Extraction method (<code>extraction_method</code>)</td>
+<td>for example <code>plan-c qwen3-vl:8b</code>, <code>plan-b hocr</code>, <code>manual</code></td>
+</tr>
+<tr class="even">
+<td><code>review_status</code></td>
+<td>Review status (<code>review_status</code>)</td>
+<td><code>unreviewed</code>, <code>confirmed</code>, <code>corrected</code> or <code>rejected</code></td>
+</tr>
+<tr class="odd">
+<td><code>notes</code></td>
+<td>note (<code>note</code>)</td>
+<td>optional comment from the reviewer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Region format.</strong> <code>scan_region</code> uses the W3C Media Fragments syntax <code>xywh=percent:x,y,width,height</code>, for example <code>xywh=percent:10,20,40,8</code>. Percent values refer to the page size, so they stay valid for any image resolution. <code>xywh=pixel:x,y,width,height</code> is also accepted. The same syntax is used by IIIF and the Web Annotation model, so the regions can later be shown on a viewer without conversion. The corners from hOCR (<code>bbox x0 y0 x1 y1</code>) or ALTO (<code>HPOS</code>, <code>VPOS</code>, <code>WIDTH</code>, <code>HEIGHT</code>) have to be converted to x, y, width, height first.</p>
+<p>The rows in <code>scan-location.csv</code> currently only link every artwork to <code>CAT001</code>. Pages, regions, extraction method and review status will be added when the extraction data (plan B) is ready.</p>
+</section>
+<section id="best-practices-for-catalogue-records" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices-for-catalogue-records">Best practices for catalogue records</h3>
+<ol type="1">
+<li><strong>Use Wikidata items</strong>: link to existing Wikidata items for authors and organizations to enable cross-institutional discovery.</li>
+<li><strong>ISBN validation</strong>: ISBN-13 numbers must have a valid check digit. Use the format with hyphens (978-X-XXXX-XXXX-X) for readability.</li>
+<li><strong>Publication dates</strong>: use ISO 8601 (YYYY-MM-DD) where precise dates are available, or just YYYY for year-only precision.</li>
+<li><strong>Multilingual titles</strong>: where a catalogue is published in several languages, add further title statements as monolingual text.</li>
+<li><strong>URL persistence</strong>: prefer persistent URLs (DOI or similar) over temporary web links for <code>described_at_url</code>.</li>
+</ol>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">Related standards and references</h2>
+<ul>
+<li><a href="https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html">CIDOC CRM v7.1.3</a>, formal ontology for cultural heritage</li>
+<li><a href="https://linked.art/">Linked Art</a>, data model for describing cultural heritage</li>
+<li><a href="https://lido-schema.org/">LIDO</a>, XML schema for museum objects</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions">Wikidata WikiProject Exhibitions</a>, community guidelines for exhibition properties</li>
+<li><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Books">Wikidata WikiProject Books</a>, community guidelines for bibliographic properties</li>
+<li><a href="https://github.com/NFDI4Culture/linked-open-exhibition">Linked Open Exhibition project</a>, project repository</li>
+</ul>
+<p>For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via <a href="https://github.com/NFDI4Culture/linked-open-exhibition">GitHub</a>.</p>
+<p>This documentation was created with assistance from <strong>GitHub Copilot</strong>. The model was aligned against CIDOC CRM, Linked Art, LIDO and Wikidata through AI-assisted analysis and formatting.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<!--
+
+  Full screen view for Mermaid diagrams, included on every page by _quarto.yml
+
+  (format.html.include-after-body). Adds a "Full screen view" link above each diagram.
+
+  The link is a normal URL (#diagram-1, #diagram-2, ...), so a view can be bookmarked or shared.
+
+  In the view: drag to pan, mouse wheel or pinch to zoom, buttons and keys for the rest.
+
+-->
+
+<style>
+
+  .mmd-bar { text-align: right; margin: 0 0 0.25rem; font-size: 0.85rem; }
+
+  #mmd-overlay {
+
+    position: fixed; inset: 0; z-index: 2000; display: flex; flex-direction: column;
+
+    background: var(--bs-body-bg, #fff); color: var(--bs-body-color, #212529);
+
+  }
+
+  #mmd-overlay .mmd-top {
+
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+
+    padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  #mmd-overlay .mmd-title { flex: 1 1 10rem; font-weight: 600; }
+
+  #mmd-overlay .mmd-count { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+  #mmd-overlay button {
+
+    font: inherit; padding: 0.2rem 0.6rem; cursor: pointer; color: inherit;
+
+    background: transparent; border: 1px solid rgba(128, 128, 128, 0.6); border-radius: 4px;
+
+  }
+
+  #mmd-overlay button:hover:not(:disabled) { background: rgba(128, 128, 128, 0.15); }
+
+  #mmd-overlay button:disabled { opacity: 0.4; cursor: default; }
+
+  #mmd-overlay .mmd-stage { flex: 1; position: relative; overflow: hidden; cursor: grab; touch-action: none; }
+
+  #mmd-overlay .mmd-stage.mmd-drag { cursor: grabbing; }
+
+  #mmd-overlay .mmd-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+
+  #mmd-overlay .mmd-canvas svg { display: block; max-width: none; }
+
+  #mmd-overlay .mmd-hint {
+
+    padding: 0.25rem 0.75rem; font-size: 0.8rem; opacity: 0.7;
+
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
+
+  }
+
+  @media print { .mmd-bar, #mmd-overlay { display: none !important; } }
+
+</style>
+
+<script>
+
+(function () {
+
+  "use strict";
+
+  // Quarto replaces each pre.mermaid with its rendered svg, so count the diagrams up front.
+
+  var expected = document.querySelectorAll("pre.mermaid").length;
+
+  if (!expected) return;
+
+
+
+  var HASH = /^#diagram-(\d+)$/;
+
+  var overlay = null, stage = null, canvas = null, titleEl = null, countEl = null;
+
+  var prevBtn = null, nextBtn = null, closeBtn = null;
+
+  var index = -1, scale = 1, tx = 0, ty = 0, natW = 1, natH = 1;
+
+  var pushed = false, savedOverflow = "", opener = null;
+
+
+
+  function diagrams() {
+
+    return Array.prototype.filter.call(document.querySelectorAll('svg[id^="mermaid-"]'), function (s) {
+
+      return !s.closest("#mmd-overlay");
+
+    });
+
+  }
+
+  function idFor(i) { return "diagram-" + (i + 1); }
+
+
+
+  function headingFor(svg, i) {
+
+    var section = svg.closest("section");
+
+    var h = section && section.querySelector("h1, h2, h3, h4");
+
+    var text = h ? h.textContent.replace(/\s+/g, " ").trim() : "";
+
+    return text || "Diagram " + (i + 1);
+
+  }
+
+
+
+  // --- link above each diagram -------------------------------------------------------
+
+  function decorate() {
+
+    var all = diagrams(), done = 0;
+
+    all.forEach(function (svg, i) {
+
+      if (svg.dataset.mmdBar) { done++; return; }
+
+      svg.dataset.mmdBar = "1";
+
+      done++;
+
+      var bar = document.createElement("div");
+
+      bar.className = "mmd-bar";
+
+      var a = document.createElement("a");
+
+      a.href = "#" + idFor(i);
+
+      a.textContent = "Full screen view";
+
+      a.title = "Open the diagram full screen with pan and zoom";
+
+      a.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        opener = a;
+
+        history.pushState(null, "", "#" + idFor(i));
+
+        pushed = true;
+
+        openAt(i, true);
+
+      });
+
+      bar.appendChild(a);
+
+      var host = svg.closest("figure") || svg.parentNode;
+
+      host.parentNode.insertBefore(bar, host);
+
+    });
+
+    return all.length >= expected && done === all.length;
+
+  }
+
+
+
+  // --- overlay -----------------------------------------------------------------------
+
+  function button(label, title, onClick) {
+
+    var b = document.createElement("button");
+
+    b.type = "button";
+
+    b.textContent = label;
+
+    b.title = title;
+
+    b.setAttribute("aria-label", title);
+
+    b.addEventListener("click", onClick);
+
+    return b;
+
+  }
+
+
+
+  function build() {
+
+    overlay = document.createElement("div");
+
+    overlay.id = "mmd-overlay";
+
+    overlay.setAttribute("role", "dialog");
+
+    overlay.setAttribute("aria-modal", "true");
+
+    overlay.setAttribute("aria-label", "Diagram full screen view");
+
+
+
+    var top = document.createElement("div");
+
+    top.className = "mmd-top";
+
+    prevBtn = button("Previous", "Previous diagram ([ or Page Up)", function () { go(-1); });
+
+    nextBtn = button("Next", "Next diagram (] or Page Down)", function () { go(1); });
+
+    countEl = document.createElement("span");
+
+    countEl.className = "mmd-count";
+
+    titleEl = document.createElement("span");
+
+    titleEl.className = "mmd-title";
+
+    closeBtn = button("Close", "Close (Esc)", close);
+
+    top.appendChild(prevBtn);
+
+    top.appendChild(nextBtn);
+
+    top.appendChild(countEl);
+
+    top.appendChild(titleEl);
+
+    top.appendChild(button("\u2212", "Zoom out (-)", function () { zoomBy(1 / 1.25); }));
+
+    top.appendChild(button("+", "Zoom in (+)", function () { zoomBy(1.25); }));
+
+    top.appendChild(button("Fit", "Fit to screen (0)", fit));
+
+    top.appendChild(button("100%", "Actual size (1)", actual));
+
+    top.appendChild(closeBtn);
+
+
+
+    stage = document.createElement("div");
+
+    stage.className = "mmd-stage";
+
+    canvas = document.createElement("div");
+
+    canvas.className = "mmd-canvas";
+
+    stage.appendChild(canvas);
+
+
+
+    var hint = document.createElement("div");
+
+    hint.className = "mmd-hint";
+
+    hint.textContent = "Drag to pan. Mouse wheel or pinch to zoom. Arrow keys pan, + and - zoom, 0 fits, 1 is actual size, [ and ] switch diagram, Esc closes.";
+
+
+
+    overlay.appendChild(top);
+
+    overlay.appendChild(stage);
+
+    overlay.appendChild(hint);
+
+    document.body.appendChild(overlay);
+
+
+
+    stage.addEventListener("wheel", function (e) {
+
+      e.preventDefault();
+
+      var r = stage.getBoundingClientRect();
+
+      zoomAt(Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+
+    }, { passive: false });
+
+
+
+    var pts = {};
+
+    stage.addEventListener("pointerdown", function (e) {
+
+      stage.setPointerCapture(e.pointerId);
+
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+
+      stage.classList.add("mmd-drag");
+
+    });
+
+    stage.addEventListener("pointermove", function (e) {
+
+      var p = pts[e.pointerId];
+
+      if (!p) return;
+
+      var ids = Object.keys(pts);
+
+      if (ids.length === 2) {
+
+        var o = pts[ids[0] === String(e.pointerId) ? ids[1] : ids[0]];
+
+        var before = Math.hypot(p.x - o.x, p.y - o.y) || 1;
+
+        var after = Math.hypot(e.clientX - o.x, e.clientY - o.y) || 1;
+
+        var r = stage.getBoundingClientRect();
+
+        zoomAt(after / before, (e.clientX + o.x) / 2 - r.left, (e.clientY + o.y) / 2 - r.top);
+
+      } else {
+
+        tx += e.clientX - p.x;
+
+        ty += e.clientY - p.y;
+
+        apply();
+
+      }
+
+      p.x = e.clientX;
+
+      p.y = e.clientY;
+
+    });
+
+    function release(e) {
+
+      delete pts[e.pointerId];
+
+      if (!Object.keys(pts).length) stage.classList.remove("mmd-drag");
+
+    }
+
+    stage.addEventListener("pointerup", release);
+
+    stage.addEventListener("pointercancel", release);
+
+    stage.addEventListener("dblclick", fit);
+
+
+
+    document.addEventListener("keydown", onKey);
+
+    savedOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = "hidden";
+
+  }
+
+
+
+  function apply() {
+
+    canvas.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+
+  }
+
+
+
+  function zoomAt(factor, cx, cy) {
+
+    var s = Math.min(Math.max(scale * factor, 0.05), 12);
+
+    tx = cx - (cx - tx) * (s / scale);
+
+    ty = cy - (cy - ty) * (s / scale);
+
+    scale = s;
+
+    apply();
+
+  }
+
+
+
+  function zoomBy(factor) {
+
+    var r = stage.getBoundingClientRect();
+
+    zoomAt(factor, r.width / 2, r.height / 2);
+
+  }
+
+
+
+  function fit() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = Math.min(r.width / natW, r.height / natH, 3) * 0.96;
+
+    tx = (r.width - natW * scale) / 2;
+
+    ty = (r.height - natH * scale) / 2;
+
+    apply();
+
+  }
+
+
+
+  function actual() {
+
+    var r = stage.getBoundingClientRect();
+
+    scale = 1;
+
+    tx = (r.width - natW) / 2;
+
+    ty = (r.height - natH) / 2;
+
+    apply();
+
+  }
+
+
+
+  function openAt(i, requestFullscreen) {
+
+    var all = diagrams();
+
+    var svg = all[i];
+
+    if (!svg) return;
+
+    if (overlay && index === i) return;
+
+    if (!overlay) build();
+
+    index = i;
+
+
+
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+
+    var box = svg.getBoundingClientRect();
+
+    natW = (vb && vb.width) || box.width || 800;
+
+    natH = (vb && vb.height) || box.height || 600;
+
+    var clone = svg.cloneNode(true);
+
+    clone.removeAttribute("height");
+
+    clone.style.maxWidth = "none";
+
+    clone.style.maxHeight = "none";
+
+    clone.setAttribute("width", natW);
+
+    clone.setAttribute("height", natH);
+
+    canvas.textContent = "";
+
+    canvas.appendChild(clone);
+
+
+
+    titleEl.textContent = headingFor(svg, i);
+
+    countEl.textContent = (i + 1) + " / " + all.length;
+
+    prevBtn.disabled = i === 0;
+
+    nextBtn.disabled = i === all.length - 1;
+
+    prevBtn.hidden = nextBtn.hidden = all.length < 2;
+
+    fit();
+
+    closeBtn.focus();
+
+
+
+    if (requestFullscreen && overlay.requestFullscreen && !document.fullscreenElement) {
+
+      overlay.requestFullscreen().then(fit, function () {});
+
+    }
+
+  }
+
+
+
+  function go(step) {
+
+    var next = index + step;
+
+    if (next < 0 || next >= diagrams().length) return;
+
+    history.replaceState(null, "", "#" + idFor(next));
+
+    openAt(next, false);
+
+  }
+
+
+
+  function close() {
+
+    if (!overlay) return;
+
+    document.removeEventListener("keydown", onKey);
+
+    overlay.remove();
+
+    overlay = stage = canvas = null;
+
+    index = -1;
+
+    document.documentElement.style.overflow = savedOverflow;
+
+    if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+
+    if (HASH.test(location.hash)) {
+
+      if (pushed) { pushed = false; history.back(); }
+
+      else history.replaceState(null, "", location.pathname + location.search);
+
+    }
+
+    if (opener) opener.focus();
+
+  }
+
+
+
+  function onKey(e) {
+
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    var r = stage.getBoundingClientRect(), handled = true;
+
+    switch (e.key) {
+
+      case "Escape": close(); break;
+
+      case "+": case "=": zoomBy(1.25); break;
+
+      case "-": case "_": zoomBy(1 / 1.25); break;
+
+      case "0": fit(); break;
+
+      case "1": actual(); break;
+
+      case "ArrowLeft": tx += 60; apply(); break;
+
+      case "ArrowRight": tx -= 60; apply(); break;
+
+      case "ArrowUp": ty += 60; apply(); break;
+
+      case "ArrowDown": ty -= 60; apply(); break;
+
+      case "[": case "PageUp": go(-1); break;
+
+      case "]": case "PageDown": go(1); break;
+
+      default: handled = false;
+
+    }
+
+    if (handled) e.preventDefault();
+
+  }
+
+
+
+  function fromHash() {
+
+    var m = HASH.exec(location.hash);
+
+    if (m) openAt(Number(m[1]) - 1, false);
+
+    else if (overlay) { pushed = false; close(); }
+
+  }
+
+  window.addEventListener("popstate", fromHash);
+
+  window.addEventListener("hashchange", fromHash);
+
+
+
+  // Mermaid renders after load. Add the links as each diagram appears, and open the view
+
+  // straight away if the URL points to one.
+
+  var scheduled = false, initial = false;
+
+  var observer = new MutationObserver(function () {
+
+    if (scheduled) return;
+
+    scheduled = true;
+
+    requestAnimationFrame(function () {
+
+      scheduled = false;
+
+      if (decorate()) {
+
+        observer.disconnect();
+
+        if (!initial) { initial = true; fromHash(); }
+
+      }
+
+    });
+
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  if (decorate()) { observer.disconnect(); initial = true; fromHash(); }
+
+})();
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC BY-SA 4.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/edit/main/data-models/data-models.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/a73727f">a73727f</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

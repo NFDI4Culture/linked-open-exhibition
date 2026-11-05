@@ -1,0 +1,535 @@
+---
+title: "Data Models"
+subtitle: "Linked Open Exhibition"
+description: "Entity-relationship model for artworks, exhibitions, artists and catalogues, mapped to Wikidata, CIDOC CRM, Linked Art and LIDO, and loaded into Wikibase"
+date: today
+jupyter: python3
+execute:
+  echo: false
+---
+
+## Overview {#overview}
+
+This page describes all entities of the Linked Open Exhibition model in one place:
+
+| Section | Entity | CSV template |
+|---|---|---|
+| [Artwork](#artwork) | artwork (with its terms: material, object type, place) | `import/artwork.csv`, `import/term.csv` |
+| [Item in Exhibition](#item-in-exhibition) | the `Exhibited at` statement of an artwork | `import/exhibition-item.csv` |
+| [Exhibition](#exhibition) | exhibition | `import/exhibition.csv` |
+| [Artist](#artist) | person (artist, author) | `import/person.csv` |
+| [Catalogue](#catalogue) | exhibition catalogue (book), publisher | `import/catalogue.csv`, `import/scan-location.csv` |
+
+The single source of truth is [wikibase-model.json](wikibase-model.json). The class and property tables on this page are generated from it, and the same file drives the creation of Wikibase properties and class items (see `catalogues/wikibase-artwork-load.ipynb`). The CSV-to-property tables describe what the load notebook does with each template column.
+
+::: {.callout-note}
+The field list is **provisional** (version 0.1). Properties are mapped to four schemas: Wikidata, CIDOC CRM 7.1.3, Linked Art and LIDO. Iconclass and AAT are used as controlled vocabularies for subjects and terms. The earlier Wikibase4Research column is no longer part of the model.
+:::
+
+```{python}
+#| output: asis
+import json
+from pathlib import Path
+
+model = json.loads(Path("wikibase-model.json").read_text(encoding="utf-8"))
+ns = model["namespaces"]
+CLASSES = {c["key"]: c for c in model["classes"]}
+PROPS = {p["key"]: p for p in model["properties"]}
+SHARED = ["local_id", "instance_of", "wikidata_qid", "equivalent_property"]
+QUAL_EXHIBITED = ["catalogue_number", "catalogue_page", "title_as_exhibited", "note"]
+QUAL_SCAN = ["scan_page", "scan_region", "extraction_method", "review_status", "note"]
+
+
+def cell(v):
+    return "" if v in (None, "") else str(v).replace("|", "\\|")
+
+
+def class_table(keys):
+    rows = ["| Class | Label (EN / DE) | Wikidata | CIDOC CRM | Linked Art | LIDO |",
+            "|---|---|---|---|---|---|"]
+    for k in keys:
+        c = CLASSES[k]
+        e = c["equivalents"]
+        wd = e.get("wikidata")
+        wd_cell = f"[{wd}]({ns['wikidata']}{wd})" if wd else ""
+        rows.append(f"| **{k}** | {c['label_en']} / {c['label_de']} | {wd_cell} | "
+                    f"{cell(e.get('cidoc'))} | {cell(e.get('linked_art'))} | {cell(e.get('lido'))} |")
+    return "\n".join(rows)
+
+
+def prop_table(keys):
+    rows = ["| Property | Label (EN / DE) | Wikibase datatype | Used on | Wikidata | CIDOC CRM | Linked Art | LIDO |",
+            "|---|---|---|---|---|---|---|---|"]
+    for k in keys:
+        p = PROPS[k]
+        e = p["equivalents"]
+        rows.append("| " + " | ".join([
+            f"**{k}**",
+            f"{p['label_en']} / {p['label_de']}",
+            p["datatype"],
+            ", ".join(p["used_on"]),
+            cell(e.get("wikidata")),
+            cell(e.get("cidoc")),
+            cell(e.get("linked_art")),
+            cell(e.get("lido")),
+        ]) + " |")
+    return "\n".join(rows)
+
+
+def used_on(cls):
+    return [p["key"] for p in model["properties"] if cls in p["used_on"] and p["key"] not in SHARED]
+```
+
+## ER Diagram {#er-diagram}
+
+```{mermaid}
+erDiagram
+    PERSON ||--o{ ARTWORK : "creates"
+    OBJECT_TYPE ||--o{ ARTWORK : "classifies"
+    MATERIAL }o--o{ ARTWORK : "made from"
+    PLACE |o--o{ ARTWORK : "current location"
+    PLACE |o--o{ EXHIBITION : "held at"
+    ARTWORK ||--o{ EXHIBITED_AT : "has statement"
+    EXHIBITION ||--o{ EXHIBITED_AT : "is referenced by"
+    ARTWORK ||--o{ APPEARS_IN : "has statement"
+    CATALOGUE ||--o{ APPEARS_IN : "is referenced by"
+    EXHIBITION |o--o{ CATALOGUE : "documented in"
+    PERSON }o--o{ CATALOGUE : "author"
+    ORGANIZATION |o--o{ CATALOGUE : "publishes"
+
+    ARTWORK {
+        string local_id PK
+        string instance_of
+        string object_type
+        string title
+        string creator
+        date inception
+        string date_text
+        string object_type_text
+        string materials_text
+        string main_subject
+        string made_from_material
+        string inventory_number
+        string catalog_code
+        string location
+        decimal width
+        decimal height
+        decimal depth
+        string part_of_series
+        string depicts
+        string iconclass
+        url image_url
+        string current_owner
+        string commons_category
+        string wikidata_qid
+    }
+    EXHIBITED_AT {
+        string artwork_id FK
+        string exhibition_id FK
+        string catalogue_number "qualifier"
+        string catalogue_page "qualifier"
+        string title_as_exhibited "qualifier"
+        string note "qualifier"
+    }
+    APPEARS_IN {
+        string artwork_id FK
+        string catalogue_id FK
+        string scan_page "qualifier"
+        string scan_region "qualifier"
+        string extraction_method "qualifier"
+        string review_status "qualifier"
+        string note "qualifier"
+    }
+    EXHIBITION {
+        string exhibition_id PK
+        string title
+        date start_date
+        date end_date
+        string venue_id FK
+        string wikidata_qid
+    }
+    CATALOGUE {
+        string catalogue_id PK
+        string title
+        string subtitle
+        string publication_date
+        string isbn13
+        string dnb_edition_id
+        url described_at_url
+        url image_url
+        string exhibition_id FK
+        string wikidata_qid
+    }
+    PERSON {
+        string person_id PK
+        string name
+        string wikidata_qid
+        string gnd_id
+    }
+    ORGANIZATION {
+        string term_id PK
+        string label_en
+        string label_de
+        string wikidata_qid
+    }
+    MATERIAL {
+        string term_id PK
+        string label_en
+        string label_de
+        string aat_id
+        string wikidata_qid
+    }
+    OBJECT_TYPE {
+        string term_id PK
+        string label_en
+        string label_de
+        string aat_id
+        string wikidata_qid
+    }
+    PLACE {
+        string term_id PK
+        string label_en
+        string label_de
+        string wikidata_qid
+    }
+```
+
+`EXHIBITED_AT` and `APPEARS_IN` are not items of their own. They are statements on the artwork whose value is the exhibition or catalogue, with the other columns as qualifiers. Multi-valued fields in the CSV files use `;` as separator.
+
+## Properties for every class {#shared-properties}
+
+These properties apply to all classes. They are not repeated in the sections below.
+
+```{python}
+#| output: asis
+print(prop_table(SHARED))
+```
+
+`local_id` is the ID from the CSV files (for example `ART001`, `EXH001`) and makes loads repeatable. IDs are unique across all files.
+
+## Artwork {#artwork}
+
+An artwork is a human-made object created as a work of art. Persons, materials, object types and places are separate items that the artwork points to.
+
+### Classes
+
+```{python}
+#| output: asis
+print(class_table(["artwork", "person", "material", "object_type", "place"]))
+```
+
+### Properties
+
+```{python}
+#| output: asis
+print(prop_table(used_on("artwork")))
+```
+
+### Controlled vocabularies
+
+| Vocabulary | Used for | Stored as |
+|---|---|---|
+| Iconclass | Subject of an artwork (`iconclass`) | External identifier, notation such as `71H7` |
+| AAT (Getty) | Materials and object types (`aat_id`) | External identifier, numeric ID |
+| GND | Persons (`gnd_id`) | External identifier |
+| Wikidata | Cross-reference for all entity types (`wikidata_qid`) | External identifier |
+
+### Dimensions
+
+Height, width and depth are stored as Wikibase `quantity` values in centimetres. The unit is a local item "centimetre" created by the load notebook, which links to Wikidata unit Q174728 through the equivalent-property mechanism.
+
+### Terms: materials, object types, places, organizations
+
+Materials, object types, places and organizations are items of their own. They are listed in [import/term.csv](import/term.csv), one row per term.
+
+| CSV column | Wikibase property (model key) | Notes |
+|---|---|---|
+| `term_id` | local ID (`local_id`) | for example `MAT001` |
+| `term_type` | Type (`instance_of`) | `material`, `object_type`, `place` or `organization`; the class item of that name |
+| `label_en`, `label_de` | item label | German label falls back to the English one |
+| `aat_id` | AAT ID (`aat_id`) | optional, for materials and object types |
+| `wikidata_qid` | Wikidata item (`wikidata_qid`) | optional |
+
+### CSV source fields
+
+The artworks are loaded from [import/artwork.csv](import/artwork.csv), one row per artwork. Persons and terms are referenced by ID from [import/person.csv](import/person.csv) and [import/term.csv](import/term.csv).
+
+| CSV column | Wikibase property (model key) | Required | Notes |
+|---|---|---|---|
+| `artwork_id` | local ID (`local_id`) | Yes | for example `ART001` |
+| `title` | Title (`title`) | Yes | monolingual text, language `mul` |
+| `object_type_id` | Type (`instance_of`) | Yes | ID from `term.csv` with `term_type` `object_type`; the loader adds it as a second `Type` statement next to the class `artwork`, and does not use the separate `object_type` property |
+| `creator_id` | Creator (`creator`) | Yes | ID from `person.csv` |
+| `date_created` | Date of creation (`inception`) | Yes | `YYYY`, `YYYY-MM` or `YYYY-MM-DD`; a range such as `1997-98` is loaded with its start year and a warning |
+| `material_ids` | Material (`made_from_material`) | Yes | `;`-separated IDs from `term.csv` with `term_type` `material`, one statement each |
+| `height_cm` | Height (`height`) | Yes | centimetres |
+| `width_cm` | Width (`width`) | Yes | centimetres |
+| `depth_cm` | Depth (`depth`) | No | centimetres |
+| `inventory_number` | Inventory no. (`inventory_number`) | No | museum or collection ID |
+| `current_location_id` | location (`location`) | No | ID from `term.csv` with `term_type` `place` |
+| `image_url` | Image (`image_url`) | No | image URL |
+| `iconclass_notations` | Iconclass (`iconclass`) | No | `;`-separated notations |
+| `wikidata_qid` | Wikidata item (`wikidata_qid`) | No | |
+| `date_text` | Date of creation (as stated) (`date_text`) | No | date exactly as printed in the source |
+| `object_type_text` | Object type (as stated) (`object_type_text`) | No | object type exactly as printed in the source |
+| `materials_text` | Materials (as stated) (`materials_text`) | No | materials and technique exactly as printed in the source |
+
+The `*_text` fields keep the source wording, so a reviewer can compare it with the normalised statements.
+
+Fields in the model without a column in `artwork.csv` (`main_subject`, `depicts`, `part_of_series`, `catalog_code`, `current_owner`, `commons_category`) are defined in the Wikibase but not loaded yet. The link to an exhibition comes from `exhibition-item.csv` and the link to a catalogue from `scan-location.csv`.
+
+## Item in Exhibition {#item-in-exhibition}
+
+An artwork is linked to an exhibition with an **`Exhibited at`** statement on the artwork. The details that only the exhibition catalogue knows (catalogue number, catalogue page, the title as printed, a note) are added to that statement as qualifiers. There is no separate exhibition item. The model is the association between the [Artwork](#artwork) and [Exhibition](#exhibition) models.
+
+### Why qualifiers instead of a separate item?
+
+The catalogue details belong to one artwork in one exhibition. Qualifiers on the `Exhibited at` statement keep them next to the statement, work for artworks that appear in several exhibitions (one statement per exhibition), and follow the usual Wikidata pattern for exhibition history (P608).
+
+### Properties
+
+```{python}
+#| output: asis
+print(prop_table(["exhibited_at"] + QUAL_EXHIBITED))
+```
+
+### Example
+
+Baldessari catalogue (Sprengel Museum Hannover), artwork `ART002`:
+
+| Statement | Value |
+|---|---|
+| `Exhibited at` | EXH001 (John Baldessari, Sprengel Museum Hannover) |
+| qualifier `Page(s)` | 14; 51 |
+
+### CSV template
+
+[import/exhibition-item.csv](import/exhibition-item.csv) lists which artwork was shown in which exhibition. The loader turns each row into an `Exhibited at` statement on the artwork, with the catalogue columns as qualifiers.
+
+| CSV column | Wikibase property (model key) | Remarks |
+|---|---|---|
+| `artwork_id` | the artwork item | ID from `artwork.csv` |
+| `exhibition_id` | Exhibited at (`exhibited_at`) | ID from `exhibition.csv` |
+| `catalogue_number` | Catalogue number (`catalogue_number`) | qualifier |
+| `catalogue_page` | Page(s) (`catalogue_page`) | qualifier |
+| `title_as_exhibited` | Title as exhibited (`title_as_exhibited`) | qualifier |
+| `notes` | note (`note`) | qualifier |
+
+### Corrections to the earlier draft
+
+| Earlier mapping | Problem | Now |
+|---|---|---|
+| Exhibited at: P1431 | P1431 is "executive producer" | P608 "exhibition history" |
+| Depth: P2610 | P2610 is "thickness" | P5524 "depth" |
+| Acquisition: P1830, provenance: P2670 | Both properties have other meanings | Removed from this model |
+| Instance of: Q3305213 | Q3305213 is "painting" | Q838948 "work of art" plus an object type item |
+| CIDOC location: P87 | P87 is "is identified by" for places | P55 "has current location" |
+| Series: P108 | P108 is "has produced" | Removed from this model |
+| Wikibase4Research column | Dropped from scope | Linked Art and LIDO columns |
+
+## Exhibition {#exhibition}
+
+An exhibition is a temporary presentation of artworks at a venue. The artworks point to the exhibition with `Exhibited at`; the exhibition points to its catalogues with `Exhibition catalogue`.
+
+### Class
+
+```{python}
+#| output: asis
+print(class_table(["exhibition"]))
+```
+
+### Properties
+
+```{python}
+#| output: asis
+print(prop_table(used_on("exhibition")))
+```
+
+The shared properties `local_id`, `instance_of` and `wikidata_qid` are listed [above](#shared-properties).
+
+### Example
+
+Exhibition `EXH001` (Sprengel Museum Hannover, [Q141747732](https://www.wikidata.org/wiki/Q141747732)):
+
+| Property | Value |
+|---|---|
+| Title | BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999 |
+| Start date | 1999-09-26 |
+| End date | 2000-01-02 |
+| location | `PLC001` (Sprengel Museum Hannover) |
+| Exhibition catalogue | `CAT001` |
+
+### CSV source fields
+
+The exhibitions are loaded from [import/exhibition.csv](import/exhibition.csv), one row per exhibition.
+
+| CSV column | Wikibase property (model key) | Required | Notes |
+|---|---|---|---|
+| `exhibition_id` | local ID (`local_id`) | Yes | for example `EXH001` |
+| `title` | Title (`title`) | Yes | monolingual text, language `mul`; also used as item label |
+| `start_date` | Start date (`start_date`) | No | `YYYY`, `YYYY-MM` or `YYYY-MM-DD` |
+| `end_date` | End date (`end_date`) | No | same formats |
+| `venue_id` | location (`location`) | No | ID from `term.csv` with `term_type` `place` |
+| `wikidata_qid` | Wikidata item (`wikidata_qid`) | No | |
+
+`Exhibition catalogue` has no column here. The loader adds it from the `exhibition_id` column of `catalogue.csv`, after the catalogues are loaded.
+
+### Not yet modelled
+
+The earlier draft of this page listed further Wikidata properties. They are not in `wikibase-model.json` and are not loaded. They can be added to the JSON file when needed, which then also adds them to the tables above.
+
+| Field | Wikidata | CIDOC CRM |
+|---|---|---|
+| Curator | P1640 | P14_carried_out_by |
+| Participant | P710 | P11_had_participant |
+| Official website | P856 | P1_is_identified_by |
+| Organizer | P664 | P14_carried_out_by |
+| Country | P17 | P7_took_place_at |
+| Language | P407 | P72_has_language |
+| Theme | P921 | P129_is_about |
+| Sponsor | P859 | none |
+| Number of visitors | P1174 | none |
+| Commons category | P373 | P1_is_identified_by |
+
+## Artist {#artist}
+
+Artists, catalogue authors and other people are items of the class `person`. The class is deliberately small: a name (the item label) and identifiers. Biographical data stays in Wikidata and is reachable through `wikidata_qid`.
+
+### Class
+
+```{python}
+#| output: asis
+print(class_table(["person"]))
+```
+
+### Properties
+
+```{python}
+#| output: asis
+print(prop_table(used_on("person")))
+```
+
+The shared properties `local_id`, `instance_of` and `wikidata_qid` are listed [above](#shared-properties). A person is used as `creator` of an artwork and as `author` of a catalogue.
+
+### Example
+
+Person `PER001`:
+
+| Property | Value |
+|---|---|
+| Label | John Baldessari |
+| Wikidata item | [Q683378](https://www.wikidata.org/wiki/Q683378) |
+| GND ID | 118506153 |
+
+### CSV source fields
+
+The persons are loaded from [import/person.csv](import/person.csv), one row per person.
+
+| CSV column | Wikibase property (model key) | Notes |
+|---|---|---|
+| `person_id` | local ID (`local_id`) | for example `PER001` |
+| `name` | item label | used as English and German label |
+| `wikidata_qid` | Wikidata item (`wikidata_qid`) | optional |
+| `gnd_id` | GND ID (`gnd_id`) | optional |
+
+### Not yet modelled
+
+The earlier draft of this page listed biographical properties. They are not in `wikibase-model.json` and are not loaded; the Wikidata item is the place for them.
+
+| Field | Wikidata | CIDOC CRM |
+|---|---|---|
+| Given name | P735 | P1_is_identified_by (E82_Appellation) |
+| Family name | P734 | P1_is_identified_by (E82_Appellation) |
+| Occupation | P106 | P2_has_type (E55_Type) |
+| Date of birth | P569 | P82_at_some_time_within (E52_Time-Span) |
+| Date of death | P570 | P82_at_some_time_within (E52_Time-Span) |
+| Citizenship | P27 | P2_has_type (E55_Type) |
+| Getty ULAN | P245 | P1_is_identified_by (E42_Identifier) |
+| VIAF | P214 | P1_is_identified_by (E42_Identifier) |
+| ISNI | P213 | P1_is_identified_by (E42_Identifier) |
+
+## Catalogue {#catalogue}
+
+A catalogue is a published book, for example the one that accompanies an exhibition. Catalogues are also the source of the artwork records: each artwork records the catalogue it was taken from.
+
+### Classes
+
+```{python}
+#| output: asis
+print(class_table(["catalogue", "organization"]))
+```
+
+### Properties
+
+```{python}
+#| output: asis
+print(prop_table(used_on("catalogue")))
+```
+
+The shared properties `local_id`, `instance_of` and `wikidata_qid` are listed [above](#shared-properties).
+
+### CSV source fields
+
+The fields above are loaded from [import/catalogue.csv](import/catalogue.csv) (one row per catalogue) by the notebook `catalogues/wikibase-artwork-load.ipynb`.
+
+| CSV column | Wikibase property (model key) | Remarks |
+|---|---|---|
+| `catalogue_id` | local ID (`local_id`) | for example `CAT001` |
+| (class) | Type (`instance_of`) | the class item `catalogue`, equivalent to Wikidata Q2352616 |
+| `title` | Title (`title`) | monolingual text |
+| `subtitle` | Subtitle (`subtitle`) | string, as printed |
+| `author_ids` | Author (`author`) | `;`-separated IDs from `person.csv`, one statement each |
+| `publisher_id` | Publisher (`publisher`) | ID from `term.csv` with `term_type` `organization` |
+| `publication_date` | Publication date (`publication_date`) | `YYYY` or `YYYY-MM-DD` |
+| `isbn13` | ISBN-13 (`isbn13`) | checked for a valid check digit |
+| `dnb_edition_id` | DNB edition ID (`dnb_edition_id`) | Wikidata P1292; used instead of GND, because the DNB gives books an IDN, not a GND ID |
+| `described_at_url` | Described at URL (`described_at_url`) | for example `https://d-nb.info/957409494` |
+| `image_url` | Image (`image_url`) | cover image URL (optional) |
+| `exhibition_id` | Catalogue of (`catalogue_of`) | links the catalogue to its exhibition from `exhibition.csv`; the exhibition gets the inverse statement Exhibition catalogue (`exhibition_catalogue`) |
+| `wikidata_qid` | Wikidata item (`wikidata_qid`) | optional |
+
+The first entry, `CAT001`, is the catalogue of the exhibition `EXH001` ("BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999"), DNB record [957409494](https://d-nb.info/957409494). The artworks point to the same exhibition with `Exhibited at`, so the exhibition item connects the artworks and the catalogue.
+
+### Which catalogue an artwork appears in, and where
+
+Each artwork records the catalogue it appears in with an `Appears in catalogue` statement. For the Baldessari artworks this is `CAT001`, because that is the catalogue the records were taken from. The statements come from [import/scan-location.csv](import/scan-location.csv), one row per artwork and catalogue (and per page, once pages are known). The columns after `catalogue_id` are optional. When they are filled in, they let a reviewer check the extraction against the scan. An artwork on several pages has several rows. The loader turns each row into a statement on the artwork (pointing to the catalogue item) with the other columns as qualifiers.
+
+```{python}
+#| output: asis
+print(prop_table(["appears_in_catalogue"] + QUAL_SCAN))
+```
+
+| CSV column | Wikibase property (model key) | Remarks |
+|---|---|---|
+| `artwork_id` | the artwork item | ID from `artwork.csv` |
+| `catalogue_id` | Appears in catalogue (`appears_in_catalogue`) | ID from `catalogue.csv` |
+| `scan_page` | Scan page (`scan_page`) | optional. Position of the page in the scan, first page = 1. This is not the printed page number, which stays in `catalogue_page` of `exhibition-item.csv`; the two usually differ by an offset |
+| `scan_region` | Scan region (`scan_region`) | optional, see below |
+| `extraction_method` | Extraction method (`extraction_method`) | for example `plan-c qwen3-vl:8b`, `plan-b hocr`, `manual` |
+| `review_status` | Review status (`review_status`) | `unreviewed`, `confirmed`, `corrected` or `rejected` |
+| `notes` | note (`note`) | optional comment from the reviewer |
+
+**Region format.** `scan_region` uses the W3C Media Fragments syntax `xywh=percent:x,y,width,height`, for example `xywh=percent:10,20,40,8`. Percent values refer to the page size, so they stay valid for any image resolution. `xywh=pixel:x,y,width,height` is also accepted. The same syntax is used by IIIF and the Web Annotation model, so the regions can later be shown on a viewer without conversion. The corners from hOCR (`bbox x0 y0 x1 y1`) or ALTO (`HPOS`, `VPOS`, `WIDTH`, `HEIGHT`) have to be converted to x, y, width, height first.
+
+The rows in `scan-location.csv` currently only link every artwork to `CAT001`. Pages, regions, extraction method and review status will be added when the extraction data (plan B) is ready.
+
+### Best practices for catalogue records
+
+1. **Use Wikidata items**: link to existing Wikidata items for authors and organizations to enable cross-institutional discovery.
+2. **ISBN validation**: ISBN-13 numbers must have a valid check digit. Use the format with hyphens (978-X-XXXX-XXXX-X) for readability.
+3. **Publication dates**: use ISO 8601 (YYYY-MM-DD) where precise dates are available, or just YYYY for year-only precision.
+4. **Multilingual titles**: where a catalogue is published in several languages, add further title statements as monolingual text.
+5. **URL persistence**: prefer persistent URLs (DOI or similar) over temporary web links for `described_at_url`.
+
+## Related standards and references {#references}
+
+- [CIDOC CRM v7.1.3](https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html), formal ontology for cultural heritage
+- [Linked Art](https://linked.art/), data model for describing cultural heritage
+- [LIDO](https://lido-schema.org/), XML schema for museum objects
+- [Wikidata WikiProject Exhibitions](https://www.wikidata.org/wiki/Wikidata:WikiProject_Exhibitions), community guidelines for exhibition properties
+- [Wikidata WikiProject Books](https://www.wikidata.org/wiki/Wikidata:WikiProject_Books), community guidelines for bibliographic properties
+- [Linked Open Exhibition project](https://github.com/NFDI4Culture/linked-open-exhibition), project repository
+
+For updates to this data model or suggestions for improvement, please contact the NFDI4Culture Linked Open Exhibition project team or contribute via [GitHub](https://github.com/NFDI4Culture/linked-open-exhibition).
+
+This documentation was created with assistance from **GitHub Copilot**. The model was aligned against CIDOC CRM, Linked Art, LIDO and Wikidata through AI-assisted analysis and formatting.

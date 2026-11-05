@@ -190,7 +190,7 @@ The catalogue items are stored in a structured XML file validated against a cust
 | [`catalogues/scan-2/catalogue-items.dtd`](catalogues/scan-2/catalogue-items.dtd) | Document Type Definition (DTD) |
 
 ::: {.callout-note}
-This DTD predates the revised [Artwork](data-models/artwork-datamodel.qmd) and [Item in Exhibition](data-models/item-in-exhibition-datamodel.qmd) data models. A new DTD will be derived from `data-models/wikibase-model.json`.
+This DTD predates the revised [Artwork](data-models/data-models.qmd#artwork) and [Item in Exhibition](data-models/data-models.qmd#item-in-exhibition) data models. A new DTD will be derived from `data-models/wikibase-model.json`.
 :::
 
 ### Schema Mappings

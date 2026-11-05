@@ -1,2 +1,2 @@
 catalogue_id,title,subtitle,author_ids,publisher_id,publication_date,isbn13,dnb_edition_id,described_at_url,image_url,exhibition_id,wikidata_qid
-CAT001,Baldessari,"while something is happening here, something else is happening there ; works 1988 - 1999 ; Spectrum - Internationaler Preis für Fotografie der Stiftung Niedersachsen ; [Sprengel-Museum Hannover, 26.9.1999 - 2.1.2000 und Staatliche Kunstsammlungen Dresden, Gemäldegalerie Neue Meister, 15.1. - 2.4.2000]",PER003; PER004; PER005,ORG001,1999,978-3-88375-396-6,957409494,https://d-nb.info/957409494,,EXH001,
+CAT001,"BALDESSARI: While something is happening here, something else is happening there","Works 1988–1999",PER003; PER004; PER005,ORG001,1999,978-3-88375-396-6,957409494,https://d-nb.info/957409494,,EXH001,

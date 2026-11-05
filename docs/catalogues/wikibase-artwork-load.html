@@ -171,24 +171,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-models">    
         <li>
-    <a class="dropdown-item" href="../data-models/artist-datamodel.html">
- <span class="dropdown-text">Artist Data Model</span></a>
+    <a class="dropdown-item" href="../data-models/data-models.html">
+ <span class="dropdown-text">Wikibase Data Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-models/exhibition-datamodel.html">
- <span class="dropdown-text">Exhibition Data Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data-models/dnb-catalogue-datamodel.html">
- <span class="dropdown-text">DNB Catalogue Data Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data-models/artwork-datamodel.html">
- <span class="dropdown-text">Artwork Data Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data-models/item-in-exhibition-datamodel.html">
- <span class="dropdown-text">Item in Exhibition Data Model</span></a>
+    <a class="dropdown-item" href="../data-models/portability/er-model.html">
+ <span class="dropdown-text">Portability: ER Model, DTD, SQL</span></a>
   </li>  
     </ul>
   </li>
@@ -318,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><strong>Project:</strong> Linked Open Exhibition</p>
 <p><strong>Purpose:</strong> Create the Wikibase properties and class items defined in <code>data-models/wikibase-model.json</code>, then load persons, terms (materials, object types, places, organizations), exhibitions, artworks and catalogues from CSV files. Each artwork gets an <code>Exhibited at</code> statement for every exhibition it was shown in, with the catalogue details as qualifiers. Each catalogue (book) is linked to its exhibition with a <code>Catalogue of</code> statement, and the exhibition points back with an <code>Exhibition catalogue</code> statement.</p>
-<p><strong>Inputs</strong> (see <a href="../data-models/artwork-datamodel.html">Artwork Data Model</a> and <a href="../data-models/item-in-exhibition-datamodel.html">Item in Exhibition Data Model</a>):</p>
+<p><strong>Inputs</strong> (see <a href="../data-models/data-models.html#artwork">Artwork</a> and <a href="../data-models/data-models.html#item-in-exhibition">Item in Exhibition</a> data models):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -353,11 +341,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>catalogue.csv</code></td>
-<td>Exhibition catalogues (books) with authors, publisher, ISBN, DNB record and the exhibition they document (see <a href="../data-models/dnb-catalogue-datamodel.html">DNB Catalogue Data Model</a>)</td>
+<td>Exhibition catalogues (books) with authors, publisher, ISBN, DNB record and the exhibition they document (see <a href="../data-models/data-models.html#catalogue">Catalogue data model</a>)</td>
 </tr>
 </tbody>
 </table>
-<p>The CSV files are read from a public Nextcloud share (<code>NEXTCLOUD_SHARE_URL</code>). If it is not set, the sample files in <code>data-models/templates/</code> are used.</p>
+<p>The CSV files are read from a public Nextcloud share (<code>NEXTCLOUD_SHARE_URL</code>). If it is not set, the sample files in <code>data-models/import/</code> are used.</p>
 <p><strong>Safe by default:</strong> <code>DRY_RUN = True</code> validates the CSV files and prints what would be created. Nothing is written to Wikibase until <code>DRY_RUN = False</code>.</p>
 <p><strong>Repeatable:</strong> every entity carries its CSV ID as a <code>local ID</code> statement. Running the notebook again updates the existing items instead of duplicating them.</p>
 <p>Environment variables (<code>.env</code>): <code>WB_URL</code>, <code>SPARQL_URL</code>, <code>WB_USER</code>, <code>WB_PASSWORD</code>, <code>NEXTCLOUD_SHARE_URL</code>, optional <code>NEXTCLOUD_SHARE_PASSWORD</code>.</p>
@@ -390,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>API <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>WB_URL<span class="sc">}</span><span class="ss">/w/api.php"</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>MODEL_PATH <span class="op">=</span> REPO <span class="op">/</span> <span class="st">"data-models"</span> <span class="op">/</span> <span class="st">"wikibase-model.json"</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>LOCAL_CSV_DIR <span class="op">=</span> REPO <span class="op">/</span> <span class="st">"data-models"</span> <span class="op">/</span> <span class="st">"templates"</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>LOCAL_CSV_DIR <span class="op">=</span> REPO <span class="op">/</span> <span class="st">"data-models"</span> <span class="op">/</span> <span class="st">"import"</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>ID_MAP_PATH <span class="op">=</span> REPO <span class="op">/</span> <span class="st">"data-models"</span> <span class="op">/</span> <span class="st">"wikibase-ids.json"</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>CSV_FILES <span class="op">=</span> {</span>
@@ -423,7 +411,7 @@ Model: linked-open-exhibition artwork and exhibition-item model v0.1-provisional
 </section>
 <section id="read-the-csv-files" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-csv-files">2. Read the CSV files</h2>
-<p>From the Nextcloud public share if <code>NEXTCLOUD_SHARE_URL</code> is set (format <code>https://host/index.php/s/&lt;token&gt;</code>), otherwise from <code>data-models/templates/</code>. The CSV files are expected in the root folder of the share.</p>
+<p>From the Nextcloud public share if <code>NEXTCLOUD_SHARE_URL</code> is set (format <code>https://host/index.php/s/&lt;token&gt;</code>), otherwise from <code>data-models/import/</code>. The CSV files are expected in the root folder of the share.</p>
 <div id="983ec677" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_csv_text(filename):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> NEXTCLOUD_SHARE_URL:</span>
@@ -455,7 +443,7 @@ term.csv                  6 rows
 exhibition.csv            1 rows
 artwork.csv               3 rows
 exhibition-item.csv       3 rows
-Source: c:\git\linked-open-exhibition\data-models\templates</code></pre>
+Source: c:\git\linked-open-exhibition\data-models\import</code></pre>
 </div>
 </div>
 </section>
@@ -2138,7 +2126,7 @@ Helpers ready.</code></pre>
       &nbsp;
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/NFDI4Culture/linked-open-exhibition/blob/main/catalogues/wikibase-artwork-load.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NFDI4Culture/linked-open-exhibition/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/ef226ce">ef226ce</a></p>
+<p>Agentic coding assistant: Copilot (Claude Sonnet 4.6) — commit: <a href="https://github.com/NFDI4Culture/linked-open-exhibition/commit/479fc85">479fc85</a></p>
 </div>
   </div>
 </footer>

@@ -51,8 +51,12 @@ website:
             text: "Baldessari — Sprengel Museum"
       - href: data-analysis.qmd
         text: Data Analysis
-      - href: data-models/data-models.qmd
-        text: Data Models
+      - text: "Data Models"
+        menu:
+          - href: data-models/data-models.qmd
+            text: Wikibase Data Model
+          - href: data-models/portability/er-model.qmd
+            text: "Portability: ER Model, DTD, SQL"
       - href: about.qmd
         text: About
       - href: PLAN.qmd

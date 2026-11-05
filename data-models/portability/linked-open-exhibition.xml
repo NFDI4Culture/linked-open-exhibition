@@ -1090,7 +1090,7 @@
     <gnd_id>119093022</gnd_id>
   </person>
   <exhibition id="EXH001" wikibase="Q49" source="exhibition.csv:2">
-    <title xml:lang="mul">while something is happening here, something else is happening there : works 1988 - 1999</title>
+    <title xml:lang="mul">BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999</title>
     <location ref="PLC001"/>
     <wikidata_qid>Q141747732</wikidata_qid>
     <start_date>1999-09-26</start_date>
@@ -1098,8 +1098,8 @@
     <exhibition_catalogue ref="CAT001"/>
   </exhibition>
   <catalogue id="CAT001" wikibase="Q211" source="catalogue.csv:2">
-    <title xml:lang="mul">Baldessari</title>
-    <subtitle>while something is happening here, something else is happening there ; works 1988 - 1999 ; Spectrum - Internationaler Preis für Fotografie der Stiftung Niedersachsen ; [Sprengel-Museum Hannover, 26.9.1999 - 2.1.2000 und Staatliche Kunstsammlungen Dresden, Gemäldegalerie Neue Meister, 15.1. - 2.4.2000]</subtitle>
+    <title xml:lang="mul">BALDESSARI: While something is happening here, something else is happening there</title>
+    <subtitle>Works 1988–1999</subtitle>
     <author ref="PER003"/>
     <author ref="PER004"/>
     <author ref="PER005"/>

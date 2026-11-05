@@ -318,27 +318,27 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><a href="#artwork">Artwork</a></td>
 <td>artwork (with its terms: material, object type, place)</td>
-<td><code>templates/artwork.csv</code>, <code>templates/term.csv</code></td>
+<td><code>import/artwork.csv</code>, <code>import/term.csv</code></td>
 </tr>
 <tr class="even">
 <td><a href="#item-in-exhibition">Item in Exhibition</a></td>
 <td>the <code>Exhibited at</code> statement of an artwork</td>
-<td><code>templates/exhibition-item.csv</code></td>
+<td><code>import/exhibition-item.csv</code></td>
 </tr>
 <tr class="odd">
 <td><a href="#exhibition">Exhibition</a></td>
 <td>exhibition</td>
-<td><code>templates/exhibition.csv</code></td>
+<td><code>import/exhibition.csv</code></td>
 </tr>
 <tr class="even">
 <td><a href="#artist">Artist</a></td>
 <td>person (artist, author)</td>
-<td><code>templates/person.csv</code></td>
+<td><code>import/person.csv</code></td>
 </tr>
 <tr class="odd">
 <td><a href="#catalogue">Catalogue</a></td>
 <td>exhibition catalogue (book), publisher</td>
-<td><code>templates/catalogue.csv</code>, <code>templates/scan-location.csv</code></td>
+<td><code>import/catalogue.csv</code>, <code>import/scan-location.csv</code></td>
 </tr>
 </tbody>
 </table>
@@ -926,7 +926,7 @@ Note
 </section>
 <section id="terms-materials-object-types-places-organizations" class="level3">
 <h3 class="anchored" data-anchor-id="terms-materials-object-types-places-organizations">Terms: materials, object types, places, organizations</h3>
-<p>Materials, object types, places and organizations are items of their own. They are listed in <a href="templates/term.csv">templates/term.csv</a>, one row per term.</p>
+<p>Materials, object types, places and organizations are items of their own. They are listed in <a href="import/term.csv">import/term.csv</a>, one row per term.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -971,7 +971,7 @@ Note
 </section>
 <section id="csv-source-fields" class="level3">
 <h3 class="anchored" data-anchor-id="csv-source-fields">CSV source fields</h3>
-<p>The artworks are loaded from <a href="templates/artwork.csv">templates/artwork.csv</a>, one row per artwork. Persons and terms are referenced by ID from <a href="templates/person.csv">templates/person.csv</a> and <a href="templates/term.csv">templates/term.csv</a>.</p>
+<p>The artworks are loaded from <a href="import/artwork.csv">import/artwork.csv</a>, one row per artwork. Persons and terms are referenced by ID from <a href="import/person.csv">import/person.csv</a> and <a href="import/term.csv">import/term.csv</a>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -1206,7 +1206,7 @@ Note
 </section>
 <section id="csv-template" class="level3">
 <h3 class="anchored" data-anchor-id="csv-template">CSV template</h3>
-<p><a href="templates/exhibition-item.csv">templates/exhibition-item.csv</a> lists which artwork was shown in which exhibition. The loader turns each row into an <code>Exhibited at</code> statement on the artwork, with the catalogue columns as qualifiers.</p>
+<p><a href="import/exhibition-item.csv">import/exhibition-item.csv</a> lists which artwork was shown in which exhibition. The loader turns each row into an <code>Exhibited at</code> statement on the artwork, with the catalogue columns as qualifiers.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1457,7 +1457,7 @@ Note
 </section>
 <section id="csv-source-fields-1" class="level3">
 <h3 class="anchored" data-anchor-id="csv-source-fields-1">CSV source fields</h3>
-<p>The exhibitions are loaded from <a href="templates/exhibition.csv">templates/exhibition.csv</a>, one row per exhibition.</p>
+<p>The exhibitions are loaded from <a href="import/exhibition.csv">import/exhibition.csv</a>, one row per exhibition.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -1676,7 +1676,7 @@ Note
 </section>
 <section id="csv-source-fields-2" class="level3">
 <h3 class="anchored" data-anchor-id="csv-source-fields-2">CSV source fields</h3>
-<p>The persons are loaded from <a href="templates/person.csv">templates/person.csv</a>, one row per person.</p>
+<p>The persons are loaded from <a href="import/person.csv">import/person.csv</a>, one row per person.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1938,7 +1938,7 @@ Note
 </section>
 <section id="csv-source-fields-3" class="level3">
 <h3 class="anchored" data-anchor-id="csv-source-fields-3">CSV source fields</h3>
-<p>The fields above are loaded from <a href="templates/catalogue.csv">templates/catalogue.csv</a> (one row per catalogue) by the notebook <code>catalogues/wikibase-artwork-load.ipynb</code>.</p>
+<p>The fields above are loaded from <a href="import/catalogue.csv">import/catalogue.csv</a> (one row per catalogue) by the notebook <code>catalogues/wikibase-artwork-load.ipynb</code>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -2024,7 +2024,7 @@ Note
 </section>
 <section id="which-catalogue-an-artwork-appears-in-and-where" class="level3">
 <h3 class="anchored" data-anchor-id="which-catalogue-an-artwork-appears-in-and-where">Which catalogue an artwork appears in, and where</h3>
-<p>Each artwork records the catalogue it appears in with an <code>Appears in catalogue</code> statement. For the Baldessari artworks this is <code>CAT001</code>, because that is the catalogue the records were taken from. The statements come from <a href="templates/scan-location.csv">templates/scan-location.csv</a>, one row per artwork and catalogue (and per page, once pages are known). The columns after <code>catalogue_id</code> are optional. When they are filled in, they let a reviewer check the extraction against the scan. An artwork on several pages has several rows. The loader turns each row into a statement on the artwork (pointing to the catalogue item) with the other columns as qualifiers.</p>
+<p>Each artwork records the catalogue it appears in with an <code>Appears in catalogue</code> statement. For the Baldessari artworks this is <code>CAT001</code>, because that is the catalogue the records were taken from. The statements come from <a href="import/scan-location.csv">import/scan-location.csv</a>, one row per artwork and catalogue (and per page, once pages are known). The columns after <code>catalogue_id</code> are optional. When they are filled in, they let a reviewer check the extraction against the scan. An artwork on several pages has several rows. The loader turns each row into a statement on the artwork (pointing to the catalogue item) with the other columns as qualifiers.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 12%">

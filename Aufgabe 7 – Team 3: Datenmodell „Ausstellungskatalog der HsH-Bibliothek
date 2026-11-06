@@ -1,0 +1,273 @@
+---
+title: "Aufgabe 7 – Team 3: Datenmodell „Ausstellungskatalog der HsH-Bibliothek“"
+subtitle: "Fallbeispiel: Max Ernst – Das graphische Œuvre (Sprengel Museum Hannover, 1990)"
+author:
+  - name: "JoeJoe2204"
+    orcid: "0009-0004-6238-895X"
+date: 2026-07-27
+lang: de
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+## Kurzüberblick
+
+Team 3 baut das Datenmodell **bottom-up aus einer realen Quelle** auf. Als konkreter
+Bibliotheksdatensatz dient ein Ausstellungskatalog des Sprengel Museums, der in der
+HsH-Bibliothek vorhanden ist:
+
+> **Max Ernst: Das graphische Œuvre. Werke aus der Sammlung des Sprengel Museum Hannover.**
+> Katalog zur Ausstellung 8.7.–30.9.1990. Bearb. von Norbert Nobis und Grit Wendelberger.
+> Hannover: Sprengel Museum Hannover, 1990. ISBN 3-89169-059-2.
+
+Der Katalog eignet sich als Fallbeispiel, weil er sowohl bibliografische Metadaten als auch
+strukturierte Informationen zu den beschriebenen Kunstwerken enthält. Dadurch lassen sich
+bibliothekarische und museale Standards gemeinsam anwenden und der Ausstellungskatalog als
+Bestandteil eines Linked-Open-Data-Netzwerks modellieren:
+
+1. **Bibliografische Ebene** (das Buch selbst) → Bibliotheksstandards MARC21 / Dublin Core / BIBFRAME
+2. **Objektebene** (die im Katalog beschriebenen Werke im „Katalog der ausgestellten Werke“) →
+   Museumsstandards LIDO / CIDOC CRM (deckungsgleich mit dem Mapping aus **meiner Aufgabe 3**)
+
+Damit lässt sich der Katalog als Knoten in ein Netz einbetten: *Buch → Ausstellung →
+Künstler → Museum → einzelne Werke*.
+
+Die beiden geforderten Arbeitsschritte werden so abgedeckt:
+
+- **Aktivität 1 (bottom-up):** die Feldlisten in [Abschnitt 2](#datenmodell) – direkt aus dem
+  gescannten Katalog transkribiert.
+- **Aktivität 2 (top-down):** die Schema-Zuordnung in [Abschnitt 3](#mapping) plus die Verknüpfung
+  auf Normdaten (GND, Wikidata, Getty).
+
+::: {.callout-note}
+Datentypen in den Mapping-Tabellen sind **von den Wikidata-Property-Seiten** übernommen
+(z. B. P1476 = *monolingualer Text*, P577 = *Zeitpunkt*, P1104 = *Anzahl*). QIDs haben keinen
+Datentyp und stehen deshalb nur als Wertebeispiele.
+:::
+
+---
+
+## Datenmodell {#datenmodell}
+
+### 2.1 Entitäten
+
+| Entität | Rolle im Modell | Beispiel aus dem Katalog |
+|---|---|---|
+| **Katalog** | bibliografischer Datensatz / Ausgabe (FRBR *Manifestation/Instance*) | „Max Ernst: Das graphische Œuvre“, 1990 |
+| **Exemplar** | physisches Stück der HsH-Bibliothek (FRBR *Item*) | Barcode 01 109 421, Signatur „MON ERNS. M 74“ |
+| **Ausstellung** | das Ereignis, das der Katalog begleitet | Sprengel Museum, 8.7.–30.9.1990 |
+| **Person** | Künstler, Herausgeber, Essay-Autoren | Max Ernst; Norbert Nobis; Grit Wendelberger; Werner Spies |
+| **Organisation** | Verlag / Veranstalter / haltende Bibliothek | Sprengel Museum Hannover; Hochschule Hannover |
+| **Werk** | einzelnes Kunstwerk (Katalognummer) | Kat.-Nr. 2 „Bemalte Tür … Eaubonne“ |
+| **Ort** | Erscheinungs-/Veranstaltungsort | Hannover |
+
+### 2.2 Feldliste – Bibliografische Ebene (bottom-up)
+
+Violett-graue Zellen der Vorlage = bearbeitbare Kernfelder; orange = auszufüllende Werte.
+Hier bereits **mit den echten Werten aus dem Katalog** befüllt:
+
+| # | Feld | Beispielwert (aus dem Katalog) | Datentyp |
+|---|---|---|---|
+| 1 | Titel | Max Ernst: Das graphische Œuvre | monolingualer Text |
+| 2 | Untertitel | Werke aus der Sammlung des Sprengel Museum Hannover | monolingualer Text |
+| 3 | Herausgeber / Bearbeiter | Norbert Nobis; Grit Wendelberger | Objekt (Person) |
+| 4 | Illustrator / dargestellter Künstler | Max Ernst (im DNB-CIP-Eintrag als „[Ill.]“ geführt) | Objekt (Person) |
+| 5 | Beteiligte Autoren (Essays) | Dieter Ronte; Joachim Büchner; Werner Spies; Bernhard Holeczek | Objekt (Person) |
+| 6 | Verlag / herausgebende Institution | Sprengel Museum Hannover | Objekt (Organisation) |
+| 7 | Erscheinungsort | Hannover | Objekt (Ort) |
+| 8 | Erscheinungsjahr | 1990 | Zeitpunkt |
+| 9 | ISBN | 3-89169-059-2 | externer Identifikator |
+| 10 | Sprache | Deutsch (mit französischen Werktiteln) | Objekt (Sprache) |
+| 11 | Umfang | 171 S. (letzte gezählte Seite), zahlr. Abb. | Anzahl |
+| 12 | Gattung / Publikationstyp | Ausstellungskatalog | Objekt |
+| 13 | Thema – Person | Max Ernst | Objekt (Person) |
+| 14 | Thema – Sachbegriffe | Druckgraphik; Surrealismus; Dadaismus; Collage; Frottage | Objekt |
+| 15 | zugehörige Ausstellung | Max Ernst – Das graphische Œuvre, 8.7.–30.9.1990 | Objekt (Ereignis) |
+| 16 | referenziertes Werkverzeichnis | Spies/Metken; Spies/Leppien | monolingualer Text |
+| 17 | Signatur (Exemplar) | MON ERNS. M 74 *(handschriftlich – Lesung gegen VuFind prüfen)* | Zeichenkette |
+| 18 | Exemplar-/Barcode-ID | 01 109 421 | Zeichenkette |
+| 19 | haltende Bibliothek | Hochschule Hannover (ehem. FHB Hannover) | Objekt (Organisation) |
+
+### 2.3 Feldliste – Werk-Ebene (bottom-up, „data-mining“-Ausbeute)
+
+Der „Katalog der ausgestellten Werke“ ist hoch strukturiert – das ist die eigentliche
+Text-/Data-Mining-Ausbeute. Beispiel **Kat.-Nr. 2**:
+
+| Feld | Beispielwert | Datentyp |
+|---|---|---|
+| Katalognummer | 2 | Zeichenkette |
+| Titel | Ohne Titel (Bemalte Tür aus dem Haus von Paul Eluard in Eaubonne) | monolingualer Text |
+| Datierung | 1923 | Zeitpunkt |
+| Technik / Material | Öl/Holz | Objekt |
+| Maße | 205 × 80 cm | Anzahl + Einheit |
+| Bezeichnung / Signatur | Bez. u. r.: max ernst | monolingualer Text |
+| Werkverzeichnis-Referenz | Spies/Metken 638 | Zeichenkette |
+| Erwerbung / Provenienz | Geschenk der Pelikan-Werke AG, erworben 1979 | monolingualer Text |
+| Sammlung | Sprengel Museum Hannover | Objekt (Organisation) |
+| Inventarnummer | SH 14/1979 | Zeichenkette |
+| Urheber | Max Ernst | Objekt (Person) |
+
+Die Werk-Felder lassen sich direkt auf etablierte Museumsstandards wie LIDO, CIDOC CRM und
+geeignete Wikidata-Properties abbilden. Dadurch bleiben die Metadaten interoperabel und können
+mit anderen Kulturerbe-Datensätzen verknüpft werden.
+
+### 2.4 Diagramm (Mermaid)
+
+```{mermaid}
+erDiagram
+    KATALOG ||--o{ WERK : "beschreibt (P527)"
+    KATALOG ||--|| AUSSTELLUNG : "dokumentiert"
+    KATALOG }o--o{ PERSON : "Herausgeber P98 / Illustrator P110 / Thema P921"
+    KATALOG }o--|| ORGANISATION : "Verlag (P123)"
+    KATALOG }o--|| ORT : "Erscheinungsort (P291)"
+    EXEMPLAR }o--|| KATALOG : "Exemplar von"
+    EXEMPLAR }o--|| ORGANISATION : "gehalten von (HsH-Bibliothek)"
+    WERK }o--|| PERSON : "geschaffen von (P170)"
+    WERK }o--|| ORGANISATION : "Sammlung (P195)"
+    AUSSTELLUNG }o--|| ORGANISATION : "Veranstaltungsort (P276)"
+    PERSON }o--|| ORT : "Geburtsort (P19)"
+
+    KATALOG {
+        string titel
+        string untertitel
+        date  erscheinungsjahr
+        string isbn
+        int   seitenzahl
+    }
+    EXEMPLAR {
+        string signatur
+        string barcode
+    }
+    AUSSTELLUNG {
+        date beginn
+        date ende
+    }
+    PERSON {
+        string name
+        string gnd_id
+    }
+    ORGANISATION {
+        string name
+        string gnd_id
+    }
+    WERK {
+        string katalognummer
+        string titel
+        date  datierung
+        string material
+        string masse
+        string inventarnummer
+    }
+    ORT {
+        string name
+        string geonames_id
+    }
+```
+
+
+---
+
+## Zuordnung des Datenmodells zu Schemata {#mapping}
+
+### 3.1 Bibliografische Ebene → MARC21 / Dublin Core / BIBFRAME / Wikidata
+
+| Feld | Wikidata (Datentyp) | MARC21 | Dublin Core | BIBFRAME 2.0 (Ebene) |
+|---|---|---|---|---|
+| Titel | P1476 (monolingualer Text) | 245 $a | dc:title | bf:title → bf:mainTitle (Instance) |
+| Untertitel | – | 245 $b | dcterms:alternative | bf:subtitle (Instance) |
+| Herausgeber/Bearbeiter | P98 (Objekt) | 700 $a $e | dc:contributor | bf:contribution → bf:agent (Work) |
+| Illustrator/Künstler | P110 (Objekt) | 700 $a $e „ill.“ | dc:contributor | bf:contribution (Rolle *illustrator*) |
+| Essay-Autoren | P50 / P2093 (Objekt/Text) | 700 / 505 $r | dc:creator | bf:contribution (Work) |
+| Verlag | P123 (Objekt) | 264 $b | dc:publisher | bf:provisionActivity → bf:agent (Instance) |
+| Erscheinungsort | P291 (Objekt) | 264 $a | dcterms:spatial | bf:provisionActivity → bf:place (Instance) |
+| Erscheinungsjahr | P577 (Zeitpunkt) | 264 $c / 008 | dc:date | bf:provisionActivity → bf:date (Instance) |
+| ISBN | P212 / P957 (ext. ID) | 020 $a | dc:identifier | bf:identifiedBy → bf:Isbn (Instance) |
+| Sprache | P407 (Objekt) | 041 $a / 008 | dc:language | bf:language (Work) |
+| Umfang / Seitenzahl | P1104 (Anzahl) | 300 $a | dcterms:extent | bf:extent (Instance) |
+| Gattung „Ausstellungskatalog“ | P31 → Q780605 (Objekt) | 655 $a | dc:type | bf:genreForm (Work) |
+| Thema – Person (Max Ernst) | P921 (Objekt) | 600 $a | dc:subject | bf:subject (Work) |
+| Thema – Sachbegriffe | P921 (Objekt) | 650 $a | dc:subject | bf:subject (Work) |
+| zugehörige Ausstellung | P921 (Objekt) ¹ | 711 / 500 | dc:relation | bf:relatedTo (Work) |
+| beteiligte Körperschaft | P123 / P710 analog (Objekt) | 710 $a | dc:contributor | bf:contribution (Work) |
+| Inhalt / has part (Essays) | P527 (Objekt) | 505 $a | dcterms:hasPart | bf:hasPart (Work) |
+| Signatur (Exemplar) | P217 analog (Zeichenkette) | 852 $h | dcterms:provenance | bf:shelfMark (Item) |
+| Barcode (Exemplar) | – (Zeichenkette) | 852 $p / 876 $p | – | bf:identifiedBy → bf:Barcode (Item) |
+| haltende Bibliothek | P195 analog (Objekt) | 852 $a | dcterms:provenance | bf:heldBy (Item) |
+| Digitalisat/URL | P953 (URL) | 856 $u | dc:identifier | bf:electronicLocator (Instance) |
+
+> ¹ Für „Katalog → zugehörige Ausstellung“ gibt es **kein exaktes** Wikidata-Property.
+> Behelf: **P921** (Thema) mit der Ausstellung als Wert; in Gegenrichtung trägt das
+> *Ausstellungs-Item* **P1343** („beschrieben in Quelle“) → Katalog.
+
+**FRBR/BIBFRAME-Achse:** Der Katalog = *Work* (Inhalt, Thema, Sprache) + *Instance* (Ausgabe
+1990, ISBN, Umfang) + *Item* (das HsH-Exemplar mit Barcode/Signatur). In Wikidata entspricht die
+Instance-Ebene `P31 → Q3331189` (*Ausgabe/Version*).
+
+### 3.2 Werk-Ebene → LIDO / CIDOC CRM / Wikidata (aus Aufgabe 3 übernommen)
+
+| Feld | Wikidata | LIDO | CIDOC CRM |
+|---|---|---|---|
+| Titel | P1476 | lido:titleSet | E35 Title |
+| Datierung | P571 | lido:eventDate (Production) | E52 Time-Span |
+| Material/Technik | P186 / P2079 | lido:materialsTech | E57 Material |
+| Maße | P2048/P2049 | lido:measurementsSet | E54 Dimension |
+| Urheber | P170 | lido:actor (Production) | E21 Person / E12 Production |
+| Sammlung | P195 | lido:repositorySet | E78 Collection |
+| Inventarnummer | P217 | lido:workID | E42 Identifier |
+| Standort | P276 | lido:repositoryLocation | E53 Place |
+| Thema | P921 | lido:subjectSet | E1/E55 |
+
+---
+
+## Idee zur Darstellung im Prototyp {#prototyp}
+
+Vorschlag für meinen Unterabschnitt in `index.qmd` (Quarto → `docs/`):
+
+1. **Bibliografische „Datensatz-Karte“** des Katalogs (HTML-Tabelle) mit klickbaren
+   Normdaten-Links (GND, Wikidata-QID, ISBN → K10plus). Zeigt sauber Ebene *Work/Instance/Item*.
+2. **Netzwerkgraph** *Katalog → Ausstellung → Max Ernst → Sprengel Museum → Werke* – dafür lässt
+   sich die **networkx-/matplotlib-Pipeline aus Aufgabe 4** wiederverwenden; nur die Kanten
+   (P527, P921, P170, P195, P276) neu befüllen.
+3. **Data-Mining-Tabelle** der extrahierten Werk-Datensätze (Kat.-Nr., Titel, Jahr, Material,
+   Inv.-Nr.) als Ergebnis des Scans – mit Verweis darauf, dass **nur Metadaten** extrahiert werden
+   und der Scan danach gelöscht wird (siehe [Provenienz](#provenienz)).
+4. Optional: Erweiterung des Prototyps um zusätzliche Beziehungen zwischen Katalog, Ausstellung,
+   Museum und einzelnen Kunstwerken.
+
+---
+
+## Dokumentation der KI-Nutzung {#ki-nutzung}
+
+| Aspekt | Angabe |
+|---|---|
+| Werkzeug | Claude (Anthropic), Modell Opus 4.8, Web-Chat |
+| Datum | 2026-07-27 |
+| Anwendungsfall | Metadaten-Extraktion aus dem gescannten Katalog; Entwurf von Entitäten, Feldlisten, Mermaid-Diagramm und Schema-Mapping |
+| Vorteile | schneller Erstentwurf des Modells; konsistente Mapping-Struktur über vier Standards; Anschluss an bestehendes Aufgabe-3-Mapping |
+| Nachteile / Risiken | Property-IDs und MARC-Felder können veralten oder fehlerhaft sein → **manuelle Verifikation nötig** |
+| Verifizierte Quellen | wikidata.org (P98, P110, P1104, P291, P123, P577, P212/P957, P407, P921, Q780605, Q3331189); Katalog-Impressum (DNB-CIP-Aufnahme, ISBN 3-89169-059-2) |
+| Best Practice | Alle Wikidata-Properties gegen die jeweilige Property-Seite prüfen; MARC gegen loc.gov/marc; BIBFRAME gegen id.loc.gov/ontologies/bibframe; Werte gegen den physischen Katalog gegenprüfen. KI-Output ist **Entwurf, keine Endaussage**. |
+
+---
+
+## Datenherkunft (Provenienz)
+
+### 5.1 Provenienzkette
+
+1. **Primärquelle:** physischer Katalog *Max Ernst: Das graphische Œuvre*
+   (Sprengel Museum Hannover 1990, ISBN 3-89169-059-2), Exemplar der HsH-Bibliothek
+   (Barcode 01 109 421, Signatur „MON ERNS. M 74“, ehem. Stempel „FHB Hannover“).
+2. **Erfassung:** Scan am Bibliotheks-Kopierer → PDF → manuelle Transkription und
+   Metadatenextraktion, optional OCR-gestützte Textanalyse der Werk-Datensätze.
+3. **Bibliografischer Abgleich:** HsH-VuFind-Katalog (`katalog.bib.hs-hannover.de`),
+   DNB-CIP-Aufnahme (im Buch abgedruckt), K10plus/GVK, GND, Wikidata.
+4. **Vorlagen (Team 3):** Modell von Team 1 (Wikidata) und Team 2
+   (`NFDI4Culture/linked-open-exhibition/catalogues/sprengel_exhibitions.csv`).
+5. **Löschung:** Der Scan wird nach der Metadaten-Extraktion gelöscht; nur die extrahierten
+   Metadaten verbleiben (urheberrechtskonform – siehe Zusatz-Hausaufgabe).
+
+
+---

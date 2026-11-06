@@ -485,7 +485,7 @@ The fields above are loaded from [import/catalogue.csv](import/catalogue.csv) (o
 | `dnb_edition_id` | DNB edition ID (`dnb_edition_id`) | Wikidata P1292; used instead of GND, because the DNB gives books an IDN, not a GND ID |
 | `described_at_url` | Described at URL (`described_at_url`) | for example `https://d-nb.info/957409494` |
 | `image_url` | Image (`image_url`) | cover image URL (optional) |
-| `exhibition_id` | Catalogue of (`catalogue_of`) | links the catalogue to its exhibition from `exhibition.csv`; the exhibition gets the inverse statement Exhibition catalogue (`exhibition_catalogue`) |
+| `exhibition_id` | Catalogue of (`catalogue_of`) | links the catalogue to its exhibitions from `exhibition.csv` (several IDs separated by `;`, for a catalogue that covers more than one venue); each exhibition gets the inverse statement Exhibition catalogue (`exhibition_catalogue`) |
 | `wikidata_qid` | Wikidata item (`wikidata_qid`) | optional |
 
 The first entry, `CAT001`, is the catalogue of the exhibition `EXH001` ("BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999"), DNB record [957409494](https://d-nb.info/957409494). The artworks point to the same exhibition with `Exhibited at`, so the exhibition item connects the artworks and the catalogue.

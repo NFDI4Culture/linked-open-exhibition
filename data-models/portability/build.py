@@ -72,7 +72,7 @@ SINGLE = {
     "inception", "date_text", "object_type_text", "materials_text", "height", "width", "depth",
     "inventory_number", "location", "image_url", "wikidata_qid", "gnd_id", "aat_id", "start_date",
     "end_date", "subtitle", "publisher", "publication_date", "isbn13", "dnb_edition_id",
-    "described_at_url", "catalogue_of", "commons_category",
+    "described_at_url", "commons_category",
 }
 REQUIRED = {"title"}
 
@@ -96,7 +96,7 @@ SPECS = [
               ("publication_date", "publication_date"), ("isbn13", "isbn13"),
               ("dnb_edition_id", "dnb_edition_id"), ("described_at_url", "described_at_url"),
               ("image_url", "image_url"),
-              ("exhibition_id", "catalogue_of", {"range": "exhibition"}),
+              ("exhibition_id", "catalogue_of", {"range": "exhibition", "multi": True}),
               ("wikidata_qid", "wikidata_qid")]},
     {"file": "artwork.csv", "id": "artwork_id", "class": "artwork",
      "cols": [("title", "title"),

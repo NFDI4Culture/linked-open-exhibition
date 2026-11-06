@@ -14,7 +14,7 @@ erDiagram
     EXHIBITION }o--o| PLACE : "location"
     CATALOGUE }o--o{ PERSON : "author"
     CATALOGUE }o--o| ORGANIZATION : "publisher"
-    CATALOGUE }o--o| EXHIBITION : "catalogue_of"
+    CATALOGUE }o--o{ EXHIBITION : "catalogue_of"
     ARTWORK }o--o| OBJECT_TYPE : "instance_of"
     ARTWORK }o--o| PERSON : "creator"
     ARTWORK }o--o{ MATERIAL : "made_from_material"

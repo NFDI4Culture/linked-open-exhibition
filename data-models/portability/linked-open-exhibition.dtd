@@ -83,7 +83,7 @@
     isbn13?,
     dnb_edition_id?,
     described_at_url?,
-    catalogue_of?)>
+    catalogue_of*)>
 <!ATTLIST catalogue
   id       ID       #REQUIRED
   wikibase NMTOKEN  #IMPLIED

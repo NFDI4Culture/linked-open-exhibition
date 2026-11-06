@@ -14,7 +14,6 @@
     <made_from_material ref="MAT002"/>
     <height unit="cm">152</height>
     <width unit="cm">170</width>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART002" wikibase="Q51" source="artwork.csv:3">
@@ -30,7 +29,6 @@
     <made_from_material ref="MAT002"/>
     <height unit="cm">150</height>
     <width unit="cm">114</width>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART003" wikibase="Q52" source="artwork.csv:4">
@@ -44,7 +42,6 @@
     <made_from_material ref="MAT005"/>
     <height unit="cm">198</height>
     <width unit="cm">259</width>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART004" wikibase="Q53" source="artwork.csv:5">
@@ -56,7 +53,6 @@
     <object_type_text>wallpaper</object_type_text>
     <materials_text>wallpaper</materials_text>
     <made_from_material ref="MAT006"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART005" wikibase="Q54" source="artwork.csv:6">
@@ -68,7 +64,6 @@
     <object_type_text>wallpaper</object_type_text>
     <materials_text>wallpaper</materials_text>
     <made_from_material ref="MAT006"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART006" wikibase="Q55" source="artwork.csv:7">
@@ -83,9 +78,6 @@
     <made_from_material ref="MAT002"/>
     <height unit="cm">190</height>
     <width unit="cm">152</width>
-    <exhibited_at ref="EXH001">
-      <catalogue_page>14</catalogue_page>
-    </exhibited_at>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART007" wikibase="Q56" source="artwork.csv:8">
@@ -93,7 +85,6 @@
     <creator ref="PER001"/>
     <inception>1978</inception>
     <date_text>1978</date_text>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART008" wikibase="Q57" source="artwork.csv:9">
@@ -103,7 +94,6 @@
     <inception>1978</inception>
     <date_text>1978</date_text>
     <object_type_text>Illustration</object_type_text>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART009" wikibase="Q58" source="artwork.csv:10">
@@ -118,7 +108,6 @@
     <made_from_material ref="MAT003"/>
     <height unit="cm">122</height>
     <width unit="cm">122</width>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART010" wikibase="Q59" source="artwork.csv:11">
@@ -135,7 +124,6 @@
     <made_from_material ref="MAT008"/>
     <height unit="cm">156</height>
     <width unit="cm">225</width>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART011" wikibase="Q60" source="artwork.csv:12">
@@ -149,7 +137,6 @@
     <made_from_material ref="MAT005"/>
     <height unit="cm">244</height>
     <width unit="cm">267</width>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART012" wikibase="Q61" source="artwork.csv:13">
@@ -166,6 +153,7 @@
     <height unit="cm">305</height>
     <width unit="cm">406</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART013" wikibase="Q62" source="artwork.csv:14">
@@ -182,6 +170,7 @@
     <height unit="cm">123</height>
     <width unit="cm">268</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART014" wikibase="Q63" source="artwork.csv:15">
@@ -197,6 +186,7 @@
     <height unit="cm">234</height>
     <width unit="cm">147</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART015" wikibase="Q64" source="artwork.csv:16">
@@ -212,6 +202,7 @@
     <height unit="cm">157</height>
     <width unit="cm">245</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART016" wikibase="Q65" source="artwork.csv:17">
@@ -228,6 +219,7 @@
     <height unit="cm">243</height>
     <width unit="cm">488</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART017" wikibase="Q66" source="artwork.csv:18">
@@ -245,6 +237,7 @@
     <height unit="cm">250</height>
     <width unit="cm">219</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART018" wikibase="Q67" source="artwork.csv:19">
@@ -261,6 +254,7 @@
     <height unit="cm">203</height>
     <width unit="cm">119</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART019" wikibase="Q68" source="artwork.csv:20">
@@ -278,6 +272,7 @@
     <height unit="cm">259</height>
     <width unit="cm">411</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART020" wikibase="Q69" source="artwork.csv:21">
@@ -302,6 +297,7 @@
     <height unit="cm">210</height>
     <width unit="cm">249</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART021" wikibase="Q70" source="artwork.csv:22">
@@ -321,6 +317,7 @@
     <height unit="cm">166</height>
     <width unit="cm">215</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART022" wikibase="Q71" source="artwork.csv:23">
@@ -340,6 +337,7 @@
     <height unit="cm">255</height>
     <width unit="cm">229</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART023" wikibase="Q72" source="artwork.csv:24">
@@ -359,6 +357,7 @@
     <height unit="cm">193</height>
     <width unit="cm">106</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART024" wikibase="Q73" source="artwork.csv:25">
@@ -375,6 +374,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART025" wikibase="Q74" source="artwork.csv:26">
@@ -391,6 +391,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART026" wikibase="Q75" source="artwork.csv:27">
@@ -407,6 +408,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART027" wikibase="Q76" source="artwork.csv:28">
@@ -423,6 +425,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART028" wikibase="Q77" source="artwork.csv:29">
@@ -439,6 +442,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART029" wikibase="Q78" source="artwork.csv:30">
@@ -455,6 +459,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART030" wikibase="Q79" source="artwork.csv:31">
@@ -471,6 +476,7 @@
     <height unit="cm">150</height>
     <width unit="cm">114</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART031" wikibase="Q80" source="artwork.csv:32">
@@ -487,6 +493,7 @@
     <height unit="cm">235</height>
     <width unit="cm">327</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART032" wikibase="Q81" source="artwork.csv:33">
@@ -503,6 +510,7 @@
     <height unit="cm">190</height>
     <width unit="cm">152</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART033" wikibase="Q82" source="artwork.csv:34">
@@ -519,6 +527,7 @@
     <height unit="cm">190</height>
     <width unit="cm">152</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART034" wikibase="Q83" source="artwork.csv:35">
@@ -535,6 +544,7 @@
     <height unit="cm">190</height>
     <width unit="cm">152</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART035" wikibase="Q84" source="artwork.csv:36">
@@ -551,6 +561,7 @@
     <height unit="cm">190</height>
     <width unit="cm">152</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART036" wikibase="Q85" source="artwork.csv:37">
@@ -569,6 +580,9 @@
     <exhibited_at ref="EXH001">
       <catalogue_page>14; 51</catalogue_page>
     </exhibited_at>
+    <exhibited_at ref="EXH002">
+      <catalogue_page>14; 51</catalogue_page>
+    </exhibited_at>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART037" wikibase="Q86" source="artwork.csv:38">
@@ -583,6 +597,7 @@
     <height unit="cm">183</height>
     <width unit="cm">183</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART038" wikibase="Q88" source="artwork.csv:39">
@@ -597,18 +612,21 @@
     <height unit="cm">183</height>
     <width unit="cm">183</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART039" wikibase="Q89" source="artwork.csv:40">
     <title xml:lang="mul">Installation photograph of Lamp</title>
     <creator ref="PER001"/>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART040" wikibase="Q90" source="artwork.csv:41">
     <title xml:lang="mul">Installation photograph of Plant</title>
     <creator ref="PER001"/>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART041" wikibase="Q91" source="artwork.csv:42">
@@ -628,6 +646,7 @@
     <height unit="cm">213.5</height>
     <width unit="cm">213.5</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART042" wikibase="Q92" source="artwork.csv:43">
@@ -647,6 +666,7 @@
     <height unit="cm">213.5</height>
     <width unit="cm">213.5</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART043" wikibase="Q93" source="artwork.csv:44">
@@ -666,6 +686,7 @@
     <height unit="cm">213.5</height>
     <width unit="cm">213.5</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART044" wikibase="Q94" source="artwork.csv:45">
@@ -685,6 +706,7 @@
     <height unit="cm">213.5</height>
     <width unit="cm">213.5</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART045" wikibase="Q95" source="artwork.csv:46">
@@ -702,6 +724,7 @@
     <height unit="cm">239</height>
     <width unit="cm">239</width>
     <exhibited_at ref="EXH001"/>
+    <exhibited_at ref="EXH002"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART046" wikibase="Q96" source="artwork.csv:47">
@@ -721,6 +744,9 @@
     <exhibited_at ref="EXH001">
       <catalogue_page>17</catalogue_page>
     </exhibited_at>
+    <exhibited_at ref="EXH002">
+      <catalogue_page>17</catalogue_page>
+    </exhibited_at>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART047" wikibase="Q97" source="artwork.csv:48">
@@ -733,7 +759,6 @@
     <materials_text>color; sound</materials_text>
     <made_from_material ref="MAT030"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART048" wikibase="Q98" source="artwork.csv:49">
@@ -746,7 +771,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART049" wikibase="Q99" source="artwork.csv:50">
@@ -758,7 +782,6 @@
     <object_type_text>Super-8 film</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART050" wikibase="Q100" source="artwork.csv:51">
@@ -771,7 +794,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART051" wikibase="Q101" source="artwork.csv:52">
@@ -784,7 +806,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART052" wikibase="Q102" source="artwork.csv:53">
@@ -796,7 +817,6 @@
     <object_type_text>Super-8 film</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART053" wikibase="Q103" source="artwork.csv:54">
@@ -809,7 +829,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART054" wikibase="Q104" source="artwork.csv:55">
@@ -821,7 +840,6 @@
     <object_type_text>Super-8 film</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART055" wikibase="Q105" source="artwork.csv:56">
@@ -834,7 +852,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART056" wikibase="Q106" source="artwork.csv:57">
@@ -847,7 +864,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART057" wikibase="Q107" source="artwork.csv:58">
@@ -860,7 +876,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART058" wikibase="Q108" source="artwork.csv:59">
@@ -873,7 +888,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART059" wikibase="Q109" source="artwork.csv:60">
@@ -886,7 +900,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART060" wikibase="Q110" source="artwork.csv:61">
@@ -898,7 +911,6 @@
     <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART061" wikibase="Q111" source="artwork.csv:62">
@@ -911,7 +923,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART062" wikibase="Q112" source="artwork.csv:63">
@@ -924,7 +935,6 @@
     <materials_text>black-and-white; sound</materials_text>
     <made_from_material ref="MAT032"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART063" wikibase="Q113" source="artwork.csv:64">
@@ -936,7 +946,6 @@
     <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART064" wikibase="Q114" source="artwork.csv:65">
@@ -948,7 +957,6 @@
     <object_type_text>Super-8 film loop (originally 16 mm)</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART065" wikibase="Q115" source="artwork.csv:66">
@@ -961,7 +969,6 @@
     <materials_text>16 mm; color</materials_text>
     <made_from_material ref="MAT033"/>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART066" wikibase="Q116" source="artwork.csv:67">
@@ -973,7 +980,6 @@
     <object_type_text>Super-8 film loop</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART067" wikibase="Q117" source="artwork.csv:68">
@@ -986,7 +992,6 @@
     <materials_text>color; sound</materials_text>
     <made_from_material ref="MAT030"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART068" wikibase="Q118" source="artwork.csv:69">
@@ -998,7 +1003,6 @@
     <materials_text>color; sound</materials_text>
     <made_from_material ref="MAT030"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART069" wikibase="Q119" source="artwork.csv:70">
@@ -1011,7 +1015,6 @@
     <materials_text>color; sound</materials_text>
     <made_from_material ref="MAT030"/>
     <made_from_material ref="MAT031"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART070" wikibase="Q120" source="artwork.csv:71">
@@ -1023,7 +1026,6 @@
     <object_type_text>black-and-white film loop</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART071" wikibase="Q121" source="artwork.csv:72">
@@ -1035,7 +1037,6 @@
     <object_type_text>Super-8 film loop</object_type_text>
     <materials_text>color</materials_text>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART072" wikibase="Q122" source="artwork.csv:73">
@@ -1046,7 +1047,6 @@
     <date_text>1972</date_text>
     <object_type_text>black-and-white film loop</object_type_text>
     <made_from_material ref="MAT032"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <artwork id="ART073" wikibase="Q123" source="artwork.csv:74">
@@ -1059,7 +1059,6 @@
     <materials_text>sound</materials_text>
     <made_from_material ref="MAT031"/>
     <made_from_material ref="MAT030"/>
-    <exhibited_at ref="EXH001"/>
     <appears_in_catalogue ref="CAT001"/>
   </artwork>
   <person id="PER001" wikibase="Q47" source="person.csv:2">
@@ -1077,16 +1076,19 @@
   <person id="PER003" wikibase="Q208" source="person.csv:4">
     <label xml:lang="en">Meg Cranston</label>
     <label xml:lang="de">Meg Cranston</label>
+    <wikidata_qid>Q6807973</wikidata_qid>
     <gnd_id>119555522</gnd_id>
   </person>
   <person id="PER004" wikibase="Q209" source="person.csv:5">
     <label xml:lang="en">Diedrich Diederichsen</label>
     <label xml:lang="de">Diedrich Diederichsen</label>
+    <wikidata_qid>Q101521</wikidata_qid>
     <gnd_id>130448001</gnd_id>
   </person>
   <person id="PER005" wikibase="Q210" source="person.csv:6">
     <label xml:lang="en">Thomas Weski</label>
     <label xml:lang="de">Thomas Weski</label>
+    <wikidata_qid>Q93431275</wikidata_qid>
     <gnd_id>119093022</gnd_id>
   </person>
   <exhibition id="EXH001" wikibase="Q49" source="exhibition.csv:2">
@@ -1097,9 +1099,15 @@
     <end_date>2000-01-02</end_date>
     <exhibition_catalogue ref="CAT001"/>
   </exhibition>
+  <exhibition id="EXH002" source="exhibition.csv:3">
+    <title xml:lang="mul">BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999</title>
+    <location ref="PLC002"/>
+    <start_date>2000-01-15</start_date>
+    <end_date>2000-04-02</end_date>
+    <exhibition_catalogue ref="CAT001"/>
+  </exhibition>
   <catalogue id="CAT001" wikibase="Q211" source="catalogue.csv:2">
-    <title xml:lang="mul">BALDESSARI: While something is happening here, something else is happening there</title>
-    <subtitle>Works 1988–1999</subtitle>
+    <title xml:lang="mul">BALDESSARI : While something is happening here, something else is happening there : Works 1988–1999</title>
     <author ref="PER003"/>
     <author ref="PER004"/>
     <author ref="PER005"/>
@@ -1109,6 +1117,7 @@
     <dnb_edition_id>957409494</dnb_edition_id>
     <described_at_url>https://d-nb.info/957409494</described_at_url>
     <catalogue_of ref="EXH001"/>
+    <catalogue_of ref="EXH002"/>
   </catalogue>
   <organization id="ORG001" wikibase="Q207" source="term.csv:48">
     <label xml:lang="en">König</label>
@@ -1311,5 +1320,10 @@
     <label xml:lang="en">Sprengel Museum Hannover</label>
     <label xml:lang="de">Sprengel Museum Hannover</label>
     <wikidata_qid>Q510144</wikidata_qid>
+  </place>
+  <place id="PLC002" source="term.csv:49">
+    <label xml:lang="en">Staatliche Kunstsammlungen Dresden, Galerie Neue Meister</label>
+    <label xml:lang="de">Staatliche Kunstsammlungen Dresden, Galerie Neue Meister</label>
+    <wikidata_qid>Q472706</wikidata_qid>
   </place>
 </loe>
